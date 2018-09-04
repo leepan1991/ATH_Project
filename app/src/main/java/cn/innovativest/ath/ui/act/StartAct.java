@@ -391,8 +391,6 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
                 @Override
                 public void onSuccess(String userid) {
                     LogUtils.d("--onSuccess" + userid);
-//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                    finish();
                 }
 
                 /**
