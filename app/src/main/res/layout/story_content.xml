@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+
+    <RelativeLayout
+        android:id="@+id/rltContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:orientation="vertical"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/tvwWhatATH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/story_title_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="什么是ATH?"
+            android:textColor="@color/bg_banner_top"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/lltATH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvwWhatATH"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/story_content_large"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvwATHOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.5"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="        ATH是基于区块链的区中心化的货币，通过手机挖矿等活动产生。可以用于生态圈上的交易、消费和兑换等、根据手机的算力来获取ATH，也可以通过购买不同的矿机来增加ATH的产量，在获取ATH的同时用户还有机会获取额外的积分。48小时不领取ATH将暂时开采。"
+                android:textColor="@color/font_333333"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvwATHTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.5"
+                android:padding="10dp"
+                android:text="        ATH总量有限，随着区域用户的增多获取难度越来越大，前期参与更有优势，价值也会随着水涨船高。"
+                android:textColor="@color/bg_banner_top"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvwWhatHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lltATH"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/story_title_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="什么是助力值?"
+            android:textColor="@color/bg_banner_top"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvwHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvwWhatHelp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/story_title_bg"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:padding="10dp"
+            android:text="        助力值是用户获取ATH财富的影响因子，可以通过邀请好友获取，助力值越高，获得的ATH财富越多。助力值可以用来解锁矿机进一步增加ATH产量。"
+            android:textColor="@color/font_333333"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/tvwWhatCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvwHelp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/story_title_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="什么是积分?"
+            android:textColor="@color/bg_banner_top"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvwCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvwWhatCoin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/story_title_bg"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:padding="10dp"
+            android:text="        积分是在通过手机挖取ATH时随机伴生的，也可以通过活动获取。积分可以用来解锁矿机进一步增加ATH产量。积分也可以用于生态圈上的交易、消费和兑换等。"
+            android:textColor="@color/font_333333"
+            android:textSize="13sp" />
+    </RelativeLayout>
+</ScrollView>

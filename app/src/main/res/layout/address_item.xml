@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/item_left"
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+
+        <TextView
+            android:id="@+id/tvAddressOrder"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical|left"
+            android:text="地址一"
+            android:textColor="#868686"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/vline1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@+id/tvAddressOrder"
+            android:background="#E6E6E6" />
+
+        <RelativeLayout
+            android:id="@+id/rltContent"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/vline1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <View
+                android:id="@+id/vDot"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/tvName"
+                android:layout_toRightOf="@+id/vDot"
+                android:gravity="center_vertical|left"
+                android:text="四川省南充市顺庆区涪江路183号"
+                android:textColor="#868686"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|left"
+                android:text="王女士收"
+                android:textColor="#868686"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@+id/rltContent"
+            android:background="#E6E6E6" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/item_right"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="#ff000000"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/item_right_edit"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#2593B8"
+            android:gravity="center"
+            android:text="修改"
+            android:textColor="#ffffffff"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/item_right_del"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#ca2f33"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="#ffffffff"
+            android:textSize="16.0sp" />
+    </LinearLayout>
+</LinearLayout>

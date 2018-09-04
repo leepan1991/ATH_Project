@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:id="@+id/lltContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lltTop"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rltBank"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/tvBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:paddingLeft="27dp"
+                    android:text="银行卡"
+                    android:textColor="@color/font_666666"
+                    android:textSize="14sp" />
+
+
+                <ImageView
+                    android:id="@+id/ivBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="27dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mine_right_arrow" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/safety_management_dash_line" />
+
+            <RelativeLayout
+                android:id="@+id/rltAlipay"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/tvAlipay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:paddingLeft="27dp"
+                    android:text="支付宝"
+                    android:textColor="@color/font_666666"
+                    android:textSize="14sp" />
+
+
+                <ImageView
+                    android:id="@+id/ivAlipay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="27dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mine_right_arrow" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/safety_management_dash_line" />
+
+            <RelativeLayout
+                android:id="@+id/rltWechat"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/tvWechat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:paddingLeft="27dp"
+                    android:text="微信"
+                    android:textColor="@color/font_666666"
+                    android:textSize="14sp" />
+
+
+                <ImageView
+                    android:id="@+id/ivWechat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="27dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mine_right_arrow" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/safety_management_dash_line" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

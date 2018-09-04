@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nor_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+    <RelativeLayout
+        android:id="@+id/rltAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/nor_white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="头像"
+            android:textColor="@color/font_333333"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/ivNotLoginAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/mine_avatar" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/order_buy_top_line" />
+
+    <RelativeLayout
+        android:id="@+id/rltNickName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/nor_white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="昵称"
+            android:textColor="@color/font_333333"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etNickName"
+            style="@style/mLoginEt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/tvName"
+            android:background="@android:color/transparent"
+            android:gravity="right|center_vertical"
+            android:hint="请输入您的昵称"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:textColor="@color/font_999999"
+            android:textColorHint="@color/font_999999"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/order_buy_top_line" />
+
+    <RelativeLayout
+        android:id="@+id/rltSex"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/nor_white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="性别"
+            android:textColor="@color/font_333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvwSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="20dp"
+            android:text="男"
+            android:textColor="@color/font_999999"
+            android:textSize="12sp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/order_buy_top_line"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rltBirthday"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/nor_white"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="出生日期"
+            android:textColor="@color/font_333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvwBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="20dp"
+            android:text="1986-11-11"
+            android:textColor="@color/font_999999"
+            android:textSize="12sp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/order_buy_top_line" />
+
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/mBt"
+        android:layout_width="189dp"
+        android:layout_height="45.5dp"
+        android:layout_below="@id/lltContent"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/register_btn"
+        android:onClick="onClick"
+        android:text="确认"
+        android:textSize="16dp" />
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/view_menu"
+        layout="@layout/view_actionbar_menu"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_menu"
+        android:layout_marginBottom="60dp">
+
+        <include layout="@layout/trade_detail_content" />
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/lltBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/nor_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/rltCancel"
+            android:layout_width="match_parent"
+            android:layout_height="58.5dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnContact"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:text="联系对方"
+                android:textColor="@color/font_666666"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:text="取消订单"
+                android:textColor="@color/font_666666"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnPayed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:text="我已付款"
+                android:textColor="@color/nor_white"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rltWaitCancel"
+            android:layout_width="match_parent"
+            android:layout_height="58.5dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btnWaitContact"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:text="联系对方"
+                android:textColor="@color/font_666666"
+                android:textSize="13sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btnApply"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#E6E6E6"
+                android:text="我要申诉"
+                android:textColor="@color/font_333333"
+                android:textSize="13sp" />
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/nor_white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnWaitCancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:text="我已收款"
+                android:textColor="@color/nor_white"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

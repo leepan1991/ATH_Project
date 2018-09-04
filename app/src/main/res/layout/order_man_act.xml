@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rltContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lltContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lltTop"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rltMineApply"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:background="@android:color/white">
+
+
+                    <TextView
+                        android:id="@+id/tvRealCertification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:maxLines="1"
+                        android:paddingLeft="27dp"
+                        android:text="自己买的"
+                        android:textColor="#A7A7A7"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvCertificationStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/ivRealCertification"
+                        android:maxLines="1"
+                        android:text="查看"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivRealCertification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="27dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mine_right_arrow" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/safety_management_dash_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rltOtherApply"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:id="@+id/tvMobileBinding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:maxLines="1"
+                        android:paddingLeft="27dp"
+                        android:text="自己卖的"
+                        android:textColor="#A7A7A7"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvMobileNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/ivMobileBinding"
+                        android:maxLines="1"
+                        android:text="查看"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivMobileBinding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="27dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mine_right_arrow" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/safety_management_dash_line" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

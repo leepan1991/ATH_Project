@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rltContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lltTop"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@drawable/order_buy_avator_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:id="@+id/rltLogined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivLoginAvatar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mine_avatar" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/lltSign"
+                        android:layout_toRightOf="@+id/ivLoginAvatar"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:maxLines="1"
+                                android:text="无言的结局"
+                                android:textColor="@color/font_666666"
+                                android:textSize="16sp"
+
+                                />
+
+                            <ImageView
+                                android:id="@+id/ivRealed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:contentDescription="@string/app_name"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/mine_realnamed" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvPhoneNumber"
+                            android:layout_width="213dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="手机号 ：188****2343"
+                            android:textColor="@color/font_666666"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lltContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lltTop"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rltAlipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivAlipay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/account_setting_alipay" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/tbAlipaySwitch"
+                        android:layout_toRightOf="@+id/ivAlipay"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:text="支付宝"
+                            android:textColor="#A7A7A7"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvAlipayAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:text="23232323@qq.com"
+                            android:textColor="@color/font_333333"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <ToggleButton
+                        android:id="@+id/tbAlipaySwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tb_switch_bg"
+                        android:checked="true"
+                        android:visibility="invisible"
+                        android:textOff=""
+                        android:textOn="" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@drawable/account_setting_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rltBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivBank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/account_setting_bank" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/tbBankSwitch"
+                        android:layout_toRightOf="@+id/ivBank"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:text="银行"
+                            android:textColor="#A7A7A7"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvBankAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:text="622848237838348439934"
+                            android:textColor="@color/font_333333"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <ToggleButton
+                        android:id="@+id/tbBankSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tb_switch_bg"
+                        android:checked="true"
+                        android:textOff=""
+                        android:visibility="invisible"
+                        android:textOn="" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@drawable/account_setting_line" />
+
+                <RelativeLayout
+                    android:id="@+id/rltWechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivWechat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/account_setting_wechat" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/tbWechatSwitch"
+                        android:layout_toRightOf="@+id/ivWechat"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:text="微信"
+                            android:textColor="#A7A7A7"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvWechatAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:text="1522228833"
+                            android:textColor="@color/font_333333"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <ToggleButton
+                        android:id="@+id/tbWechatSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tb_switch_bg"
+                        android:checked="false"
+                        android:visibility="invisible"
+                        android:textOff=""
+                        android:textOn="" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@drawable/account_setting_line" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lltPay"
+                style="@style/mBt"
+                android:layout_width="345dp"
+                android:layout_height="79dp"
+                android:layout_below="@+id/lltContent"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/address_add_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/accout_setting_add" />
+
+                <TextView
+                    android:id="@+id/tvwMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="添加收款方式"
+                    android:textColor="@color/font_333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

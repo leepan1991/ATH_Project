@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rltContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp">
+
+
+            <LinearLayout
+                android:id="@+id/lltContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="38dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvNewSinglePasswd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:maxLines="1"
+                    android:text="请输入新密码" />
+
+                <EditText
+                    android:id="@+id/etNewSinglePasswd"
+                    style="@style/mLoginEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tvSinglePasswd"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/register_phone_input"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/font_333333"
+                    android:textColorHint="#DDDEDE"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvConfirmNewSinglePasswd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:maxLines="1"
+                    android:text="再次输入新密码" />
+
+                <EditText
+                    android:id="@+id/etConfirmNewSinglePasswd"
+                    style="@style/mLoginEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tvSinglePasswd"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/register_phone_input"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/font_333333"
+                    android:textColorHint="#DDDEDE"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOldSinglePasswd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:maxLines="1"
+                    android:text="请输入手机号" />
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    style="@style/mLoginEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/tvSinglePasswd"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/register_phone_input"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/font_333333"
+                    android:textColorHint="#DDDEDE"
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp">
+
+                    <EditText
+                        android:id="@+id/edtUCode"
+                        style="@style/mLoginEt"
+                        android:layout_width="141dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@+id/btnCode"
+                        android:background="@drawable/register_code_input"
+                        android:hint="输入验证码"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/font_333333"
+                        android:textColorHint="#DDDEDE"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btnCode"
+                        style="@style/mBt"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/register_get_code_btn"
+                        android:onClick="onClick"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:text="获取验证码"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                style="@style/mBt"
+                android:layout_width="208dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/lltContent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/register_btn"
+                android:onClick="onClick"
+                android:text="确认"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

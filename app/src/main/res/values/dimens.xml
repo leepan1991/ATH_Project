@@ -1,0 +1,5 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="photo_w">120dp</dimen>
+    <dimen name="progressbar_large">48dp</dimen>
+</resources>

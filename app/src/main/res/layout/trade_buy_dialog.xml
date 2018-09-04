@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="281dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg_shape"
+    android:gravity="center_horizontal"
+    android:minWidth="250dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_msg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="确定要删除恢复？"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#c7c7c7" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/order_buy_alert" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tvwy"
+            android:text="单价："
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tvwy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/dgAmount"
+            android:text="￥"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/dgAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="9.99"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/dgLimit"
+            android:text="限额"
+            android:textColor="@color/font_666666" />
+
+        <TextView
+            android:id="@+id/dgLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="20000-1280000"
+            android:textColor="@color/font_999999" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/order_buy_input">
+
+
+        <EditText
+            android:id="@+id/edtSDSD"
+            style="@style/mLoginEt"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_zhang"
+            android:background="@android:color/transparent"
+            android:hint="最大可买324.777777"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:textColor="@color/font_333333"
+            android:textColorHint="#DCDDDD"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/iv_zhang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/dgSDSD"
+            android:paddingRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/order_buy_hor_line" />
+
+        <TextView
+            android:id="@+id/dgSDSD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="ATH"
+            android:textColor="@color/font_333333" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/dgMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/dgAllBuy"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/font_333333" />
+
+        <TextView
+            android:id="@+id/dgAllBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="全部买入"
+            android:textColor="#EF7B00" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#c7c7c7" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <Button
+            android:id="@+id/dialog_left_bt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:maxLines="1"
+            android:text="取消"
+            android:textColor="@drawable/dialog_cancel_color_slct" />
+
+        <View
+            android:id="@+id/dialog_line"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="#c7c7c7" />
+
+        <Button
+            android:id="@+id/dialog_right_bt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:maxLines="1"
+            android:text="确定"
+            android:textColor="@drawable/dialog_ok_color_slct" />
+    </LinearLayout>
+
+</LinearLayout>

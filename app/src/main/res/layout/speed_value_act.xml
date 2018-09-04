@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/speed_value_bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/view_menu"
+        layout="@layout/view_actionbar_menu" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rltSpeedATH"
+        android:layout_below="@id/view_menu"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:id="@+id/rltContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="您当前拥有的矿机数："
+                android:textColor="@color/nor_white"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/speed_value_top_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/speed_value_chuji_xiao" />
+
+                    <TextView
+                        android:id="@+id/tvwChuji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="x2"
+                        android:textColor="@color/trade_top_tv_bg"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/speed_value_top_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/speed_value_gaoji_xiao" />
+
+                    <TextView
+                        android:id="@+id/tvwGaoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="x1"
+                        android:textColor="@color/trade_top_tv_bg"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/speed_value_top_bg"
+                android:padding="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/chujiTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp">
+
+                    <ImageView
+                        android:id="@+id/iv_chuji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/speed_value_chuji_da" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_chuji"
+                        android:stretchColumns="2">
+
+                        <TableRow
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="#02CDFF"
+                            android:orientation="horizontal"
+                            android:paddingLeft="0.5dip"
+                            android:paddingRight="0.5dip"
+                            android:paddingTop="1dip">
+
+                            <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginBottom="1dip"-->
+                            <!--android:layout_marginLeft="0.5dip"-->
+                            <!--android:layout_marginRight="0.5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@color/nor_white"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="动力"-->
+                            <!--android:textColor="@color/font_333333"-->
+                            <!--android:textSize="12sp" />-->
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dip"
+                                android:layout_marginLeft="0.5dip"
+                                android:layout_marginRight="0.5dp"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="采矿速度"
+                                android:textColor="@color/font_333333"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dip"
+                                android:layout_marginLeft="0.5dip"
+                                android:layout_marginRight="0.5dp"
+                                android:layout_weight="1"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="兑换所需"
+                                android:textColor="@color/font_333333"
+                                android:textSize="12sp" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="#02CDFF"
+                            android:paddingBottom="1dip"
+                            android:paddingLeft="0.5dip"
+                            android:paddingRight="0.5dip"
+                            android:paddingTop="0dip">
+
+                            <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="61dp"-->
+                            <!--android:layout_marginLeft="0.5dp"-->
+                            <!--android:layout_marginRight="0.5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@color/nor_white"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="100"-->
+                            <!--android:textColor="@color/font_333333"-->
+                            <!--android:textSize="12sp" />-->
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="61dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="1倍采矿速率"
+                                android:textColor="@color/font_333333"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/tvwPerHelpValue"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:layout_weight="1"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="助力值100/台"
+                                android:textColor="@color/font_333333"
+                                android:textSize="10sp" />
+
+                        </TableRow>
+
+                    </TableLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chujiTop"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="初级矿机"
+                        android:textColor="#336699" />
+
+                    <ImageButton
+                        android:id="@+id/ibChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/speed_value_change" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/speed_value_top_bg"
+                android:padding="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/chujiTop1"
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp">
+
+                    <ImageView
+                        android:id="@+id/iv_chuji1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/speed_value_chuji_da" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_chuji1"
+                        android:stretchColumns="2">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#02CDFF"
+                            android:orientation="horizontal"
+                            android:paddingLeft="0.5dip"
+                            android:paddingRight="0.5dip"
+                            android:paddingTop="1dip">
+
+                            <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginBottom="1dp"-->
+                            <!--android:layout_marginLeft="0.5dp"-->
+                            <!--android:layout_marginRight="0.5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@color/nor_white"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="动力"-->
+                            <!--android:textColor="@color/font_333333"-->
+                            <!--android:textSize="12sp" />-->
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="采矿速度"
+                                android:textColor="@color/font_333333"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:layout_weight="1"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="兑换所需"
+                                android:textColor="@color/font_333333"
+                                android:textSize="12sp" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#02CDFF"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="0.5dip"
+                            android:paddingRight="0.5dip"
+                            android:paddingTop="0dip">
+
+                            <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="61dp"-->
+                            <!--android:layout_marginLeft="0.5dp"-->
+                            <!--android:layout_marginRight="0.5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@color/nor_white"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="100"-->
+                            <!--android:textColor="@color/font_333333"-->
+                            <!--android:textSize="12sp" />-->
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="61dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="1倍采矿速率"
+                                android:textColor="@color/font_333333"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/tvwPerCoin"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:layout_weight="1"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="积分值400/台"
+                                android:textColor="@color/font_333333"
+                                android:textSize="10sp" />
+
+                        </TableRow>
+
+                    </TableLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chujiTop1"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="初级矿机"
+                        android:textColor="#336699" />
+
+                    <ImageButton
+                        android:id="@+id/ibChange1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/speed_value_change" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/speed_value_top_bg"
+                android:padding="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/gaojiTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp">
+
+                    <ImageView
+                        android:id="@+id/iv_gaoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/speed_value_gaoji_da" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_gaoji"
+                        android:stretchColumns="2">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            android:background="#02CDFF"
+                            android:paddingLeft="0.5dip"
+                            android:paddingRight="0.5dip"
+                            android:paddingTop="1dip">
+
+                            <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginBottom="1dp"-->
+                            <!--android:layout_marginLeft="0.5dp"-->
+                            <!--android:layout_marginRight="0.5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@color/nor_white"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="动力"-->
+                            <!--android:textColor="@color/font_333333"-->
+                            <!--android:textSize="12sp" />-->
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="采矿速度"
+                                android:textColor="@color/font_333333"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:layout_weight="1"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="购买所需"
+                                android:textColor="@color/font_333333"
+                                android:textSize="12sp" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#02CDFF"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="0.5dip"
+                            android:paddingRight="0.5dip"
+                            android:paddingTop="0dip">
+
+                            <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="61dp"-->
+                            <!--android:layout_marginLeft="0.5dp"-->
+                            <!--android:layout_marginRight="0.5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@color/nor_white"-->
+                            <!--android:gravity="center"-->
+                            <!--android:text="300"-->
+                            <!--android:textColor="@color/font_333333"-->
+                            <!--android:textSize="12sp" />-->
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="61dp"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="1-10倍采矿\n速率不等"
+                                android:textColor="@color/font_333333"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/tvwBuy"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="0.5dp"
+                                android:layout_marginRight="0.5dp"
+                                android:layout_weight="1"
+                                android:background="@color/nor_white"
+                                android:gravity="center"
+                                android:text="RMB500元/台"
+                                android:textColor="@color/font_333333"
+                                android:textSize="10sp" />
+
+                        </TableRow>
+
+                    </TableLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gaojiTop"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="高级矿机"
+                        android:textColor="#336699" />
+
+                    <ImageButton
+                        android:id="@+id/ibBuy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/speed_value_buy" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

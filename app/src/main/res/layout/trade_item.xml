@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@android:color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlt_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/trade_name_index" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/dot_gold_shape"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rltNameContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/rlt_avatar"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/lltNameOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:maxLines="1"
+                android:text="无言的结局"
+                android:textColor="#F08519"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/ivRealed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:contentDescription="@string/app_name"
+
+                android:scaleType="fitXY"
+                android:src="@drawable/mine_realnamed" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lltNameTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lltNameOne"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvNotice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="30日成交："
+                android:textColor="@color/font_666666"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTradeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="1000"
+                android:textColor="@color/font_666666"
+                android:textSize="10sp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lltNameThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lltNameTwo"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBank"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:background="@drawable/trade_pay_method_bg"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:text="银行卡"
+                android:textColor="@color/font_666666"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btnWechat"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/trade_pay_method_bg"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:text="微信"
+                android:textColor="@color/font_666666"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btnAlipay"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/trade_pay_method_bg"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:text="支付宝"
+                android:textColor="@color/font_666666"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltValueContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/iv_right"
+        android:layout_toRightOf="@+id/rltNameContent"
+        android:gravity="right"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+
+        <TextView
+            android:id="@+id/tvTradePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:maxLines="1"
+            android:text="58332.00CNY"
+            android:textColor="#F08519"
+
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/lltValueTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTradePrice"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvwL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:maxLines="1"
+                android:text="限额："
+                android:textColor="@color/font_666666"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTradeLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:maxLines="1"
+                android:text="1000-4000"
+                android:textColor="@color/font_666666"
+                android:textSize="10sp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lltValueThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lltValueTwo"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvwS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:maxLines="1"
+                android:text="数量："
+                android:textColor="@color/font_666666"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTradeAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:maxLines="1"
+                android:text="0.445"
+                android:textColor="@color/font_666666"
+                android:textSize="10sp"
+
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/trade_right_arrow" />
+</RelativeLayout>

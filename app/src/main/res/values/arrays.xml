@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="buyandsale">
+        <item>我要买</item>
+        <item>我要卖</item>
+    </string-array>
+    <string-array name="passwd_question">
+        <item>你妈妈叫什么名字？</item>
+        <item>你父亲叫什么名字？</item>
+        <item>你小学名称叫什么？</item>
+        <item>你最喜欢的运动是什么？</item>
+        <item>你最爱的明星叫什么？</item>
+        <item>你的家乡在什么地方？</item>
+        <item>你的中学班主任叫什么名字？</item>
+        <item>你母亲的生日是？</item>
+        <item>你父亲的生日是？</item>
+        <item>你爱人的名称？</item>
+    </string-array>
+</resources>

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/view_menu"
+        layout="@layout/view_actionbar_menu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_menu"
+        android:layout_marginBottom="60dp">
+
+        <include layout="@layout/order_cancel_content" />
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/lltBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/nor_white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rltCancel"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:id="@+id/lltCart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/nor_white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/order_buy_have_message" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="联系对方"
+                    android:textColor="@color/font_666666"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ATH生态圈</string>
+
+    <!--tab-->
+    <string name="tab_main">首页</string>
+    <string name="tab_purchase">交易中心</string>
+    <string name="tab_coin">积分兑换</string>
+    <string name="tab_mine">个人账户</string>
+
+    <string name="regist_code_get">获取验证码</string>
+    <string name="regist_code_get_ing">获取中</string>
+    <string name="regist_code_get_retry">重新获取</string>
+    <string name="regist_code_wait">重新获取%1$s</string>
+</resources>

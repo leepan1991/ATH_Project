@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="m_disable">#666666</color>
+    <!-- normal -->
+    <color name="nor_white">#FFFFFF</color>
+    <color name="bg_btn_actionbar">#20ffffff</color>
+    <color name="bg_banner_top">#0175C6</color>
+    <color name="rgb_mm_trans">#00000000</color>
+    <color name="rgb_c92f34">#c92f34</color>
+    <color name="rgb_2e2e31">#2e2e31</color>
+
+    <color name="font_333333">#333333</color>
+    <color name="font_999999">#999999</color>
+    <color name="font_666666">#666666</color>
+    <color name="rgb_150_150_153">#969699</color>
+    <color name="rgb_238_238_239">#EEEEEF</color>
+
+    <color name="m_dialog_ok_n">#666666</color>
+    <color name="m_dialog_ok_h">#fb6d3c</color>
+    <color name="m_dialog_cancel_n">#666666</color>
+    <color name="m_dialog_cancel_h">#000</color>
+
+    <color name="trade_top_tv_bg">#0088CF</color>
+
+</resources>
