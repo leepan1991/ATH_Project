@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.innovativest.ath">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -7,7 +8,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <!--8.0安装需要的权限-->
@@ -294,7 +294,8 @@
         <service
             android:name="io.rong.push.core.PushRegistrationService"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE">
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            tools:replace="android:exported">
         </service>
 
 
@@ -311,7 +312,8 @@
             android:name="io.rong.push.PushService"
             android:exported="false"
             android:process="io.rong.push"
-            android:permission="android.permission.BIND_JOB_SERVICE">  <!-- push进程，可以改名 -->
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            tools:replace="android:exported">  <!-- push进程，可以改名 -->
         </service>
 
 
