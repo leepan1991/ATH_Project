@@ -131,9 +131,9 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="30dp"
-                        android:visibility="gone"
                         android:scaleType="fitXY"
-                        android:src="@drawable/main_logo" />
+                        android:src="@drawable/main_logo"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 
@@ -147,35 +147,96 @@
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btnCollecting"
+                    <RelativeLayout
+                        android:id="@+id/rltCollecting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/main_doing"
-                        android:maxLines="1"
-                        android:text="开采"
-                        android:textColor="@android:color/white"
-                        android:textSize="13sp" />
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnUnlockOne"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/main_locking_cell"
-                        android:maxLines="1"
-                        android:text="锁定"
-                        android:textColor="@android:color/white"
-                        android:textSize="13sp" />
+                        <ImageView
+                            android:id="@+id/ivCollecting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/new_main_jiesuo"
+                            android:scaleType="fitXY" />
 
-                    <Button
-                        android:id="@+id/btnUnlockTwo"
+                        <Button
+                            android:id="@+id/btnCollecting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivCollecting"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/new_main_lock_bp"
+                            android:maxLines="1"
+                            android:text="解锁"
+                            android:textColor="@android:color/white"
+                            android:textSize="13sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rltUnlockOne"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/main_locking_cell"
-                        android:maxLines="1"
-                        android:text="锁定"
-                        android:textColor="@android:color/white"
-                        android:textSize="13sp" />
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/ivUnlockOne"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/new_main_linqu"
+                            android:scaleType="fitXY" />
+
+                        <Button
+                            android:id="@+id/btnUnlockOne"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivUnlockOne"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/new_main_lock_bp"
+                            android:maxLines="1"
+                            android:text="锁定"
+                            android:textColor="@android:color/white"
+                            android:textSize="13sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rltUnlockTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/ivUnlockTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/new_main_xiumian"
+                            android:scaleType="fitXY" />
+
+                        <Button
+                            android:id="@+id/btnUnlockTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivUnlockTwo"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/new_main_lock_bp"
+                            android:maxLines="1"
+                            android:text="锁定"
+                            android:textColor="@android:color/white"
+                            android:textSize="13sp" />
+
+                    </RelativeLayout>
+
 
                 </LinearLayout>
 
@@ -230,27 +291,28 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/new_main_caifujiasu"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/new_main_caifujiasu" />
+
                     <ImageView
                         android:id="@+id/ivYqoqing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginLeft="22dp"
+                        android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/new_main_yaoqinghaoyou"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/new_main_yaoqinghaoyou" />
 
                     <ImageView
                         android:id="@+id/ivMiji"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginLeft="22dp"
+                        android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/new_main_athmiji"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/new_main_athmiji" />
 
                 </LinearLayout>
 

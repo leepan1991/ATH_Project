@@ -17,11 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.bumptech.glide.Glide;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.umeng.analytics.MobclickAgent;
@@ -82,31 +86,49 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     @BindView(R.id.tvwCoinValue)
     TextView tvwCoinValue;
 
+    @BindView(R.id.rltCollecting)
+    RelativeLayout rltCollecting;
+
+    @BindView(R.id.ivCollecting)
+    ImageView ivCollecting;
+
     @BindView(R.id.btnCollecting)
     Button btnCollecting;
 
+    @BindView(R.id.rltUnlockOne)
+    RelativeLayout rltUnlockOne;
+
+    @BindView(R.id.ivUnlockOne)
+    ImageView ivUnlockOne;
+
     @BindView(R.id.btnUnlockOne)
     Button btnUnlockOne;
+
+    @BindView(R.id.rltUnlockTwo)
+    RelativeLayout rltUnlockTwo;
+
+    @BindView(R.id.ivUnlockTwo)
+    ImageView ivUnlockTwo;
 
     @BindView(R.id.btnUnlockTwo)
     Button btnUnlockTwo;
 
     @BindView(R.id.btnLockedOne)
-    Button btnLockedOne;
+    ImageButton btnLockedOne;
 
     @BindView(R.id.btnLockedTwo)
-    Button btnLockedTwo;
+    ImageButton btnLockedTwo;
 
     @BindView(R.id.btnLockedThree)
-    Button btnLockedThree;
+    ImageButton btnLockedThree;
 
-    @BindView(R.id.lltValueSpeed)
+    @BindView(R.id.ivCaifu)
     LinearLayout lltValueSpeed;
 
-    @BindView(R.id.lltGetFriend)
+    @BindView(R.id.ivYqoqing)
     LinearLayout lltGetFriend;
 
-    @BindView(R.id.lltProjectWhitePage)
+    @BindView(R.id.ivMiji)
     LinearLayout lltProjectWhitePage;
 
     @BindView(R.id.tvwATHAllValue)
@@ -183,7 +205,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
     private void initView() {
         customDialog = new CustomDialog(mCtx);
-        btnCollecting.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+        rltCollecting.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
 
@@ -236,9 +258,6 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
             btnCollecting.setText("锁定");
             btnUnlockOne.setText("锁定");
             btnUnlockTwo.setText("锁定");
-            btnLockedOne.setText("矿机");
-            btnLockedTwo.setText("矿机");
-            btnLockedThree.setText("矿机");
             btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
             btnUnlockOne.setBackgroundResource(R.drawable.main_locking_cell);
             btnUnlockTwo.setBackgroundResource(R.drawable.main_locking_cell);
@@ -291,95 +310,104 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
             String[] arrStr = mainPage.pit.split("\\|");
             if (useList(arrStr, "1")) {
-                btnCollecting.setText("开采");
-                btnCollecting.setBackgroundResource(R.drawable.main_doing);
+                btnCollecting.setText("领取");
+//                btnCollecting.setBackgroundResource(R.drawable.main_doing);
+                ivCollecting.setBackgroundResource(R.drawable.new_main_linqu);
+//                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
             } else {
-                btnCollecting.setText("锁定");
-                btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
+                btnCollecting.setText("解锁");
+                ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
+                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
+//                btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
             }
             if (useList(arrStr, "2")) {
-                btnUnlockOne.setText("开采");
-                btnUnlockOne.setBackgroundResource(R.drawable.main_doing);
+                btnUnlockOne.setText("领取");
+//                btnUnlockOne.setBackgroundResource(R.drawable.main_doing);
+                ivUnlockOne.setBackgroundResource(R.drawable.new_main_linqu);
             } else {
-                btnUnlockOne.setText("锁定");
-                btnUnlockOne.setBackgroundResource(R.drawable.main_locking_cell);
+                btnUnlockOne.setText("解锁");
+                ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
+                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOne);
+//                btnUnlockOne.setBackgroundResource(R.drawable.main_locking_cell);
             }
             if (useList(arrStr, "3")) {
-                btnUnlockTwo.setText("开采");
-                btnUnlockTwo.setBackgroundResource(R.drawable.main_doing);
+                btnUnlockTwo.setText("领取");
+                ivUnlockTwo.setBackgroundResource(R.drawable.new_main_linqu);
             } else {
-                btnUnlockTwo.setText("锁定");
-                btnUnlockTwo.setBackgroundResource(R.drawable.main_locking_cell);
+                btnUnlockTwo.setText("解锁");
+                ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
+                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwo);
+//                btnUnlockTwo.setBackgroundResource(R.drawable.main_locking_cell);
             }
 
             if (useList(arrStr, "9")) {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_six);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji6);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "8")) {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_five);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji5);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "7")) {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_four);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji4);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "6")) {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_three);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji3);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "5")) {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_two);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji2);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "4")) {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_one);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji1);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else {
-                btnLockedOne.setText("矿机");
-                btnLockedOne.setBackgroundResource(R.drawable.main_null);
+                btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji0);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             }
 
 
             if (useList(arrStr, "15")) {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_six);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji6);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "14")) {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_five);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji5);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "13")) {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_four);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji4);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "12")) {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_three);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji3);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "11")) {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_two);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji2);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "10")) {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_one);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji1);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else {
-                btnLockedTwo.setText("矿机");
-                btnLockedTwo.setBackgroundResource(R.drawable.main_null);
+                btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji0);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             }
 
             if (useList(arrStr, "21")) {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_six);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji6);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "20")) {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_five);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji5);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "19")) {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_four);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji4);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "18")) {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_three);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji3);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "17")) {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_two);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji2);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "16")) {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_one);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji1);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else {
-                btnLockedThree.setText("矿机");
-                btnLockedThree.setBackgroundResource(R.drawable.main_null);
+                btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji0);
+                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             }
 
 //            if (useList(arrStr, "4")) {
@@ -404,18 +432,32 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 //                btnLockedThree.setBackgroundResource(R.drawable.main_locking_circle);
 //            }
         } else {
-            btnCollecting.setText("锁定");
-            btnUnlockOne.setText("锁定");
-            btnUnlockTwo.setText("锁定");
-            btnLockedOne.setText("矿机");
-            btnLockedTwo.setText("矿机");
-            btnLockedThree.setText("矿机");
-            btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
-            btnUnlockOne.setBackgroundResource(R.drawable.main_locking_cell);
-            btnUnlockTwo.setBackgroundResource(R.drawable.main_locking_cell);
-            btnLockedOne.setBackgroundResource(R.drawable.main_null);
-            btnLockedTwo.setBackgroundResource(R.drawable.main_null);
-            btnLockedThree.setBackgroundResource(R.drawable.main_null);
+            btnCollecting.setText("解锁");
+            btnUnlockOne.setText("解锁");
+            btnUnlockTwo.setText("解锁");
+            ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
+            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
+
+            ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
+            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOne);
+
+            ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
+            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwo);
+
+//            btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
+//            btnUnlockOne.setBackgroundResource(R.drawable.main_locking_cell);
+//            btnUnlockTwo.setBackgroundResource(R.drawable.main_locking_cell);
+//            btnLockedOne.setBackgroundResource(R.drawable.main_null);
+//            btnLockedTwo.setBackgroundResource(R.drawable.main_null);
+//            btnLockedThree.setBackgroundResource(R.drawable.main_null);
+            btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji0);
+            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+
+            btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji0);
+            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+
+            btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji0);
+            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
         }
     }
 
@@ -468,16 +510,21 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 App.toast(getActivity(), pitunlockResponse.message);
                 if (pitunlockResponse.status == 1) {
                     if (pit.equals("1")) {
-                        btnCollecting.setText("开采");
+                        btnCollecting.setText("休眠中");
                         btnCollecting.setBackgroundResource(R.drawable.main_doing);
+
+                        ivCollecting.setBackgroundResource(R.drawable.new_main_xiumian);
+//                        Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
                     }
                     if (pit.equals("2")) {
-                        btnUnlockOne.setText("开采");
-                        btnUnlockOne.setBackgroundResource(R.drawable.main_doing);
+                        btnUnlockOne.setText("休眠中");
+//                        btnUnlockOne.setBackgroundResource(R.drawable.main_doing);
+                        ivUnlockOne.setBackgroundResource(R.drawable.new_main_xiumian);
                     }
                     if (pit.equals("3")) {
-                        btnUnlockTwo.setText("开采");
-                        btnUnlockTwo.setBackgroundResource(R.drawable.main_doing);
+                        btnUnlockTwo.setText("休眠中");
+//                        btnUnlockTwo.setBackgroundResource(R.drawable.main_doing);
+                        ivUnlockTwo.setBackgroundResource(R.drawable.new_main_xiumian);
                     }
 //                    if (pit.equals("4")) {
 //                        btnLockedOne.setText("矿机");
@@ -784,9 +831,9 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         switch (v.getId()) {
             case R.id.btnCollecting:
                 if (App.get().user != null) {
-                    if (btnCollecting.getText().toString().equals("锁定")) {
+                    if (btnCollecting.getText().toString().equals("解锁")) {
                         popDialog("1");
-                    } else if (btnCollecting.getText().toString().equals("开采")) {
+                    } else if (btnCollecting.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("1");
                     }
@@ -796,9 +843,9 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 break;
             case R.id.btnUnlockOne:
                 if (App.get().user != null) {
-                    if (btnUnlockOne.getText().toString().equals("锁定")) {
+                    if (btnUnlockOne.getText().toString().equals("解锁")) {
                         popDialog("2");
-                    } else if (btnUnlockOne.getText().toString().equals("开采")) {
+                    } else if (btnUnlockOne.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("2");
                     }
@@ -808,9 +855,9 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 break;
             case R.id.btnUnlockTwo:
                 if (App.get().user != null) {
-                    if (btnUnlockTwo.getText().toString().equals("锁定")) {
+                    if (btnUnlockTwo.getText().toString().equals("解锁")) {
                         popDialog("3");
-                    } else if (btnUnlockTwo.getText().toString().equals("开采")) {
+                    } else if (btnUnlockTwo.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("3");
                     }

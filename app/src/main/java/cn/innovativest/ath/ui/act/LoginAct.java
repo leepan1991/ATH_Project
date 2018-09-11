@@ -248,7 +248,8 @@ public class LoginAct extends BaseAct implements RongIM.UserInfoProvider {
                         if (userInfo != null) {
                             PrefsManager.get().save("userinfo", userInfoResponse.data);
                             getToken(userInfo);
-                            startActivity(new Intent(LoginAct.this, MainAct.class));
+//                            startActivity(new Intent(LoginAct.this, MainAct.class));
+                            startActivity(new Intent(LoginAct.this, NewMainAct.class));
                             onBackPressed();
                         } else {
                             LogUtils.e("userInfo is null");
