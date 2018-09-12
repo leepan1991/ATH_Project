@@ -79,7 +79,7 @@ public class NewMainAct extends BaseAct {
      * 给Tab按钮设置图标和文字
      */
     private View getTabItemView(int index) {
-        View view = LayoutInflater.from(this).inflate(R.layout.main_tab_item,
+        View view = LayoutInflater.from(this).inflate(R.layout.new_main_tab_item,
                 null);
         LinearLayout lltbg = (LinearLayout) view.findViewById(R.id.lltbg);
 //        lltbg.setBackgroundResource(mBgArray[index]);
