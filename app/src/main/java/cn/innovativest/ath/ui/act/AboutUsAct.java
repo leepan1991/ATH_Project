@@ -121,7 +121,7 @@ public class AboutUsAct extends BaseAct {
                         if (commonResponse.commonItem.title.equals("关于我们")) {
                             if (!CUtils.isEmpty(commonResponse.commonItem.exchange)) {
                                 wvDesc.setVisibility(View.VISIBLE);
-                                wvDesc.loadDataWithBaseURL(null, commonResponse.commonItem.exchange, "text/html", "utf-8", null);
+                                wvDesc.loadDataWithBaseURL(null, commonResponse.commonItem.exchange.toString(), "text/html", "utf-8", null);
                             } else {
                                 wvDesc.setVisibility(View.INVISIBLE);
                             }

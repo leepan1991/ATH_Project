@@ -4,10 +4,12 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -69,19 +71,19 @@ public class FriendHelpAct extends BaseAct implements RadioGroup.OnCheckedChange
     LinearLayout lltInvate;
 
     @BindView(R.id.xlvInvate)
-    XListView xlvInvate;
+    ListView xlvInvate;
 
     @BindView(R.id.lltGift)
     LinearLayout lltGift;
 
     @BindView(R.id.xlvGift)
-    XListView xlvGift;
+    ListView xlvGift;
 
     @BindView(R.id.lltTeam)
     LinearLayout lltTeam;
 
     @BindView(R.id.xlvTeam)
-    XListView xlvTeam;
+    ListView xlvTeam;
 
 //    @BindView(R.id.tvwGift)
 //    TextView tvwGift;
@@ -151,6 +153,36 @@ public class FriendHelpAct extends BaseAct implements RadioGroup.OnCheckedChange
             userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
             tvwCopyContent.setText(userInfo.code);
         }
+
+        xlvInvate.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    xlvInvate.getParent().requestDisallowInterceptTouchEvent(true);
+                }
+                return false;
+            }
+        });
+
+        xlvGift.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    xlvGift.getParent().requestDisallowInterceptTouchEvent(true);
+                }
+                return false;
+            }
+        });
+
+        xlvTeam.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    xlvTeam.getParent().requestDisallowInterceptTouchEvent(true);
+                }
+                return false;
+            }
+        });
 
     }
 

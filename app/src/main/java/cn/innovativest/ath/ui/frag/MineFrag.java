@@ -438,7 +438,7 @@ public class MineFrag extends BaseFrag {
                 break;
             case R.id.rltOrderManagement:
                 if (App.get().user != null) {
-                    if (!isOpen) {
+                    if (isOpen) {
                         startActivity(new Intent(getActivity(), OrderManAct.class));
                     } else {
                         popDialog();
@@ -459,7 +459,7 @@ public class MineFrag extends BaseFrag {
                 break;
             case R.id.rltPubManagement:
                 if (App.get().user != null) {
-                    if (!isOpen) {
+                    if (isOpen) {
                         startActivity(new Intent(getActivity(), MyTradeAct.class));
                     } else {
                         popDialog();
@@ -469,7 +469,7 @@ public class MineFrag extends BaseFrag {
                 }
                 break;
             case R.id.rltAdPubManagement:
-                if (!isOpen) {
+                if (isOpen) {
                     if (rltBuyAndSale.getVisibility() == View.VISIBLE) {
                         rltBuyAndSale.setVisibility(View.GONE);
                     } else {

@@ -56,9 +56,9 @@ public class RetrofitClient {
             client.addInterceptor(interceptor);
             baseUrl = BuildConfig.HTTP_TEST;
         } else {
-//            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//            client.addInterceptor(interceptor);
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            client.addInterceptor(interceptor);
             baseUrl = BuildConfig.HTTP_PROD;
         }
 
@@ -103,9 +103,9 @@ public class RetrofitClient {
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             client.addInterceptor(interceptor);
         } else {
-//            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//            client.addInterceptor(interceptor);
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            client.addInterceptor(interceptor);
         }
 
         Retrofit retrofit = new Retrofit.Builder()

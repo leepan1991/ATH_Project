@@ -174,16 +174,16 @@
 
                     </LinearLayout>
 
-                    <cn.innovativest.ath.widget.XListView
+                    <ListView
                         android:id="@+id/xlvInvate"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="227dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/friend_help_tb_bg"
                         android:cacheColorHint="@android:color/transparent"
                         android:divider="@android:color/darker_gray"
-                        android:dividerHeight="0.5dp"></cn.innovativest.ath.widget.XListView>
+                        android:dividerHeight="0.5dp"></ListView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -255,16 +255,16 @@
                         android:layout_marginTop="3dp"
                         android:background="@drawable/friend_help_gift_line" />
 
-                    <cn.innovativest.ath.widget.XListView
+                    <ListView
                         android:id="@+id/xlvGift"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="227dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/friend_help_tb_bg"
                         android:cacheColorHint="@android:color/transparent"
                         android:divider="@android:color/darker_gray"
-                        android:dividerHeight="0.5dp"></cn.innovativest.ath.widget.XListView>
+                        android:dividerHeight="0.5dp"></ListView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -337,16 +337,16 @@
                         android:layout_marginTop="3dp"
                         android:background="@drawable/friend_help_gift_line" />
 
-                    <cn.innovativest.ath.widget.XListView
+                    <ListView
                         android:id="@+id/xlvTeam"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="227dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/friend_help_tb_bg"
                         android:cacheColorHint="@android:color/transparent"
                         android:divider="@android:color/darker_gray"
-                        android:dividerHeight="0.5dp"></cn.innovativest.ath.widget.XListView>
+                        android:dividerHeight="0.5dp"></ListView>
                 </LinearLayout>
 
             </LinearLayout>

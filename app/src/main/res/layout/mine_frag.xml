@@ -193,7 +193,7 @@
                             android:maxLines="1"
                             android:text="未签到"
                             android:textColor="#F08519"
-                            android:textSize="10sp" />
+                            android:textSize="6sp" />
 
                         <TextView
                             android:layout_width="wrap_content"

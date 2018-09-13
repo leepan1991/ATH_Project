@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 /**
  * 不带滚动功能的ListView，在ScrollView中使用
- * 
+ *
  * @author leepan
  * 
  */

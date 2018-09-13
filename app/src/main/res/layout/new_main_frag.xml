@@ -274,15 +274,15 @@
                             >
                             <ImageView
                                 android:id="@+id/ivUnlockTwoBg"
-                                android:layout_width="121dp"
-                                android:layout_height="91dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_centerHorizontal="true"
                                 android:scaleType="fitXY" />
                         <ImageView
                             android:id="@+id/ivUnlockTwo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="121dp"
+                            android:layout_height="91dp"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/new_main_xiumian"
                             android:scaleType="fitXY" />
