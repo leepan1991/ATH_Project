@@ -5,7 +5,7 @@
     android:background="@drawable/common_bg"
     android:orientation="vertical">
 
-    <include layout="@layout/view_actionbar_menu" />
+    <include layout="@layout/view_actionbar_trade" />
 
 
     <ScrollView
@@ -24,21 +24,10 @@
             android:orientation="vertical"
             android:paddingTop="5dp">
 
-            <Spinner
-                android:id="@+id/spBuyAndSale"
-                android:layout_width="101dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/start_trade_buy_spinner"
-                android:entries="@array/buyandsale"
-                android:padding="8dp"></Spinner>
-
             <LinearLayout
                 android:id="@+id/lltContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/spBuyAndSale"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/start_trade_buy_bg"
@@ -381,10 +370,10 @@
                 android:layout_below="@+id/lltContent"
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
-                android:gravity="center"
+                android:gravity="left"
                 android:maxLines="1"
                 android:text="*以上限制是针对单笔交易限额*"
-                android:textSize="10sp" />
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -398,7 +387,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="1.单价必须大于等于（val）\n2.数量在0.000001-（ath）之间\n3.最低限额在（单价）-（数量*单价）之间\n4.最大限额在（单价）-（数量*单价）之间"
-                    android:textSize="10sp" />
+                    android:textSize="13sp" />
 
 
                 <TextView
@@ -406,7 +395,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="1.为了好买入，建议单价大于（val）\n2.最低限额在0-（数量*单价）之间\n4.最大限额大于最低限额小于（单价）-（数量*单价）之间"
-                    android:textSize="10sp" />
+                    android:textSize="13sp" />
 
 
             </LinearLayout>

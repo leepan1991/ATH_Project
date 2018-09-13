@@ -176,12 +176,12 @@ public class StartTradeAct extends BaseAct {
                 String price = etPrice.getText().toString();
                 if (!CUtils.isEmpty(price)) {
                     if (flag == 0) {//买
-                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + price + "）\n2.最低限额在0-（数量*" + price + "）之间\n4.最大限额大于最低限额小于（" + price + "）-（数量*" + price + "）之间");
+                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + price + "）\n2.数量在（1.000000）个起\n3.最低限额（" + price + "-数量*" + price + "）之间\n4.最大限额要大于最低限额且小于（" + price + "-数量*" + price + "）之间");
                     } else if (flag == 1) {//卖
                         if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
                             UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                             if (userInfo != null && userInfo.mainPage != null) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + price + "）\n2.数量在0.000001-（" + userInfo.mainPage.ath + "）之间\n3.最低限额在（" + price + "）-（数量*" + price + "）之间\n4.最大限额在（" + price + "）-（数量*" + price + "）之间");
+                                tvwSaleInfo.setText("1.单价必须大于等于（" + price + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）之间\n3.最低限额（" + price + "-数量*" + price + "）之间\n4.最大限额要大于最低限额且小于（" + price + "-数量*" + price + "）之间");
                             }
                         }
 
@@ -209,12 +209,12 @@ public class StartTradeAct extends BaseAct {
                 String number = etNumber.getText().toString();
                 if (!CUtils.isEmpty(number)) {
                     if (flag == 0) {//买
-                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.最低限额在0-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额大于最低限额小于（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
+                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "） \n2.数量在（1.000000）个起\n3.最低限额（" + Float.valueOf(etPrice.getText().toString()) + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
                     } else if (flag == 1) {//卖
                         if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
                             UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                             if (userInfo != null && userInfo.mainPage != null) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在0.000001-（" + userInfo.mainPage.ath + "）之间\n3.最低限额在（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额在（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
+                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在 (1-" + userInfo.mainPage.ath + "）之间\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
                             }
                         }
                     }
@@ -240,13 +240,13 @@ public class StartTradeAct extends BaseAct {
                     if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
                         UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                         if (userInfo != null && userInfo.mainPage != null) {
-                            etNumber.setHint("最多可买" + userInfo.mainPage.ath);
+//                            etNumber.setHint("最多可买" + userInfo.mainPage.ath);
                             if (!CUtils.isEmpty(etPrice.getText().toString()) && !CUtils.isEmpty(etNumber.getText().toString())) {
-                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.最低限额在0-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间\n4.最大限额大于最低限额小于（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间");
+                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.数量在（1.000000）个起\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间");
                             } else if (!CUtils.isEmpty(etPrice.getText().toString())) {
-                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.最低限额在0-（数量*" + etPrice.getText().toString() + "）之间\n4.最大限额大于最低限额小于（" + etPrice.getText().toString() + "）-（数量*" + etPrice.getText().toString() + "）之间");
+                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.数量在（1.000000）个起\n3.最低限额（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间");
                             } else {
-                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + userInfo.mainPage.xishu + "）\n2.最低限额在0-（数量*" + userInfo.mainPage.xishu + "）之间\n4.最大限额大于最低限额小于（" + userInfo.mainPage.xishu + "）-（数量*" + userInfo.mainPage.xishu + "）之间");
+                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + userInfo.mainPage.xishu + "）\n2.数量在（1.000000）个起\n3.最低限额（" + etPrice.getText().toString() + "-数量*" + userInfo.mainPage.xishu + "）之间\n4.最大限额要大于最低限额且小于（" + userInfo.mainPage.xishu + "-数量*" + userInfo.mainPage.xishu + "）之间");
                             }
                         }
                     }
@@ -267,11 +267,11 @@ public class StartTradeAct extends BaseAct {
 
 
                             if (!CUtils.isEmpty(etPrice.getText().toString()) && !CUtils.isEmpty(etNumber.getText().toString())) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在0.000001-（" + userInfo.mainPage.ath + "）之间\n3.最低限额在（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间\n4.最大限额在（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间");
+                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间");
                             } else if (!CUtils.isEmpty(etPrice.getText().toString())) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在0.000001-（" + userInfo.mainPage.ath + "）之间\n3.最低限额在（" + etPrice.getText().toString() + "）-（数量*" + etPrice.getText().toString() + "）之间\n4.最大限额在（" + etPrice.getText().toString() + "）-（数量*" + etPrice.getText().toString() + "）之间");
+                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间");
                             } else {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + userInfo.mainPage.xishu + "）\n2.数量在0.000001-（" + userInfo.mainPage.ath + "）之间\n3.最低限额在（" + userInfo.mainPage.xishu + "）-（数量*" + userInfo.mainPage.xishu + "）之间\n4.最大限额在（" + userInfo.mainPage.xishu + "）-（数量*" + userInfo.mainPage.xishu + "）之间");
+                                tvwSaleInfo.setText("1.单价必须大于等于（" + userInfo.mainPage.xishu + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（" + userInfo.mainPage.xishu + "-数量*" + userInfo.mainPage.xishu + "）之间\n4.最大限额要大于最低限额且小于（" + userInfo.mainPage.xishu + "-数量*" + userInfo.mainPage.xishu + "）之间");
                             }
                         }
                     }
