@@ -67,6 +67,9 @@ public class ApplyDetailAct extends BaseAct {
     @BindView(R.id.tvwTitle)
     TextView tvwTitle;
 
+    @BindView(R.id.tvwAction)
+    TextView tvwAction;
+
     @BindView(R.id.etName)
     EditText etName;
 
@@ -129,6 +132,11 @@ public class ApplyDetailAct extends BaseAct {
     private void initView() {
         btnBack.setImageResource(R.drawable.login_arrow_left);
         tvwTitle.setText("申诉详情");
+
+        tvwAction.setVisibility(View.VISIBLE);
+        tvwAction.setText("确定");
+        tvwAction.setOnClickListener(this);
+
         btnBack.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
         lltIDB.setOnClickListener(this);
@@ -141,7 +149,8 @@ public class ApplyDetailAct extends BaseAct {
             lltIDB.setClickable(true);
             ivFan.setEnabled(true);
             ivFan.setClickable(true);
-            btnConfirm.setVisibility(View.VISIBLE);
+            tvwAction.setVisibility(View.VISIBLE);
+
         } else if (flag == 2) {
             etName.setEnabled(false);
             etId.setEnabled(false);
@@ -149,7 +158,7 @@ public class ApplyDetailAct extends BaseAct {
             lltIDB.setClickable(false);
             ivFan.setEnabled(false);
             ivFan.setClickable(false);
-            btnConfirm.setVisibility(View.INVISIBLE);
+            tvwAction.setVisibility(View.INVISIBLE);
         } else {
             finish();
             return;
@@ -410,8 +419,8 @@ public class ApplyDetailAct extends BaseAct {
                     bitmap = decodeUriAsBitmap(Uri.fromFile(file));
                     GlideApp.with(this).load(file).optionalCircleCrop().into(ivFan);
                     isShowImg(true);
-//                    ivFan.setImageBitmap(bitmap);
-                    setImageViewMathParent(this, ivFan, bitmap);
+                    ivFan.setImageBitmap(bitmap);
+//                    setImageViewMathParent(this, ivFan, bitmap);
 //                    modify(file);//后面打开
                 } else if (resultCode == RESULT_CANCELED) {
                     Toast.makeText(ApplyDetailAct.this, "取消上传", Toast.LENGTH_SHORT)
@@ -428,8 +437,8 @@ public class ApplyDetailAct extends BaseAct {
                     file = new File(mAlbumPicturePath);
                     bitmap = decodeUriAsBitmap(Uri.fromFile(file));
                     isShowImg(true);
-//                    ivFan.setImageBitmap(bitmap);
-                    setImageViewMathParent(this, ivFan, bitmap);
+                    ivFan.setImageBitmap(bitmap);
+//                    setImageViewMathParent(this, ivFan, bitmap);
                 } else if (resultCode == RESULT_CANCELED) {
                     Toast.makeText(ApplyDetailAct.this, "取消上传", Toast.LENGTH_SHORT)
                             .show();
@@ -440,8 +449,8 @@ public class ApplyDetailAct extends BaseAct {
                 file = new File(IMGPATH, TMP_IMAGE_FILE_NAME);
                 bitmap = decodeUriAsBitmap(Uri.fromFile(file));
                 isShowImg(true);
-//                ivFan.setImageBitmap(bitmap);
-                setImageViewMathParent(this, ivFan, bitmap);
+                ivFan.setImageBitmap(bitmap);
+//                setImageViewMathParent(this, ivFan, bitmap);
 //                modify(file);//后面打开
                 break;
             case TAKE_A_PICTURE:
@@ -452,8 +461,8 @@ public class ApplyDetailAct extends BaseAct {
                     file = new File(IMGPATH, IMAGE_FILE_NAME);
                     bitmap = decodeUriAsBitmap(Uri.fromFile(file));
                     isShowImg(true);
-//                    ivFan.setImageBitmap(bitmap);
-                    setImageViewMathParent(this, ivFan, bitmap);
+                    ivFan.setImageBitmap(bitmap);
+//                    setImageViewMathParent(this, ivFan, bitmap);
                 } else {
                     Toast.makeText(ApplyDetailAct.this, "取消上传", Toast.LENGTH_SHORT)
                             .show();
@@ -464,8 +473,8 @@ public class ApplyDetailAct extends BaseAct {
                     file = new File(IMGPATH, IMAGE_FILE_NAME);
                     bitmap = decodeUriAsBitmap(Uri.fromFile(file));
                     isShowImg(true);
-//                    ivFan.setImageBitmap(bitmap);
-                    setImageViewMathParent(this, ivFan, bitmap);
+                    ivFan.setImageBitmap(bitmap);
+//                    setImageViewMathParent(this, ivFan, bitmap);
 //                    modify(file);//后面打开
                 } else if (resultCode == RESULT_CANCELED) {
                     Toast.makeText(ApplyDetailAct.this, "取消上传", Toast.LENGTH_SHORT)
@@ -830,7 +839,7 @@ public class ApplyDetailAct extends BaseAct {
             case R.id.ivFan:
                 showSelectWindow();
                 break;
-            case R.id.btnConfirm:
+            case R.id.tvwAction:
                 upload();
                 break;
             case R.id.btnTakePhotos:// 拍照

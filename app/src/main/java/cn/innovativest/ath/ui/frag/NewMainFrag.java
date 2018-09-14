@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -102,6 +101,9 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     @BindView(R.id.ivCollectingBg)
     ImageView ivCollectingBg;
 
+    @BindView(R.id.ivCollectingGif)
+    ImageView ivCollectingGif;
+
     @BindView(R.id.ivCollecting)
     ImageView ivCollecting;
 
@@ -117,6 +119,9 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     @BindView(R.id.ivUnlockOneBg)
     ImageView ivUnlockOneBg;
 
+    @BindView(R.id.ivUnlockOneGif)
+    ImageView ivUnlockOneGif;
+
     @BindView(R.id.ivUnlockOne)
     ImageView ivUnlockOne;
 
@@ -131,6 +136,9 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
     @BindView(R.id.ivUnlockTwoBg)
     ImageView ivUnlockTwoBg;
+
+    @BindView(R.id.ivUnlockTwoGif)
+    ImageView ivUnlockTwoGif;
 
     @BindView(R.id.ivUnlockTwo)
     ImageView ivUnlockTwo;
@@ -227,6 +235,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
     private void initView() {
         customDialog = new CustomDialog(mCtx);
+        SoundPoolUtil.getInstance(mCtx);
         rltCollecting.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
@@ -363,7 +372,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     /**
      * RxJava 方式实现
      */
-    private void rxJava1(final TextView tv,final Button btn,final ImageView imv, long allTime) {
+    private void rxJava1(final TextView tv, final Button btn, final ImageView imv, final ImageView imvGif, long allTime) {
 
         if (subscription1 != null && !subscription1.isUnsubscribed()) {
             subscription1.unsubscribe();
@@ -397,7 +406,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     public void onCompleted() {
                         tv.setVisibility(View.INVISIBLE);
                         btn.setText("领取");
-                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+//                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imvGif);
                         imv.setBackgroundResource(R.drawable.new_main_linqu);
                     }
 
@@ -412,20 +422,22 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                         if (aLong > 28800) {
                             tv.setVisibility(View.INVISIBLE);
                             btn.setText("领取");
-                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
                             imv.setBackgroundResource(R.drawable.new_main_linqu);
+//                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imvGif);
 
                         } else {
                             tv.setVisibility(View.VISIBLE);
                             btn.setText("休眠中");
                             imv.setBackgroundResource(R.drawable.new_main_xiumian);
-                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
+//                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
+                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imvGif);
                         }
                     }
                 });
     }
 
-    private void rxJava2(final TextView tv,final Button btn,final ImageView imv, long allTime) {
+    private void rxJava2(final TextView tv, final Button btn, final ImageView imv, final ImageView imvGif, long allTime) {
 
         if (subscription2 != null && !subscription2.isUnsubscribed()) {
             subscription2.unsubscribe();
@@ -459,7 +471,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     public void onCompleted() {
                         tv.setVisibility(View.INVISIBLE);
                         btn.setText("领取");
-                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+//                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imvGif);
                         imv.setBackgroundResource(R.drawable.new_main_linqu);
                     }
 
@@ -474,20 +487,22 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                         if (aLong > 28800) {
                             tv.setVisibility(View.INVISIBLE);
                             btn.setText("领取");
-                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
                             imv.setBackgroundResource(R.drawable.new_main_linqu);
+//                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imvGif);
 
                         } else {
                             tv.setVisibility(View.VISIBLE);
                             btn.setText("休眠中");
                             imv.setBackgroundResource(R.drawable.new_main_xiumian);
-                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
+//                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
+                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imvGif);
                         }
                     }
                 });
     }
 
-    private void rxJava3(final TextView tv,final Button btn,final ImageView imv, long allTime) {
+    private void rxJava3(final TextView tv, final Button btn, final ImageView imv, final ImageView imvGif, long allTime) {
 
         if (subscription3 != null && !subscription3.isUnsubscribed()) {
             subscription3.unsubscribe();
@@ -521,7 +536,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     public void onCompleted() {
                         tv.setVisibility(View.INVISIBLE);
                         btn.setText("领取");
-                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+//                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+                        Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imvGif);
                         imv.setBackgroundResource(R.drawable.new_main_linqu);
                     }
 
@@ -536,14 +552,16 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                         if (aLong > 28800) {
                             tv.setVisibility(View.INVISIBLE);
                             btn.setText("领取");
-                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
-                            Glide.with(getActivity()).asGif().into(imv);
+                            imv.setBackgroundResource(R.drawable.new_main_linqu);
+//                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imv);
+                            Glide.with(getActivity()).asGif().load(R.drawable.dot1).into(imvGif);
 
                         } else {
                             tv.setVisibility(View.VISIBLE);
                             btn.setText("休眠中");
                             imv.setBackgroundResource(R.drawable.new_main_xiumian);
-                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
+//                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
+                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imvGif);
                         }
                     }
                 });
@@ -622,7 +640,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 int pos = printArray(arrStr, "1");
                 if (pos >= 0) {
                     LogUtils.e(Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
-                    rxJava1(tvwCollecting,btnCollecting,ivCollecting,Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
+                    rxJava1(tvwCollecting, btnCollecting, ivCollecting, ivCollectingGif, Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
                 } else {
                     btnCollecting.setText("解锁");
                     ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
@@ -641,7 +659,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 int pos = printArray(arrStr, "2");
                 if (pos >= 0) {
                     LogUtils.e(Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
-                    rxJava2(tvwUnlockOne,btnUnlockOne,ivUnlockOne,Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
+                    rxJava2(tvwUnlockOne, btnUnlockOne, ivUnlockOne, ivUnlockOneGif, Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
                 } else {
                     btnUnlockOne.setText("解锁");
                     ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
@@ -659,7 +677,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 int pos = printArray(arrStr, "3");
                 if (pos >= 0) {
                     LogUtils.e(Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
-                    rxJava3(tvwUnlockTwo,btnUnlockTwo,ivUnlockTwo,Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
+                    rxJava3(tvwUnlockTwo, btnUnlockTwo, ivUnlockTwo, ivUnlockTwoGif, Long.valueOf(mainPage.time - Long.valueOf(timeStr[pos])));
                 } else {
                     btnUnlockTwo.setText("解锁");
                     ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
@@ -825,15 +843,15 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                             tvwCoinValue.setText("积分: " + String.format("%.2f", Float.parseFloat(miningResponse.mining.score)));
                         }
                     }
-                    if(pit_number.equals("1")){
+                    if (pit_number.equals("1")) {
                         if (subscription1 != null && !subscription1.isUnsubscribed()) {
                             subscription1.unsubscribe();
                         }
-                    }else if(pit_number.equals("2")){
+                    } else if (pit_number.equals("2")) {
                         if (subscription2 != null && !subscription2.isUnsubscribed()) {
                             subscription2.unsubscribe();
                         }
-                    }else if(pit_number.equals("3")){
+                    } else if (pit_number.equals("3")) {
                         if (subscription3 != null && !subscription3.isUnsubscribed()) {
                             subscription3.unsubscribe();
                         }
@@ -1120,8 +1138,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     } else if (btnCollecting.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("1");
-                    }else if(btnCollecting.getText().toString().equals("休眠中")){
-                        App.toast(getActivity(),"正在挖矿中，请稍候再试。");
+                    } else if (btnCollecting.getText().toString().equals("休眠中")) {
+                        App.toast(getActivity(), "正在挖矿中，请稍候再试。");
                     }
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
@@ -1134,8 +1152,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     } else if (btnUnlockOne.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("2");
-                    }else if(btnUnlockOne.getText().toString().equals("休眠中")){
-                        App.toast(getActivity(),"正在挖矿中，请稍候再试。");
+                    } else if (btnUnlockOne.getText().toString().equals("休眠中")) {
+                        App.toast(getActivity(), "正在挖矿中，请稍候再试。");
                     }
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
@@ -1148,8 +1166,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     } else if (btnUnlockTwo.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("3");
-                    }else if(btnUnlockTwo.getText().toString().equals("休眠中")){
-                        App.toast(getActivity(),"正在挖矿中，请稍候再试。");
+                    } else if (btnUnlockTwo.getText().toString().equals("休眠中")) {
+                        App.toast(getActivity(), "正在挖矿中，请稍候再试。");
                     }
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);

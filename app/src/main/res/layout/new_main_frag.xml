@@ -156,33 +156,45 @@
                             android:id="@+id/tvwCollecting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:maxLines="1"
                             android:layout_marginBottom="5dp"
                             android:maxLength="10"
-                            android:textColor="@color/nor_white"
-                            />
+                            android:maxLines="1"
+                            android:textColor="@color/nor_white" />
 
                         <RelativeLayout
                             android:id="@+id/rltCollectingAll"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            >
+                            android:layout_gravity="center_horizontal">
+
                             <ImageView
                                 android:id="@+id/ivCollectingBg"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_centerHorizontal="true"
-                                android:scaleType="fitXY" />
-                            <ImageView
-                                android:id="@+id/ivCollecting"
-                                android:layout_width="121dp"
-                                android:layout_height="91dp"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/new_main_jiesuo"
                                 android:scaleType="fitXY" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/ivCollecting"
+                                    android:layout_width="121dp"
+                                    android:layout_height="91dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/new_main_jiesuo"
+                                    android:scaleType="fitXY" />
+
+                                <ImageView
+                                    android:id="@+id/ivCollectingGif"
+                                    android:layout_width="82dp"
+                                    android:layout_height="61dp"
+                                    android:scaleType="fitCenter" />
+                            </RelativeLayout>
                         </RelativeLayout>
 
                         <Button
@@ -205,36 +217,49 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tvwUnlockOne"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:maxLines="1"
                             android:layout_marginBottom="5dp"
                             android:maxLength="10"
-                            android:textColor="@color/nor_white"
-                            />
+                            android:maxLines="1"
+                            android:textColor="@color/nor_white" />
+
                         <RelativeLayout
                             android:id="@+id/rltUnlockOneAll"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            >
+                            android:layout_gravity="center_horizontal">
+
                             <ImageView
                                 android:id="@+id/ivUnlockOneBg"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:scaleType="fitXY" />
 
-                            <ImageView
-                                android:id="@+id/ivUnlockOne"
-                                android:layout_width="121dp"
-                                android:layout_height="91dp"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/new_main_linqu"
-                                android:scaleType="fitXY" />
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/ivUnlockOne"
+                                    android:layout_width="121dp"
+                                    android:layout_height="91dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/new_main_linqu"
+                                    android:scaleType="fitXY" />
+
+                                <ImageView
+                                    android:id="@+id/ivUnlockOneGif"
+                                    android:layout_width="82dp"
+                                    android:layout_height="61dp"
+                                    android:scaleType="fitCenter" />
+                            </RelativeLayout>
                         </RelativeLayout>
 
                         <Button
@@ -257,36 +282,51 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tvwUnlockTwo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:maxLines="1"
                             android:layout_marginBottom="5dp"
                             android:maxLength="10"
-                            android:textColor="@color/nor_white"
-                            />
+                            android:maxLines="1"
+                            android:textColor="@color/nor_white" />
+
                         <RelativeLayout
                             android:id="@+id/rltUnlockTwoAll"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            >
+                            android:layout_gravity="center_horizontal">
+
                             <ImageView
                                 android:id="@+id/ivUnlockTwoBg"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:scaleType="fitXY" />
-                        <ImageView
-                            android:id="@+id/ivUnlockTwo"
-                            android:layout_width="121dp"
-                            android:layout_height="91dp"
-                            android:layout_gravity="center_horizontal"
-                            android:background="@drawable/new_main_xiumian"
-                            android:scaleType="fitXY" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/ivUnlockTwo"
+                                    android:layout_width="121dp"
+                                    android:layout_height="91dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/new_main_xiumian"
+                                    android:scaleType="fitXY" />
+
+                                <ImageView
+                                    android:id="@+id/ivUnlockTwoGif"
+                                    android:layout_width="82dp"
+                                    android:layout_height="61dp"
+                                    android:scaleType="fitCenter" />
+                            </RelativeLayout>
                         </RelativeLayout>
+
                         <Button
                             android:id="@+id/btnUnlockTwo"
                             android:layout_width="wrap_content"
@@ -383,8 +423,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/llt_four_content"
-                    android:layout_marginTop="25dp"
                     android:layout_marginBottom="15dp"
+                    android:layout_marginTop="25dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 

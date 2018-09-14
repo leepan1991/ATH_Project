@@ -1,8 +1,6 @@
 package cn.innovativest.ath.ui.act;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -160,70 +158,71 @@ public class StartTradeAct extends BaseAct {
         tvSaleAll.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
-        etPrice.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String price = etPrice.getText().toString();
-                if (!CUtils.isEmpty(price)) {
-                    if (flag == 0) {//买
-                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + price + "）\n2.数量在（1.000000）个起\n3.最低限额（" + price + "-数量*" + price + "）之间\n4.最大限额要大于最低限额且小于（" + price + "-数量*" + price + "）之间");
-                    } else if (flag == 1) {//卖
-                        if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
-                            UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-                            if (userInfo != null && userInfo.mainPage != null) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + price + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）之间\n3.最低限额（" + price + "-数量*" + price + "）之间\n4.最大限额要大于最低限额且小于（" + price + "-数量*" + price + "）之间");
-                            }
-                        }
-
-                    }
-                } else {
-                    tvwBuyInfo.setVisibility(View.GONE);
-                    tvwSaleInfo.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        etNumber.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String number = etNumber.getText().toString();
-                if (!CUtils.isEmpty(number)) {
-                    if (flag == 0) {//买
-                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "） \n2.数量在（1.000000）个起\n3.最低限额（" + Float.valueOf(etPrice.getText().toString()) + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
-                    } else if (flag == 1) {//卖
-                        if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
-                            UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-                            if (userInfo != null && userInfo.mainPage != null) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在 (1-" + userInfo.mainPage.ath + "）之间\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
-                            }
-                        }
-                    }
-                } else {
-                    tvwBuyInfo.setVisibility(View.GONE);
-                    tvwSaleInfo.setVisibility(View.GONE);
-                }
-            }
-        });
+//        etPrice.addTextChangedListener(new TextWatcher() {
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                String price = etPrice.getText().toString();
+//                if (!CUtils.isEmpty(price)) {
+//                    if (flag == 0) {//买
+//                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + price + "）\n2.数量在（1.000000）个起\n3.最低限额（" + price + "-数量*" + price + "）之间\n4.最大限额要大于最低限额且小于（" + price + "-数量*" + price + "）之间");
+//                    } else if (flag == 1) {//卖
+//                        if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+//                            UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+//                            if (userInfo != null && userInfo.mainPage != null) {
+//                                tvwSaleInfo.setText("1.单价必须大于等于（" + price + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）之间\n3.最低限额（" + price + "-数量*" + price + "）之间\n4.最大限额要大于最低限额且小于（" + price + "-数量*" + price + "）之间");
+//                            }
+//                        }
+//
+//                    }
+//                } else {
+//                    tvwBuyInfo.setVisibility(View.GONE);
+//                    tvwSaleInfo.setVisibility(View.GONE);
+//                }
+//            }
+//        });
+//
+//        etNumber.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                String number = etNumber.getText().toString();
+//                if (!CUtils.isEmpty(number)) {
+//                    if (flag == 0) {//买
+//                        tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "） \n2.数量在（1.000000）个起\n3.最低限额（" + Float.valueOf(etPrice.getText().toString()) + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "）-（" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
+//                    } else if (flag == 1) {//卖
+//                        if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+//                            UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+//                            if (userInfo != null && userInfo.mainPage != null) {
+//                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在 (1-" + userInfo.mainPage.ath + "）之间\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(number) + "）之间");
+//                            }
+//                        }
+//                    }
+//                } else {
+//                    tvwBuyInfo.setVisibility(View.GONE);
+//                    tvwSaleInfo.setVisibility(View.GONE);
+//                }
+//            }
+//        });
 
         spBuyAndSale.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -241,13 +240,7 @@ public class StartTradeAct extends BaseAct {
                         UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                         if (userInfo != null && userInfo.mainPage != null) {
 //                            etNumber.setHint("最多可买" + userInfo.mainPage.ath);
-                            if (!CUtils.isEmpty(etPrice.getText().toString()) && !CUtils.isEmpty(etNumber.getText().toString())) {
-                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.数量在（1.000000）个起\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间");
-                            } else if (!CUtils.isEmpty(etPrice.getText().toString())) {
-                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + etPrice.getText().toString() + "）\n2.数量在（1.000000）个起\n3.最低限额（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间");
-                            } else {
-                                tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + userInfo.mainPage.xishu + "）\n2.数量在（1.000000）个起\n3.最低限额（" + etPrice.getText().toString() + "-数量*" + userInfo.mainPage.xishu + "）之间\n4.最大限额要大于最低限额且小于（" + userInfo.mainPage.xishu + "-数量*" + userInfo.mainPage.xishu + "）之间");
-                            }
+                            tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + userInfo.mainPage.xishu + "）\n2.数量在（1.000000）个起\n3.最低限额（单价 - 数量*单价）之间\n4.最大限额要大于最低限额且小于（单价 - 数量*单价）之间");
                         }
                     }
 
@@ -264,15 +257,7 @@ public class StartTradeAct extends BaseAct {
                         UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                         if (userInfo != null && userInfo.mainPage != null) {
                             etNumber.setHint("最多可卖" + userInfo.mainPage.ath);
-
-
-                            if (!CUtils.isEmpty(etPrice.getText().toString()) && !CUtils.isEmpty(etNumber.getText().toString())) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-" + Float.valueOf(etPrice.getText().toString()) * Float.valueOf(etNumber.getText().toString()) + "）之间");
-                            } else if (!CUtils.isEmpty(etPrice.getText().toString())) {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + etPrice.getText().toString() + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间\n4.最大限额要大于最低限额且小于（" + etPrice.getText().toString() + "-数量*" + etPrice.getText().toString() + "）之间");
-                            } else {
-                                tvwSaleInfo.setText("1.单价必须大于等于（" + userInfo.mainPage.xishu + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（" + userInfo.mainPage.xishu + "-数量*" + userInfo.mainPage.xishu + "）之间\n4.最大限额要大于最低限额且小于（" + userInfo.mainPage.xishu + "-数量*" + userInfo.mainPage.xishu + "）之间");
-                            }
+                            tvwSaleInfo.setText("1.单价必须大于等于（" + userInfo.mainPage.xishu + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（单价 - 数量*单价）之间\n4.最大限额要大于最低限额且小于（单价 - 数量*单价）之间\n");
                         }
                     }
 

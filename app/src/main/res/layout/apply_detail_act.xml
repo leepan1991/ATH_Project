@@ -144,9 +144,9 @@
 
                 <ImageView
                     android:id="@+id/ivFan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:layout_width="400dp"
+                    android:layout_height="600dp"
+                    android:scaleType="fitCenter"
                     android:visibility="gone" />
             </LinearLayout>
 
@@ -162,7 +162,8 @@
                 android:background="@drawable/find_pass_next"
                 android:onClick="onClick"
                 android:text="确定"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:visibility="gone" />
 
         </LinearLayout>
     </ScrollView>
