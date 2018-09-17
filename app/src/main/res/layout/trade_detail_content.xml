@@ -118,7 +118,7 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="近30日申诉"
+                        android:text="申诉数"
                         android:textSize="8sp" />
 
                 </LinearLayout>
@@ -147,7 +147,7 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="近30日胜诉"
+                        android:text="胜诉数"
                         android:textSize="8sp" />
 
                 </LinearLayout>

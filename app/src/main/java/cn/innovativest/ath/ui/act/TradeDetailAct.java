@@ -246,11 +246,11 @@ public class TradeDetailAct extends BaseAct {
                 ivRealed.setVisibility(View.INVISIBLE);
             }
 
-            tvTradeThirdNumber.setText("近30日成交" + tradeOrderDetail.orderDetailHead.deal_number + "笔");
+            tvTradeThirdNumber.setText("成功交易数：" + tradeOrderDetail.orderDetailHead.deal_number);
             tvApplyNumber.setText(tradeOrderDetail.orderDetailHead.appeal_number);
             tvApplySuccessNumber.setText(tradeOrderDetail.orderDetailHead.victory_number);
         } else {
-            tvTradeThirdNumber.setText("近30日成交0笔");
+            tvTradeThirdNumber.setText("成功交易数：0");
             tvApplyNumber.setText("0");
             tvApplySuccessNumber.setText("0");
         }
