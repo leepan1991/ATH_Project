@@ -239,7 +239,7 @@ public class StartTradeAct extends BaseAct {
                     if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
                         UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                         if (userInfo != null && userInfo.mainPage != null) {
-//                            etNumber.setHint("最多可买" + userInfo.mainPage.ath);
+                            etNumber.setHint("");
                             tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + userInfo.mainPage.xishu + "）\n2.数量在（1.000000）个起\n3.最低限额（单价 - 数量*单价）之间\n4.最大限额要大于最低限额且小于（单价 - 数量*单价）之间");
                         }
                     }
