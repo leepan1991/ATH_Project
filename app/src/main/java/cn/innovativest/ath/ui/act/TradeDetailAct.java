@@ -30,6 +30,7 @@ import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.OrderDetailResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.CUtils;
+import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.ViewImgDialog;
 import io.rong.imkit.RongIM;
@@ -438,11 +439,12 @@ public class TradeDetailAct extends BaseAct {
 
 
     private void orderDetail() {
+        LoadingUtils.getInstance().dialogShow(this, "请求中...");
         AthService service = App.get().getAthService();
         service.order(order_number).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<OrderDetailResponse>() {
             @Override
             public void call(OrderDetailResponse orderDetailResponse) {
-//                App.toast(TradeDetailAct.this, orderDetailResponse.message);
+                LoadingUtils.getInstance().dialogDismiss();
                 if (orderDetailResponse.status == 1) {
                     if (orderDetailResponse.tradeOrderDetail != null) {
                         tradeOrderDetail = orderDetailResponse.tradeOrderDetail;
@@ -454,7 +456,7 @@ public class TradeDetailAct extends BaseAct {
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
-
+                LoadingUtils.getInstance().dialogDismiss();
             }
         });
     }
