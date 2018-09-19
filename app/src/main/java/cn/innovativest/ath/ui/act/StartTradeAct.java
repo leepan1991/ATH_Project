@@ -315,9 +315,11 @@ public class StartTradeAct extends BaseAct {
                     return;
                 }
 
-                if (Float.valueOf(number) > Float.valueOf(userInfo.mainPage.ath)) {
-                    App.toast(StartTradeAct.this, "数量输入有误");
-                    return;
+                if(flag == 1) {//卖
+                    if (Float.valueOf(number) > Float.valueOf(userInfo.mainPage.ath)) {
+                        App.toast(StartTradeAct.this, "数量输入有误");
+                        return;
+                    }
                 }
             } else {
                 App.toast(StartTradeAct.this, "请设置交易密码");
