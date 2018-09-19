@@ -1,5 +1,6 @@
 package cn.innovativest.ath.ui.act;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,12 +21,14 @@ import cn.innovativest.ath.bean.TradeItem;
 import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.BaseResponse;
+import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.MD5Utils;
 import cn.innovativest.ath.utils.PrefsManager;
+import cn.innovativest.ath.widget.RealNameDialog;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -93,6 +96,8 @@ public class StartTradeAct extends BaseAct {
 
     TradeItem tradeItem = null;
 
+    private RealNameDialog realNameDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +113,7 @@ public class StartTradeAct extends BaseAct {
     private void initView() {
         btnBack.setImageResource(R.drawable.login_arrow_left);
         tvwTitle.setText("发起交易");
-
+        realNameDialog = new RealNameDialog(mCtx);
         if (flag == 0) {//买
             spBuyAndSale.setSelection(0);
             tvSaleAll.setVisibility(View.GONE);
@@ -242,6 +247,43 @@ public class StartTradeAct extends BaseAct {
                             etNumber.setHint("");
                             tvwBuyInfo.setText("1.为了好买入，建议单价大于（" + userInfo.mainPage.xishu + "）\n2.数量在（1.000000）个起\n3.最低限额（单价 - 数量*单价）之间\n4.最大限额要大于最低限额且小于（单价 - 数量*单价）之间");
                         }
+                        if (CUtils.isEmpty(userInfo.real_name) && CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                            realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                                    .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                        @Override
+                                        public void onChoose(int which) {
+                                            if (which == WHICH_RIGHT) {
+                                                startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                            }
+                                        }
+                                    }).show();
+                        }
+                        if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                            realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                                    .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                        @Override
+                                        public void onChoose(int which) {
+                                            if (which == WHICH_RIGHT) {
+                                                startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoTwoAct.class), 101);
+                                            }
+                                        }
+                                    }).show();
+                        }
+
+                        if ((CUtils.isEmpty(userInfo.real_name) || CUtils.isEmpty(userInfo.id_number)) && !CUtils.isEmpty(userInfo.check_pay_password)) {
+                            realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                                    .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                        @Override
+                                        public void onChoose(int which) {
+                                            if (which == WHICH_RIGHT) {
+                                                startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                            }
+                                        }
+                                    }).show();
+                        }
                     }
 
 
@@ -258,6 +300,43 @@ public class StartTradeAct extends BaseAct {
                         if (userInfo != null && userInfo.mainPage != null) {
                             etNumber.setHint("最多可卖" + userInfo.mainPage.ath);
                             tvwSaleInfo.setText("1.单价必须大于等于（" + userInfo.mainPage.xishu + "）\n2.数量在（1-" + userInfo.mainPage.ath + "）个之间\n3.最低限额（单价 - 数量*单价）之间\n4.最大限额要大于最低限额且小于（单价 - 数量*单价）之间\n");
+                        }
+                        if (CUtils.isEmpty(userInfo.real_name) && CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                            realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                                    .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                        @Override
+                                        public void onChoose(int which) {
+                                            if (which == WHICH_RIGHT) {
+                                                startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                            }
+                                        }
+                                    }).show();
+                        }
+                        if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                            realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                                    .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                        @Override
+                                        public void onChoose(int which) {
+                                            if (which == WHICH_RIGHT) {
+                                                startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoTwoAct.class), 101);
+                                            }
+                                        }
+                                    }).show();
+                        }
+
+                        if ((CUtils.isEmpty(userInfo.real_name) || CUtils.isEmpty(userInfo.id_number)) && !CUtils.isEmpty(userInfo.check_pay_password)) {
+                            realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                                    .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                        @Override
+                                        public void onChoose(int which) {
+                                            if (which == WHICH_RIGHT) {
+                                                startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                            }
+                                        }
+                                    }).show();
                         }
                     }
 
@@ -325,7 +404,66 @@ public class StartTradeAct extends BaseAct {
                 App.toast(StartTradeAct.this, "请设置交易密码");
                 return;
             }
-            releaseSellOrder(danjia, limit, limitmax, number, "2");
+
+            if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+                UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+                if (CUtils.isEmpty(userInfo.real_name) && CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                    realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                            .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                @Override
+                                public void onChoose(int which) {
+                                    if (which == WHICH_RIGHT) {
+                                        startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                    }
+                                }
+                            }).show();
+                }
+                if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                    realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                            .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                @Override
+                                public void onChoose(int which) {
+                                    if (which == WHICH_RIGHT) {
+                                        startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoTwoAct.class), 101);
+                                    }
+                                }
+                            }).show();
+                }
+
+                if ((CUtils.isEmpty(userInfo.real_name) || CUtils.isEmpty(userInfo.id_number)) && !CUtils.isEmpty(userInfo.check_pay_password)) {
+                    realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                            .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                @Override
+                                public void onChoose(int which) {
+                                    if (which == WHICH_RIGHT) {
+                                        startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                    }
+                                }
+                            }).show();
+                }
+                if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number) && !CUtils.isEmpty(userInfo.check_pay_password)) {
+                    if (CUtils.isEmpty(userInfo.bank) && CUtils.isEmpty(userInfo.alipay) && CUtils.isEmpty(userInfo.wechat)) {
+                        startActivity(new Intent(StartTradeAct.this, AccountSettingAct.class));
+                    } else {
+                        releaseSellOrder(danjia, limit, limitmax, number, "2");
+                    }
+                }
+            }else{
+                realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                        .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                            @Override
+                            public void onChoose(int which) {
+                                if (which == WHICH_RIGHT) {
+                                    startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                }
+                            }
+                        }).show();
+            }
+
 
         } else if (flag == 1) {
             if (CUtils.isEmpty(danjia)) {
@@ -366,9 +504,66 @@ public class StartTradeAct extends BaseAct {
                 App.toast(StartTradeAct.this, "请设置交易密码");
                 return;
             }
-            releaseSellOrder(danjia, limit, limitmax, number, "1");
-        }
+            if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+                UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+                if (CUtils.isEmpty(userInfo.real_name) && CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                    realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                            .setChooseListener(new RealNameDialog.ChooseListener() {
 
+                                @Override
+                                public void onChoose(int which) {
+                                    if (which == WHICH_RIGHT) {
+                                        startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                    }
+                                }
+                            }).show();
+                }
+                if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number) && CUtils.isEmpty(userInfo.check_pay_password)) {
+                    realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                            .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                @Override
+                                public void onChoose(int which) {
+                                    if (which == WHICH_RIGHT) {
+                                        startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoTwoAct.class), 101);
+                                    }
+                                }
+                            }).show();
+                }
+
+                if ((CUtils.isEmpty(userInfo.real_name) || CUtils.isEmpty(userInfo.id_number)) && !CUtils.isEmpty(userInfo.check_pay_password)) {
+                    realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                            .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                                @Override
+                                public void onChoose(int which) {
+                                    if (which == WHICH_RIGHT) {
+                                        startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                    }
+                                }
+                            }).show();
+                }
+                if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number) && !CUtils.isEmpty(userInfo.check_pay_password)) {
+                    if (CUtils.isEmpty(userInfo.bank) && CUtils.isEmpty(userInfo.alipay) && CUtils.isEmpty(userInfo.wechat)) {
+                        startActivity(new Intent(StartTradeAct.this, AccountSettingAct.class));
+                    } else {
+                        releaseSellOrder(danjia, limit, limitmax, number, "1");
+                    }
+                }
+            }else{
+                realNameDialog.setMRightBt("去认证").setIsCancelable(true).setMsg("为了您的资金安全，进行交易前请完成实名认证！")
+                        .setChooseListener(new RealNameDialog.ChooseListener() {
+
+                            @Override
+                            public void onChoose(int which) {
+                                if (which == WHICH_RIGHT) {
+                                    startActivityForResult(new Intent(StartTradeAct.this, SettingUserInfoOneAct.class), 101);
+                                }
+                            }
+                        }).show();
+            }
+
+        }
 
     }
 
@@ -387,6 +582,49 @@ public class StartTradeAct extends BaseAct {
             @Override
             public void call(Throwable throwable) {
                 LogUtils.e(throwable.getMessage().toString());
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 101:
+                if (resultCode == RESULT_OK) {
+                    requestUserInfo();
+                }
+                break;
+        }
+    }
+
+    private void requestUserInfo() {
+
+        AthService service = App.get().getAthService();
+        service.userInfo().observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<UserInfoResponse>() {
+            @Override
+            public void call(UserInfoResponse userInfoResponse) {
+                if (userInfoResponse.status == 1) {
+                    if (!CUtils.isEmpty(userInfoResponse.data)) {
+                        LogUtils.e(AESUtils.decryptData(userInfoResponse.data));
+                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(userInfoResponse.data), UserInfo.class);
+                        if (userInfo != null) {
+                            PrefsManager.get().save("userinfo", userInfoResponse.data);
+                        } else {
+                            LogUtils.e("userInfo is null");
+                        }
+                    } else {
+                        LogUtils.e("userInfoResponse.data is null");
+                    }
+
+                } else {
+                    LogUtils.e(userInfoResponse.message);
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e("获取用户信息失败");
             }
         });
     }
