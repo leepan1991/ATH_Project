@@ -326,10 +326,10 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
         rgTrade.setOnCheckedChangeListener(this);
         trade_swipe_refresh.setOnRefreshListener(this);
         trade_swipe_refresh.setOnLoadMoreListener(this);
-        if (requestCode == 0 || requestCode == 300) {
+        if (requestCode == 300) {
             initTop(true);
             request("1", pi);
-        } else if (requestCode == 301) {
+        } else if (requestCode == 0 || requestCode == 301) {
             initTop(false);
             request("2", pi);
         }

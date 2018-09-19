@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:background="@color/bg_banner_top"
+    android:orientation="horizontal"
     android:gravity="center_vertical">
 
     <ImageButton
@@ -28,13 +29,23 @@
 
     <RelativeLayout
         android:id="@+id/rltRightFun"
-        android:layout_width="48dp"
+        android:layout_width="96dp"
         android:layout_height="48dp">
+
+        <ImageButton
+            android:id="@+id/tvwAction"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_act_background"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:id="@+id/lltAction"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_toRightOf="@+id/tvwAction"
             android:background="@drawable/selector_act_background"
             android:gravity="center"
             android:orientation="vertical"
@@ -60,28 +71,6 @@
                 android:visibility="visible" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvwMsgCount"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/lltAction"
-            android:layout_marginRight="3dp"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/tvwAction"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/selector_act_background"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:visibility="invisible" />
     </RelativeLayout>
 
 </LinearLayout>

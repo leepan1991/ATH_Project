@@ -19,6 +19,9 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
@@ -49,6 +52,8 @@ import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.ScrollTextView;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -69,6 +74,9 @@ public class MineFrag extends BaseFrag {
 
     @BindView(R.id.lltAction)
     LinearLayout lltAction;
+
+    @BindView(R.id.tvwAction)
+    ImageButton tvwAction;
 
     @BindView(R.id.btnAction)
     ImageButton btnAction;
@@ -168,6 +176,9 @@ public class MineFrag extends BaseFrag {
         btnBack.setVisibility(View.INVISIBLE);
         btnAction.setImageResource(R.drawable.mine_setting);
         btnAction.setVisibility(View.VISIBLE);
+        tvwAction.setVisibility(View.VISIBLE);
+        tvwAction.setImageResource(R.drawable.order_buy_have_message);
+        tvwAction.setOnClickListener(this);
         lltAction.setOnClickListener(this);
         lltAction.setVisibility(View.VISIBLE);
         tvwTitle.setText("个人中心");
@@ -558,6 +569,15 @@ public class MineFrag extends BaseFrag {
                 break;
             case R.id.rltAboutUs:
                 startActivity(new Intent(getActivity(), AboutUsAct.class));
+                break;
+            case R.id.tvwAction:
+                if (App.get().user != null) {
+                    Map<String, Boolean> mp = new HashMap<String, Boolean>();
+                    mp.put(Conversation.ConversationType.PRIVATE.getName(), false);
+                    RongIM.getInstance().startConversationList(getActivity(), mp);
+                } else {
+                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
+                }
                 break;
         }
 
