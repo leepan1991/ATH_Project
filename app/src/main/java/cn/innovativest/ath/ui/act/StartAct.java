@@ -552,7 +552,7 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Uri contentUri = FileProvider.getUriForFile(this, "cn.innovativest.ath.FileProvider", apkfile);
+            Uri contentUri = FileProvider.getUriForFile(this, "cn.innovativest.ath.fileProvider", apkfile);
             i.setDataAndType(contentUri, "application/vnd.android.package-archive");
         } else {
             i.setDataAndType(Uri.fromFile(apkfile), "application/vnd.android.package-archive");

@@ -23,18 +23,6 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
 
-        <!--<provider-->
-        <!--android:name="android.support.v4.content.FileProvider"-->
-        <!--android:authorities="cn.innovativest.ath.fileProvider"-->
-        <!--android:exported="false"-->
-        <!--android:grantUriPermissions="true">-->
-
-        <!--<meta-data-->
-        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-        <!--android:resource="@xml/file_paths" />-->
-
-        <!--</provider>-->
-
         <activity
             android:name=".ui.act.StartAct"
             android:label="@string/app_name">
@@ -280,6 +268,18 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="Channel" />
+
+        <provider
+            android:name=".ui.DownloadProvider"
+            android:authorities="cn.innovativest.ath.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
 
         <!-- 此部分代码需要移植到您的 app 下的 manifest，并且 authorities 指定您的包名。例如：com.android.FileProvider -->
         <!-- 否则使用拍照功能时，会崩溃 -->

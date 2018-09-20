@@ -260,10 +260,20 @@ public class TradeDetailAct extends BaseAct {
             tvTradeAmount.setText(String.format("%.2f", Float.valueOf(tradeOrderDetail.orderDetailBody.money)) + " CNY");
             state = tradeOrderDetail.orderDetailBody.state;
             if (tradeOrderDetail.orderDetailBody.state.equals("0")) {//取消订单
+//                tvOrderTime.setVisibility(View.INVISIBLE);
+//                tvOrderInfo.setVisibility(View.INVISIBLE);
+//                tvOrderStatus.setText("订单已取消");
+//                lltBottom.setVisibility(View.GONE);
+                lltBottom.setVisibility(View.VISIBLE);
+                rltCancel.setVisibility(View.VISIBLE);
+                rltWaitCancel.setVisibility(View.GONE);
                 tvOrderTime.setVisibility(View.INVISIBLE);
                 tvOrderInfo.setVisibility(View.INVISIBLE);
                 tvOrderStatus.setText("订单已取消");
-                lltBottom.setVisibility(View.GONE);
+                btnPayed.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+                btnPayed.setText("我要申诉");
+                btnCancel.setVisibility(View.GONE);
+
             } else if (tradeOrderDetail.orderDetailBody.state.equals("1")) {//待付款
                 if (isBuy) {
                     tvOrderTime.setVisibility(View.VISIBLE);
@@ -320,10 +330,20 @@ public class TradeDetailAct extends BaseAct {
                 }
 
             } else if (tradeOrderDetail.orderDetailBody.state.equals("3")) {//已完成
-                lltBottom.setVisibility(View.GONE);
+//                lltBottom.setVisibility(View.GONE);
+//                tvOrderStatus.setText("已完成");
+//                tvOrderTime.setVisibility(View.INVISIBLE);
+//                tvOrderInfo.setVisibility(View.INVISIBLE);
+
+                lltBottom.setVisibility(View.VISIBLE);
+                rltCancel.setVisibility(View.VISIBLE);
+                rltWaitCancel.setVisibility(View.GONE);
                 tvOrderStatus.setText("已完成");
                 tvOrderTime.setVisibility(View.INVISIBLE);
                 tvOrderInfo.setVisibility(View.INVISIBLE);
+                btnPayed.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+                btnPayed.setText("我要申诉");
+                btnCancel.setVisibility(View.GONE);
             }
             tvTradePrice.setText("交易单价 " + String.format("%.2f", Float.valueOf(tradeOrderDetail.orderDetailBody.ath_price)) + " CNY/ATH");
             tvTradeNumber.setText("交易数量 " + String.format("%.2f", Float.valueOf(tradeOrderDetail.orderDetailBody.number)) + " ATH");
@@ -551,8 +571,8 @@ public class TradeDetailAct extends BaseAct {
                                 }
                             }).show();
                 } else if (btnPayed.getText().toString().equals("我要申诉")) {
-                    if (state.equals("2")) {
-//                        changeOrderState("");//买家申诉   点击跳转到聊天界面  state  2
+                    if (state.equals("0")||state.equals("2")||state.equals("3")) {
+//                        changeOrderState("");//买家申诉   点击跳转到聊天界面  state  0,2,3
                         startActivity(new Intent(TradeDetailAct.this, ApplyAct.class).putExtra("order_number", order_number));
                     } else {
                         App.toast(TradeDetailAct.this, "当前该订单不能进行申诉");
@@ -571,7 +591,7 @@ public class TradeDetailAct extends BaseAct {
                         }).show();
                 break;
             case R.id.btnApply:
-                if (state.equals("2")) {
+                if (state.equals("0")||state.equals("2")||state.equals("3")) {
 //                    changeOrderState("");//卖家申诉   点击跳转到聊天界面  state  2
                     startActivity(new Intent(TradeDetailAct.this, ApplyAct.class).putExtra("order_number", order_number));
                 } else {
@@ -598,7 +618,7 @@ public class TradeDetailAct extends BaseAct {
 //                }
 //                break;
             case R.id.lltCart:
-                if (state.equals("2")) {
+                if (state.equals("0")||state.equals("2")||state.equals("3")) {
                     //点击跳转到聊天界面  state  2
                     startActivity(new Intent(TradeDetailAct.this, ApplyAct.class).putExtra("order_number", order_number));
                 } else {
