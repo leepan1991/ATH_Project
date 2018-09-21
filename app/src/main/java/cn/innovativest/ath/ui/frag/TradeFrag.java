@@ -359,9 +359,9 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
                 App.toast(getActivity(), buySellResponse.message);
                 if (buySellResponse.status == 1) {
                     if (flag == 1) {//买
-                        startActivity(new Intent(getActivity(), TradeDetailAct.class).putExtra("state", "1").putExtra("isBuy", true).putExtra("order_number", buySellResponse.buySell.order_number));
+                        startActivity(new Intent(getActivity(), TradeDetailAct.class).putExtra("state", "1").putExtra("isBuy", "true").putExtra("order_number", buySellResponse.buySell.order_number));
                     } else if (flag == 2) {//卖
-                        startActivity(new Intent(getActivity(), TradeDetailAct.class).putExtra("state", "1").putExtra("isBuy", false).putExtra("order_number", buySellResponse.buySell.order_number));
+                        startActivity(new Intent(getActivity(), TradeDetailAct.class).putExtra("state", "1").putExtra("isBuy", "false").putExtra("order_number", buySellResponse.buySell.order_number));
                     }
                 }
             }

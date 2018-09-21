@@ -135,9 +135,9 @@ public class OrderManagementAct extends BaseAct implements RadioGroup.OnCheckedC
 
                 UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                 if (lstOrderItems.get(i).getBuy_userid().equals(userInfo.id + "")) {
-                    startActivityForResult(new Intent(OrderManagementAct.this, TradeDetailAct.class).putExtra("state", lstOrderItems.get(i).getState()).putExtra("isBuy", true).putExtra("order_number", lstOrderItems.get(i).getOrder_number()), requestCode);
+                    startActivityForResult(new Intent(OrderManagementAct.this, TradeDetailAct.class).putExtra("state", lstOrderItems.get(i).getState()).putExtra("isBuy", "true").putExtra("order_number", lstOrderItems.get(i).getOrder_number()), requestCode);
                 } else if (lstOrderItems.get(i).getSell_userid().equals(userInfo.id + "")) {
-                    startActivityForResult(new Intent(OrderManagementAct.this, TradeDetailAct.class).putExtra("state", lstOrderItems.get(i).getState()).putExtra("isBuy", false).putExtra("order_number", lstOrderItems.get(i).getOrder_number()), requestCode);
+                    startActivityForResult(new Intent(OrderManagementAct.this, TradeDetailAct.class).putExtra("state", lstOrderItems.get(i).getState()).putExtra("isBuy", "false").putExtra("order_number", lstOrderItems.get(i).getOrder_number()), requestCode);
                 }
 
 //                if (lstOrderItems.get(i).getType() == 1) {//买入

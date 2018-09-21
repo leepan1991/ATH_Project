@@ -1,8 +1,11 @@
 package cn.innovativest.ath.ui.act;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
@@ -23,17 +27,25 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.bean.TradeOrderDetail;
+import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
+import cn.innovativest.ath.core.RongService;
 import cn.innovativest.ath.entities.OrderStatusBody;
 import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.OrderDetailResponse;
+import cn.innovativest.ath.response.RongLoginResponse;
+import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseAct;
+import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LoadingUtils;
+import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.ViewImgDialog;
 import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import rx.Observable;
 import rx.Subscriber;
@@ -172,7 +184,9 @@ public class TradeDetailAct extends BaseAct {
 
     private ViewImgDialog viewImgDialog;
 
-    private boolean isBuy;
+    private String isBuy = "false";
+
+    private String isFromPush = "false";
 
     private String state;
 
@@ -186,6 +200,19 @@ public class TradeDetailAct extends BaseAct {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trade_detail_act);
         ButterKnife.bind(this);
+        isFromPush = getIntent().getStringExtra("isFromPush");
+        Log.d("DDD========>", String.valueOf(isFromPush));
+        order_number = getIntent().getStringExtra("order_number");
+        isBuy = getIntent().getStringExtra("isBuy");
+        state = getIntent().getStringExtra("state");
+        if (CUtils.isEmpty(order_number)) {
+            finish();
+            return;
+        }
+        if (App.get().user == null) {
+            startActivityForResult(new Intent(TradeDetailAct.this, LoginAct.class), 100);
+            return;
+        }
         initView();
         addListener();
     }
@@ -196,9 +223,12 @@ public class TradeDetailAct extends BaseAct {
         MobclickAgent.onPageStart("TradeDetailAct");
         MobclickAgent.onResume(this);
 
-        order_number = getIntent().getStringExtra("order_number");
-        isBuy = getIntent().getBooleanExtra("isBuy", false);
-        state = getIntent().getStringExtra("state");
+        if (isFromPush.equals("true")) {
+            isFromPush = getIntent().getStringExtra("isFromPush");
+            order_number = getIntent().getStringExtra("order_number");
+            isBuy = getIntent().getStringExtra("isBuy");
+            state = getIntent().getStringExtra("state");
+        }
         if (CUtils.isEmpty(order_number)) {
             finish();
             return;
@@ -210,6 +240,147 @@ public class TradeDetailAct extends BaseAct {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        if (intent != null) {
+            isFromPush = intent.getStringExtra("isFromPush");
+            order_number = intent.getStringExtra("order_number");
+            isBuy = intent.getStringExtra("isBuy");
+            state = intent.getStringExtra("state");
+            if (CUtils.isEmpty(order_number)) {
+                finish();
+                return;
+            }
+            if (App.get().user == null) {
+                startActivityForResult(new Intent(TradeDetailAct.this, LoginAct.class), 100);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 100:
+                if (resultCode == Activity.RESULT_OK) {
+                    initView();
+                    addListener();
+                    requestUserInfo();
+                }
+                break;
+        }
+    }
+
+    private void requestUserInfo() {
+
+        AthService service = App.get().getAthService();
+        service.userInfo().observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<UserInfoResponse>() {
+            @Override
+            public void call(UserInfoResponse userInfoResponse) {
+                if (userInfoResponse.status == 1) {
+                    if (!CUtils.isEmpty(userInfoResponse.data)) {
+                        LogUtils.e(AESUtils.decryptData(userInfoResponse.data));
+                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(userInfoResponse.data), UserInfo.class);
+                        if (userInfo != null) {
+                            PrefsManager.get().save("userinfo", userInfoResponse.data);
+                            getToken(userInfo);
+//                            orderDetail();
+                        } else {
+                            LogUtils.e("userInfo is null");
+                        }
+                    } else {
+                        LogUtils.e("userInfoResponse.data is null");
+                    }
+
+                } else {
+                    LogUtils.e(userInfoResponse.message);
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e("获取用户信息失败");
+            }
+        });
+    }
+
+    private void getToken(UserInfo userInfo) {
+
+        RongService service = App.get().getRongService();
+//        RongLoginBody rongLoginBody = new RongLoginBody();
+//        rongLoginBody.userId = userInfo.id + "";
+//        rongLoginBody.name = userInfo.name;
+//        rongLoginBody.portraitUri = AppConfig.ATH_APP_URL + userInfo.head_img_link;
+        HashMap<String, String> mp = new HashMap<>();
+        mp.put("userId", userInfo.id + "");
+        mp.put("name", userInfo.name);
+        mp.put("portraitUri", AppConfig.ATH_APP_URL + userInfo.head_img_link);
+        service.getToken(App.get().generateRequestBody(mp)).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<RongLoginResponse>() {
+            @Override
+            public void call(RongLoginResponse rongLoginResponse) {
+                if (rongLoginResponse != null && rongLoginResponse.code == 200) {
+                    if (!CUtils.isEmpty(rongLoginResponse.token)) {
+                        PrefsManager.get().save("rongToken", rongLoginResponse.token);
+                        connect(rongLoginResponse.token);
+                    } else {
+                        LogUtils.e("rongLoginResponse.token is null");
+                    }
+
+                } else {
+                    LogUtils.e("rongLoginResponse.code is not 200");
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e("获取融云用户信息失败");
+            }
+        });
+    }
+
+    /**
+     * <p>连接服务器，在整个应用程序全局，只需要调用一次，需在 {@link #( Context )} 之后调用。</p>
+     * <p>如果调用此接口遇到连接失败，SDK 会自动启动重连机制进行最多10次重连，分别是1, 2, 4, 8, 16, 32, 64, 128, 256, 512秒后。
+     * 在这之后如果仍没有连接成功，还会在当检测到设备网络状态变化时再次进行重连。</p>
+     *
+     * @param token 从服务端获取的用户身份令牌（Token）。
+     * @return RongIM  客户端核心类的实例。
+     */
+    private void connect(String token) {
+
+        if (getApplicationInfo().packageName.equals(App.get().getCurProcessName(getApplicationContext()))) {
+
+            RongIM.connect(token, new RongIMClient.ConnectCallback() {
+
+                /**
+                 * Token 错误。可以从下面两点检查 1.  Token 是否过期，如果过期您需要向 App Server 重新请求一个新的 Token
+                 *                  2.  token 对应的 appKey 和工程里设置的 appKey 是否一致
+                 */
+                @Override
+                public void onTokenIncorrect() {
+
+                }
+
+                /**
+                 * 连接融云成功
+                 * @param userid 当前 token 对应的用户 id
+                 */
+                @Override
+                public void onSuccess(String userid) {
+                    LogUtils.d("--onSuccess" + userid);
+//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                    finish();
+                }
+
+                /**
+                 * 连接融云失败
+                 * @param errorCode 错误码，可到官网 查看错误码对应的注释
+                 */
+                @Override
+                public void onError(RongIMClient.ErrorCode errorCode) {
+
+                }
+            });
+        }
     }
 
     private void initView() {
@@ -220,7 +391,7 @@ public class TradeDetailAct extends BaseAct {
         mDialog = new CustomDialog(mCtx);
         viewImgDialog = new ViewImgDialog(mCtx);
 
-        if (isBuy) {//买家查看
+        if (isBuy.equals("true")) {//买家查看
             rltCancel.setVisibility(View.VISIBLE);
             rltWaitCancel.setVisibility(View.GONE);
 
@@ -289,7 +460,7 @@ public class TradeDetailAct extends BaseAct {
                 btnCancel.setVisibility(View.GONE);
 
             } else if (tradeOrderDetail.orderDetailBody.state.equals("1")) {//待付款
-                if (isBuy) {
+                if (isBuy.equals("true")) {
                     tvOrderTime.setVisibility(View.VISIBLE);
                     tvOrderInfo.setVisibility(View.VISIBLE);
                     lltBottom.setVisibility(View.VISIBLE);
@@ -324,7 +495,7 @@ public class TradeDetailAct extends BaseAct {
                 }
 
             } else if (tradeOrderDetail.orderDetailBody.state.equals("2")) {//已付款
-                if (isBuy) {
+                if (isBuy.equals("true")) {
                     lltBottom.setVisibility(View.VISIBLE);
                     rltCancel.setVisibility(View.VISIBLE);
                     rltWaitCancel.setVisibility(View.GONE);
@@ -444,7 +615,7 @@ public class TradeDetailAct extends BaseAct {
 //                        mTvValue.setText(getResources().getString(R.string.done));
 //                        mStart.setEnabled(true);
 //                        mStart.setBackgroundColor(Color.parseColor("#f97e7e"));
-                        if (isBuy) {
+                        if (isBuy.equals("true")) {
                             changeOrderState("0");//买家取消订单
                         } else {
                             tvOrderTime.setVisibility(View.INVISIBLE);
@@ -533,7 +704,12 @@ public class TradeDetailAct extends BaseAct {
 
     @Override
     public void onBackPressed() {
-        setResult(RESULT_OK);
+        if (isFromPush.equals("true")) {
+            startActivity(new Intent(TradeDetailAct.this, NewMainAct.class));
+            finish();
+        } else {
+            setResult(RESULT_OK);
+        }
         super.onBackPressed();
     }
 
@@ -578,7 +754,7 @@ public class TradeDetailAct extends BaseAct {
                                 }
                             }).show();
                 } else if (btnPayed.getText().toString().equals("我要申诉")) {
-                    if (state.equals("0")||state.equals("2")||state.equals("3")) {
+                    if (state.equals("0") || state.equals("2") || state.equals("3")) {
 //                        changeOrderState("");//买家申诉   点击跳转到聊天界面  state  0,2,3
                         startActivity(new Intent(TradeDetailAct.this, ApplyAct.class).putExtra("order_number", order_number));
                     } else {
@@ -598,7 +774,7 @@ public class TradeDetailAct extends BaseAct {
                         }).show();
                 break;
             case R.id.btnApply:
-                if (state.equals("0")||state.equals("2")||state.equals("3")) {
+                if (state.equals("0") || state.equals("2") || state.equals("3")) {
 //                    changeOrderState("");//卖家申诉   点击跳转到聊天界面  state  2
                     startActivity(new Intent(TradeDetailAct.this, ApplyAct.class).putExtra("order_number", order_number));
                 } else {
@@ -625,7 +801,7 @@ public class TradeDetailAct extends BaseAct {
 //                }
 //                break;
             case R.id.lltCart:
-                if (state.equals("0")||state.equals("2")||state.equals("3")) {
+                if (state.equals("0") || state.equals("2") || state.equals("3")) {
                     //点击跳转到聊天界面  state  2
                     startActivity(new Intent(TradeDetailAct.this, ApplyAct.class).putExtra("order_number", order_number));
                 } else {

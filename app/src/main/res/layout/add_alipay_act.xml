@@ -66,7 +66,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="上传您的收款二维码"
+                        android:text="上传您的支付宝收款二维码"
                         android:textColor="@color/font_333333"
                         android:textSize="14sp" />
 
