@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_img_big"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="500dp"
+        android:layout_height="700dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter" />
 
