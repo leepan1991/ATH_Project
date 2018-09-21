@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import cn.innovativest.ath.BuildConfig;
 import cn.innovativest.ath.utils.HeaderUtil;
+import cn.innovativest.ath.utils.PrefsManager;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,6 +37,7 @@ public class RetrofitClient {
                         .addHeader("did", HeaderUtil.getDid(mCtx))
                         .addHeader("random", random)
                         .addHeader("token", HeaderUtil.getToken())
+                        .addHeader("deviceToken", PrefsManager.get().getString("deviceToken"))
                         .addHeader("app-type", HeaderUtil.app_type)
                         .addHeader("model", HeaderUtil.getModel())
                         .addHeader("version", BuildConfig.VERSION_CODE + "")

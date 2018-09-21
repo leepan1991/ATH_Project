@@ -69,6 +69,7 @@
         <activity
             android:name=".ui.act.TradeDetailAct"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
         <activity
             android:name=".ui.act.OrderCompleteAct"

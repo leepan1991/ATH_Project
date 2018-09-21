@@ -84,6 +84,7 @@ public class App extends Application {
             public void onSuccess(String deviceToken) {
                 LogUtils.i("device token: " + deviceToken);
                 //注册成功会返回device token
+                PrefsManager.get().save("deviceToken", deviceToken);
             }
 
             @Override

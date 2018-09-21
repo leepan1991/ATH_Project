@@ -186,6 +186,16 @@ public class TradeDetailAct extends BaseAct {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trade_detail_act);
         ButterKnife.bind(this);
+        initView();
+        addListener();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart("TradeDetailAct");
+        MobclickAgent.onResume(this);
+
         order_number = getIntent().getStringExtra("order_number");
         isBuy = getIntent().getBooleanExtra("isBuy", false);
         state = getIntent().getStringExtra("state");
@@ -193,9 +203,13 @@ public class TradeDetailAct extends BaseAct {
             finish();
             return;
         }
-        initView();
-        addListener();
         orderDetail();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     private void initView() {
@@ -526,13 +540,6 @@ public class TradeDetailAct extends BaseAct {
     @Override
     public void onDestroy() {
         super.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MobclickAgent.onPageStart("TradeDetailAct");
-        MobclickAgent.onResume(this);
     }
 
     @Override
