@@ -201,7 +201,6 @@ public class TradeDetailAct extends BaseAct {
         setContentView(R.layout.trade_detail_act);
         ButterKnife.bind(this);
         isFromPush = getIntent().getStringExtra("isFromPush");
-        Log.d("DDD========>", String.valueOf(isFromPush));
         order_number = getIntent().getStringExtra("order_number");
         isBuy = getIntent().getStringExtra("isBuy");
         state = getIntent().getStringExtra("state");
@@ -223,7 +222,7 @@ public class TradeDetailAct extends BaseAct {
         MobclickAgent.onPageStart("TradeDetailAct");
         MobclickAgent.onResume(this);
 
-        if (isFromPush.equals("true")) {
+        if (isFromPush != null && isFromPush.equals("true")) {
             isFromPush = getIntent().getStringExtra("isFromPush");
             order_number = getIntent().getStringExtra("order_number");
             isBuy = getIntent().getStringExtra("isBuy");
@@ -704,7 +703,7 @@ public class TradeDetailAct extends BaseAct {
 
     @Override
     public void onBackPressed() {
-        if (isFromPush.equals("true")) {
+        if (isFromPush != null && isFromPush.equals("true")) {
             startActivity(new Intent(TradeDetailAct.this, NewMainAct.class));
             finish();
         } else {
