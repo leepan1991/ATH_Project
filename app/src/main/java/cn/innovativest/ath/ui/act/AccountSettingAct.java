@@ -117,9 +117,9 @@ public class AccountSettingAct extends BaseAct {
 //            lltPay.setVisibility(View.GONE);
 //        }
         if (count == 3) {
-            tvwMethod.setText("修改收款方式");
+            tvwMethod.setText("添加或修改收款方式");
         } else {
-            tvwMethod.setText("添加收款方式");
+            tvwMethod.setText("添加或修改收款方式");
         }
 
         btnBack.setOnClickListener(this);
