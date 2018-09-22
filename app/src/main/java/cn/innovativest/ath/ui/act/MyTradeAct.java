@@ -178,14 +178,14 @@ public class MyTradeAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
                                             @Override
                                             public void onChoose(int which) {
                                                 if (which == WHICH_RIGHT) {//查看消息列表
-                                                    startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", true).putExtra("order_number", tradeItem.getOrder_number()), 100);
+                                                    startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", "true").putExtra("order_number", tradeItem.getOrder_number()), 100);
                                                 } else if (which == WHICH_LEFT) {//下架
                                                     releaseEdit(tradeItem.getId());
                                                 }
                                             }
                                         }).show();
                             } else if (tradeItem.getStatus().equals("1")) {
-                                startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", true).putExtra("order_number", tradeItem.getOrder_number()), 100);
+                                startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", "true").putExtra("order_number", tradeItem.getOrder_number()), 100);
                             }
                         } else if (btnManPic.isChecked()) {//我要卖
                             if (tradeItem.getStatus().equals("0")) {
@@ -195,14 +195,14 @@ public class MyTradeAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
                                             @Override
                                             public void onChoose(int which) {
                                                 if (which == WHICH_RIGHT) {//查看消息列表
-                                                    startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", false).putExtra("order_number", tradeItem.getOrder_number()), 100);
+                                                    startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", "false").putExtra("order_number", tradeItem.getOrder_number()), 100);
                                                 } else if (which == WHICH_LEFT) {//修改
                                                     releaseEdit(tradeItem.getId());
                                                 }
                                             }
                                         }).show();
                             } else if (tradeItem.getStatus().equals("1")) {
-                                startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", false).putExtra("order_number", tradeItem.getOrder_number()), 100);
+                                startActivityForResult(new Intent(MyTradeAct.this, SaleAndBuyInfoAct.class).putExtra("isBuy", "false").putExtra("order_number", tradeItem.getOrder_number()), 100);
                             }
                         }
 

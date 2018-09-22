@@ -60,7 +60,7 @@ public class SaleAndBuyInfoAct extends BaseAct implements OnRefreshListener, OnL
     int pi = 1;
     BuyBean orderBean;
 
-    boolean isBuy = false;
+    String isBuy = "false";
 
     private String order_number;
 
@@ -70,7 +70,7 @@ public class SaleAndBuyInfoAct extends BaseAct implements OnRefreshListener, OnL
         setContentView(R.layout.sale_and_buy_act);
         ButterKnife.bind(this);
         order_number = getIntent().getStringExtra("order_number");
-        isBuy = getIntent().getBooleanExtra("isBuy", false);
+        isBuy = getIntent().getStringExtra("isBuy");
         initView();
     }
 
@@ -109,10 +109,10 @@ public class SaleAndBuyInfoAct extends BaseAct implements OnRefreshListener, OnL
                 if (lstOrderItems.size() > 0 && i >= 1) {
                     OrderItem orderItem = lstOrderItems.get(i - 1);
 
-                    if (isBuy) {
-                        startActivity(new Intent(SaleAndBuyInfoAct.this, TradeDetailAct.class).putExtra("state", orderItem.getState()).putExtra("isBuy", true).putExtra("order_number", orderItem.getOrder_number()));
+                    if (isBuy != null && isBuy.equals("true")) {
+                        startActivity(new Intent(SaleAndBuyInfoAct.this, TradeDetailAct.class).putExtra("state", orderItem.getState()).putExtra("isBuy", "true").putExtra("order_number", orderItem.getOrder_number()));
                     } else {
-                        startActivity(new Intent(SaleAndBuyInfoAct.this, TradeDetailAct.class).putExtra("state", orderItem.getState()).putExtra("isBuy", false).putExtra("order_number", orderItem.getOrder_number()));
+                        startActivity(new Intent(SaleAndBuyInfoAct.this, TradeDetailAct.class).putExtra("state", orderItem.getState()).putExtra("isBuy", "false").putExtra("order_number", orderItem.getOrder_number()));
                     }
 
 //                    if (orderItem.getType() == 1) {//买入
