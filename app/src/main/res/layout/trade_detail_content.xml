@@ -547,8 +547,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:background="@drawable/code_bg_shape"
+            android:gravity="center"
             android:maxLines="1"
+            android:padding="5dp"
             android:paddingRight="10dp"
+            android:text="RVs3ds"
             android:textColor="#EF7B00"
             android:textSize="16sp"
 
