@@ -70,7 +70,7 @@ public class TeamAdapter extends BaseAdapter {
         // 封装数据
         Gift gift = (Gift) getItem(position);
 
-        holder.tvwInfo.setText("达到" + gift.count + "人数，领取" + gift.val + "助力值");
+        holder.tvwInfo.setText("达到" + gift.count + "积分，领取" + gift.val + "ATH");
         if (gift.state.equals("0")) {//已领取
             holder.btnGet.setBackgroundResource(R.drawable.geted);
             holder.btnGet.setText("已领取");

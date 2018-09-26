@@ -549,7 +549,6 @@
             android:layout_centerVertical="true"
             android:maxLines="1"
             android:paddingRight="10dp"
-            android:text="234523"
             android:textColor="#EF7B00"
             android:textSize="16sp"
 

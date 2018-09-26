@@ -1,6 +1,8 @@
 package cn.innovativest.ath.ui.act;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -177,6 +179,8 @@ public class TradeDetailAct extends BaseAct {
 
 //    @BindView(R.id.lltCallPhone)
 //    LinearLayout lltCallPhone;
+
+    private String copyContent;
 
     String order_number;
 
@@ -412,6 +416,7 @@ public class TradeDetailAct extends BaseAct {
 //        lltContact.setOnClickListener(this);
 //        lltCallPhone.setOnClickListener(this);
 //        lltCart.setOnClickListener(this);
+        tvPayNumber.setOnClickListener(this);
 
         rltAlipay.setOnClickListener(this);
         rltWechat.setOnClickListener(this);
@@ -574,7 +579,10 @@ public class TradeDetailAct extends BaseAct {
             } else {
                 rltWechat.setVisibility(View.GONE);
             }
-            tvPayNumber.setText(tradeOrderDetail.orderDetailFoot.reference_number);
+            if (tradeOrderDetail != null && tradeOrderDetail.orderDetailFoot != null && !CUtils.isEmpty(tradeOrderDetail.orderDetailFoot.reference_number)) {
+                copyContent = tradeOrderDetail.orderDetailFoot.reference_number;
+                tvPayNumber.setText(tradeOrderDetail.orderDetailFoot.reference_number);
+            }
         }
 
     }
@@ -842,7 +850,23 @@ public class TradeDetailAct extends BaseAct {
                 mp.put(Conversation.ConversationType.PRIVATE.getName(), false);
                 RongIM.getInstance().startConversationList(this, mp);
                 break;
+            case R.id.tvPayNumber:
+                if (!CUtils.isEmpty(copyContent)) {
+                    copy(copyContent);
+                } else {
+                    App.toast(TradeDetailAct.this, "信息不能为空，请稍候再试");
+                }
+                break;
 
         }
+    }
+
+    private void copy(String content) {
+        ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        // 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("Label", content);
+        // 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
+        App.toast(this, "复制成功");
     }
 }

@@ -326,7 +326,7 @@
                         android:maxLines="2"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="邀请人达到88人，即可享受团队增益。好礼享不停，赶快来领取吧！"
+                        android:text="邀请人达到指定人数，即可享受团队增益。好礼享不停，赶快来领取吧！"
                         android:textColor="@color/font_333333"
                         android:textSize="12sp" />
 
