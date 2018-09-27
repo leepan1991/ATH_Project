@@ -37,8 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp">
 
                 <RadioGroup
                     android:id="@+id/rgTrade"
@@ -101,8 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="40dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -138,8 +138,8 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="3dp"
                             android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
                             android:background="@drawable/friend_help_v_line" />
 
                         <TextView
@@ -156,8 +156,8 @@
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="3dp"
                             android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
                             android:background="@drawable/friend_help_v_line" />
 
                         <TextView
@@ -195,54 +195,54 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <LinearLayout
-                        android:id="@+id/lltHeaderGift"
-                        android:layout_width="match_parent"
-                        android:layout_height="27dp"
-                        android:layout_below="@+id/lltTop"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/lltHeaderGift"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="27dp"-->
+                    <!--android:layout_below="@+id/lltTop"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:orientation="horizontal">-->
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="名称"
-                            android:textColor="@color/trade_top_tv_bg"
-                            android:textSize="14sp" />
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="名称"-->
+                    <!--android:textColor="@color/trade_top_tv_bg"-->
+                    <!--android:textSize="14sp" />-->
 
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="3dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@drawable/friend_help_v_line" />
+                    <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginBottom="3dp"-->
+                    <!--android:layout_marginTop="3dp"-->
+                    <!--android:background="@drawable/friend_help_v_line" />-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="状态"
-                            android:textColor="@color/trade_top_tv_bg"
-                            android:textSize="14sp" />
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="状态"-->
+                    <!--android:textColor="@color/trade_top_tv_bg"-->
+                    <!--android:textSize="14sp" />-->
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"
                         android:gravity="top|left"
-                        android:maxLines="2"
                         android:paddingLeft="10dp"
+                        android:paddingTop="8dp"
                         android:paddingRight="10dp"
                         android:text="邀请人达到5人，即可领取奖励。好礼享不停，赶快来领取吧！"
                         android:textColor="@color/font_333333"
@@ -251,8 +251,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
                         android:background="@drawable/friend_help_gift_line" />
 
                     <ListView
@@ -276,65 +276,65 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <LinearLayout
-                        android:id="@+id/lltHeaderTeam"
-                        android:layout_width="match_parent"
-                        android:layout_height="27dp"
-                        android:layout_below="@+id/lltTop"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/lltHeaderTeam"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="27dp"-->
+                    <!--android:layout_below="@+id/lltTop"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:orientation="horizontal">-->
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="名称"
-                            android:textColor="@color/trade_top_tv_bg"
-                            android:textSize="14sp" />
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="名称"-->
+                    <!--android:textColor="@color/trade_top_tv_bg"-->
+                    <!--android:textSize="14sp" />-->
 
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="3dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@drawable/friend_help_v_line" />
+                    <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginBottom="3dp"-->
+                    <!--android:layout_marginTop="3dp"-->
+                    <!--android:background="@drawable/friend_help_v_line" />-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="状态"
-                            android:textColor="@color/trade_top_tv_bg"
-                            android:textSize="14sp" />
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="状态"-->
+                    <!--android:textColor="@color/trade_top_tv_bg"-->
+                    <!--android:textSize="14sp" />-->
 
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"
                         android:gravity="top|left"
-                        android:maxLines="2"
                         android:paddingLeft="10dp"
+                        android:paddingTop="8dp"
                         android:paddingRight="10dp"
-                        android:text="邀请人达到指定人数，即可享受团队增益。好礼享不停，赶快来领取吧！"
+                        android:text="积分达到领取条件，即可享受团队增益。好礼享不停，赶快来领取吧！注：24小时内只能选择一个领取，不能多个领取"
                         android:textColor="@color/font_333333"
                         android:textSize="12sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
                         android:background="@drawable/friend_help_gift_line" />
 
                     <ListView
