@@ -1,6 +1,7 @@
 package cn.innovativest.ath.widget;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -208,10 +209,13 @@ public class SpeedValueDialog extends Dialog implements View.OnClickListener {
 
     private ArrayList<SpeedMine> speedMines;
 
+    private Activity act;
 
-    public SpeedValueDialog(Context context) {
+
+    public SpeedValueDialog(Context context, Activity activity) {
         super(context, R.style.mDialog);
         setContentView(R.layout.dia_speed_value);
+        act = activity;
         ButterKnife.bind(this);
         mCtx = context;
         customDialog = new CustomDialog(context);
@@ -712,7 +716,7 @@ public class SpeedValueDialog extends Dialog implements View.OnClickListener {
 
             @Override
             public void run() {
-                PayTask alipay = new PayTask(getOwnerActivity());
+                PayTask alipay = new PayTask(act);
                 Map<String, String> result = alipay.payV2(orderInfo, true);
                 Log.i("msp", result.toString());
 

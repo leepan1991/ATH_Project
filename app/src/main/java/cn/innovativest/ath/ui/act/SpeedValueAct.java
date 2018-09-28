@@ -85,7 +85,7 @@ public class SpeedValueAct extends BaseAct {
         tvwTitle.setText("财富加速");
 
         customDialog = new CustomDialog(mCtx);
-        speedValueDialog = new SpeedValueDialog(mCtx);
+        speedValueDialog = new SpeedValueDialog(mCtx, this);
         btnBack.setOnClickListener(this);
 
         ibChange.setOnClickListener(this);
