@@ -1,6 +1,8 @@
 package cn.innovativest.ath.utils;
 
 
+import java.math.BigDecimal;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -68,6 +70,14 @@ public class AESUtils {
 
     }
 
+    public static String floatToStringByTruncate(float num, int remainBitNum) {
+        String numStr = Float.toString(num);
+        BigDecimal bd = new BigDecimal(numStr);
+        bd = bd.setScale(remainBitNum,BigDecimal.ROUND_DOWN);
+        return bd.toString();
+    }
+
+
     public static void main(String[] args) throws Exception {
         String string = "did=4294967295&time=1523539758374";
         System.out.println("original data:  " + string);
@@ -76,6 +86,9 @@ public class AESUtils {
         System.out.println("decrypt result:   " + AESUtils.decryptData("ql5YWJ7nEkNAIYEx4Sf1GSqyMKSKaByNB7uiBX1UCb+vLxpFZi3Vzt8puqu3agAaatrkyGGdGJ97kOPqs1SMttZ/f/p8ad/scUOeqUqVeaQ=")); // 解密
 
         System.out.println(HeaderUtil.generateRandomByScope(10, 10));
+
+//        System.out.print(floatToStringByTruncate(8.05f/8.02f,6)+"sdds");
+
 
     }
 }

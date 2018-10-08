@@ -35,6 +35,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -470,6 +471,13 @@ public class AppUtils {
                 lay.setPadding(0, statusBarHeight, 0, 0);
             }
         }
+    }
+
+    public static String floatToStringByTruncate(float num, int remainBitNum) {
+        String numStr = Float.toString(num);
+        BigDecimal bd = new BigDecimal(numStr);
+        bd = bd.setScale(remainBitNum,BigDecimal.ROUND_DOWN);
+        return bd.toString();
     }
 
 }

@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.bean.TradeItem;
+import cn.innovativest.ath.common.AppConfig;
+import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
 
 
@@ -105,7 +107,7 @@ public class TradeBuyDialog extends Dialog implements View.OnClickListener {
             String str[] = tradeItem.getQuota().split(",");
             if (str.length == 2) {
                 edtSDSD.setText("");
-                edtSDSD.setHint(String.format("%.6f", Float.parseFloat(str[0]) / Float.parseFloat(tradeItem.getCny())) + " - " + String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())));
+                edtSDSD.setHint(AppUtils.floatToStringByTruncate(Float.parseFloat(str[0]) / Float.parseFloat(tradeItem.getCny()), 6) + " - " + AppUtils.floatToStringByTruncate(Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny()), 6));
             }
         }
         dgAmount.setText(String.format("%.2f", Float.parseFloat(tradeItem.getCny())) + " CNY");
@@ -213,8 +215,10 @@ public class TradeBuyDialog extends Dialog implements View.OnClickListener {
                 if (!CUtils.isEmpty(tradeItem.getQuota()) && tradeItem.getQuota().contains(",")) {
                     String str[] = tradeItem.getQuota().split(",");
                     if (str.length == 2) {
-                        edtSDSD.setText(String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())));
-                        edtSDSD.setSelection(String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())).length());
+//                        edtSDSD.setText(String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())));
+//                        edtSDSD.setSelection(String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())).length());
+                        edtSDSD.setText(AppUtils.floatToStringByTruncate(Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny()), 6));
+                        edtSDSD.setSelection(AppUtils.floatToStringByTruncate(Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny()), 6).length());
                     }
                 }
                 break;
