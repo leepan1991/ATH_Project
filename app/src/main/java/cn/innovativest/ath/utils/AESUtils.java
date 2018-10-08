@@ -70,8 +70,8 @@ public class AESUtils {
 
     }
 
-    public static String floatToStringByTruncate(float num, int remainBitNum) {
-        String numStr = Float.toString(num);
+    public static String floatToStringByTruncate(double num, int remainBitNum) {
+        String numStr = Double.toString(num);
         BigDecimal bd = new BigDecimal(numStr);
         bd = bd.setScale(remainBitNum,BigDecimal.ROUND_DOWN);
         return bd.toString();
@@ -87,7 +87,7 @@ public class AESUtils {
 
         System.out.println(HeaderUtil.generateRandomByScope(10, 10));
 
-//        System.out.print(floatToStringByTruncate(8.05f/8.02f,6)+"sdds");
+//        System.out.print(floatToStringByTruncate(8.05/8.02,6)+"sdds");
 
 
     }

@@ -7,18 +7,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
+import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.entities.SinglePasswordBody;
 import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.ui.BaseAct;
+import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LoadingUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -60,6 +64,11 @@ public class SettingUserInfoTwoAct extends BaseAct {
         tvwTitle.setText("设置用户信息");
         btnBack.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
+        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+        if (userInfo != null && !CUtils.isEmpty(userInfo.name)) {
+            etName.setText(userInfo.name);
+            etName.setSelection(userInfo.name.length());
+        }
     }
 
     private void auth() {

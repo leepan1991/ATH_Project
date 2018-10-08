@@ -625,7 +625,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         tvwCoinValue.setText("积分: " + (!CUtils.isEmpty(mainPage.integral) ? String.format("%.2f", Float.parseFloat(mainPage.integral)) : 0.00));
 
         tvwATHAllValue.setText(!CUtils.isEmpty(mainPage.zongath) ? mainPage.zongath : "0.000000");
-        tvwMarketValue.setText(!CUtils.isEmpty(mainPage.zongath) ? String.format(Locale.CHINA, "%.2f", Float.valueOf(mainPage.zongath) * Float.valueOf(mainPage.exchange_rate)) + " CNY" : 0.00 + " CNY");
+        tvwMarketValue.setText(!CUtils.isEmpty(mainPage.zongath) ? AppUtils.floatToStringByTruncate( Double.valueOf(mainPage.zongath) * Double.valueOf(mainPage.exchange_rate),2) + " CNY" : 0.00 + " CNY");
 
         if (!CUtils.isEmpty(mainPage.pit)) {
 

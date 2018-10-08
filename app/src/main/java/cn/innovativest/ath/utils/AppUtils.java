@@ -473,8 +473,8 @@ public class AppUtils {
         }
     }
 
-    public static String floatToStringByTruncate(float num, int remainBitNum) {
-        String numStr = Float.toString(num);
+    public static String floatToStringByTruncate(double num, int remainBitNum) {
+        String numStr = Double.toString(num);
         BigDecimal bd = new BigDecimal(numStr);
         bd = bd.setScale(remainBitNum,BigDecimal.ROUND_DOWN);
         return bd.toString();
