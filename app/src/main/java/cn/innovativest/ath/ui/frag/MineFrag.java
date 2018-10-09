@@ -34,6 +34,7 @@ import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
+import cn.innovativest.ath.ui.act.AboutAthAct;
 import cn.innovativest.ath.ui.act.AboutUsAct;
 import cn.innovativest.ath.ui.act.AccountSettingAct;
 import cn.innovativest.ath.ui.act.CoinTradeManagementAct;
@@ -134,6 +135,9 @@ public class MineFrag extends BaseFrag {
 
     @BindView(R.id.rltAccountSetting)
     RelativeLayout rltAccountSetting;
+
+    @BindView(R.id.rltAboutATH)
+    RelativeLayout rltAboutATH;
 
     @BindView(R.id.rltAboutUs)
     RelativeLayout rltAboutUs;
@@ -269,6 +273,7 @@ public class MineFrag extends BaseFrag {
         rltPropertyManagement.setOnClickListener(this);
         rltRealName.setOnClickListener(this);
         rltAccountSetting.setOnClickListener(this);
+        rltAboutATH.setOnClickListener(this);
         rltAboutUs.setOnClickListener(this);
 
         lltBuy.setOnClickListener(this);
@@ -569,6 +574,9 @@ public class MineFrag extends BaseFrag {
                 break;
             case R.id.rltAboutUs:
                 startActivity(new Intent(getActivity(), AboutUsAct.class));
+                break;
+            case R.id.rltAboutATH:
+                startActivity(new Intent(getActivity(), AboutAthAct.class));
                 break;
             case R.id.tvwAction:
                 if (App.get().user != null) {

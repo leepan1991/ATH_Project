@@ -614,6 +614,46 @@
                         android:src="@drawable/mine_right_arrow" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/rltAboutATH"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white">
+
+                    <ImageView
+                        android:id="@+id/ivAboutATH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_about_ath" />
+
+                    <TextView
+                        android:id="@+id/tvAboutATH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/ivAboutATH"
+                        android:background="@android:color/transparent"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="ATH生态圈须知"
+                        android:textColor="#808080"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivRightAboutATH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mine_right_arrow" />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rltAboutUs"
