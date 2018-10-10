@@ -105,7 +105,11 @@ public class SplashAct extends BaseAct {
 
     private void toHome() {
 //        startActivity(new Intent(SplashAct.this, MainAct.class));
-        startActivity(new Intent(SplashAct.this, NewMainAct.class));
+        if (!PrefsManager.get().getBoolean("athIntroduce")) {
+            AppUtils.startActivity(SplashAct.this, AboutAthAct.class);
+        } else {
+            startActivity(new Intent(SplashAct.this, NewMainAct.class));
+        }
         finish();
     }
 

@@ -480,9 +480,13 @@ public class TradeDetailAct extends BaseAct {
                         }
                     }
                 } else {
-                    lltBottom.setVisibility(View.GONE);
+//                    lltBottom.setVisibility(View.GONE);
                     tvOrderTime.setVisibility(View.VISIBLE);
                     tvOrderInfo.setVisibility(View.VISIBLE);
+                    lltBottom.setVisibility(View.VISIBLE);
+                    rltCancel.setVisibility(View.VISIBLE);
+                    btnPayed.setVisibility(View.GONE);
+                    rltWaitCancel.setVisibility(View.GONE);
                     tvOrderStatus.setText("待付款");
                     tvOrderStatus.setTextColor(Color.parseColor("#EF7B00"));
                     if (tradeOrderDetail.orderDetailFoot != null) {

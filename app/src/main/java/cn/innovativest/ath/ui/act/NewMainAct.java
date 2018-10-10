@@ -1,5 +1,8 @@
 package cn.innovativest.ath.ui.act;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.KeyEvent;
@@ -51,12 +54,30 @@ public class NewMainAct extends BaseAct {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_main_act);
+        if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("isAboutAth")) {
+            popDialog();
+        }
         mTextviewArray = new String[4];
         mTextviewArray[0] = getString(R.string.tab_main);
         mTextviewArray[1] = getString(R.string.tab_purchase);
         mTextviewArray[2] = getString(R.string.tab_coin);
         mTextviewArray[3] = getString(R.string.tab_mine);
         initView();
+    }
+
+    private void popDialog() {
+        final AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                .setTitle("提示")//标题
+                .setMessage("个人账户->ATH生态圈须知可再次查看")//内容
+                .setIcon(R.mipmap.ic_launcher)//图标
+                .setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .create();
+        alertDialog1.show();
     }
 
     private void initView() {

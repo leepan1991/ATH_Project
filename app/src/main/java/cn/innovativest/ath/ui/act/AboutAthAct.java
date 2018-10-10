@@ -1,5 +1,6 @@
 package cn.innovativest.ath.ui.act;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -41,6 +43,8 @@ public class AboutAthAct extends BaseAct {
     @BindView(R.id.wvDesc)
     WebView wvDesc;
 
+    private boolean isFromSplash = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,17 +53,33 @@ public class AboutAthAct extends BaseAct {
         initView();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (isFromSplash) {
+            Intent intent = new Intent();
+            intent.putExtra("isAboutAth", true);
+            intent.setClass(AboutAthAct.this, NewMainAct.class);
+            startActivity(intent);
+        }
+        super.onBackPressed();
+    }
+
     private void initView() {
         btnBack.setImageResource(R.drawable.login_arrow_left);
         tvwTitle.setText("ATH生态圈须知");
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                onBackPressed();
             }
         });
 
         wvDesc.loadUrl("http://ath.pub/home/index/aboutATH");
+        if (!PrefsManager.get().getBoolean("athIntroduce")) {
+            isFromSplash = true;
+            PrefsManager.get().save("athIntroduce", true);
+        }
+
 
         wvDesc.getSettings().setJavaScriptEnabled(true);
         wvDesc.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
