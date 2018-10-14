@@ -78,7 +78,7 @@ public class RetrofitClient {
 
         final String rom = String.valueOf(HeaderUtil.generateRandomByScope(1000000, 1000000));
         final String time = System.currentTimeMillis() + "";
-        String secret = "eb7soAuIvUU";
+        String secret = "4JhAVlAYln";
         final String sign = HeaderUtil.sha1(secret + rom + time);
 
         OkHttpClient.Builder client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -86,7 +86,7 @@ public class RetrofitClient {
             public Response intercept(Chain chain) throws IOException {
                 final Request orgRequest = chain.request();
                 final Request newRequest = orgRequest.newBuilder()
-                        .addHeader("App-Key", "z3v5yqkbz1n40")
+                        .addHeader("App-Key", "vnroth0kv894o")
                         .addHeader("Nonce", rom)
                         .addHeader("Timestamp", time)
                         .addHeader("Signature", sign)
