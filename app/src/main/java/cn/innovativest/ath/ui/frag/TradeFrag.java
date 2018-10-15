@@ -48,6 +48,7 @@ import cn.innovativest.ath.ui.act.SettingUserInfoTwoAct;
 import cn.innovativest.ath.ui.act.TradeDetailAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
+import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.CustomDialog;
@@ -353,10 +354,12 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
 
     private void buySell(final String order_number, String type, String number, final int flag) {
         AthService service = App.get().getAthService();
+        LoadingUtils.getInstance().dialogShow(getActivity(), "交易中。。。", false);
         service.buysell(order_number, type, number).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<BuySellResponse>() {
             @Override
             public void call(BuySellResponse buySellResponse) {
                 App.toast(getActivity(), buySellResponse.message);
+                LoadingUtils.getInstance().dialogDismiss();
                 if (buySellResponse.status == 1) {
                     if (flag == 1) {//买
                         startActivity(new Intent(getActivity(), TradeDetailAct.class).putExtra("state", "1").putExtra("isBuy", "true").putExtra("order_number", buySellResponse.buySell.order_number));
@@ -368,6 +371,7 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
+                LoadingUtils.getInstance().dialogDismiss();
                 LogUtils.e(throwable.getMessage());
             }
         });
