@@ -328,7 +328,7 @@ public class LoginAct extends BaseAct implements RongIM.UserInfoProvider {
                  */
                 @Override
                 public void onTokenIncorrect() {
-
+                    requestUserInfo();
                 }
 
                 /**

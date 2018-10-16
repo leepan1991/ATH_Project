@@ -5,19 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.bean.CoinItem;
 import cn.innovativest.ath.bean.Notice;
-import cn.innovativest.ath.common.AppConfig;
-import cn.innovativest.ath.utils.CUtils;
 
 public class NoticeAdapter extends BaseAdapter {
     private Context context;
@@ -66,7 +61,7 @@ public class NoticeAdapter extends BaseAdapter {
         // 封装数据
         Notice notice = (Notice) getItem(position);
 
-        holder.tvwTitle.setText(notice.exchange);
+        holder.tvwTitle.setText(notice.exchange.replaceAll("\\|","\n"));
 
         return convertView;
     }

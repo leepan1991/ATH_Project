@@ -385,7 +385,7 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
                  */
                 @Override
                 public void onTokenIncorrect() {
-
+                    requestUserInfo();
                 }
 
                 /**

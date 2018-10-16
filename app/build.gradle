@@ -7,8 +7,8 @@ android {
         applicationId "cn.innovativest.ath"
         minSdkVersion 18
         targetSdkVersion 27
-        versionCode 14
-        versionName "1.1.11"
+        versionCode 15
+        versionName "1.1.12"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -96,8 +96,8 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'com.umeng.sdk:common:latest.integration'
-    implementation 'com.umeng.analytics:analytics:latest.integration'
+    implementation 'com.umeng.sdk:common:1.5.3'
+    implementation 'com.umeng.analytics:analytics:6.1.4'
 
     //PushSDK必须依赖基础组件库，所以需要加入对应依赖
     implementation 'com.umeng.sdk:common:1.5.3'
@@ -108,8 +108,8 @@ dependencies {
 
     api project(':IMKit')
 
-    implementation 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    implementation 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    implementation 'com.tencent.bugly:crashreport:2.6.6.1' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:3.3.1' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
 
 }
 //repositories {

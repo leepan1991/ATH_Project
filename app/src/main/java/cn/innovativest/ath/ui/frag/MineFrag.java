@@ -581,7 +581,11 @@ public class MineFrag extends BaseFrag {
                 startActivity(new Intent(getActivity(), AboutUsAct.class));
                 break;
             case R.id.rltNotice:
-                startActivity(new Intent(getActivity(), NoticeListAct.class));
+                if (App.get().user != null) {
+                    startActivity(new Intent(getActivity(), NoticeListAct.class));
+                } else {
+                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
+                }
                 break;
             case R.id.rltAboutATH:
                 startActivity(new Intent(getActivity(), AboutAthAct.class));

@@ -13,6 +13,7 @@
         android:layout_alignParentLeft="true"
         android:ellipsize="end"
         android:maxLines="10"
+        android:lineSpacingExtra="3dp"
         android:padding="5dp"
         android:text="Q币"
         android:textColor="@color/font_333333"
