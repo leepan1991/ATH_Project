@@ -428,7 +428,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
                         } else {
                             tv.setVisibility(View.VISIBLE);
-                            btn.setText("休眠中");
+                            btn.setText("挖矿中");
                             imv.setBackgroundResource(R.drawable.new_main_xiumian);
 //                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
                             Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imvGif);
@@ -493,7 +493,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
                         } else {
                             tv.setVisibility(View.VISIBLE);
-                            btn.setText("休眠中");
+                            btn.setText("挖矿中");
                             imv.setBackgroundResource(R.drawable.new_main_xiumian);
 //                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
                             Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imvGif);
@@ -558,7 +558,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
                         } else {
                             tv.setVisibility(View.VISIBLE);
-                            btn.setText("休眠中");
+                            btn.setText("挖矿中");
                             imv.setBackgroundResource(R.drawable.new_main_xiumian);
 //                            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imv);
                             Glide.with(getActivity()).asGif().load(R.drawable.new_main_kaikuang).into(imvGif);
@@ -880,19 +880,19 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                 App.toast(getActivity(), pitunlockResponse.message);
                 if (pitunlockResponse.status == 1) {
                     if (pit.equals("1")) {
-                        btnCollecting.setText("休眠中");
+                        btnCollecting.setText("挖矿中");
                         btnCollecting.setBackgroundResource(R.drawable.main_doing);
 
                         ivCollecting.setBackgroundResource(R.drawable.new_main_xiumian);
 //                        Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
                     }
                     if (pit.equals("2")) {
-                        btnUnlockOne.setText("休眠中");
+                        btnUnlockOne.setText("挖矿中");
 //                        btnUnlockOne.setBackgroundResource(R.drawable.main_doing);
                         ivUnlockOne.setBackgroundResource(R.drawable.new_main_xiumian);
                     }
                     if (pit.equals("3")) {
-                        btnUnlockTwo.setText("休眠中");
+                        btnUnlockTwo.setText("挖矿中");
 //                        btnUnlockTwo.setBackgroundResource(R.drawable.main_doing);
                         ivUnlockTwo.setBackgroundResource(R.drawable.new_main_xiumian);
                     }
@@ -1138,7 +1138,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     } else if (btnCollecting.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("1");
-                    } else if (btnCollecting.getText().toString().equals("休眠中")) {
+                    } else if (btnCollecting.getText().toString().equals("挖矿中")) {
                         App.toast(getActivity(), "正在挖矿中，请稍候再试。");
                     }
                 } else {
@@ -1152,7 +1152,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     } else if (btnUnlockOne.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("2");
-                    } else if (btnUnlockOne.getText().toString().equals("休眠中")) {
+                    } else if (btnUnlockOne.getText().toString().equals("挖矿中")) {
                         App.toast(getActivity(), "正在挖矿中，请稍候再试。");
                     }
                 } else {
@@ -1166,7 +1166,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     } else if (btnUnlockTwo.getText().toString().equals("领取")) {
                         SoundPoolUtil.getInstance(getActivity()).play();
                         mining("3");
-                    } else if (btnUnlockTwo.getText().toString().equals("休眠中")) {
+                    } else if (btnUnlockTwo.getText().toString().equals("挖矿中")) {
                         App.toast(getActivity(), "正在挖矿中，请稍候再试。");
                     }
                 } else {

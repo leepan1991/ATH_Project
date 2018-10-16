@@ -68,8 +68,8 @@
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
         <activity
             android:name=".ui.act.TradeDetailAct"
-            android:screenOrientation="portrait"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
         <activity
             android:name=".ui.act.OrderCompleteAct"
@@ -213,6 +213,10 @@
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
         <activity
             android:name=".ui.act.SplashAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged|adjustResize" />
+        <activity
+            android:name=".ui.act.NoticeListAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
 

@@ -83,7 +83,11 @@ public class OrderAdapter extends BaseAdapter {
             holder.tvOrderDesc.setText("您已成功下单，请及时支付！");
             holder.tvOrderStatus.setText("未付款");
         } else if (orderItem.getState().equals("2")) {//已付款
-            holder.tvOrderDesc.setText("您已付款，对方将收到你的出售！");
+            if (orderItem.getType() == 1) {//买入
+                holder.tvOrderDesc.setText("您已付款，您将收到对方的出售！");
+            } else if (orderItem.getType() == 2) {//卖出
+                holder.tvOrderDesc.setText("对方已付款，对方将收到你的出售！");
+            }
             holder.tvOrderStatus.setText("已付款");
         } else if (orderItem.getState().equals("3")) {//已完成
             holder.tvOrderDesc.setText("订单已完成！");

@@ -32,6 +32,7 @@ import cn.innovativest.ath.response.MainPageResponse;
 import cn.innovativest.ath.response.ManCoinResponse;
 import cn.innovativest.ath.response.MiningResponse;
 import cn.innovativest.ath.response.ModifyUserInfoResponse;
+import cn.innovativest.ath.response.NoticeListResponse;
 import cn.innovativest.ath.response.OrderDetailResponse;
 import cn.innovativest.ath.response.OrderListResponse;
 import cn.innovativest.ath.response.PitunlockResponse;
@@ -207,4 +208,7 @@ public interface AthService {
 
     @GET("get_user_info")
     Observable<UserInfoResponse> get_user_info(@Query("user_id") String user_id);
+
+    @GET("noticeList")
+    Observable<NoticeListResponse> noticeList(@Query("page") int page);
 }

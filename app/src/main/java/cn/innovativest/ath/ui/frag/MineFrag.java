@@ -40,6 +40,7 @@ import cn.innovativest.ath.ui.act.AccountSettingAct;
 import cn.innovativest.ath.ui.act.CoinTradeManagementAct;
 import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.ui.act.MyTradeAct;
+import cn.innovativest.ath.ui.act.NoticeListAct;
 import cn.innovativest.ath.ui.act.OrderManAct;
 import cn.innovativest.ath.ui.act.PropertyManagementAct;
 import cn.innovativest.ath.ui.act.RealCentificationAct;
@@ -135,6 +136,9 @@ public class MineFrag extends BaseFrag {
 
     @BindView(R.id.rltAccountSetting)
     RelativeLayout rltAccountSetting;
+
+    @BindView(R.id.rltNotice)
+    RelativeLayout rltNotice;
 
     @BindView(R.id.rltAboutATH)
     RelativeLayout rltAboutATH;
@@ -273,6 +277,7 @@ public class MineFrag extends BaseFrag {
         rltPropertyManagement.setOnClickListener(this);
         rltRealName.setOnClickListener(this);
         rltAccountSetting.setOnClickListener(this);
+        rltNotice.setOnClickListener(this);
         rltAboutATH.setOnClickListener(this);
         rltAboutUs.setOnClickListener(this);
 
@@ -574,6 +579,9 @@ public class MineFrag extends BaseFrag {
                 break;
             case R.id.rltAboutUs:
                 startActivity(new Intent(getActivity(), AboutUsAct.class));
+                break;
+            case R.id.rltNotice:
+                startActivity(new Intent(getActivity(), NoticeListAct.class));
                 break;
             case R.id.rltAboutATH:
                 startActivity(new Intent(getActivity(), AboutAthAct.class));

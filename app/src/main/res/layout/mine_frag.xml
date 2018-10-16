@@ -153,17 +153,17 @@
                             android:layout_width="213dp"
                             android:layout_height="15dp"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/mine_message_bg"
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:paddingBottom="2dp"
                             android:paddingLeft="5dp"
-                            android:paddingRight="5dp"
                             android:paddingTop="2dp"
+                            android:paddingRight="5dp"
+                            android:paddingBottom="2dp"
                             customAttr:clickEnable="true"
                             customAttr:isHorizontal="true"
                             customAttr:speed="2"
@@ -605,6 +605,48 @@
 
                     <ImageView
                         android:id="@+id/ivRightAccountSetting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mine_right_arrow" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rltNotice"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/ivNotice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_notice" />
+
+                    <TextView
+                        android:id="@+id/tvNotice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/ivNotice"
+                        android:background="@android:color/transparent"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="系统公告"
+                        android:textColor="#808080"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ivRightNotice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
