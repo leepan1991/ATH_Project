@@ -1328,7 +1328,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn1.getText().toString().equals("立即解锁")) {
                         recharge("4");
                     } else if (tvwBtn1.getText().toString().equals("开采中") || tvwBtn1.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn1.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("4");
                     }
 
@@ -1336,7 +1338,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn1.getText().toString().equals("立即解锁")) {
                         recharge("10");
                     } else if (tvwBtn1.getText().toString().equals("开采中") || tvwBtn1.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn1.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("10");
                     }
 
@@ -1344,7 +1348,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn1.getText().toString().equals("立即解锁")) {
                         recharge("16");
                     } else if (tvwBtn1.getText().toString().equals("开采中") || tvwBtn1.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn1.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("16");
                     }
 
@@ -1356,7 +1362,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn2.getText().toString().equals("立即解锁")) {
                         recharge("5");
                     } else if (tvwBtn2.getText().toString().equals("开采中") || tvwBtn2.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn2.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("5");
                     }
                 } else if (flag == 2) {
@@ -1364,7 +1372,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn2.getText().toString().equals("立即解锁")) {
                         recharge("11");
                     } else if (tvwBtn2.getText().toString().equals("开采中") || tvwBtn2.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn2.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("11");
                     }
                 } else if (flag == 3) {
@@ -1372,7 +1382,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn2.getText().toString().equals("立即解锁")) {
                         recharge("17");
                     } else if (tvwBtn2.getText().toString().equals("开采中") || tvwBtn2.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn2.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("17");
                     }
                 }
@@ -1383,7 +1395,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn3.getText().toString().equals("立即解锁")) {
                         recharge("6");
                     } else if (tvwBtn3.getText().toString().equals("开采中") || tvwBtn3.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn3.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("6");
                     }
                 } else if (flag == 2) {
@@ -1391,7 +1405,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn3.getText().toString().equals("立即解锁")) {
                         recharge("12");
                     } else if (tvwBtn3.getText().toString().equals("开采中") || tvwBtn3.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn3.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("12");
                     }
                 } else if (flag == 3) {
@@ -1399,7 +1415,9 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn3.getText().toString().equals("立即解锁")) {
                         recharge("18");
                     } else if (tvwBtn3.getText().toString().equals("开采中") || tvwBtn3.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn3.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("18");
                     }
                 }
@@ -1410,21 +1428,27 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn4.getText().toString().equals("立即解锁")) {
                         recharge("7");
                     } else if (tvwBtn4.getText().toString().equals("开采中") || tvwBtn4.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn4.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("7");
                     }
                 } else if (flag == 2) {
                     if (tvwBtn4.getText().toString().equals("立即解锁")) {
                         recharge("13");
                     } else if (tvwBtn4.getText().toString().equals("开采中") || tvwBtn4.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn4.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("13");
                     }
                 } else if (flag == 3) {
                     if (tvwBtn4.getText().toString().equals("立即解锁")) {
                         recharge("19");
                     } else if (tvwBtn4.getText().toString().equals("开采中") || tvwBtn4.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn4.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("19");
                     }
                 }
@@ -1434,21 +1458,27 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn5.getText().toString().equals("立即解锁")) {
                         recharge("8");
                     } else if (tvwBtn5.getText().toString().equals("开采中") || tvwBtn5.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn5.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("8");
                     }
                 } else if (flag == 2) {
                     if (tvwBtn5.getText().toString().equals("立即解锁")) {
                         recharge("14");
                     } else if (tvwBtn5.getText().toString().equals("开采中") || tvwBtn5.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn5.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("14");
                     }
                 } else if (flag == 3) {
                     if (tvwBtn5.getText().toString().equals("立即解锁")) {
                         recharge("20");
                     } else if (tvwBtn5.getText().toString().equals("开采中") || tvwBtn5.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn5.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("20");
                     }
                 }
@@ -1458,21 +1488,27 @@ public class RechargeAct extends BaseAct {
                     if (tvwBtn6.getText().toString().equals("立即解锁")) {
                         recharge("9");
                     } else if (tvwBtn6.getText().toString().equals("开采中") || tvwBtn6.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn6.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("9");
                     }
                 } else if (flag == 2) {
                     if (tvwBtn6.getText().toString().equals("立即解锁")) {
                         recharge("15");
                     } else if (tvwBtn6.getText().toString().equals("开采中") || tvwBtn6.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn6.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("15");
                     }
                 } else if (flag == 3) {
                     if (tvwBtn6.getText().toString().equals("立即解锁")) {
                         recharge("21");
                     } else if (tvwBtn6.getText().toString().equals("开采中") || tvwBtn6.getText().toString().equals("获取")) {
-                        SoundPoolUtil.getInstance(this).play();
+                        if (tvwBtn6.getText().toString().equals("获取")) {
+                            SoundPoolUtil.getInstance(this).play();
+                        }
                         mining("21");
                     }
                 }

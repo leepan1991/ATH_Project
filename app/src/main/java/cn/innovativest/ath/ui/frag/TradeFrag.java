@@ -382,10 +382,12 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
         mainPageBody.status = status;
         mainPageBody.page = page;
 
+        LoadingUtils.getInstance().dialogShow(getActivity(), "请求中。。。", false);
         AthService service = App.get().getAthService();
         service.trade(mainPageBody).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<TradeResponse>() {
             @Override
             public void call(TradeResponse tradeResponse) {
+                LoadingUtils.getInstance().dialogDismiss();
                 getCommonData();
                 if (tradeResponse != null) {
                     if (tradeResponse.tradeBean != null && tradeResponse.tradeBean.tradeItems.size() > 0) {
@@ -405,6 +407,7 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
+                LoadingUtils.getInstance().dialogDismiss();
                 getCommonData();
                 LogUtils.e(throwable.getMessage());
                 App.toast(getActivity(), "数据获取失败");

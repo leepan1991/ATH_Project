@@ -461,11 +461,6 @@ public class TradeDetailAct extends BaseAct {
                 btnPayed.setBackgroundColor(Color.parseColor("#ff33b5e5"));
                 btnPayed.setText("我要申诉");
                 btnCancel.setVisibility(View.GONE);
-                if (isBuy.equals("true")) {
-                    btnCancel.setVisibility(View.VISIBLE);
-                } else {
-                    btnCancel.setVisibility(View.GONE);
-                }
 
             } else if (tradeOrderDetail.orderDetailBody.state.equals("1")) {//待付款
                 if (isBuy.equals("true")) {
@@ -490,6 +485,7 @@ public class TradeDetailAct extends BaseAct {
                     lltBottom.setVisibility(View.VISIBLE);
                     rltCancel.setVisibility(View.VISIBLE);
                     btnPayed.setVisibility(View.GONE);
+                    btnCancel.setVisibility(View.GONE);
                     rltWaitCancel.setVisibility(View.GONE);
                     tvOrderStatus.setText("待付款");
                     tvOrderStatus.setTextColor(Color.parseColor("#EF7B00"));
