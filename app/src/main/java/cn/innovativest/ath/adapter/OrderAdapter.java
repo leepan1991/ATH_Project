@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -16,9 +18,12 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.bean.OrderItem;
+import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
+import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 
 public class OrderAdapter extends BaseAdapter {
     private Context context;
@@ -83,10 +88,11 @@ public class OrderAdapter extends BaseAdapter {
             holder.tvOrderDesc.setText("您已成功下单，请及时支付！");
             holder.tvOrderStatus.setText("未付款");
         } else if (orderItem.getState().equals("2")) {//已付款
-            if (orderItem.getType() == 1) {//买入
-                holder.tvOrderDesc.setText("您已付款，您将收到对方的出售！");
-            } else if (orderItem.getType() == 2) {//卖出
-                holder.tvOrderDesc.setText("对方已付款，对方将收到你的出售！");
+            UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+            if (orderItem.getBuy_userid().equals(userInfo.id + "")) {//买入
+                holder.tvOrderDesc.setText("您已付款！");
+            } else if (orderItem.getSell_userid().equals(userInfo.id + "")) {//卖出
+                holder.tvOrderDesc.setText("对方已付款！");
             }
             holder.tvOrderStatus.setText("已付款");
         } else if (orderItem.getState().equals("3")) {//已完成
