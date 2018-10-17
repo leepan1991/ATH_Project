@@ -194,7 +194,7 @@ public class RegisterAct extends BaseAct {
     }
 
     public static boolean checkPhoneNumber(String phone) {
-        Pattern p = Pattern.compile("^[1][3,4,5,7,8][0-9]{9}$");
+        Pattern p = Pattern.compile("^[1][3,4,5,6,7,8,9][0-9]{9}$");
         Matcher m = p.matcher(phone);
         return m.matches();
     }
