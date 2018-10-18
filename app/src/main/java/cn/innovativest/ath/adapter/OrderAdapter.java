@@ -28,10 +28,12 @@ import cn.innovativest.ath.utils.PrefsManager;
 public class OrderAdapter extends BaseAdapter {
     private Context context;
     private List<OrderItem> listOrderItems;
+    private String isBuy;
 
-    public OrderAdapter(Context context, List<OrderItem> listOrderItems) {
+    public OrderAdapter(Context context, List<OrderItem> listOrderItems, String isBuy) {
         this.context = context;
         this.listOrderItems = listOrderItems;
+        this.isBuy = isBuy;
     }
 
     public void onRefresh(List<OrderItem> listOrderItems) {
@@ -85,14 +87,35 @@ public class OrderAdapter extends BaseAdapter {
             holder.tvOrderDesc.setText("订单已取消，如有疑问，请联系客服！");
             holder.tvOrderStatus.setText("已取消");
         } else if (orderItem.getState().equals("1")) {//待付款
-            holder.tvOrderDesc.setText("您已成功下单，请及时支付！");
+            if (!TextUtils.isEmpty(isBuy)) {
+                if (isBuy.equals("true")) {//买入
+                    holder.tvOrderDesc.setText("您已成功下单，请及时支付！");
+                } else if (isBuy.equals("false")) {//卖出
+                    holder.tvOrderDesc.setText("等待对方付款！");
+                }
+            } else {
+                UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+                if (!TextUtils.isEmpty(orderItem.getBuy_userid()) && orderItem.getBuy_userid().equals(userInfo.id + "")) {//买入
+                    holder.tvOrderDesc.setText("您已成功下单，请及时支付！");
+                } else if (!TextUtils.isEmpty(orderItem.getSell_userid()) && orderItem.getSell_userid().equals(userInfo.id + "")) {//卖出
+                    holder.tvOrderDesc.setText("等待对方付款！");
+                }
+            }
             holder.tvOrderStatus.setText("未付款");
         } else if (orderItem.getState().equals("2")) {//已付款
-            UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-            if (orderItem.getBuy_userid().equals(userInfo.id + "")) {//买入
-                holder.tvOrderDesc.setText("您已付款！");
-            } else if (orderItem.getSell_userid().equals(userInfo.id + "")) {//卖出
-                holder.tvOrderDesc.setText("对方已付款！");
+            if (!TextUtils.isEmpty(isBuy)) {
+                if (isBuy.equals("true")) {//买入
+                    holder.tvOrderDesc.setText("您已付款，等待对方确认！");
+                } else if (isBuy.equals("false")) {//卖出
+                    holder.tvOrderDesc.setText("对方已付款，请确认收款！");
+                }
+            } else {
+                UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+                if (!TextUtils.isEmpty(orderItem.getBuy_userid()) && orderItem.getBuy_userid().equals(userInfo.id + "")) {//买入
+                    holder.tvOrderDesc.setText("您已付款，等待对方确认！");
+                } else if (!TextUtils.isEmpty(orderItem.getSell_userid()) && orderItem.getSell_userid().equals(userInfo.id + "")) {//卖出
+                    holder.tvOrderDesc.setText("对方已付款，请确认收款！");
+                }
             }
             holder.tvOrderStatus.setText("已付款");
         } else if (orderItem.getState().equals("3")) {//已完成

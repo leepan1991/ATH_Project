@@ -112,7 +112,7 @@ public class OrderManagementAct extends BaseAct implements RadioGroup.OnCheckedC
         });
 
         lstOrderItems = new ArrayList<OrderItem>();
-        orderAdapter = new OrderAdapter(this, lstOrderItems);
+        orderAdapter = new OrderAdapter(this, lstOrderItems,"");
         order_listview.setAdapter(orderAdapter);
         order_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

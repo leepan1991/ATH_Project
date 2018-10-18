@@ -101,7 +101,7 @@ public class SaleAndBuyInfoAct extends BaseAct implements OnRefreshListener, OnL
 
         lstOrderItems = new ArrayList<OrderItem>();
         order_listview.addHeaderView(header_view);
-        orderAdapter = new OrderAdapter(this, lstOrderItems);
+        orderAdapter = new OrderAdapter(this, lstOrderItems,isBuy);
         order_listview.setAdapter(orderAdapter);
         order_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
