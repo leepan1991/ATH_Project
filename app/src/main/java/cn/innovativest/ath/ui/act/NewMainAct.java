@@ -21,6 +21,7 @@ import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.ui.frag.CoinFrag;
 import cn.innovativest.ath.ui.frag.MainFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
+import cn.innovativest.ath.ui.frag.NewCoinFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
 import cn.innovativest.ath.ui.frag.TradeFrag;
 import io.rong.imkit.RongIM;
@@ -38,7 +39,7 @@ public class NewMainAct extends BaseAct {
             R.drawable.new_tab_coin_logo, R.drawable.new_tab_mine_logo};
     private String[] mTextviewArray;
     private Class[] fragmentArray = {NewMainFrag.class,
-            TradeFrag.class, CoinFrag.class, MineFrag.class};
+            TradeFrag.class, NewCoinFrag.class, MineFrag.class};
 
     private long mExitTime;
 

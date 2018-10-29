@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/common_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_mine" />
+
+    <cn.innovativest.ath.widget.VpSwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/new_box_recomm_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="162dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5.5dp">
+
+                    <TextView
+                        android:id="@+id/tvSPName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="15dp"
+                        android:text="商品名称"
+                        android:textColor="#4D4D4D"
+                        android:textSize="11sp"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/tvwCoin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="4.5dp"
+                        android:layout_marginRight="20dp"
+                        android:text="我的积分:11234567"
+                        android:textColor="#FFB166"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <cn.innovativest.ath.widget.XListView
+                    android:id="@+id/xlvCoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="10dp"
+                    android:paddingLeft="16.5dp"
+                    android:paddingRight="16.5dp"></cn.innovativest.ath.widget.XListView>
+            </LinearLayout>
+        </ScrollView>
+    </cn.innovativest.ath.widget.VpSwipeRefreshLayout>
+
+</LinearLayout>
