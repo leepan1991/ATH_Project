@@ -382,6 +382,7 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
         mainPageBody.status = status;
         mainPageBody.page = page;
 
+        LoadingUtils.getInstance().dialogDismiss();
         LoadingUtils.getInstance().dialogShow(getActivity(), "请求中。。。", false);
         AthService service = App.get().getAthService();
         service.trade(mainPageBody).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<TradeResponse>() {

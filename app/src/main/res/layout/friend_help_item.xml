@@ -32,7 +32,7 @@
                 android:maxLines="1"
                 android:text="兑换商品"
                 android:textColor="#808080"
-                android:textSize="14sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/tvwTime"
@@ -44,7 +44,7 @@
                 android:maxLines="1"
                 android:text="时间"
                 android:textColor="#808080"
-                android:textSize="14sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/tvwPit"
@@ -56,7 +56,7 @@
                 android:maxLines="1"
                 android:text="0"
                 android:textColor="#808080"
-                android:textSize="14sp" />
+                android:textSize="10sp" />
 
 
         </LinearLayout>
