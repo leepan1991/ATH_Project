@@ -11,7 +11,7 @@ import cn.innovativest.ath.BuildConfig;
  */
 public class AppConfig {
 
-    public static final String ATH_APP_URL = BuildConfig.DEBUG ? "http://ath.wuhao.link" : "http://ath.pub";
+    public static final String ATH_APP_URL = !BuildConfig.DEBUG ? "http://ath.wuhao.link" : "http://ath.pub";
 
     /**
      * APP INFO

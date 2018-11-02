@@ -18,6 +18,7 @@ import cn.innovativest.ath.entities.OrderStatusBody;
 import cn.innovativest.ath.entities.RegisterBody;
 import cn.innovativest.ath.entities.SinglePasswordBody;
 import cn.innovativest.ath.response.AddressResponse;
+import cn.innovativest.ath.response.AppResponse;
 import cn.innovativest.ath.response.ApplyResponse;
 import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.BuyListResponse;
@@ -32,11 +33,13 @@ import cn.innovativest.ath.response.MainPageResponse;
 import cn.innovativest.ath.response.ManCoinResponse;
 import cn.innovativest.ath.response.MiningResponse;
 import cn.innovativest.ath.response.ModifyUserInfoResponse;
+import cn.innovativest.ath.response.NewCoinResponse;
 import cn.innovativest.ath.response.NoticeListResponse;
 import cn.innovativest.ath.response.OrderDetailResponse;
 import cn.innovativest.ath.response.OrderListResponse;
 import cn.innovativest.ath.response.PitunlockResponse;
 import cn.innovativest.ath.response.ReleaseResponse;
+import cn.innovativest.ath.response.ShareResponse;
 import cn.innovativest.ath.response.SpeedMineResponse;
 import cn.innovativest.ath.response.SpeedResponse;
 import cn.innovativest.ath.response.StartImgResponse;
@@ -211,4 +214,16 @@ public interface AthService {
 
     @GET("noticeList")
     Observable<NoticeListResponse> noticeList(@Query("page") int page);
+
+    @GET("tops")
+    Observable<NewCoinResponse> tops();
+
+    @GET("apps")
+    Observable<AppResponse> apps();
+
+    @POST("draw_tops")
+    Observable<BaseResponse> draw_tops(@Body HashMap<String, String> map);
+
+    @GET("share")
+    Observable<ShareResponse> share();
 }

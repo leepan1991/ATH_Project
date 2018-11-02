@@ -1,13 +1,14 @@
 package cn.innovativest.ath;
 
 import android.app.ActivityManager;
-import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
 import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.mob.MobApplication;
+import com.mob.MobSDK;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
@@ -32,7 +33,7 @@ import okhttp3.RequestBody;
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
-public class App extends Application {
+public class App extends MobApplication {
     private static App my;
     //    public DbManager dbManager;
     public static boolean DEBUG;
@@ -48,6 +49,7 @@ public class App extends Application {
         super.onCreate();
         CrashReport.initCrashReport(getApplicationContext(), "ab6f5e0feb", BuildConfig.DEBUG);
         my = this;
+        MobSDK.init(this);
         initPush();
         initStaticMethods();
 //        x.Ext.init(my);

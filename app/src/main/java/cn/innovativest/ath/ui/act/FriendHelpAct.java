@@ -3,6 +3,7 @@ package cn.innovativest.ath.ui.act;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -304,7 +305,9 @@ public class FriendHelpAct extends BaseAct implements RadioGroup.OnCheckedChange
                 break;
             case R.id.tvwCopy:
                 if (!CUtils.isEmpty(copyContent) && userInfo != null && !CUtils.isEmpty(userInfo.code)) {
-                    copy("快来我在ATH赚钱了，零投入有手机就行，特邀请您加入ATH生态圈财富直通车领取，邀请码：" + userInfo.code + "，我的邀请次数有限，还有随机红包赶快加入哦~" + copyContent);
+//                    copy("快来我在ATH赚钱了，零投入有手机就行，特邀请您加入ATH生态圈财富直通车领取，邀请码：" + userInfo.code + "，我的邀请次数有限，还有随机红包赶快加入哦~" + copyContent);
+                    startActivity(new Intent(FriendHelpAct.this, ShareAct.class));
+                    finish();
                 } else {
                     App.toast(FriendHelpAct.this, "信息不能为空，请稍候再试");
                 }

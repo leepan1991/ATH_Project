@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nor_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:gravity="top|left"
+                    android:hint="请选择或输入你要分享的内容"
+                    android:inputType="textMultiLine"
+                    android:maxLines="8"
+                    android:padding="10dp"
+                    android:textColor="#222222"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnCopy"
+                    android:layout_width="47dp"
+                    android:layout_height="17dp"
+                    android:layout_below="@id/edtContent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/share_copy_bg"
+                    android:text="复制"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="#DCDCDC" />
+
+            <LinearLayout
+                android:id="@+id/lltImgs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rltImg1"
+                    android:layout_width="match_parent"
+                    android:layout_height="77dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/ivImg1"
+                        android:layout_width="81dp"
+                        android:layout_height="77dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <ImageView
+                        android:id="@+id/ivImgCheck1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_share_check" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rltImg2"
+                    android:layout_width="match_parent"
+                    android:layout_height="77dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/ivImg2"
+                        android:layout_width="81dp"
+                        android:layout_height="77dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <ImageView
+                        android:id="@+id/ivImgCheck2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_share_check" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rltImg3"
+                    android:layout_width="match_parent"
+                    android:layout_height="77dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/ivImg3"
+                        android:layout_width="81dp"
+                        android:layout_height="77dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <ImageView
+                        android:id="@+id/ivImgCheck3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_share_check" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rltImg4"
+                    android:layout_width="match_parent"
+                    android:layout_height="77dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/ivImg4"
+                        android:layout_width="81dp"
+                        android:layout_height="77dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_share_add" />
+
+                    <ImageView
+                        android:id="@+id/ivImgCheck4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_share_check"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <cn.innovativest.ath.widget.XListView
+                android:id="@+id/xlvShare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/share_item_bg"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:color/transparent"></cn.innovativest.ath.widget.XListView>
+
+            <Button
+                android:id="@+id/btnShare"
+                android:layout_width="271dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/share_btn_bg"
+                android:gravity="center"
+                android:text="分享图片"
+                android:textColor="#F52D1D"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -24,6 +28,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,20 +37,31 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.CoinAdapter;
+import cn.innovativest.ath.adapter.CoinTaskAdapter;
+import cn.innovativest.ath.adapter.CoinTeamAdapter;
+import cn.innovativest.ath.bean.CoinActive;
 import cn.innovativest.ath.bean.CoinBanner;
 import cn.innovativest.ath.bean.CoinItem;
+import cn.innovativest.ath.bean.CoinTop;
 import cn.innovativest.ath.bean.ECoinItem;
+import cn.innovativest.ath.bean.ENewCoinItem;
 import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
+import cn.innovativest.ath.entities.MiningBody;
+import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.CoinResponse;
+import cn.innovativest.ath.response.MiningResponse;
+import cn.innovativest.ath.response.NewCoinResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.CoinDetailAct;
 import cn.innovativest.ath.ui.act.LoginAct;
+import cn.innovativest.ath.ui.act.RechargeAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
+import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.CustomDialog;
@@ -59,7 +75,7 @@ import rx.functions.Action1;
  * Created by leepan on 20/03/2018.
  */
 
-public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreListener, AdapterView.OnItemClickListener {
+public class NewCoinFrag extends BaseFrag implements OnRefreshListener, RadioGroup.OnCheckedChangeListener {
     private View contentView;
 
     @BindView(R.id.tvwTitle)
@@ -68,33 +84,47 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
     @BindView(R.id.swipeRefresh)
     VpSwipeRefreshLayout swipeRefresh;
 
-    @BindView(R.id.tvwCoin)
-    TextView tvwCoin;
-
     @BindView(R.id.vprRecoImage)
     ViewPager vprRecoImage;
 
     @BindView(R.id.lltSmallDots)
     LinearLayout lltSmallDots;
 
+    @BindView(R.id.rltCheck)
+    RelativeLayout rltCheck;
+
+    @BindView(R.id.rgTrade)
+    RadioGroup rgTrade;
+
+    @BindView(R.id.btnManPro)
+    RadioButton btnManPro;
+
+    @BindView(R.id.btnManPic)
+    RadioButton btnManPic;
+
     @BindView(R.id.xlvCoin)
     XListView xlvCoin;
 
-    private CoinAdapter coinAdapter;
-    private List<CoinItem> lstCoinItems;
+    @BindView(R.id.xlvTask)
+    XListView xlvTask;
+
+    private CoinTeamAdapter coinTeamAdapter;
+    private List<CoinTop> lstCoinTops;
+
+    private CoinTaskAdapter coinTaskAdapter;
+    private List<CoinActive> lstCoinActives;
 
     private List<CoinBanner> vprRecommendData;
     private MyPagerAdapter pagerAdapter;
     private ViewPagerScroller viewPagerScroller;
     private int currentPagerIndex = 0;
-
     ImageView[] points;
 
     private CustomDialog customDialog;
 //    private PasswordDialog passwordDialog;
 
-    int pi;
-    ECoinItem eCoinItem;
+    //    int pi;
+    ENewCoinItem eNewCoinItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,10 +153,18 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
 
         tvwTitle.setText("积分兑换");
 
-        lstCoinItems = new ArrayList<CoinItem>();
-        coinAdapter = new CoinAdapter(getActivity(), lstCoinItems);
-        xlvCoin.setAdapter(coinAdapter);
-        xlvCoin.setOnItemClickListener(this);
+        View team_header_view = mLayoutInft.inflate(R.layout.coin_team_header, null);
+
+        lstCoinTops = new ArrayList<CoinTop>();
+        xlvCoin.addHeaderView(team_header_view);
+        coinTeamAdapter = new CoinTeamAdapter(getActivity(), lstCoinTops);
+        xlvCoin.setAdapter(coinTeamAdapter);
+
+        View task_header_view = mLayoutInft.inflate(R.layout.coin_task_header, null);
+        lstCoinActives = new ArrayList<CoinActive>();
+        xlvTask.addHeaderView(task_header_view);
+        coinTaskAdapter = new CoinTaskAdapter(getActivity(), lstCoinActives, handler);
+        xlvTask.setAdapter(coinTaskAdapter);
 
         vprRecommendData = new ArrayList<CoinBanner>();
 
@@ -166,13 +204,16 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
         currentPagerIndex = vprRecoImage.getCurrentItem();
 
         swipeRefresh.setOnRefreshListener(this);
-        swipeRefresh.setOnLoadMoreListener(this);
+        swipeRefresh.setNoMoreData(true);
+        swipeRefresh.setEnableLoadMore(false);
 
         swipeRefresh.setVisibility(View.INVISIBLE);
         customDialog = new CustomDialog(mCtx);
+        rltCheck.setVisibility(View.VISIBLE);
 //        passwordDialog = new PasswordDialog(mCtx);
 
     }
+
 
     private void requestUserInfo() {
 
@@ -218,46 +259,60 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
         }
     }
 
+    private void initTop() {
+        btnManPro.setChecked(true);
+        btnManPic.setChecked(false);
+        getData();
+    }
+
     private void init() {
 
-        swipeRefresh.setVisibility(View.VISIBLE);
+        rltCheck.setVisibility(View.VISIBLE);
+        rgTrade.setOnCheckedChangeListener(this);
         swipeRefresh.setOnRefreshListener(this);
-        swipeRefresh.setOnLoadMoreListener(this);
-        pi = 1;
-        request(pi);
+        initTop();
     }
 
-    private void request(int page) {
-        //获取数据
-        LogUtils.e("======" + page);
-        getTradeData(page);
+    private void initDataToTeamView(List<CoinTop> coinTops) {
+        lstCoinTops.clear();
+        lstCoinTops.addAll(coinTops);
+        coinTeamAdapter.notifyDataSetChanged();
     }
 
-    private void initDataToView(List<CoinItem> coinItems) {
-        if (pi == 1) {
-            lstCoinItems.clear();
-        }
-        lstCoinItems.addAll(coinItems);
-        coinAdapter.notifyDataSetChanged();
+    private void initDataToTaskView(List<CoinActive> coinActives) {
+        lstCoinActives.clear();
+        lstCoinActives.addAll(coinActives);
+        coinTaskAdapter.notifyDataSetChanged();
     }
 
-    private void getTradeData(int page) {
+    private void getData() {
 
         AthService service = App.get().getAthService();
-        service.goods_list(page).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<CoinResponse>() {
+        service.tops().observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<NewCoinResponse>() {
             @Override
-            public void call(CoinResponse coinResponse) {
-                if (coinResponse != null) {
-                    if (coinResponse.eCoinItem != null) {
-                        if (coinResponse.eCoinItem.list != null && coinResponse.eCoinItem.list.size() > 0) {
-                            eCoinItem = coinResponse.eCoinItem;
-                            initDataToView(coinResponse.eCoinItem.list);
+            public void call(NewCoinResponse newCoinResponse) {
+                if (newCoinResponse != null) {
+                    if (newCoinResponse.eNewCoinItem != null) {
+                        swipeRefresh.setVisibility(View.VISIBLE);
+                        eNewCoinItem = newCoinResponse.eNewCoinItem;
+                        if (btnManPro.isChecked()) {
+                            if (newCoinResponse.eNewCoinItem.month != null && newCoinResponse.eNewCoinItem.month.size() > 0) {
+                                initDataToTeamView(newCoinResponse.eNewCoinItem.month);
+                            }
+                        } else if (btnManPic.isChecked()) {
+                            if (newCoinResponse.eNewCoinItem.week != null && newCoinResponse.eNewCoinItem.week.size() > 0) {
+                                initDataToTeamView(newCoinResponse.eNewCoinItem.week);
+                            }
                         }
-                        if (coinResponse.eCoinItem.banner != null && coinResponse.eCoinItem.banner.size() > 0) {
+
+                        if (newCoinResponse.eNewCoinItem.active != null && newCoinResponse.eNewCoinItem.active.size() > 0) {
+                            initDataToTaskView(newCoinResponse.eNewCoinItem.active);
+                        }
+                        if (newCoinResponse.eNewCoinItem.banner != null && newCoinResponse.eNewCoinItem.banner.size() > 0) {
                             currentPagerIndex = vprRecoImage.getCurrentItem();
                             cancelHandler();
                             vprRecommendData.clear();
-                            vprRecommendData.addAll(coinResponse.eCoinItem.banner);
+                            vprRecommendData.addAll(newCoinResponse.eNewCoinItem.banner);
                             if (vprRecommendData.size() > 0) {
                                 if (currentPagerIndex == 0) {
                                     currentPagerIndex = vprRecommendData.size() * 1000;
@@ -272,9 +327,8 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
                                 handler.sendEmptyMessage(2);
                             }
                         }
-                        tvwCoin.setText("我的积分：" + coinResponse.eCoinItem.integral + "");
                     } else {
-                        App.toast(getActivity(), coinResponse.message);
+                        App.toast(getActivity(), newCoinResponse.message);
                     }
                 } else {
                     App.toast(getActivity(), "数据获取失败");
@@ -284,9 +338,6 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
             @Override
             public void call(Throwable throwable) {
                 LogUtils.e(throwable.getMessage());
-                if (pi > 1) {
-                    pi--;
-                }
             }
         });
 
@@ -304,6 +355,7 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
                     }
                     break;
                 case 2:
+                    getData();
                     break;
                 default:
                     break;
@@ -356,7 +408,6 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
                         }
                     }).show();
         } else {
-            pi = 1;
             init();
         }
         if (vprRecommendData.size() > 0) {
@@ -383,39 +434,23 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, OnLoadMo
 
     }
 
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, final int i, final long l) {
-        final CoinItem coinItem = lstCoinItems.get(i);
-        startActivity(new Intent(getActivity(), CoinDetailAct.class).putExtra("id", coinItem.id + ""));
-    }
-
-    @Override
-    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        refreshLayout.finishLoadMore();
-        pi++;
-        LogUtils.e("&&&&&&&&&& " + pi);
-        if (eCoinItem != null) {
-            if (pi <= eCoinItem.page) {
-                request(pi);
-            } else {
-                refreshLayout.setNoMoreData(true);
-                refreshLayout.setEnableLoadMore(false);
-                App.toast(getActivity(), "没有更多内容了！");
-                pi--;
-            }
-        } else {
-            pi--;
-        }
-    }
-
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         refreshLayout.finishRefresh();
-        refreshLayout.setNoMoreData(false);
-        refreshLayout.setEnableLoadMore(true);
-        pi = 1;
-        request(pi);
+        getData();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        if (btnManPro.isChecked()) {
+            if (eNewCoinItem != null && eNewCoinItem.month != null && eNewCoinItem.month.size() > 0) {
+                initDataToTeamView(eNewCoinItem.month);
+            }
+        } else if (btnManPic.isChecked()) {
+            if (eNewCoinItem != null && eNewCoinItem.week != null && eNewCoinItem.week.size() > 0) {
+                initDataToTeamView(eNewCoinItem.week);
+            }
+        }
     }
 
     class MyPagerAdapter extends PagerAdapter {
