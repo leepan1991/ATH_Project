@@ -38,6 +38,7 @@ import cn.innovativest.ath.response.NoticeListResponse;
 import cn.innovativest.ath.response.OrderDetailResponse;
 import cn.innovativest.ath.response.OrderListResponse;
 import cn.innovativest.ath.response.PitunlockResponse;
+import cn.innovativest.ath.response.PropertyResponse;
 import cn.innovativest.ath.response.ReleaseResponse;
 import cn.innovativest.ath.response.ShareResponse;
 import cn.innovativest.ath.response.SpeedMineResponse;
@@ -226,4 +227,7 @@ public interface AthService {
 
     @GET("share")
     Observable<ShareResponse> share();
+
+    @GET("ath_recharge_list")
+    Observable<PropertyResponse> ath_recharge_list(@Query("page") int page);
 }

@@ -24,7 +24,7 @@
                 android:id="@+id/lltTop"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="@drawable/order_buy_avator_bg"
+                android:background="#3C6CEC"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -37,8 +37,8 @@
 
                     <ImageView
                         android:id="@+id/ivLoginAvatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
@@ -69,7 +69,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:maxLines="1"
                                 android:text="无言的结局"
-                                android:textColor="@color/font_666666"
+                                android:textColor="#FFFFFF"
                                 android:textSize="16sp"
 
                                 />
@@ -82,15 +82,15 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="5dp"
                                 android:contentDescription="@string/app_name"
-
                                 android:scaleType="fitXY"
-                                android:src="@drawable/mine_realnamed" />
+                                android:src="@drawable/ic_property_realed" />
 
                             <TextView
                                 android:id="@+id/tvRealNamed"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="5dp"
                                 android:maxLines="1"
                                 android:text="已实名认证"
                                 android:textColor="#F08519"
@@ -112,7 +112,7 @@
                                 android:paddingLeft="5dp"
                                 android:paddingRight="5dp"
                                 android:text="ATH总量：5236238"
-                                android:textColor="#F08519"
+                                android:textColor="#FFFFFF"
                                 android:textSize="10sp" />
 
                             <TextView
@@ -124,7 +124,7 @@
                                 android:paddingLeft="5dp"
                                 android:paddingRight="5dp"
                                 android:text="市场估值：1233445元"
-                                android:textColor="#5CCFEC"
+                                android:textColor="#FFFFFF"
                                 android:textSize="10sp" />
 
                         </LinearLayout>
@@ -138,159 +138,171 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnHelp"
-                style="@style/mBt"
-                android:layout_width="73dp"
-                android:layout_height="25dp"
-                android:layout_below="@id/lltTop"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="21dp"
-                android:background="@drawable/property_management_zhuli"
-                android:onClick="onClick"
-                android:text="助力值"
-                android:textSize="16dp" />
-
-            <View
-                android:id="@+id/vDashLine"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/btnHelp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/property_management_dash_line" />
-
             <LinearLayout
-                android:id="@+id/lltPeople"
+                android:id="@+id/lltScore"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
-                android:layout_below="@+id/vDashLine"
-                android:orientation="horizontal">
+                android:layout_height="79dp"
+                android:layout_below="@+id/lltTop">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_property_help" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:text="邀请人数"
-                        android:textColor="#5CCFEC"
-                        android:visibility="gone"
-                        android:textSize="15sp" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:text="助力值"
+                        android:textColor="#96969B"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/tvDirectInvitePeople"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="12"
-                        android:textColor="@color/font_333333"
-                        android:textSize="13sp" />
+                        android:layout_height="342dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:text="40.00"
+                        android:textColor="#303039"
+                        android:textSize="16sp" />
+
                 </LinearLayout>
 
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:gravity="center"-->
-                <!--android:orientation="vertical">-->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="#E4E4E4" />
 
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:maxLines="1"-->
-                <!--android:text="间接邀请人数"-->
-                <!--android:textColor="#5CCFEC"-->
-                <!--android:textSize="15sp" />-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <!--<TextView-->
-                <!--android:id="@+id/tvDashInvitePeople"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:paddingLeft="5dp"-->
-                <!--android:paddingRight="5dp"-->
-                <!--android:text="12"-->
-                <!--android:textColor="@color/font_333333"-->
-                <!--android:textSize="13sp" />-->
-                <!--</LinearLayout>-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_property_score" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:text="总积分"
+                        android:textColor="#96969B"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCoinAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:text="40.00"
+                        android:textColor="#303039"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
             </LinearLayout>
-
-            <View
-                android:id="@+id/vLine"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_below="@+id/lltPeople"
-                android:background="@drawable/property_management_line" />
-
-            <Button
-                android:id="@+id/btnCoin"
-                style="@style/mBt"
-                android:layout_width="85dp"
-                android:layout_height="25dp"
-                android:layout_below="@id/vLine"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="21dp"
-                android:background="@drawable/property_management_coin"
-                android:onClick="onClick"
-                android:text="积分总值"
-                android:textSize="16dp" />
-
-            <View
-                android:id="@+id/vDashLine2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/btnCoin"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/property_management_dash_line" />
 
             <LinearLayout
-                android:id="@+id/rltCoinContent"
-                android:layout_width="299dp"
-                android:layout_height="37dp"
-                android:layout_below="@+id/vDashLine2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/property_management_dash_bg"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:id="@+id/lltTitle"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_below="@+id/lltScore"
+                android:layout_gravity="center"
+                android:background="#F7F7FE"
+                android:orientation="horizontal"
+                android:weightSum="5">
 
                 <TextView
-                    android:id="@+id/tvCoinAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:text="12378344832"
-                    android:textColor="@color/font_333333"
+                    android:maxLines="1"
+                    android:text="钱包地址"
+                    android:textColor="#222222"
                     android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="ath"
+                    android:textColor="#222222"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="积分"
+                    android:textColor="#222222"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="对方的昵称或手机"
+                    android:textColor="#222222"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:text="时间"
+                    android:textColor="#222222"
+                    android:textSize="13sp" />
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnBack"
-                style="@style/mBt"
-                android:layout_width="209dp"
-                android:layout_height="36dp"
-                android:layout_below="@id/rltCoinContent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/register_btn"
-                android:onClick="onClick"
-                android:text="返回"
-                android:textSize="16dp"
-                android:visibility="invisible" />
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/property_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <cn.innovativest.ath.widget.XListView
+                    android:id="@+id/xlvProperty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lltTitle"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@android:color/transparent"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@android:color/transparent"></cn.innovativest.ath.widget.XListView>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         </RelativeLayout>
     </ScrollView>

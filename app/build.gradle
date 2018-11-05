@@ -36,7 +36,7 @@ android {
 
             minifyEnabled false
             shrinkResources false
-
+            signingConfig signingConfigs.myConfig
 
             buildConfigField "String", "HTTP_PROD", "\"http://ath.pub/api/v2/\""
             buildConfigField "String", "HTTP_TEST", "\"http://ath.wuhao.link/api/v2/\""

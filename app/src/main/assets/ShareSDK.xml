@@ -10,10 +10,10 @@
         BypassApproval="false" Enable="true" Id="2" SortId="2" />
 
 
-    <QQ AppId="100371282" AppKey="aed9b0303e3ed1e27bae87c33761161d" BypassApproval="false"
+    <QQ AppId="101514931" AppKey="819572fce6ad8e28d3aae25cf6561c20" BypassApproval="false"
         Enable="true" Id="3" ShareByAppClient="true" SortId="3" />
 
-    <QZone AppId="100371282" AppKey="aed9b0303e3ed1e27bae87c33761161d" BypassApproval="false"
+    <QZone AppId="101514931" AppKey="819572fce6ad8e28d3aae25cf6561c20" BypassApproval="false"
         Enable="true" Id="4" SortId="4" />
 
     <!-- 

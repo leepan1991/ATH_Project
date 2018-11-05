@@ -162,6 +162,11 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
 
     File file = null;
 
+    private boolean isCheck1 = false;
+    private boolean isCheck2 = false;
+    private boolean isCheck3 = false;
+    private boolean isCheck4 = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -336,9 +341,28 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 }
                 break;
             case R.id.btnShare:
-                showShare(edtContent.getText().toString(), "");
+                if (isCheck4) {
+                    showShare(edtContent.getText().toString(), file.getPath());
+                } else {
+                    if (isCheck1) {
+                        showShare(edtContent.getText().toString(), shareItem.lstImgs.get(0).text);
+                    }
+
+                    if (isCheck2) {
+                        showShare(edtContent.getText().toString(), shareItem.lstImgs.get(1).text);
+                    }
+
+                    if (isCheck3) {
+                        showShare(edtContent.getText().toString(), shareItem.lstImgs.get(2).text);
+                    }
+                }
+
                 break;
             case R.id.rltImg1:
+                isCheck1 = true;
+                isCheck2 = false;
+                isCheck3 = false;
+                isCheck4 = false;
                 ivImgCheck1.setImageResource(R.drawable.ic_share_checked);
                 ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck3.setImageResource(R.drawable.ic_share_check);
@@ -350,6 +374,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 }
                 break;
             case R.id.rltImg2:
+                isCheck1 = false;
+                isCheck2 = true;
+                isCheck3 = false;
+                isCheck4 = false;
                 ivImgCheck1.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck2.setImageResource(R.drawable.ic_share_checked);
                 ivImgCheck3.setImageResource(R.drawable.ic_share_check);
@@ -361,6 +389,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 }
                 break;
             case R.id.rltImg3:
+                isCheck1 = false;
+                isCheck2 = false;
+                isCheck3 = true;
+                isCheck4 = false;
                 ivImgCheck1.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck3.setImageResource(R.drawable.ic_share_checked);
@@ -376,6 +408,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck3.setImageResource(R.drawable.ic_share_check);
                 if (file != null) {
+                    isCheck1 = false;
+                    isCheck2 = false;
+                    isCheck3 = false;
+                    isCheck4 = true;
                     ivImgCheck4.setVisibility(View.VISIBLE);
                     ivImgCheck4.setImageResource(R.drawable.ic_share_checked);
                 } else {
@@ -393,6 +429,7 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 break;
             case R.id.btnCancele:// 取消
                 hideSelectWindow();
+                break;
         }
     }
 
@@ -410,6 +447,11 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
 //        oks.setImagePath(imgUrl);//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
+        if (isCheck4) {
+            oks.setImagePath(urlImg);
+        } else {
+            oks.setImageUrl(urlImg);
+        }
         oks.setUrl("http://ath.pub/");
         // site是分享此内容的网站名称，仅在QQ空间使用
         oks.setSite(getString(R.string.app_name));
@@ -563,6 +605,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                     ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck3.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck4.setImageResource(R.drawable.ic_share_checked);
+                    isCheck1 = false;
+                    isCheck2 = false;
+                    isCheck3 = false;
+                    isCheck4 = true;
                     ivImgCheck4.setVisibility(View.VISIBLE);
 //                    setImageViewMathParent(this, ivFan, bitmap);
 //                    modify(file);//后面打开
@@ -585,6 +631,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                     ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck3.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck4.setImageResource(R.drawable.ic_share_checked);
+                    isCheck1 = false;
+                    isCheck2 = false;
+                    isCheck3 = false;
+                    isCheck4 = true;
                     ivImgCheck4.setVisibility(View.VISIBLE);
 //                    setImageViewMathParent(this, ivFan, bitmap);
                 } else if (resultCode == RESULT_CANCELED) {
@@ -601,6 +651,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck3.setImageResource(R.drawable.ic_share_check);
                 ivImgCheck4.setImageResource(R.drawable.ic_share_checked);
+                isCheck1 = false;
+                isCheck2 = false;
+                isCheck3 = false;
+                isCheck4 = true;
                 ivImgCheck4.setVisibility(View.VISIBLE);
 //                setImageViewMathParent(this, ivFan, bitmap);
 //                modify(file);//后面打开
@@ -617,6 +671,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                     ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck3.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck4.setImageResource(R.drawable.ic_share_checked);
+                    isCheck1 = false;
+                    isCheck2 = false;
+                    isCheck3 = false;
+                    isCheck4 = true;
                     ivImgCheck4.setVisibility(View.VISIBLE);
 //                    setImageViewMathParent(this, ivFan, bitmap);
                 } else {
@@ -633,6 +691,10 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                     ivImgCheck2.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck3.setImageResource(R.drawable.ic_share_check);
                     ivImgCheck4.setImageResource(R.drawable.ic_share_checked);
+                    isCheck1 = false;
+                    isCheck2 = false;
+                    isCheck3 = false;
+                    isCheck4 = true;
                     ivImgCheck4.setVisibility(View.VISIBLE);
 //                    setImageViewMathParent(this, ivFan, bitmap);
 //                    modify(file);//后面打开
