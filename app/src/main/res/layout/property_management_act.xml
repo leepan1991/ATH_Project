@@ -24,7 +24,7 @@
                 android:id="@+id/lltTop"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="#3C6CEC"
+                android:background="@color/bg_banner_top"
                 android:gravity="center"
                 android:orientation="vertical">
 

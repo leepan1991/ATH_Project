@@ -40,7 +40,6 @@ import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
-import cn.innovativest.ath.widget.XListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -306,8 +305,7 @@ public class FriendHelpAct extends BaseAct implements RadioGroup.OnCheckedChange
             case R.id.tvwCopy:
                 if (!CUtils.isEmpty(copyContent) && userInfo != null && !CUtils.isEmpty(userInfo.code)) {
 //                    copy("快来我在ATH赚钱了，零投入有手机就行，特邀请您加入ATH生态圈财富直通车领取，邀请码：" + userInfo.code + "，我的邀请次数有限，还有随机红包赶快加入哦~" + copyContent);
-                    startActivity(new Intent(FriendHelpAct.this, ShareAct.class));
-                    finish();
+                    startActivity(new Intent(FriendHelpAct.this, ShareAct.class).putExtra("shareCode", userInfo.code));
                 } else {
                     App.toast(FriendHelpAct.this, "信息不能为空，请稍候再试");
                 }

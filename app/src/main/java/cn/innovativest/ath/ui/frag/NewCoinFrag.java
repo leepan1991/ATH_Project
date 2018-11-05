@@ -12,10 +12,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -23,12 +21,10 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,32 +32,22 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.adapter.CoinAdapter;
 import cn.innovativest.ath.adapter.CoinTaskAdapter;
 import cn.innovativest.ath.adapter.CoinTeamAdapter;
 import cn.innovativest.ath.bean.CoinActive;
 import cn.innovativest.ath.bean.CoinBanner;
-import cn.innovativest.ath.bean.CoinItem;
 import cn.innovativest.ath.bean.CoinTop;
-import cn.innovativest.ath.bean.ECoinItem;
 import cn.innovativest.ath.bean.ENewCoinItem;
 import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
-import cn.innovativest.ath.entities.MiningBody;
-import cn.innovativest.ath.response.BaseResponse;
-import cn.innovativest.ath.response.CoinResponse;
-import cn.innovativest.ath.response.MiningResponse;
 import cn.innovativest.ath.response.NewCoinResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
-import cn.innovativest.ath.ui.act.CoinDetailAct;
 import cn.innovativest.ath.ui.act.LoginAct;
-import cn.innovativest.ath.ui.act.RechargeAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
-import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.CustomDialog;
@@ -324,7 +310,6 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, RadioGro
                                         true);
                                 selectPointFromPagerIndex(currentPagerIndex);
                                 handler.sendEmptyMessageDelayed(1, 5000);
-                                handler.sendEmptyMessage(2);
                             }
                         }
                     } else {

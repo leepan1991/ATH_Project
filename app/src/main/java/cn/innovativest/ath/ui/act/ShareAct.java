@@ -48,19 +48,13 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.adapter.CoinTaskAdapter;
-import cn.innovativest.ath.adapter.CoinTeamAdapter;
 import cn.innovativest.ath.adapter.ShareTextAdapter;
-import cn.innovativest.ath.bean.CoinActive;
-import cn.innovativest.ath.bean.CoinTop;
 import cn.innovativest.ath.bean.ImgsItem;
 import cn.innovativest.ath.bean.ShareItem;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
-import cn.innovativest.ath.response.NewCoinResponse;
 import cn.innovativest.ath.response.ShareResponse;
 import cn.innovativest.ath.ui.BaseAct;
-import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.SDUtils;
 import cn.innovativest.ath.widget.XListView;
@@ -167,11 +161,18 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
     private boolean isCheck3 = false;
     private boolean isCheck4 = false;
 
+    String shareCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_act);
         ButterKnife.bind(this);
+        shareCode = getIntent().getStringExtra("shareCode");
+        if (TextUtils.isEmpty(shareCode)) {
+            finish();
+            return;
+        }
         initView();
         initFile();
     }
@@ -341,20 +342,24 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 }
                 break;
             case R.id.btnShare:
-                if (isCheck4) {
-                    showShare(edtContent.getText().toString(), file.getPath());
+                if (!TextUtils.isEmpty(edtContent.getText().toString())) {
+                    if (isCheck4) {
+                        showShare(edtContent.getText().toString(), file.getPath());
+                    } else {
+                        if (isCheck1) {
+                            showShare(edtContent.getText().toString(), AppConfig.ATH_APP_URL + shareItem.lstImgs.get(0).text);
+                        }
+
+                        if (isCheck2) {
+                            showShare(edtContent.getText().toString(), AppConfig.ATH_APP_URL + shareItem.lstImgs.get(1).text);
+                        }
+
+                        if (isCheck3) {
+                            showShare(edtContent.getText().toString(), AppConfig.ATH_APP_URL + shareItem.lstImgs.get(2).text);
+                        }
+                    }
                 } else {
-                    if (isCheck1) {
-                        showShare(edtContent.getText().toString(), shareItem.lstImgs.get(0).text);
-                    }
-
-                    if (isCheck2) {
-                        showShare(edtContent.getText().toString(), shareItem.lstImgs.get(1).text);
-                    }
-
-                    if (isCheck3) {
-                        showShare(edtContent.getText().toString(), shareItem.lstImgs.get(2).text);
-                    }
+                    App.toast(this, "请选择或输入分享内容");
                 }
 
                 break;
@@ -475,8 +480,8 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         ImgsItem imgsItem = lstImgTexts.get(i);
         if (!TextUtils.isEmpty(imgsItem.text)) {
-            edtContent.setText(imgsItem.text);
-            edtContent.setSelection(imgsItem.text.length());
+            edtContent.setText(imgsItem.text.replace("#####", shareCode));
+            edtContent.setSelection((imgsItem.text.replace("#####", shareCode)).length());
         }
     }
 
