@@ -2,66 +2,71 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="45dp"
-    android:orientation="horizontal"
-    android:weightSum="5">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvwAddress"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:maxLines="1"
-        android:text="钱包地址"
-        android:textColor="#96969B"
-        android:textSize="12sp" />
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
 
-    <TextView
-        android:id="@+id/tvwAth"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:maxLines="1"
-        android:text="ath"
-        android:textColor="#96969B"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tvwAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="钱包地址"
+            android:textColor="#96969B"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tvwScore"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:maxLines="1"
-        android:text="积分"
-        android:textColor="#96969B"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tvwAth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="ath"
+            android:textColor="#96969B"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tvwPhone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:maxLines="1"
-        android:text="对方的昵称或手机"
-        android:textColor="#96969B"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tvwScore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="积分"
+            android:textColor="#96969B"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tvwTime"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:maxLines="2"
-        android:text="时间"
-        android:textColor="#96969B"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tvwPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="充值平台"
+            android:textColor="#96969B"
+            android:textSize="12sp" />
 
+        <TextView
+            android:id="@+id/tvwTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="时间"
+            android:textColor="#96969B"
+            android:textSize="12sp" />
+    </LinearLayout>
 </LinearLayout>

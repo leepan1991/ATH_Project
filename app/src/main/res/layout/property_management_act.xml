@@ -270,7 +270,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="对方的昵称或手机"
+                    android:text="充值平台"
                     android:textColor="#222222"
                     android:textSize="13sp" />
 
@@ -289,13 +289,14 @@
             <com.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/property_refresh"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/lltTitle"
                 android:layout_weight="1">
 
                 <cn.innovativest.ath.widget.XListView
                     android:id="@+id/xlvProperty"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_below="@+id/lltTitle"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"

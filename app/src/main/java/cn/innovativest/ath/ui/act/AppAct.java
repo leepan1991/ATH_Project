@@ -1,5 +1,8 @@
 package cn.innovativest.ath.ui.act;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -73,6 +76,7 @@ public class AppAct extends BaseAct implements AdapterView.OnItemClickListener, 
         lstAppItems = new ArrayList<>();
         appAdapter = new AppAdapter(this, lstAppItems);
         appGird.setAdapter(appAdapter);
+        appGird.setOnItemClickListener(this);
 
         app_refresh.setOnRefreshListener(this);
         app_refresh.setNoMoreData(true);
@@ -150,6 +154,30 @@ public class AppAct extends BaseAct implements AdapterView.OnItemClickListener, 
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        AppItem appItem = lstAppItems.get(i);
+        openApp(appItem);
+    }
+
+    private void openApp(AppItem appItem) {
+        PackageManager packageManager = getPackageManager();
+        Intent intent = packageManager.getLaunchIntentForPackage(appItem.schemes);
+        if (intent == null) {
+            Uri uri = Uri.parse(appItem.url);
+            if (uri != null) {
+                try {
+                    Intent intent1 = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    App.toast(this, "未知应用");
+                }
+
+            } else {
+                App.toast(this, "app下载地址有误");
+            }
+        } else {
+            startActivity(intent);
+        }
 
     }
 

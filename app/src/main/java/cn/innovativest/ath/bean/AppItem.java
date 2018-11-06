@@ -7,4 +7,5 @@ public class AppItem implements Serializable {
     public String img;
     public String url;
     public String name;
+    public String schemes;
 }

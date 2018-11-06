@@ -44,6 +44,7 @@ import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.NewCoinResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
+import cn.innovativest.ath.ui.act.AppAct;
 import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.AppUtils;
@@ -474,6 +475,12 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, RadioGro
                 final CoinBanner recommendData = vprRecommendData
                         .get(position % vprRecommendData.size());
                 GlideApp.with(getActivity()).load(AppConfig.ATH_APP_URL + recommendData.img).into(ivwRecoBigImg);
+                ivwRecoBigImg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getActivity(), AppAct.class));
+                    }
+                });
             } catch (Exception e) {
                 // TODO: handle exception
             }

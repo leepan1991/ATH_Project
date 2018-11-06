@@ -1,6 +1,7 @@
 package cn.innovativest.ath.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,8 @@ public class PropertyAdapter extends BaseAdapter {
         holder.tvwAddress.setText(propertyItem.recharge);
         holder.tvwAth.setText(propertyItem.ath);
         holder.tvwScore.setText(propertyItem.integral);
-        holder.tvwPhone.setText(propertyItem.phone);
+        holder.tvwPhone.setText(propertyItem.type);
+
         holder.tvwTime.setText(AppUtils.formatTimeToFormat("yyyy/MM/dd", propertyItem.time));
 
         return convertView;

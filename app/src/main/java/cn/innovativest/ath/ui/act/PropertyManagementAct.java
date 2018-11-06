@@ -1,5 +1,10 @@
 package cn.innovativest.ath.ui.act;
 
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -229,7 +234,31 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        popDialog(lstPropertyItems.get(position).recharge);
+    }
 
+    private void popDialog(final String address) {
+        final AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                .setTitle("提示")//标题
+                .setMessage("钱包地址：" + address)//内容
+                .setIcon(R.mipmap.ic_launcher)//图标
+                .setPositiveButton("一键复制", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        copy(address);
+                    }
+                })
+                .create();
+        alertDialog1.show();
+    }
+
+    private void copy(String content) {
+        ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        // 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("Label", content);
+        // 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
+        App.toast(this, "复制成功");
     }
 
     @Override
