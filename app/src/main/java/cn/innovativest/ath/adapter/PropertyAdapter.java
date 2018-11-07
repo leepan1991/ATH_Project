@@ -1,12 +1,11 @@
 package cn.innovativest.ath.adapter;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.bean.CoinTop;
-import cn.innovativest.ath.bean.PropertyInfo;
 import cn.innovativest.ath.bean.PropertyItem;
 import cn.innovativest.ath.utils.AppUtils;
 
@@ -84,7 +81,7 @@ public class PropertyAdapter extends BaseAdapter {
 
     static class ViewHolder {
         @BindView(R.id.tvwAddress)
-        TextView tvwAddress;
+        Button tvwAddress;
         @BindView(R.id.tvwAth)
         TextView tvwAth;
         @BindView(R.id.tvwScore)

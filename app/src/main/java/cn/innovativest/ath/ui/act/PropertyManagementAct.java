@@ -21,6 +21,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,25 +29,21 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.adapter.CoinTaskAdapter;
-import cn.innovativest.ath.adapter.CoinTeamAdapter;
 import cn.innovativest.ath.adapter.PropertyAdapter;
-import cn.innovativest.ath.bean.CoinActive;
-import cn.innovativest.ath.bean.CoinTop;
 import cn.innovativest.ath.bean.EProperty;
 import cn.innovativest.ath.bean.PropertyItem;
 import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
-import cn.innovativest.ath.entities.MainPageBody;
 import cn.innovativest.ath.response.PropertyResponse;
-import cn.innovativest.ath.response.TradeResponse;
+import cn.innovativest.ath.response.RechargeResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
+import cn.innovativest.ath.widget.PropertyDialog;
 import cn.innovativest.ath.widget.XListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -102,6 +99,8 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
     int pi;
     private EProperty eProperty;
 
+    private PropertyDialog propertyDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +132,7 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
             UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
             initDataToView(userInfo);
         }
+        propertyDialog = new PropertyDialog(mCtx);
     }
 
     private void initDataToView(UserInfo userInfo) {
@@ -203,6 +203,37 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
 
     }
 
+    private void generateWallet(final String ath, final String score, final String code) {
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("ath_number", ath);
+        map.put("integral_number", score);
+        map.put("yzm", code);
+        LoadingUtils.getInstance().dialogShow(this, "钱包生成中...");
+
+        AthService service = App.get().getAthService();
+        service.ath_recharge(map).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<RechargeResponse>() {
+            @Override
+            public void call(RechargeResponse rechargeResponse) {
+                LoadingUtils.getInstance().dialogDismiss();
+                if (rechargeResponse.status == 1) {
+                    //deal
+                    pi = 1;
+                    getData(pi);
+                } else {
+                    App.toast(PropertyManagementAct.this, rechargeResponse.message);
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LoadingUtils.getInstance().dialogDismiss();
+                App.toast(PropertyManagementAct.this, "生成失败");
+            }
+        });
+
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -236,7 +267,16 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnWallet:
+                propertyDialog.setIsCancelable(true).setMsg("钱包生成")
+                        .setChooseListener(new PropertyDialog.ChooseListener() {
 
+                            @Override
+                            public void onChoose(int which) {
+                                if (which == WHICH_RIGHT) {
+                                    generateWallet(propertyDialog.getEdtSDSDText(), propertyDialog.getEdtScore(), propertyDialog.getEdtUCode());
+                                }
+                            }
+                        }).show();
                 break;
         }
     }
