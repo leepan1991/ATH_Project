@@ -68,5 +68,15 @@
             android:text="时间"
             android:textColor="#96969B"
             android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tvwStatus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="状态"
+            android:textColor="#96969B"
+            android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

@@ -70,8 +70,14 @@ public class PropertyAdapter extends BaseAdapter {
         holder.tvwAth.setText(propertyItem.ath);
         holder.tvwScore.setText(propertyItem.integral);
         holder.tvwPhone.setText(propertyItem.type);
-
         holder.tvwTime.setText(AppUtils.formatTimeToFormat("yyyy/MM/dd", propertyItem.time));
+        if (propertyItem.state == 0) {
+            holder.tvwStatus.setText("失效");
+        } else if (propertyItem.state == 1) {
+            holder.tvwStatus.setText("待充值");
+        } else if (propertyItem.state == 2) {
+            holder.tvwStatus.setText("完成");
+        }
 
         return convertView;
     }
@@ -87,6 +93,8 @@ public class PropertyAdapter extends BaseAdapter {
         TextView tvwPhone;
         @BindView(R.id.tvwTime)
         TextView tvwTime;
+        @BindView(R.id.tvwStatus)
+        TextView tvwStatus;
 
 
         public ViewHolder(View view) {

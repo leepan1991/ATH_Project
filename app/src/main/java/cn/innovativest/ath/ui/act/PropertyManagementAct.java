@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -86,6 +87,9 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
     @BindView(R.id.tvCoinAll)
     TextView tvCoinAll;
 
+    @BindView(R.id.btnWallet)
+    Button btnWallet;
+
     @BindView(R.id.xlvProperty)
     XListView xlvProperty;
 
@@ -124,6 +128,7 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
         property_refresh.setOnRefreshListener(this);
         property_refresh.setOnLoadMoreListener(this);
         xlvProperty.setOnItemClickListener(this);
+        btnWallet.setOnClickListener(this);
         if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
             UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
             initDataToView(userInfo);
@@ -229,7 +234,11 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnWallet:
 
+                break;
+        }
     }
 
     @Override
