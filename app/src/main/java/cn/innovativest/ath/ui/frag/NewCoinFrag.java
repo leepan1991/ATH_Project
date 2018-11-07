@@ -44,6 +44,7 @@ import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.NewCoinResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
+import cn.innovativest.ath.ui.act.About11Act;
 import cn.innovativest.ath.ui.act.AppAct;
 import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.utils.AESUtils;
@@ -478,7 +479,9 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, RadioGro
                 ivwRecoBigImg.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(getActivity(), AppAct.class));
+                        if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+                            startActivity(new Intent(getActivity(), About11Act.class));
+                        }
                     }
                 });
             } catch (Exception e) {

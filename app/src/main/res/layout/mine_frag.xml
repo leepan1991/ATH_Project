@@ -672,7 +672,7 @@
                         android:layout_centerVertical="true"
                         android:paddingLeft="20dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_notice" />
+                        android:src="@drawable/ic_app" />
 
                     <TextView
                         android:id="@+id/tvApp"

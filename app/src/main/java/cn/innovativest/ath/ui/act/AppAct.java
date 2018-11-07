@@ -102,7 +102,6 @@ public class AppAct extends BaseAct implements AdapterView.OnItemClickListener, 
                         initDataToView(appResponse.lstApps);
                     } else {
                         appAdapter.notifyDataSetChanged();
-//                        App.toast(AppAct.this, appResponse.message);
                     }
                 } else {
                     App.toast(AppAct.this, "数据获取失败");
