@@ -81,7 +81,7 @@ public class PropertyAdapter extends BaseAdapter {
 
     static class ViewHolder {
         @BindView(R.id.tvwAddress)
-        Button tvwAddress;
+        TextView tvwAddress;
         @BindView(R.id.tvwAth)
         TextView tvwAth;
         @BindView(R.id.tvwScore)

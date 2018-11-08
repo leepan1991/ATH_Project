@@ -39,7 +39,7 @@ android {
             signingConfig signingConfigs.myConfig
 
             buildConfigField "String", "HTTP_PROD", "\"http://ath.pub/api/v2/\""
-            buildConfigField "String", "HTTP_TEST", "\"http://ath.wuhao.link/api/v2/\""
+            buildConfigField "String", "HTTP_TEST", "\"http://ath.pub/api/v2/\""
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -50,7 +50,7 @@ android {
             signingConfig signingConfigs.myConfig
 
             buildConfigField "String", "HTTP_PROD", "\"http://ath.pub/api/v2/\""
-            buildConfigField "String", "HTTP_TEST", "\"http://ath.wuhao.link/api/v2/\""
+            buildConfigField "String", "HTTP_TEST", "\"http://ath.pub/api/v2/\""
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

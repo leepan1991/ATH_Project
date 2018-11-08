@@ -15,6 +15,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -38,6 +40,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -49,6 +53,7 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.ShareTextAdapter;
+import cn.innovativest.ath.bean.Address;
 import cn.innovativest.ath.bean.ImgsItem;
 import cn.innovativest.ath.bean.ShareItem;
 import cn.innovativest.ath.common.AppConfig;
@@ -56,6 +61,7 @@ import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.ShareResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.utils.SDUtils;
 import cn.innovativest.ath.widget.XListView;
 import cn.sharesdk.onekeyshare.OnekeyShare;
@@ -217,7 +223,7 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
             }
         });
         lstImgTexts = new ArrayList<ImgsItem>();
-        shareTextAdapter = new ShareTextAdapter(this, lstImgTexts);
+        shareTextAdapter = new ShareTextAdapter(this, lstImgTexts, handler);
         xlvShare.setAdapter(shareTextAdapter);
         xlvShare.setOnItemClickListener(this);
         btnCopy.setOnClickListener(this);
@@ -226,8 +232,22 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
         rltImg2.setOnClickListener(this);
         rltImg3.setOnClickListener(this);
         rltImg4.setOnClickListener(this);
-
+        PrefsManager.get().save("share", "");
         getData();
+
+        isCheck1 = true;
+        isCheck2 = false;
+        isCheck3 = false;
+        isCheck4 = false;
+        ivImgCheck1.setImageResource(R.drawable.ic_share_checked);
+        ivImgCheck2.setImageResource(R.drawable.ic_share_check);
+        ivImgCheck3.setImageResource(R.drawable.ic_share_check);
+        if (file != null) {
+            ivImgCheck4.setVisibility(View.VISIBLE);
+            ivImgCheck4.setImageResource(R.drawable.ic_share_check);
+        } else {
+            ivImgCheck4.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void initDataToImgView(List<ImgsItem> lstImgs) {
@@ -261,10 +281,27 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
         }
     }
 
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    ImgsItem imgsItem = new Gson().fromJson(PrefsManager.get().getString("share"), ImgsItem.class);
+                    if (imgsItem != null && !TextUtils.isEmpty(imgsItem.text)) {
+                        edtContent.setText(imgsItem.text.replace("#####", shareCode));
+                        edtContent.setSelection((imgsItem.text.replace("#####", shareCode)).length());
+                    }
+                    break;
+            }
+        }
+    };
+
     private void initDataToTextView(List<ImgsItem> imgItems) {
         lstImgTexts.clear();
         lstImgTexts.addAll(imgItems);
         shareTextAdapter.notifyDataSetChanged();
+
     }
 
     private void getData() {
@@ -479,10 +516,12 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         ImgsItem imgsItem = lstImgTexts.get(i);
+        PrefsManager.get().save("share", App.get().gson.toJson(imgsItem));
         if (!TextUtils.isEmpty(imgsItem.text)) {
             edtContent.setText(imgsItem.text.replace("#####", shareCode));
             edtContent.setSelection((imgsItem.text.replace("#####", shareCode)).length());
         }
+        shareTextAdapter.notifyDataSetChanged();
     }
 
     private void takePhoto() {

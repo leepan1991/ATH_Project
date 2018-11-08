@@ -141,10 +141,10 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, RadioGro
 
         tvwTitle.setText("积分兑换");
 
-        View team_header_view = mLayoutInft.inflate(R.layout.coin_team_header, null);
+//        View team_header_view = mLayoutInft.inflate(R.layout.coin_team_header, null);
 
         lstCoinTops = new ArrayList<CoinTop>();
-        xlvCoin.addHeaderView(team_header_view);
+//        xlvCoin.addHeaderView(team_header_view);
         coinTeamAdapter = new CoinTeamAdapter(getActivity(), lstCoinTops);
         xlvCoin.setAdapter(coinTeamAdapter);
 

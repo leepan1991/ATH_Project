@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:weightSum="6">
 
-        <Button
+        <TextView
             android:id="@+id/tvwAddress"
             android:layout_width="match_parent"
             android:layout_height="30dp"

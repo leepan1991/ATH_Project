@@ -27,6 +27,10 @@
                     layout="@layout/new_box_recomm_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="162dp" />
+                <include
+                    layout="@layout/coin_team_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp" />
 
                 <cn.innovativest.ath.widget.XListView
                     android:id="@+id/xlvCoin"

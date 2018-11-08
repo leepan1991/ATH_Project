@@ -7,6 +7,7 @@
     <color name="m_disable">#666666</color>
     <!-- normal -->
     <color name="nor_white">#FFFFFF</color>
+    <drawable name="nor_white">#FFFFFF</drawable>
     <color name="bg_btn_actionbar">#20ffffff</color>
     <color name="bg_banner_top">#0175C6</color>
     <color name="rgb_mm_trans">#00000000</color>

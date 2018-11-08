@@ -39,12 +39,53 @@
                     android:id="@+id/ivRealed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_coin_team" />
 
+                <RelativeLayout
+                    android:id="@+id/rltCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center">
 
+                    <RadioGroup
+                        android:id="@+id/rgTrade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/btnManPro"
+                            android:layout_width="107dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/sort_month_bg"
+                            android:button="@null"
+                            android:checked="true"
+                            android:gravity="top|center_horizontal"
+                            android:paddingTop="3dp"
+                            android:textColor="@drawable/sort_text_color"
+                            android:textSize="13sp" />
+
+
+                        <RadioButton
+                            android:id="@+id/btnManPic"
+                            android:layout_width="107dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/sort_week_bg"
+                            android:button="@null"
+                            android:gravity="top|center_horizontal"
+                            android:paddingTop="3dp"
+                            android:textColor="@drawable/sort_text_color"
+                            android:textSize="13sp" />
+                    </RadioGroup>
+
+                </RelativeLayout>
             </RelativeLayout>
 
 

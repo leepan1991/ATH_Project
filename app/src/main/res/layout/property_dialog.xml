@@ -149,15 +149,16 @@
         <Button
             android:id="@+id/btnCode"
             style="@style/mBt"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@drawable/register_get_code_btn"
+            android:maxLines="1"
             android:onClick="onClick"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
             android:text="获取验证码"
             android:textColor="@android:color/white"
-            android:textSize="13sp" />
+            android:textSize="11sp" />
 
     </RelativeLayout>
 
