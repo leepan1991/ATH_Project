@@ -64,7 +64,7 @@ public class About11Act extends BaseAct {
         });
         if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
             UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-            wvDesc.loadUrl("http://ath.pub/home/actives/index.html?phone=" + userInfo.phone + "&name=" + userInfo.name);
+            wvDesc.loadUrl("http://ath.pub/home/actives/index.html?phone=" + userInfo.phone + "&name=" + "\"" + userInfo.name + "\"");
         } else {
             finish();
             return;

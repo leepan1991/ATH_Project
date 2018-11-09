@@ -850,7 +850,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                         .setShowCounts(1)
                         .alwaysShow(false)//总是显示，调试时可以打开
                         .addGuidePage(GuidePage.newInstance()
-                                .addHighLightWithOptions(btnLockedTwo, HighLight.Shape.CIRCLE, options)
+                                .addHighLightWithOptions(btnLockedOne, HighLight.Shape.CIRCLE, options)
                                 .setLayoutRes(R.layout.view_guide_anchor))
                         .show();
                 PrefsManager.get().save("showImg", true);
