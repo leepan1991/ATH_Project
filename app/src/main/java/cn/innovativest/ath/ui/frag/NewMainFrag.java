@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.app.hubert.guide.NewbieGuide;
+import com.app.hubert.guide.core.Controller;
 import com.app.hubert.guide.listener.OnHighlightDrewListener;
 import com.app.hubert.guide.model.GuidePage;
 import com.app.hubert.guide.model.HighLight;
@@ -41,7 +42,6 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -204,6 +204,8 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     private Subscription subscription3;
 
     private CustomDialog customDialog;
+
+    Controller controller = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -830,7 +832,6 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         }
 
         if (App.get().user != null) {
-
             if (!PrefsManager.get().getBoolean("showImg")) {
                 HighlightOptions options = new HighlightOptions.Builder()
                         .setOnHighlightDrewListener(new OnHighlightDrewListener() {
@@ -844,14 +845,21 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                                 canvas.drawCircle(rectF.centerX(), rectF.centerY(), rectF.width() / 2 + 10, paint);
                             }
                         })
+                        .setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(getActivity(), RechargeAct.class).putExtra("flag", 1));
+                                controller.remove();
+                            }
+                        })
                         .build();
-                NewbieGuide.with(getActivity())
+                controller = NewbieGuide.with(getActivity())
                         .setLabel("anchor")
                         .setShowCounts(1)
                         .alwaysShow(false)//总是显示，调试时可以打开
                         .addGuidePage(GuidePage.newInstance()
                                 .addHighLightWithOptions(btnLockedOne, HighLight.Shape.CIRCLE, options)
-                                .setLayoutRes(R.layout.view_guide_anchor))
+                                .setLayoutRes(R.layout.view_guide_simple).setEverywhereCancelable(false))
                         .show();
                 PrefsManager.get().save("showImg", true);
             }

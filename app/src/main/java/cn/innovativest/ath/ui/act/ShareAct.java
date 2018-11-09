@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -53,7 +54,6 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.ShareTextAdapter;
-import cn.innovativest.ath.bean.Address;
 import cn.innovativest.ath.bean.ImgsItem;
 import cn.innovativest.ath.bean.ShareItem;
 import cn.innovativest.ath.common.AppConfig;
@@ -68,7 +68,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener {
+public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener, View.OnTouchListener {
 
     @BindView(R.id.btnBack)
     ImageButton btnBack;
@@ -222,6 +222,7 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
                 finish();
             }
         });
+        edtContent.setOnTouchListener(this);
         lstImgTexts = new ArrayList<ImgsItem>();
         shareTextAdapter = new ShareTextAdapter(this, lstImgTexts, handler);
         xlvShare.setAdapter(shareTextAdapter);
@@ -511,6 +512,46 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
         // 将ClipData内容放到系统剪贴板里。
         cm.setPrimaryClip(mClipData);
         App.toast(this, "复制成功");
+    }
+
+    /**
+     * 该类需要调用
+     * OnTouchListener接口
+     * 黄色部分是需要更改部分，改为自己的edittext
+     **/
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        //触摸的是EditText并且当前EditText可以滚动则将事件交给EditText处理；否则将事件交由其父类处理
+        if ((view.getId() == R.id.edtContent && canVerticalScroll(edtContent))) {
+            view.getParent().requestDisallowInterceptTouchEvent(true);
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                view.getParent().requestDisallowInterceptTouchEvent(false);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * EditText竖直方向是否可以滚动
+     *
+     * @param editText 需要判断的EditText
+     * @return true：可以滚动  false：不可以滚动
+     */
+    private boolean canVerticalScroll(EditText editText) {
+        //滚动的距离
+        int scrollY = editText.getScrollY();
+        //控件内容的总高度
+        int scrollRange = editText.getLayout().getHeight();
+        //控件实际显示的高度
+        int scrollExtent = editText.getHeight() - editText.getCompoundPaddingTop() - editText.getCompoundPaddingBottom();
+        //控件内容总高度与实际显示高度的差值
+        int scrollDifference = scrollRange - scrollExtent;
+
+        if (scrollDifference == 0) {
+            return false;
+        }
+
+        return (scrollY > 0) || (scrollY < scrollDifference - 1);
     }
 
     @Override
