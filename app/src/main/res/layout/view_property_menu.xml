@@ -28,15 +28,15 @@
 
 
     <Button
-        android:id="@+id/btnWallet"
-        android:layout_width="60dp"
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
-        android:background="@drawable/property_wallet_bg"
+        android:background="@drawable/selector_act_background"
         android:gravity="center"
-        android:text="新钱包"
+        android:text="钱包须知"
         android:textColor="@color/nor_white"
         android:textSize="13sp" />
 

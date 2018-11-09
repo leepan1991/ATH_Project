@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -62,6 +63,9 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
 
     @BindView(R.id.ivLoginAvatar)
     ImageView ivLoginAvatar;
+
+    @BindView(R.id.btnInfo)
+    Button btnInfo;
 
     @BindView(R.id.tvName)
     TextView tvName;
@@ -128,6 +132,7 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
         property_refresh.setOnLoadMoreListener(this);
         xlvProperty.setOnItemClickListener(this);
         btnWallet.setOnClickListener(this);
+        btnInfo.setOnClickListener(this);
         if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
             UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
             initDataToView(userInfo);
@@ -277,6 +282,9 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
                                 }
                             }
                         }).show();
+                break;
+            case R.id.btnInfo:
+                startActivity(new Intent(PropertyManagementAct.this, WalletInfoAct.class));
                 break;
         }
     }

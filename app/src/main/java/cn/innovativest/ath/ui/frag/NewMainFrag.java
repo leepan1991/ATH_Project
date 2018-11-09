@@ -5,6 +5,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +29,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.app.hubert.guide.NewbieGuide;
+import com.app.hubert.guide.listener.OnHighlightDrewListener;
+import com.app.hubert.guide.model.GuidePage;
+import com.app.hubert.guide.model.HighLight;
+import com.app.hubert.guide.model.HighlightOptions;
 import com.bumptech.glide.Glide;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -56,6 +66,7 @@ import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PayResult;
+import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.utils.SoundPoolUtil;
 import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.MyScrollView;
@@ -625,7 +636,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         tvwCoinValue.setText("积分: " + (!CUtils.isEmpty(mainPage.integral) ? String.format("%.2f", Float.parseFloat(mainPage.integral)) : 0.00));
 
         tvwATHAllValue.setText(!CUtils.isEmpty(mainPage.zongath) ? mainPage.zongath : "0.000000");
-        tvwMarketValue.setText(!CUtils.isEmpty(mainPage.zongath) ? AppUtils.floatToStringByTruncate( Double.valueOf(mainPage.zongath) * Double.valueOf(mainPage.exchange_rate),2) + " CNY" : 0.00 + " CNY");
+        tvwMarketValue.setText(!CUtils.isEmpty(mainPage.zongath) ? AppUtils.floatToStringByTruncate(Double.valueOf(mainPage.zongath) * Double.valueOf(mainPage.exchange_rate), 2) + " CNY" : 0.00 + " CNY");
 
         if (!CUtils.isEmpty(mainPage.pit)) {
 
@@ -816,6 +827,34 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
             btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji0);
             Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+        }
+
+        if (App.get().user != null) {
+
+            if (!PrefsManager.get().getBoolean("showImg")) {
+                HighlightOptions options = new HighlightOptions.Builder()
+                        .setOnHighlightDrewListener(new OnHighlightDrewListener() {
+                            @Override
+                            public void onHighlightDrew(Canvas canvas, RectF rectF) {
+                                Paint paint = new Paint();
+                                paint.setColor(Color.WHITE);
+                                paint.setStyle(Paint.Style.STROKE);
+                                paint.setStrokeWidth(10);
+                                paint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
+                                canvas.drawCircle(rectF.centerX(), rectF.centerY(), rectF.width() / 2 + 10, paint);
+                            }
+                        })
+                        .build();
+                NewbieGuide.with(getActivity())
+                        .setLabel("anchor")
+                        .setShowCounts(1)
+                        .alwaysShow(false)//总是显示，调试时可以打开
+                        .addGuidePage(GuidePage.newInstance()
+                                .addHighLightWithOptions(btnLockedTwo, HighLight.Shape.CIRCLE, options)
+                                .setLayoutRes(R.layout.view_guide_anchor))
+                        .show();
+                PrefsManager.get().save("showImg", true);
+            }
         }
     }
 

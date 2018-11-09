@@ -66,6 +66,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
                                 android:maxLines="1"
                                 android:text="无言的结局"
                                 android:textColor="#FFFFFF"
@@ -79,6 +81,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
                                 android:layout_centerVertical="true"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="5dp"
                                 android:contentDescription="@string/app_name"
                                 android:scaleType="fitXY"
@@ -89,11 +92,25 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
                                 android:maxLines="1"
                                 android:text="已实名认证"
                                 android:textColor="#F08519"
                                 android:textSize="10sp" />
+
+                            <Button
+                                android:id="@+id/btnWallet"
+                                android:layout_width="60dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/property_wallet_bg"
+                                android:gravity="center"
+                                android:text="新钱包"
+                                android:textColor="@color/nor_white"
+                                android:textSize="13sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -128,7 +145,6 @@
 
 
                     </LinearLayout>
-
 
 
                 </RelativeLayout>
