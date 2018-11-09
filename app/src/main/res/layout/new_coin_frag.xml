@@ -5,7 +5,8 @@
     android:background="@drawable/ic_coin_bg"
     android:orientation="vertical">
 
-    <include layout="@layout/view_actionbar_mine" />
+    <include layout="@layout/view_actionbar_mine"
+        android:visibility="gone"/>
 
     <cn.innovativest.ath.widget.VpSwipeRefreshLayout
         android:id="@+id/swipeRefresh"
