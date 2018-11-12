@@ -14,7 +14,6 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.bean.TradeItem;
-import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
 

@@ -40,6 +40,7 @@ import cn.innovativest.ath.response.PropertyResponse;
 import cn.innovativest.ath.response.RechargeResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.AESUtils;
+import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
@@ -152,7 +153,8 @@ public class PropertyManagementAct extends BaseAct implements AdapterView.OnItem
         }
         if (userInfo.mainPage != null) {
             tvATHAll.setText("ATH总量：" + (!CUtils.isEmpty(userInfo.mainPage.ath) ? String.format("%.6f", Float.parseFloat(userInfo.mainPage.ath)) : 0.000000));
-            tvMarketAll.setText("市场估值：" + (!CUtils.isEmpty(userInfo.mainPage.exchange) ? String.format("%.2f", Float.parseFloat(userInfo.mainPage.exchange)) : 0.00));
+//            tvMarketAll.setText("市场估值：" + (!CUtils.isEmpty(userInfo.mainPage.exchange) ? String.format("%.2f", Float.parseFloat(userInfo.mainPage.exchange)) : 0.00));
+            tvMarketAll.setText("市场估值：" + (!CUtils.isEmpty(userInfo.mainPage.ath) ? AppUtils.floatToStringByTruncate(Double.valueOf(userInfo.mainPage.ath) * Double.valueOf(userInfo.mainPage.xishu), 2) + " CNY" : 0.00 + " CNY"));
             tvDirectInvitePeople.setText((!CUtils.isEmpty(userInfo.mainPage.help_value) ? String.format("%.2f", Float.parseFloat(userInfo.mainPage.help_value)) : 0.00 + ""));
             tvCoinAll.setText((!CUtils.isEmpty(userInfo.mainPage.integral) ? String.format("%.2f", Float.parseFloat(userInfo.mainPage.integral)) : 0.00 + ""));
         } else {
