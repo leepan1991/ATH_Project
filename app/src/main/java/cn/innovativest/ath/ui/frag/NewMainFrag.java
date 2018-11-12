@@ -253,7 +253,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
             @Override
             public boolean onPreDraw() {
 
-                int dd = (AppUtils.getDisplayWidth(getActivity()) - AppUtils.dip2px(getActivity(), 30) - rltCollecting.getMeasuredWidth() * 3) / 2;
+                int dd = (AppUtils.getDisplayWidth(mCtx) - AppUtils.dip2px(mCtx, 30) - rltCollecting.getMeasuredWidth() * 3) / 2;
 
                 LinearLayout.LayoutParams layout11 = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -909,7 +909,6 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
-                LogUtils.e(throwable.getMessage().toString());
             }
         });
     }
@@ -959,7 +958,6 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
-                LogUtils.e(throwable.getMessage().toString());
             }
         });
     }

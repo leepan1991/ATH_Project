@@ -342,7 +342,7 @@ public class MineFrag extends BaseFrag {
             public void call(Throwable throwable) {
 //                LoadingUtils.getInstance().dialogDismiss();
                 getCommonData();
-                App.toast(getActivity(), "获取失败");
+                App.toast(mCtx, "获取失败");
             }
         });
     }

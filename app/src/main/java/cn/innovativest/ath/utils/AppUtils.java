@@ -292,7 +292,12 @@ public class AppUtils {
 
 
     public static int getDisplayWidth(Context context) {
-        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        DisplayMetrics dm = null;
+        try {
+            dm = context.getResources().getDisplayMetrics();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return dm.widthPixels;
     }
 
@@ -476,7 +481,7 @@ public class AppUtils {
     public static String floatToStringByTruncate(double num, int remainBitNum) {
         String numStr = Double.toString(num);
         BigDecimal bd = new BigDecimal(numStr);
-        bd = bd.setScale(remainBitNum,BigDecimal.ROUND_DOWN);
+        bd = bd.setScale(remainBitNum, BigDecimal.ROUND_DOWN);
         return bd.toString();
     }
 

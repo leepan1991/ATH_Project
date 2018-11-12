@@ -179,7 +179,6 @@ public class UploadIdAct extends BaseAct {
             @Override
             public void call(Throwable throwable) {
                 LoadingUtils.getInstance().dialogDismiss();
-                LogUtils.e(throwable.getMessage().toString());
             }
         });
 

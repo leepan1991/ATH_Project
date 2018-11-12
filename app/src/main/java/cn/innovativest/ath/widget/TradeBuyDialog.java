@@ -213,7 +213,7 @@ public class TradeBuyDialog extends Dialog implements View.OnClickListener {
             case R.id.dgAllBuy:
                 if (!CUtils.isEmpty(tradeItem.getQuota()) && tradeItem.getQuota().contains(",")) {
                     String str[] = tradeItem.getQuota().split(",");
-                    if (str.length == 2) {
+                    if (str != null && str.length == 2) {
 //                        edtSDSD.setText(String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())));
 //                        edtSDSD.setSelection(String.format("%.6f", Float.parseFloat(str[1]) / Float.parseFloat(tradeItem.getCny())).length());
                         edtSDSD.setText(AppUtils.floatToStringByTruncate(Double.parseDouble(str[1]) / Double.parseDouble(tradeItem.getCny()), 6));
