@@ -181,10 +181,14 @@ public class RealCentificationAct extends BaseAct {
                 startActivityForResult(new Intent(this, SettingUserInfoOneAct.class), 101);
                 break;
             case R.id.rltHighCertification:
-                if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number)) {
-                    startActivityForResult(new Intent(this, HighCentificationAct.class), 101);
+                if (userInfo != null) {
+                    if (!CUtils.isEmpty(userInfo.real_name) && !CUtils.isEmpty(userInfo.id_number)) {
+                        startActivityForResult(new Intent(this, HighCentificationAct.class), 101);
+                    } else {
+                        startActivityForResult(new Intent(this, SettingUserInfoOneAct.class), 101);
+                    }
                 } else {
-                    startActivityForResult(new Intent(this, SettingUserInfoOneAct.class), 101);
+                    requestUserInfo();
                 }
                 break;
         }
