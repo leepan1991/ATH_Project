@@ -38,6 +38,7 @@ android {
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.myConfig
+            versionNameSuffix "_debug"
 
             buildConfigField "String", "HTTP_PROD", "\"http://ath.pub/api/v2/\""
             buildConfigField "String", "HTTP_TEST", "\"http://ath.pub/api/v2/\""
@@ -54,6 +55,20 @@ android {
             buildConfigField "String", "HTTP_TEST", "\"http://ath.pub/api/v2/\""
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->  // each 改为 all
+                    def fileName
+                    def outFile = output.outputFile
+                    if (outFile != null && outFile.name.endsWith('.apk')) {
+                        if (variant.buildType.name.equals('release')) {
+                            fileName = "ath_${defaultConfig.versionCode}_${defaultConfig.versionName}_${releaseTime()}.apk"
+                        } else if (variant.buildType.name.equals('debug')) {
+                            fileName = "ath_${defaultConfig.versionCode}_${defaultConfig.versionName}_${releaseTime()}_debug.apk"
+                        }
+                        outputFileName = fileName  //  output.outputFile 改为 outputFileName
+                    }
+                }
+            }
         }
     }
     lintOptions {
