@@ -150,6 +150,9 @@ public class MineFrag extends BaseFrag {
     @BindView(R.id.rltAboutUs)
     RelativeLayout rltAboutUs;
 
+    @BindView(R.id.rltCooperation)
+    RelativeLayout rltCooperation;
+
     @BindView(R.id.lltBuy)
     LinearLayout lltBuy;
 
@@ -285,6 +288,7 @@ public class MineFrag extends BaseFrag {
         rltApp.setOnClickListener(this);
         rltAboutATH.setOnClickListener(this);
         rltAboutUs.setOnClickListener(this);
+        rltCooperation.setOnClickListener(this);
 
         lltBuy.setOnClickListener(this);
         lltSale.setOnClickListener(this);
@@ -606,6 +610,9 @@ public class MineFrag extends BaseFrag {
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 }
+                break;
+            case R.id.rltCooperation:
+                App.toast(getActivity(), "开发中");
                 break;
         }
 

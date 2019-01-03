@@ -3,6 +3,7 @@ package cn.innovativest.ath.utils;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
@@ -42,6 +43,28 @@ public class HeaderUtil {
 
     public static String getToken() {
         return App.get().user == null ? "" : AESUtils.encryptData(AESUtils.decryptData(App.get().user.getToken()).substring(0, AESUtils.decryptData(App.get().user.getToken()).indexOf("_#HYAK!")) + String.valueOf(System.currentTimeMillis()));
+    }
+
+    public static boolean checkSonApp(Context context) {
+        return checkAppInstalled(context, "com.youdegame.appgame");
+    }
+
+    private static boolean checkAppInstalled(Context context, String pkgName) {
+        if (pkgName == null || pkgName.isEmpty()) {
+            return false;
+        }
+        PackageInfo packageInfo;
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(pkgName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            packageInfo = null;
+            e.printStackTrace();
+        }
+        if (packageInfo == null) {
+            return false;
+        } else {
+            return true;//true为安装了，false为未安装
+        }
     }
 
     //产生 一个范围的内的数
