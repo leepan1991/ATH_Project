@@ -237,4 +237,7 @@ public interface AthService {
 
     @POST("ath_recharge")
     Observable<RechargeResponse> ath_recharge(@Body HashMap<String, String> map);
+
+    @GET("ad_index")
+    Observable<BaseResponse> ad_index();
 }

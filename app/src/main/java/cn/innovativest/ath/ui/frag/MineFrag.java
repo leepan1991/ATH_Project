@@ -39,6 +39,7 @@ import cn.innovativest.ath.ui.act.AboutUsAct;
 import cn.innovativest.ath.ui.act.AccountSettingAct;
 import cn.innovativest.ath.ui.act.AppAct;
 import cn.innovativest.ath.ui.act.CoinTradeManagementAct;
+import cn.innovativest.ath.ui.act.CooperationAct;
 import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.ui.act.MyTradeAct;
 import cn.innovativest.ath.ui.act.NoticeListAct;
@@ -612,7 +613,7 @@ public class MineFrag extends BaseFrag {
                 }
                 break;
             case R.id.rltCooperation:
-                App.toast(getActivity(), "开发中");
+                startActivity(new Intent(getActivity(), CooperationAct.class));
                 break;
         }
 
