@@ -2,12 +2,14 @@ package cn.innovativest.ath.ui.frag;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -46,6 +48,7 @@ import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.About11Act;
 import cn.innovativest.ath.ui.act.AppAct;
+import cn.innovativest.ath.ui.act.HtmlAct;
 import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.AppUtils;
@@ -476,11 +479,24 @@ public class NewCoinFrag extends BaseFrag implements OnRefreshListener, RadioGro
                 final CoinBanner recommendData = vprRecommendData
                         .get(position % vprRecommendData.size());
                 GlideApp.with(getActivity()).load(AppConfig.ATH_APP_URL + recommendData.img).into(ivwRecoBigImg);
+                ivwRecoBigImg.setTag(recommendData);
                 ivwRecoBigImg.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
-                            startActivity(new Intent(getActivity(), About11Act.class));
+                        CoinBanner tempCoinBanner = (CoinBanner) v.getTag();
+                        if (tempCoinBanner.type.equals("1")) {//内部打开
+                            if (!TextUtils.isEmpty(tempCoinBanner.link))
+                                startActivity(new Intent(getActivity(), HtmlAct.class).putExtra("url", tempCoinBanner.link));
+                        } else if (tempCoinBanner.type.equals("0")) {//外部打开
+                            if (!TextUtils.isEmpty(tempCoinBanner.link)) {
+                                Uri uri = Uri.parse(tempCoinBanner.link);
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                startActivity(intent);
+                            }
+                        } else {
+                            if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+                                startActivity(new Intent(getActivity(), About11Act.class));
+                            }
                         }
                     }
                 });

@@ -17,6 +17,8 @@ import com.umeng.analytics.MobclickAgent;
 
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
+import cn.innovativest.ath.core.AthService;
+import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.ui.frag.CoinFrag;
 import cn.innovativest.ath.ui.frag.MainFrag;
@@ -24,7 +26,11 @@ import cn.innovativest.ath.ui.frag.MineFrag;
 import cn.innovativest.ath.ui.frag.NewCoinFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
 import cn.innovativest.ath.ui.frag.TradeFrag;
+import cn.innovativest.ath.utils.CUtils;
+import cn.innovativest.ath.utils.LogUtils;
 import io.rong.imkit.RongIM;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 
 public class NewMainAct extends BaseAct {
@@ -57,6 +63,8 @@ public class NewMainAct extends BaseAct {
         setContentView(R.layout.new_main_act);
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("isAboutAth")) {
             popDialog();
+        } else {
+            getCommonData();
         }
         mTextviewArray = new String[4];
         mTextviewArray[0] = getString(R.string.tab_main);
@@ -74,11 +82,55 @@ public class NewMainAct extends BaseAct {
                 .setPositiveButton("知道了", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        getCommonData();
                     }
                 })
                 .create();
         alertDialog1.show();
+    }
+
+    private void popSpecialDialog(String msg) {
+        final AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                .setTitle("特殊公告")//标题
+                .setMessage(msg)//内容
+                .setIcon(R.mipmap.ic_launcher)//图标
+                .setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .create();
+        alertDialog1.show();
+    }
+
+    private void getCommonData() {
+
+        AthService service = App.get().getAthService();
+        service.commonInfo(24).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<CommonResponse>() {
+            @Override
+            public void call(CommonResponse commonResponse) {
+                if (commonResponse != null) {
+                    if (commonResponse.commonItem != null) {
+                        if (commonResponse.commonItem.title.equals("特殊公告")) {
+                            if (!CUtils.isEmpty(commonResponse.commonItem.exchange)) {
+                                popSpecialDialog(commonResponse.commonItem.exchange);
+                            }
+                        }
+                    } else {
+                        App.toast(NewMainAct.this, commonResponse.message);
+                    }
+                } else {
+//                    App.toast(NewMainAct.this, "数据获取失败");
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e(throwable.getMessage());
+//                App.toast(NewMainAct.this, "数据获取失败");
+            }
+        });
+
     }
 
     private void initView() {
