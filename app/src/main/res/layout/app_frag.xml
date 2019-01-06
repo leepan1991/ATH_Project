@@ -26,7 +26,8 @@
             android:maxLines="1"
             android:text="生态圈子应用"
             android:textColor="#222222"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/app_refresh"

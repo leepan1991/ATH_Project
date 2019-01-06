@@ -2,7 +2,6 @@ package cn.innovativest.ath.ui.act;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.KeyEvent;
@@ -20,8 +19,7 @@ import cn.innovativest.ath.R;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.ui.BaseAct;
-import cn.innovativest.ath.ui.frag.CoinFrag;
-import cn.innovativest.ath.ui.frag.MainFrag;
+import cn.innovativest.ath.ui.frag.AppFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
 import cn.innovativest.ath.ui.frag.NewCoinFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
@@ -42,10 +40,11 @@ public class NewMainAct extends BaseAct {
 //            R.drawable.main_account_not_select};
     private int[] mBgArray = {R.drawable.new_tab_main_logo,
             R.drawable.new_tab_trade_logo,
-            R.drawable.new_tab_coin_logo, R.drawable.new_tab_mine_logo};
+            R.drawable.new_tab_coin_logo,
+            R.drawable.new_tab_app_logo, R.drawable.new_tab_mine_logo};
     private String[] mTextviewArray;
     private Class[] fragmentArray = {NewMainFrag.class,
-            TradeFrag.class, NewCoinFrag.class, MineFrag.class};
+            TradeFrag.class, NewCoinFrag.class, AppFrag.class, MineFrag.class};
 
     private long mExitTime;
 
@@ -66,11 +65,12 @@ public class NewMainAct extends BaseAct {
         } else {
             getCommonData();
         }
-        mTextviewArray = new String[4];
+        mTextviewArray = new String[5];
         mTextviewArray[0] = getString(R.string.tab_main);
         mTextviewArray[1] = getString(R.string.tab_purchase);
         mTextviewArray[2] = getString(R.string.tab_coin);
-        mTextviewArray[3] = getString(R.string.tab_mine);
+        mTextviewArray[3] = getString(R.string.tab_app);
+        mTextviewArray[4] = getString(R.string.tab_mine);
         initView();
     }
 

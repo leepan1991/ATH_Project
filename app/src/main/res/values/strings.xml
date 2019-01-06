@@ -5,6 +5,7 @@
     <string name="tab_main">首页</string>
     <string name="tab_purchase">交易中心</string>
     <string name="tab_coin">活动中心</string>
+    <string name="tab_app">生态圈应用</string>
     <string name="tab_mine">个人账户</string>
 
     <string name="regist_code_get">获取验证码</string>
