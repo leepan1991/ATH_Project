@@ -1174,13 +1174,43 @@ public class RechargeAct extends BaseAct {
         });
     }
 
+    private void getOrderATHInfo(String pit) {
+        mPit = pit;
+        AthService service = App.get().getAthService();
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("pit", pit);
+        map.put("type", "ATH");
+        service.payOrder(map).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<UserInfoResponse>() {
+            @Override
+            public void call(UserInfoResponse userInfoResponse) {
+                LogUtils.e(userInfoResponse.message);
+                if (userInfoResponse.status == 1) {
+                    if (!CUtils.isEmpty(userInfoResponse.data)) {
+                        payV2(AESUtils.decryptData(userInfoResponse.data));
+                    } else {
+                        App.toast(RechargeAct.this, "支付失败");
+                    }
+                } else {
+                    App.toast(RechargeAct.this, userInfoResponse.message);
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e(throwable.getMessage().toString());
+            }
+        });
+    }
+
     private void recharge(final String pit) {
-        customDialog.setMRightBt("去充值").setMsg("支付宝充值解锁矿机").setIsCancelable(true)
+        customDialog.setMLeftBtt("ATH购买").setMRightBt("支付宝购买").setMsg("充值解锁高级矿机").setIsCancelable(true)
                 .setChooseListener(new CustomDialog.ChooseListener() {
                     @Override
                     public void onChoose(int which) {
                         if (which == WHICH_RIGHT) {
                             getOrderInfo(pit);
+                        } else if (which == WHICH_LEFT) {
+                            getOrderATHInfo(pit);
                         }
                     }
                 }).show();

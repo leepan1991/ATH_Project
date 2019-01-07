@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -43,6 +44,9 @@ public class AppFrag extends BaseFrag implements AdapterView.OnItemClickListener
 
     @BindView(R.id.tvwTitle)
     TextView tvwTitle;
+
+    @BindView(R.id.rltRightFun)
+    RelativeLayout rltRightFun;
 
     @BindView(R.id.app_refresh)
     SmartRefreshLayout app_refresh;
@@ -85,7 +89,8 @@ public class AppFrag extends BaseFrag implements AdapterView.OnItemClickListener
     private void initView() {
         btnBack.setImageResource(R.drawable.login_arrow_left);
         tvwTitle.setText("生态圈应用");
-        btnBack.setVisibility(View.INVISIBLE);
+        btnBack.setVisibility(View.GONE);
+        rltRightFun.setVisibility(View.GONE);
 
         lstAppItems = new ArrayList<>();
         appAdapter = new AppAdapter(getActivity(), lstAppItems);

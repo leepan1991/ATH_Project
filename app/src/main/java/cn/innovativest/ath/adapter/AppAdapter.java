@@ -1,14 +1,18 @@
 package cn.innovativest.ath.adapter;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,8 +70,26 @@ public class AppAdapter extends BaseAdapter {
 
         GlideApp.with(context).load(AppConfig.ATH_APP_URL + appItem.img).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_logo);
         holder.tvwName.setText(appItem.name);
-
+        if (isInstallApp(context, appItem.schemes)) {
+            holder.btnFun.setText("打开");
+        } else {
+            holder.btnFun.setText("安装");
+        }
         return convertView;
+    }
+
+    public static boolean isInstallApp(Context context, String pname) {
+        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName.toLowerCase(Locale.ENGLISH);
+                if (pn.equals(pname)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     static class ViewHolder {
@@ -75,6 +97,8 @@ public class AppAdapter extends BaseAdapter {
         ImageView iv_logo;
         @BindView(R.id.tvwName)
         TextView tvwName;
+        @BindView(R.id.btnFun)
+        Button btnFun;
 
 
         public ViewHolder(View view) {

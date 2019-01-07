@@ -39,7 +39,7 @@ public class RetrofitClient {
                         .addHeader("token", HeaderUtil.getToken())
                         .addHeader("deviceToken", PrefsManager.get().getString("deviceToken"))
                         .addHeader("app-type", HeaderUtil.app_type)
-                        .addHeader("son_app", HeaderUtil.checkSonApp(mCtx) ? "1" : "0")
+//                        .addHeader("son_app", HeaderUtil.checkSonApp(mCtx) ? "1" : "0")
                         .addHeader("model", HeaderUtil.getModel())
                         .addHeader("version", BuildConfig.VERSION_CODE + "")
                         .addHeader("version-code", BuildConfig.VERSION_NAME)

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <ImageView
@@ -27,4 +28,20 @@
         android:textColor="#5F5D5D"
         android:textSize="13sp" />
 
+    <Button
+        android:id="@+id/btnFun"
+        android:layout_width="45dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/apply_bg_shape"
+        android:clickable="false"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:paddingLeft="5dp"
+        android:paddingTop="2.5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="2.5dp"
+        android:text="安装"
+        android:textSize="13dp" />
 </LinearLayout>
