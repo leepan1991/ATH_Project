@@ -281,6 +281,7 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
             public void call(StartImgResponse startImgResponse) {
                 if (startImgResponse != null && startImgResponse.status == 1 && startImgResponse.lstStartImg != null && startImgResponse.lstStartImg.size() == 1) {
                     doDownloadImage(AppConfig.ATH_APP_URL + startImgResponse.lstStartImg.get(0).img);
+                    PrefsManager.get().save("time", startImgResponse.lstStartImg.get(0).time);
                 }
             }
         }, new Action1<Throwable>() {

@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ import cn.innovativest.ath.bean.MainPage;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.entities.MainPageBody;
 import cn.innovativest.ath.entities.MiningBody;
+import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.response.MainPageResponse;
 import cn.innovativest.ath.response.MiningResponse;
 import cn.innovativest.ath.response.PitunlockResponse;
@@ -70,6 +72,7 @@ import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.utils.SoundPoolUtil;
 import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.MyScrollView;
+import cn.innovativest.ath.widget.ScrollTextView;
 import cn.innovativest.ath.widget.VpSwipeRefreshLayout;
 import rx.Observable;
 import rx.Subscriber;
@@ -93,6 +96,12 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
     @BindView(R.id.scrollView)
     MyScrollView scrollView;
+
+    @BindView(R.id.rltNotify)
+    RelativeLayout rltNotify;
+
+    @BindView(R.id.tvwNotifyValue)
+    ScrollTextView tvwNotifyValue;
 
     @BindView(R.id.tvwCollectValue)
     TextView tvwCollectValue;
@@ -238,6 +247,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         super.onResume();
         MobclickAgent.onPageStart("MainAct");
         request("1.0");
+
     }
 
     @Override
@@ -369,6 +379,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     }
 
     private void addListener() {
+        rltNotify.setOnClickListener(this);
         btnCollecting.setOnClickListener(this);
         btnUnlockOne.setOnClickListener(this);
         btnUnlockTwo.setOnClickListener(this);
@@ -381,6 +392,37 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
         mSwipeLayout.setOnRefreshListener(this);
         mSwipeLayout.setEnableLoadMore(false);
     }
+
+    private void getCommonData() {
+
+        AthService service = App.get().getAthService();
+        service.commonInfo(7).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<CommonResponse>() {
+            @Override
+            public void call(CommonResponse commonResponse) {
+                if (commonResponse != null) {
+                    if (commonResponse.commonItem != null) {
+//                        initDataToView(tradeResponse.tradeItems);
+                        if (commonResponse.commonItem.title.equals("系统公告")) {
+                            tvwNotifyValue.setText(commonResponse.commonItem.exchange);
+//                                tvwNotice.setTimes(20000);
+                        }
+                    } else {
+                        App.toast(getActivity(), commonResponse.message);
+                    }
+                } else {
+                    App.toast(getActivity(), "数据获取失败");
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e(throwable.getMessage());
+                App.toast(getActivity(), "数据获取失败");
+            }
+        });
+
+    }
+
 
     /**
      * RxJava 方式实现
@@ -974,6 +1016,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     if (mainPageResponse.status == 1) {
                         if (mainPageResponse.mainPage != null) {
                             initDataToView(mainPageResponse.mainPage);
+                            getCommonData();
                         } else {
                             App.toast(getActivity(), mainPageResponse.message);
                         }
@@ -989,6 +1032,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
             public void call(Throwable throwable) {
                 LogUtils.e(throwable.getMessage());
                 App.toast(getActivity(), "数据获取失败");
+                getCommonData();
             }
         });
 
@@ -1271,9 +1315,28 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 }
                 break;
+            case R.id.rltNotify:
+                if (tvwNotifyValue != null && !TextUtils.isEmpty(tvwNotifyValue.getText().toString())) {
+                    popSpecialDialog(tvwNotifyValue.getText().toString());
+                }
+                break;
 
         }
 
+    }
+
+    private void popSpecialDialog(String msg) {
+        final AlertDialog alertDialog1 = new AlertDialog.Builder(getActivity())
+                .setTitle("系统公告")//标题
+                .setMessage(msg)//内容
+                .setIcon(R.mipmap.ic_launcher)//图标
+                .setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .create();
+        alertDialog1.show();
     }
 
     @Override

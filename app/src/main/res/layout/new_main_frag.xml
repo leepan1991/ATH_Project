@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customAttr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
 
@@ -24,8 +24,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="15dp">
+                android:paddingTop="15dp"
+                android:paddingRight="15dp">
 
 
                 <RelativeLayout
@@ -40,8 +40,49 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
+                            android:id="@+id/rltNotify"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/new_main_top_bg">
+
+                            <ImageView
+                                android:id="@+id/ivNotify"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:src="@drawable/new_main_notify" />
+
+                            <cn.innovativest.ath.widget.ScrollTextView
+                                android:id="@+id/tvwNotifyValue"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="right"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toRightOf="@+id/ivNotify"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:textSize="13sp"
+                                customAttr:clickEnable="true"
+                                customAttr:isHorizontal="true"
+                                customAttr:speed="3"
+                                customAttr:text="1，ios请到官网重新下载，请先卸载之前的版本。2，认准官方客服以免受骗。"
+                                customAttr:textColor="@android:color/white"
+                                customAttr:textSize="13dp"
+                                customAttr:times="600" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
                             android:background="@drawable/new_main_top_bg">
 
                             <ImageView
@@ -129,8 +170,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="30dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/main_logo"
                         android:visibility="visible" />
@@ -350,8 +391,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/llt_second_connect"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
                     android:orientation="horizontal">
 
                     <ImageButton
@@ -423,8 +464,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/llt_four_content"
-                    android:layout_marginBottom="15dp"
                     android:layout_marginTop="25dp"
+                    android:layout_marginBottom="15dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 

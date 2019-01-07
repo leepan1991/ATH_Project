@@ -8,17 +8,25 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import cn.innovativest.ath.R;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.MD5Utils;
 import cn.innovativest.ath.utils.PrefsManager;
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * 闪图
@@ -29,8 +37,17 @@ public class SplashAct extends BaseAct {
 
     private final String mPageName = "SplashAct";
 
-    ImageView imageView;
-    private long delay = 2000l;
+    @BindView(R.id.ivImg)
+    ImageView ivImg;
+
+    @BindView(R.id.lltJump)
+    LinearLayout lltJump;
+
+    @BindView(R.id.tvwTime)
+    TextView tvwTime;
+
+    //    ImageView imageView;
+//    private long delay = 2000l;
 
     @Override
     protected void onPause() {
@@ -41,7 +58,11 @@ public class SplashAct extends BaseAct {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.lltJump:
+                toHome();
+                break;
+        }
     }
 
     @Override
@@ -54,7 +75,9 @@ public class SplashAct extends BaseAct {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.splash_act);
+        ButterKnife.bind(this);
+        lltJump.setOnClickListener(this);
         String urlSplash = PrefsManager.get().getString("lastSplashUrl");
         if (TextUtils.isEmpty(urlSplash) || !AppUtils.existsSplash(urlSplash)) {
             toHome();
@@ -66,16 +89,43 @@ public class SplashAct extends BaseAct {
                 toHome();
                 return;
             }
-            imageView = new ImageView(this);
-            imageView.setBackgroundDrawable(mBitmap);
-            setContentView(imageView);
-            new Timer().schedule(new TimerTask() {
+//            imageView = new ImageView(this);
+//            imageView.setBackgroundDrawable(mBitmap);
+//            setContentView(imageView);
+            ivImg.setBackground(mBitmap);
 
-                @Override
-                public void run() {
-                    toHome();
-                }
-            }, delay);
+            int count_time = PrefsManager.get().getInt("time");
+
+            Observable.interval(0, 1, TimeUnit.SECONDS) //0延迟  每隔1秒触发
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())//操作UI主要在UI线程
+                    .take(count_time) //设置循环次数
+                    .map(aLong -> count_time - aLong)
+                    .subscribe(new Observer<Long>() {
+                        @Override
+                        public void onCompleted() {//循环结束调用此方法
+                            toHome();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onNext(Long aLong) {//每隔一秒执行
+                            tvwTime.setText(aLong + "");
+                        }
+                    });
+
+
+//            new Timer().schedule(new TimerTask() {
+//
+//                @Override
+//                public void run() {
+//                    toHome();
+//                }
+//            }, delay);
 //            imageView = new ImageView(this);
 //            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //            setContentView(imageView);

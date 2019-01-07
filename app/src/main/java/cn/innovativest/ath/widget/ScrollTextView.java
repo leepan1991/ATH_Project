@@ -12,7 +12,6 @@ import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -199,6 +198,10 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
         this.text = text;
     }
 
+    public String getText() {
+        return text;
+    }
+
     /**
      * set scroll speed
      *
@@ -215,21 +218,21 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
     /**
      * touch to stop / start
      */
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (!clickEnable) {
-            return true;
-        }
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                bStop = !bStop;
-                if (!bStop && needScrollTimes == 0) {
-                    needScrollTimes = defScrollTimes;
-                }
-                break;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        if (!clickEnable) {
+//            return true;
+//        }
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                bStop = !bStop;
+//                if (!bStop && needScrollTimes == 0) {
+//                    needScrollTimes = defScrollTimes;
+//                }
+//                break;
+//        }
+//        return true;
+//    }
 
     /**
      * Draw text

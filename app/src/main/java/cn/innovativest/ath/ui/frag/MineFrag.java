@@ -216,6 +216,20 @@ public class MineFrag extends BaseFrag {
         }
     }
 
+    private void popSpecialDialog(String msg) {
+        final AlertDialog alertDialog1 = new AlertDialog.Builder(getActivity())
+                .setTitle("系统公告")//标题
+                .setMessage(msg)//内容
+                .setIcon(R.mipmap.ic_launcher)//图标
+                .setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .create();
+        alertDialog1.show();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -272,6 +286,7 @@ public class MineFrag extends BaseFrag {
     }
 
     private void addListener() {
+        tvwNotice.setOnClickListener(this);
         btnAction.setOnClickListener(this);
         rltNotLogin.setOnClickListener(this);
         btnNotLogin.setOnClickListener(this);
@@ -614,6 +629,9 @@ public class MineFrag extends BaseFrag {
                 break;
             case R.id.rltCooperation:
                 startActivity(new Intent(getActivity(), CooperationAct.class));
+                break;
+            case R.id.tvwNotice:
+                popSpecialDialog(tvwNotice.getText().toString());
                 break;
         }
 

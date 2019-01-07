@@ -137,6 +137,12 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
         rltRightFun.setVisibility(View.GONE);
         tvwTitle.setBackgroundResource(R.color.trade_top_tv_bg);
         tvwTitle.setText("交易中心1.交易中心9月份开放，敬请期待！！  2.苹果app即将上线。");
+        tvwTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popSpecialDialog(tvwTitle.getText().toString());
+            }
+        });
 
         lstTradeItems = new ArrayList<TradeItem>();
         tradeAdapter = new TradeAdapter(getActivity(), lstTradeItems);
@@ -418,6 +424,20 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
             }
         });
 
+    }
+
+    private void popSpecialDialog(String msg) {
+        final AlertDialog alertDialog1 = new AlertDialog.Builder(getActivity())
+                .setTitle("系统公告")//标题
+                .setMessage(msg)//内容
+                .setIcon(R.mipmap.ic_launcher)//图标
+                .setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .create();
+        alertDialog1.show();
     }
 
 
