@@ -133,7 +133,7 @@
                         android:layout_marginTop="30dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/main_logo"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                 </RelativeLayout>
 
