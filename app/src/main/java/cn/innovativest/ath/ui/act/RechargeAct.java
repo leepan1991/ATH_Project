@@ -1186,7 +1186,7 @@ public class RechargeAct extends BaseAct {
                 LogUtils.e(userInfoResponse.message);
                 if (userInfoResponse.status == 1) {
                     if (!CUtils.isEmpty(userInfoResponse.data)) {
-                        payV2(AESUtils.decryptData(userInfoResponse.data));
+                        App.toast(RechargeAct.this, userInfoResponse.data);
                     } else {
                         App.toast(RechargeAct.this, "支付失败");
                     }
