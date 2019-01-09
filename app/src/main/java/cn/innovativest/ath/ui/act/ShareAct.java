@@ -45,7 +45,10 @@ import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -58,12 +61,17 @@ import cn.innovativest.ath.bean.ImgsItem;
 import cn.innovativest.ath.bean.ShareItem;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
+import cn.innovativest.ath.response.BaseResponse;
+import cn.innovativest.ath.response.GiftResponse;
 import cn.innovativest.ath.response.ShareResponse;
 import cn.innovativest.ath.ui.BaseAct;
+import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.utils.SDUtils;
 import cn.innovativest.ath.widget.XListView;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -476,6 +484,14 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
         }
     }
 
+    public int getSecondTimestampTwo(Date date) {
+        if (null == date) {
+            return 0;
+        }
+        String timestamp = String.valueOf(date.getTime() / 1000);
+        return Integer.valueOf(timestamp);
+    }
+
     private void showShare(String shareTxt, String urlImg) {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
@@ -506,8 +522,45 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
             copy(shareTxt);
         }
 
+        oks.setCallback(new PlatformActionListener() {
+            @Override
+            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                fenxiang(URLEncoder.encode(AESUtils.encryptData(PrefsManager.get().getString("phone") + "+" + AESUtils.encryptData(getSecondTimestampTwo(new Date()) + ""))));
+            }
+
+            @Override
+            public void onError(Platform platform, int i, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCancel(Platform platform, int i) {
+
+            }
+        });
 // 启动分享GUI
         oks.show(this);
+    }
+
+    private void fenxiang(String token) {
+        AthService service = App.get().getAthService();
+        service.fen_xiang(token).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<BaseResponse>() {
+            @Override
+            public void call(BaseResponse baseResponse) {
+                if (baseResponse != null) {
+                    App.toast(ShareAct.this, baseResponse.message);
+                } else {
+                    LogUtils.e("分享回调获取失败");
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e(throwable.getMessage());
+                LogUtils.e("分享回调获取失败");
+            }
+        });
+
     }
 
     private void copy(String content) {

@@ -240,4 +240,7 @@ public interface AthService {
 
     @GET("ad_index")
     Observable<BaseResponse> ad_index();
+
+    @GET("fen_xiang")
+    Observable<BaseResponse> fen_xiang(@Query("token") String token);
 }

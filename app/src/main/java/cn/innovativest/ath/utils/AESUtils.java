@@ -2,6 +2,8 @@ package cn.innovativest.ath.utils;
 
 
 import java.math.BigDecimal;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -79,7 +81,7 @@ public class AESUtils {
 
 
     public static void main(String[] args) throws Exception {
-        String string = "did=4294967295&time=1523539758374";
+        String string = "1547000492";
         System.out.println("original data:  " + string);
         System.out.println("encrypt data:   " + AESUtils.encryptData(string)); // 加密
         String enStr = AESUtils.encryptData(string);

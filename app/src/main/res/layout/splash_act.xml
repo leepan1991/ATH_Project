@@ -22,7 +22,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/apply_bg_shape"
+            android:background="@drawable/jump_bg_shape"
             android:gravity="center"
             android:paddingLeft="5dp"
             android:paddingTop="3dp"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:text="3"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:text="跳过"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </RelativeLayout>

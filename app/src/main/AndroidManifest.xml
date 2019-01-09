@@ -415,7 +415,7 @@
             android:value="91cc3122ad8dbf93b5f65cc447bf0a6b" />
         <!--微信分享回调 -->
         <activity
-            android:name="cn.sharesdk.demo.wxapi.WXEntryActivity"
+            android:name="cn.innovativest.ath.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -429,7 +429,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent100371282" />
+                <data android:scheme="tencent101514931" />
             </intent-filter>
         </activity>
     </application>

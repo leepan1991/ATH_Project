@@ -1,7 +1,9 @@
 package cn.innovativest.ath.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,9 +22,15 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.bean.CoinActive;
+import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.BaseResponse;
+import cn.innovativest.ath.ui.act.FriendHelpAct;
+import cn.innovativest.ath.ui.act.ShareAct;
+import cn.innovativest.ath.utils.AESUtils;
+import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -88,7 +98,15 @@ public class CoinTaskAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 CoinActive coinActiveTemp = (CoinActive) view.getTag();
-                draw_tops(coinActiveTemp.id);
+                if (!TextUtils.isEmpty(coinActiveTemp.type) && "22".equals(coinActiveTemp.type)) {
+                    if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+                        context.startActivity(new Intent(context, ShareAct.class).putExtra("shareCode", userInfo.code));
+                    }
+
+                } else {
+                    draw_tops(coinActiveTemp.id);
+                }
             }
         });
 
