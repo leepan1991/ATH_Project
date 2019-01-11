@@ -46,7 +46,7 @@ public class HeaderUtil {
     }
 
     public static boolean checkSonApp(Context context) {
-        return checkAppInstalled(context, "com.youdegame.appgame");
+        return checkAppInstalled(context, "org.haotan.lbqp");
     }
 
     private static boolean checkAppInstalled(Context context, String pkgName) {
