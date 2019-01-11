@@ -12,6 +12,7 @@ import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -231,7 +232,7 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
 //                }
 //                break;
 //        }
-//        return true;
+//        return false;
 //    }
 
     /**

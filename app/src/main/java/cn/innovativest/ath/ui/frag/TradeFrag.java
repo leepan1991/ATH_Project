@@ -290,6 +290,7 @@ public class TradeFrag extends BaseFrag implements RadioGroup.OnCheckedChangeLis
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("MainAct");
+        tvwTitle.setText("");
     }
 
     private void initData() {

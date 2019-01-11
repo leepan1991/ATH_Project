@@ -241,6 +241,7 @@ public class MineFrag extends BaseFrag {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("MainAct");
+        tvwNotice.setText("");
     }
 
     private void androidInfo() {

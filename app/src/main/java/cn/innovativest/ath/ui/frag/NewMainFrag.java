@@ -254,6 +254,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("MainAct");
+        tvwNotifyValue.setText("");
     }
 
     private void initView() {
