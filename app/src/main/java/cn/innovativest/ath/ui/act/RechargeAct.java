@@ -965,119 +965,8 @@ public class RechargeAct extends BaseAct {
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Toast.makeText(RechargeAct.this, "支付成功", Toast.LENGTH_SHORT).show();
+                        result();
 
-                        if (!CUtils.isEmpty(mPit)) {
-                            if (flag == 1) {
-                                if (mPit.equals("4")) {
-                                    tvwBtn1.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn1.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("5")) {
-                                    tvwBtn2.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn2.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("6")) {
-                                    tvwBtn3.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn3.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("7")) {
-                                    tvwBtn4.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn4.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("8")) {
-                                    tvwBtn5.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn5.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("9")) {
-                                    tvwBtn6.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn6.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                            } else if (flag == 2) {
-                                if (mPit.equals("10")) {
-                                    tvwBtn1.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn1.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("11")) {
-                                    tvwBtn2.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn2.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("12")) {
-                                    tvwBtn3.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn3.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("13")) {
-                                    tvwBtn4.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn4.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("14")) {
-                                    tvwBtn5.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn5.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("15")) {
-                                    tvwBtn6.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn6.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-                            } else if (flag == 3) {
-                                if (mPit.equals("16")) {
-                                    tvwBtn1.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn1.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("17")) {
-                                    tvwBtn2.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn2.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("18")) {
-                                    tvwBtn3.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn3.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("19")) {
-                                    tvwBtn4.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn4.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("20")) {
-                                    tvwBtn5.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn5.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-
-                                if (mPit.equals("21")) {
-                                    tvwBtn6.setBackgroundResource(R.drawable.charge_mining);
-                                    tvwBtn6.setText("开采中");
-                                    getMainPageData("1.0");
-                                }
-                            }
-                        }
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
                         Toast.makeText(RechargeAct.this, "支付失败", Toast.LENGTH_SHORT).show();
@@ -1088,9 +977,122 @@ public class RechargeAct extends BaseAct {
                     break;
             }
         }
-
-        ;
     };
+
+    private void result() {
+        if (!CUtils.isEmpty(mPit)) {
+            if (flag == 1) {
+                if (mPit.equals("4")) {
+                    tvwBtn1.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn1.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("5")) {
+                    tvwBtn2.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn2.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("6")) {
+                    tvwBtn3.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn3.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("7")) {
+                    tvwBtn4.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn4.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("8")) {
+                    tvwBtn5.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn5.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("9")) {
+                    tvwBtn6.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn6.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+            } else if (flag == 2) {
+                if (mPit.equals("10")) {
+                    tvwBtn1.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn1.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("11")) {
+                    tvwBtn2.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn2.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("12")) {
+                    tvwBtn3.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn3.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("13")) {
+                    tvwBtn4.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn4.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("14")) {
+                    tvwBtn5.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn5.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("15")) {
+                    tvwBtn6.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn6.setText("开采中");
+                    getMainPageData("1.0");
+                }
+            } else if (flag == 3) {
+                if (mPit.equals("16")) {
+                    tvwBtn1.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn1.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("17")) {
+                    tvwBtn2.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn2.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("18")) {
+                    tvwBtn3.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn3.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("19")) {
+                    tvwBtn4.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn4.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("20")) {
+                    tvwBtn5.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn5.setText("开采中");
+                    getMainPageData("1.0");
+                }
+
+                if (mPit.equals("21")) {
+                    tvwBtn6.setBackgroundResource(R.drawable.charge_mining);
+                    tvwBtn6.setText("开采中");
+                    getMainPageData("1.0");
+                }
+            }
+        }
+    }
 
     /**
      * 支付宝支付业务
@@ -1185,10 +1187,11 @@ public class RechargeAct extends BaseAct {
             public void call(UserInfoResponse userInfoResponse) {
                 LogUtils.e(userInfoResponse.message);
                 if (userInfoResponse.status == 1) {
+                    result();
                     if (!CUtils.isEmpty(userInfoResponse.data)) {
                         App.toast(RechargeAct.this, userInfoResponse.data);
                     } else {
-                        App.toast(RechargeAct.this, "支付失败");
+                        App.toast(RechargeAct.this, userInfoResponse.message);
                     }
                 } else {
                     App.toast(RechargeAct.this, userInfoResponse.message);

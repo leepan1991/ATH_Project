@@ -662,10 +662,11 @@ public class SpeedValueDialog extends Dialog implements View.OnClickListener {
             public void call(UserInfoResponse userInfoResponse) {
                 LogUtils.e(userInfoResponse.message);
                 if (userInfoResponse.status == 1) {
+                    getPitData();
                     if (!CUtils.isEmpty(userInfoResponse.data)) {
                         App.toast(getContext(), userInfoResponse.data);
                     } else {
-                        App.toast(getContext(), "支付失败");
+                        App.toast(getContext(), userInfoResponse.message);
                     }
                 } else {
                     App.toast(getContext(), userInfoResponse.message);
