@@ -427,13 +427,21 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 //                doDownload(force, url);
-                Uri uri = Uri.parse(url);
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-
+                toUri(url);
             }
         }).show();
     }
+
+    private void toUri(String url) {
+        //设置浏览器
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri uri = Uri.parse(url.trim());
+        intent.setData(uri);
+        startActivity(intent);
+        finish();
+    }
+
 
     private long calculate() {
         long timeDifference = System.currentTimeMillis() - lastTimeMillis;
