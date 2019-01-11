@@ -98,15 +98,15 @@ public class CoinTaskAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 CoinActive coinActiveTemp = (CoinActive) view.getTag();
-                if (!TextUtils.isEmpty(coinActiveTemp.type) && "22".equals(coinActiveTemp.type)) {
-                    if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
-                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-                        context.startActivity(new Intent(context, ShareAct.class).putExtra("shareCode", userInfo.code));
-                    }
-
-                } else {
-                    draw_tops(coinActiveTemp.id);
-                }
+//                if (!TextUtils.isEmpty(coinActiveTemp.type) && "22".equals(coinActiveTemp.type)) {
+//                    if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
+//                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
+//                        context.startActivity(new Intent(context, ShareAct.class).putExtra("shareCode", userInfo.code));
+//                    }
+//
+//                } else {
+                draw_tops(coinActiveTemp.id);
+//                }
             }
         });
 

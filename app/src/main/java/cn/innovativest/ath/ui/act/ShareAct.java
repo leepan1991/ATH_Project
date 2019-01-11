@@ -522,22 +522,22 @@ public class ShareAct extends BaseAct implements AdapterView.OnItemClickListener
             copy(shareTxt);
         }
 
-        oks.setCallback(new PlatformActionListener() {
-            @Override
-            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                fenxiang(URLEncoder.encode(AESUtils.encryptData(PrefsManager.get().getString("phone") + "+" + AESUtils.encryptData(getSecondTimestampTwo(new Date()) + ""))));
-            }
-
-            @Override
-            public void onError(Platform platform, int i, Throwable throwable) {
-
-            }
-
-            @Override
-            public void onCancel(Platform platform, int i) {
-
-            }
-        });
+//        oks.setCallback(new PlatformActionListener() {
+//            @Override
+//            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+//                fenxiang(URLEncoder.encode(AESUtils.encryptData(PrefsManager.get().getString("phone") + "+" + AESUtils.encryptData(getSecondTimestampTwo(new Date()) + ""))));
+//            }
+//
+//            @Override
+//            public void onError(Platform platform, int i, Throwable throwable) {
+//
+//            }
+//
+//            @Override
+//            public void onCancel(Platform platform, int i) {
+//
+//            }
+//        });
 // 启动分享GUI
         oks.show(this);
     }
