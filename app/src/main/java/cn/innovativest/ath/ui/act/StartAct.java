@@ -426,7 +426,11 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                doDownload(force, url);
+//                doDownload(force, url);
+                Uri uri = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
             }
         }).show();
     }
