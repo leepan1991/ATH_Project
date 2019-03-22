@@ -19,7 +19,9 @@ import cn.innovativest.ath.R;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.ui.BaseAct;
+import cn.innovativest.ath.ui.BaseCompatAct;
 import cn.innovativest.ath.ui.frag.AppFrag;
+import cn.innovativest.ath.ui.frag.FundFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
 import cn.innovativest.ath.ui.frag.NewCoinFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
@@ -31,7 +33,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 
-public class NewMainAct extends BaseAct {
+public class NewMainAct extends BaseCompatAct {
 
     // 定义FragmentTabHost对象
     private FragmentTabHost mTabHost;
@@ -44,7 +46,7 @@ public class NewMainAct extends BaseAct {
             R.drawable.new_tab_app_logo, R.drawable.new_tab_mine_logo};
     private String[] mTextviewArray;
     private Class[] fragmentArray = {NewMainFrag.class,
-            TradeFrag.class, NewCoinFrag.class, AppFrag.class, MineFrag.class};
+            TradeFrag.class, NewCoinFrag.class, FundFrag.class, MineFrag.class};
 
     private long mExitTime;
 

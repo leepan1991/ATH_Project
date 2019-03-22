@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rc_input_gap_color"
+    android:orientation="vertical">
+
+    <cn.innovativest.ath.widget.VpSwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/bg_banner_top"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvwTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="top|center_horizontal"
+                            android:maxLines="1"
+                            android:text="众筹"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/rltRightFun"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="20dp">
+
+                            <ImageButton
+                                android:id="@+id/tvwAction"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_alignParentLeft="true"
+                                android:background="@drawable/selector_act_background"
+                                android:gravity="center"
+                                android:src="@drawable/ic_publish"
+                                android:visibility="visible" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlt_fun"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iv_fund"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:contentDescription="@string/app_name"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_mine_fund" />
+
+                        <RelativeLayout
+                            android:id="@+id/rltNotLoginAvatar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@+id/iv_fund">
+
+                            <TextView
+                                android:id="@+id/tvFundComplete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="已完成：20个项目"
+                                android:textColor="@color/nor_white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvRegisterNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvFundComplete"
+                                android:layout_marginTop="10dp"
+                                android:text="注册量：100万"
+                                android:textColor="@color/nor_white"
+                                android:textSize="13sp" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/rltNotLoginAvatar"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/iv_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:contentDescription="@string/app_name"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_collect" />
+
+                            <TextView
+                                android:id="@+id/tvFollowNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="3dp"
+                                android:gravity="center"
+                                android:text="关注量：10000"
+                                android:textColor="@color/nor_white"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/nor_white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="热门众筹"
+                        android:textColor="@color/font_333333"
+                        android:textSize="14sp" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
+
+                            <!--<GridView-->
+                                <!--android:id="@+id/grid"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:gravity="center"-->
+                                <!--android:numColumns="auto_fit"-->
+                                <!--android:stretchMode="spacingWidthUniform"></GridView>-->
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tablayout"
+                    style="@style/MyTablayoutstyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabTextColor="@color/font_666666"
+                    app:tabMode="scrollable"
+                    android:layout_marginTop="10dp" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </ScrollView>
+    </cn.innovativest.ath.widget.VpSwipeRefreshLayout>
+
+</LinearLayout>

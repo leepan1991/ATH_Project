@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="AppBaseTheme1">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
     <style name="AppBaseTheme" parent="@android:style/Theme.Holo.Light.NoActionBar"></style>
+    <style name="AppBaseTheme1" parent="@style/Theme.Design.NoActionBar"></style>
 
 
     <style name="mEt" parent="Widget.AppCompat.EditText">
@@ -27,6 +28,15 @@
     <style name="mLoginEt" parent="mEt">
 
         <item name="android:background">@drawable/common_et_login_bg_slct</item>
+    </style>
+
+    <style name="MyTablayoutstyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabBackground">@color/nor_white</item>
+        <item name="tabIndicatorColor">@color/bg_banner_top</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabSelectedTextColor">@color/bg_banner_top</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/font_666666</item>
     </style>
 
     <style name="mBt" parent="Base.TextAppearance.AppCompat.Button">
