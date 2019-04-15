@@ -31,31 +31,22 @@ import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.BaseResponse;
-import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.AboutAthAct;
 import cn.innovativest.ath.ui.act.AboutUsAct;
 import cn.innovativest.ath.ui.act.AccountSettingAct;
 import cn.innovativest.ath.ui.act.AppAct;
-import cn.innovativest.ath.ui.act.CoinTradeManagementAct;
 import cn.innovativest.ath.ui.act.CooperationAct;
 import cn.innovativest.ath.ui.act.LoginAct;
-import cn.innovativest.ath.ui.act.MyTradeAct;
 import cn.innovativest.ath.ui.act.NoticeListAct;
-import cn.innovativest.ath.ui.act.OrderManAct;
-import cn.innovativest.ath.ui.act.PropertyManagementAct;
 import cn.innovativest.ath.ui.act.RealCentificationAct;
-import cn.innovativest.ath.ui.act.SafetyManagementAct;
 import cn.innovativest.ath.ui.act.SettingAct;
 import cn.innovativest.ath.ui.act.SettingUserInfoOneAct;
-import cn.innovativest.ath.ui.act.SettingUserInfoTwoAct;
-import cn.innovativest.ath.ui.act.StartTradeAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
-import cn.innovativest.ath.widget.ScrollTextView;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
 import rx.android.schedulers.AndroidSchedulers;
@@ -85,14 +76,8 @@ public class MineFrag extends BaseFrag {
     @BindView(R.id.btnAction)
     ImageButton btnAction;
 
-    @BindView(R.id.rltNotLogin)
-    RelativeLayout rltNotLogin;
-
     @BindView(R.id.btnNotLogin)
     Button btnNotLogin;
-
-    @BindView(R.id.rltLogined)
-    RelativeLayout rltLogined;
 
     @BindView(R.id.ivLoginAvatar)
     ImageView ivLoginAvatar;
@@ -106,38 +91,26 @@ public class MineFrag extends BaseFrag {
     @BindView(R.id.tvRealNamed)
     TextView tvRealNamed;
 
-    @BindView(R.id.tvwNotice)
-    ScrollTextView tvwNotice;
+//    @BindView(R.id.btnSign)
+//    Button btnSign;
 
-    @BindView(R.id.btnSign)
-    Button btnSign;
+    @BindView(R.id.tvATH)
+    TextView tvATH;
 
-    @BindView(R.id.rltOrderManagement)
-    RelativeLayout rltOrderManagement;
+    @BindView(R.id.tvHelp)
+    TextView tvHelp;
 
-    @BindView(R.id.rltCoinManagement)
-    RelativeLayout rltCoinManagement;
+    @BindView(R.id.tvScore)
+    TextView tvScore;
 
-    @BindView(R.id.rltPubManagement)
-    RelativeLayout rltPubManagement;
-
-    @BindView(R.id.rltAdPubManagement)
-    RelativeLayout rltAdPubManagement;
-
-    @BindView(R.id.rltBuyAndSale)
-    RelativeLayout rltBuyAndSale;
-
-    @BindView(R.id.rltSafetyManagement)
-    RelativeLayout rltSafetyManagement;
-
-    @BindView(R.id.rltPropertyManagement)
-    RelativeLayout rltPropertyManagement;
+    @BindView(R.id.rltZCManagement)
+    RelativeLayout rltZCManagement;
 
     @BindView(R.id.rltRealName)
     RelativeLayout rltRealName;
 
-    @BindView(R.id.rltAccountSetting)
-    RelativeLayout rltAccountSetting;
+    @BindView(R.id.rltSafetyManagement)
+    RelativeLayout rltSafetyManagement;
 
     @BindView(R.id.rltNotice)
     RelativeLayout rltNotice;
@@ -145,20 +118,14 @@ public class MineFrag extends BaseFrag {
     @BindView(R.id.rltApp)
     RelativeLayout rltApp;
 
-    @BindView(R.id.rltAboutATH)
-    RelativeLayout rltAboutATH;
+    @BindView(R.id.rltNote)
+    RelativeLayout rltNote;
 
     @BindView(R.id.rltAboutUs)
     RelativeLayout rltAboutUs;
 
     @BindView(R.id.rltCooperation)
     RelativeLayout rltCooperation;
-
-    @BindView(R.id.lltBuy)
-    LinearLayout lltBuy;
-
-    @BindView(R.id.lltSale)
-    LinearLayout lltSale;
 
     private boolean isOpen = true;
 
@@ -203,11 +170,14 @@ public class MineFrag extends BaseFrag {
 
     private void init() {
         if (App.get().user == null) {
-            rltNotLogin.setVisibility(View.VISIBLE);
-            rltLogined.setVisibility(View.GONE);
+            tvName.setVisibility(View.VISIBLE);
+            tvName.setText("登录/注册");
+            tvRealNamed.setVisibility(View.GONE);
+            ivRealed.setVisibility(View.GONE);
         } else {
-            rltNotLogin.setVisibility(View.GONE);
-            rltLogined.setVisibility(View.VISIBLE);
+            tvName.setVisibility(View.VISIBLE);
+            tvRealNamed.setVisibility(View.VISIBLE);
+            ivRealed.setVisibility(View.VISIBLE);
             if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
                 UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
                 initDataToView(userInfo);
@@ -241,7 +211,6 @@ public class MineFrag extends BaseFrag {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("MainAct");
-        tvwNotice.setText("");
     }
 
     private void androidInfo() {
@@ -287,28 +256,17 @@ public class MineFrag extends BaseFrag {
     }
 
     private void addListener() {
-        tvwNotice.setOnClickListener(this);
         btnAction.setOnClickListener(this);
-        rltNotLogin.setOnClickListener(this);
         btnNotLogin.setOnClickListener(this);
         ivLoginAvatar.setOnClickListener(this);
-        btnSign.setOnClickListener(this);
-        rltOrderManagement.setOnClickListener(this);
-        rltCoinManagement.setOnClickListener(this);
-        rltPubManagement.setOnClickListener(this);
-        rltAdPubManagement.setOnClickListener(this);
-        rltSafetyManagement.setOnClickListener(this);
-        rltPropertyManagement.setOnClickListener(this);
+        rltZCManagement.setOnClickListener(this);
         rltRealName.setOnClickListener(this);
-        rltAccountSetting.setOnClickListener(this);
+        rltSafetyManagement.setOnClickListener(this);
         rltNotice.setOnClickListener(this);
         rltApp.setOnClickListener(this);
-        rltAboutATH.setOnClickListener(this);
+        rltNote.setOnClickListener(this);
         rltAboutUs.setOnClickListener(this);
         rltCooperation.setOnClickListener(this);
-
-        lltBuy.setOnClickListener(this);
-        lltSale.setOnClickListener(this);
 
     }
 
@@ -324,9 +282,9 @@ public class MineFrag extends BaseFrag {
         }
 
         if (userInfo.is_sign_in == 0) {
-            btnSign.setText("已签到");
+            btnNotLogin.setText("已签到");
         } else if (userInfo.is_sign_in == 1) {
-            btnSign.setText("未签到");
+            btnNotLogin.setText("未签到");
         }
     }
 
@@ -339,7 +297,6 @@ public class MineFrag extends BaseFrag {
             @Override
             public void call(UserInfoResponse userInfoResponse) {
 //                LoadingUtils.getInstance().dialogDismiss();
-                getCommonData();
                 if (userInfoResponse.status == 1) {
                     if (!CUtils.isEmpty(userInfoResponse.data)) {
                         LogUtils.e(AESUtils.decryptData(userInfoResponse.data));
@@ -362,52 +319,11 @@ public class MineFrag extends BaseFrag {
             @Override
             public void call(Throwable throwable) {
 //                LoadingUtils.getInstance().dialogDismiss();
-                getCommonData();
                 App.toast(mCtx, "获取失败");
             }
         });
     }
 
-    private void getCommonData() {
-
-        AthService service = App.get().getAthService();
-        service.commonInfo(7).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<CommonResponse>() {
-            @Override
-            public void call(CommonResponse commonResponse) {
-                androidInfo();
-                if (commonResponse != null) {
-//                    if (commonResponse.commonItems != null && commonResponse.commonItems.size() > 0) {
-////                        initDataToView(tradeResponse.tradeItems);
-//                        for (CommonItem commonItem : commonResponse.commonItems) {
-//                            if (commonItem.title.equals("系统公告")) {
-//                                tvwNotice.setText(commonItem.exchange);
-////                                tvwNotice.setTimes(20000);
-//                            }
-//                        }
-//                    }
-                    if (commonResponse.commonItem != null) {
-//                        initDataToView(tradeResponse.tradeItems);
-                        if (commonResponse.commonItem.title.equals("系统公告")) {
-                            tvwNotice.setText(commonResponse.commonItem.exchange);
-//                                tvwNotice.setTimes(20000);
-                        }
-                    } else {
-                        App.toast(getActivity(), commonResponse.message);
-                    }
-                } else {
-                    App.toast(getActivity(), "数据获取失败");
-                }
-            }
-        }, new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-                LogUtils.e(throwable.getMessage());
-                androidInfo();
-//                App.toast(getActivity(), "数据获取失败");
-            }
-        });
-
-    }
 
     private void sign() {
         AthService service = App.get().getAthService();
@@ -416,7 +332,7 @@ public class MineFrag extends BaseFrag {
             public void call(BaseResponse baseResponse) {
                 if (baseResponse != null) {
                     if (baseResponse.status == 1) {
-                        btnSign.setText("已签到");
+                        btnNotLogin.setText("已签到");
                     }
                     App.toast(getActivity(), baseResponse.message);
                 } else {
@@ -443,10 +359,7 @@ public class MineFrag extends BaseFrag {
         switch (requestCode) {
             case 100:
                 if (resultCode == Activity.RESULT_OK) {
-                    rltNotLogin.setVisibility(View.GONE);
-                    rltLogined.setVisibility(View.VISIBLE);
                     requestUserInfo();
-                    getCommonData();
                 }
                 break;
             case 101:
@@ -475,70 +388,19 @@ public class MineFrag extends BaseFrag {
                 }
                 break;
             case R.id.btnNotLogin:
+                if (btnNotLogin.getText().toString().equalsIgnoreCase("登录")) {
+                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
+                } else if (btnNotLogin.getText().toString().equalsIgnoreCase("未签到")) {
+                    sign();
+                } else if (btnNotLogin.getText().toString().equalsIgnoreCase("已签到")) {
+
+                }
+                break;
+            case R.id.rltLogin:
                 startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 break;
-            case R.id.rltNotLogin:
-                startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                break;
-            case R.id.ivLoginAvatar:
+            case R.id.rltZCManagement:
                 //
-                break;
-            case R.id.rltOrderManagement:
-                if (App.get().user != null) {
-                    if (isOpen) {
-                        startActivity(new Intent(getActivity(), OrderManAct.class));
-                    } else {
-                        popDialog();
-                    }
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-                break;
-            case R.id.btnSign:
-                sign();
-                break;
-            case R.id.rltCoinManagement:
-                if (App.get().user != null) {
-                    startActivity(new Intent(getActivity(), CoinTradeManagementAct.class));
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-                break;
-            case R.id.rltPubManagement:
-                if (App.get().user != null) {
-                    if (isOpen) {
-                        startActivity(new Intent(getActivity(), MyTradeAct.class));
-                    } else {
-                        popDialog();
-                    }
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-                break;
-            case R.id.rltAdPubManagement:
-                if (isOpen) {
-                    if (rltBuyAndSale.getVisibility() == View.VISIBLE) {
-                        rltBuyAndSale.setVisibility(View.GONE);
-                    } else {
-                        rltBuyAndSale.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    popDialog();
-                }
-                break;
-            case R.id.rltSafetyManagement:
-                if (App.get().user != null) {
-                    startActivity(new Intent(getActivity(), SafetyManagementAct.class));
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-                break;
-            case R.id.rltPropertyManagement:
-                if (App.get().user != null) {
-                    startActivity(new Intent(getActivity(), PropertyManagementAct.class));
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
                 break;
             case R.id.rltRealName:
                 if (App.get().user != null) {
@@ -547,7 +409,7 @@ public class MineFrag extends BaseFrag {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 }
                 break;
-            case R.id.rltAccountSetting:
+            case R.id.rltSafetyManagement:
                 if (App.get().user != null) {
 
                     if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
@@ -566,46 +428,6 @@ public class MineFrag extends BaseFrag {
                 }
 
                 break;
-            case R.id.lltBuy:
-                if (App.get().user != null) {
-
-                    if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
-                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-                        if (userInfo != null && !CUtils.isEmpty(userInfo.check_pay_password)) {
-                            startActivityForResult(new Intent(getActivity(), StartTradeAct.class).putExtra("flag", 0), 101);
-                        } else {
-                            startActivityForResult(new Intent(getActivity(), SettingUserInfoTwoAct.class), 101);
-                        }
-                    } else {
-                        startActivityForResult(new Intent(getActivity(), SettingUserInfoTwoAct.class), 101);
-                    }
-
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-
-
-                break;
-            case R.id.lltSale:
-                if (App.get().user != null) {
-//                    startActivity(new Intent(getActivity(), StartTradeAct.class).putExtra("flag", 1));
-                    if (!CUtils.isEmpty(PrefsManager.get().getString("userinfo"))) {
-                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(PrefsManager.get().getString("userinfo")), UserInfo.class);
-                        if (userInfo != null && !CUtils.isEmpty(userInfo.check_pay_password)) {
-                            startActivityForResult(new Intent(getActivity(), StartTradeAct.class).putExtra("flag", 1), 101);
-                        } else {
-                            startActivityForResult(new Intent(getActivity(), SettingUserInfoTwoAct.class), 101);
-                        }
-                    } else {
-                        startActivityForResult(new Intent(getActivity(), SettingUserInfoTwoAct.class), 101);
-                    }
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-                break;
-            case R.id.rltAboutUs:
-                startActivity(new Intent(getActivity(), AboutUsAct.class));
-                break;
             case R.id.rltNotice:
                 if (App.get().user != null) {
                     startActivity(new Intent(getActivity(), NoticeListAct.class));
@@ -613,12 +435,21 @@ public class MineFrag extends BaseFrag {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 }
                 break;
-            case R.id.rltAboutATH:
-                startActivity(new Intent(getActivity(), AboutAthAct.class));
-                break;
             case R.id.rltApp:
                 startActivity(new Intent(getActivity(), AppAct.class));
                 break;
+            case R.id.rltNote:
+                startActivity(new Intent(getActivity(), AboutAthAct.class));
+                break;
+            case R.id.rltAboutUs:
+                startActivity(new Intent(getActivity(), AboutUsAct.class));
+                break;
+            case R.id.rltCooperation:
+                startActivity(new Intent(getActivity(), CooperationAct.class));
+                break;
+//            case R.id.btnSign:
+//                sign();
+//                break;
             case R.id.tvwAction:
                 if (App.get().user != null) {
                     Map<String, Boolean> mp = new HashMap<String, Boolean>();
@@ -628,12 +459,7 @@ public class MineFrag extends BaseFrag {
                     startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 }
                 break;
-            case R.id.rltCooperation:
-                startActivity(new Intent(getActivity(), CooperationAct.class));
-                break;
-            case R.id.tvwNotice:
-                popSpecialDialog(tvwNotice.getText().toString());
-                break;
+
         }
 
     }

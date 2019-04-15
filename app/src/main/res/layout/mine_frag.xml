@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:customAttr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rgb_238_238_239"
     android:orientation="vertical">
 
-    <include layout="@layout/view_actionbar_mine" />
+    <!--<include layout="@layout/view_actionbar_mine" />-->
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -21,47 +20,149 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:id="@+id/lltTop"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="@drawable/order_buy_avator_bg"
-                android:gravity="center"
+                android:layout_height="200dp"
+                android:background="@drawable/mine_user_bg"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/rltNotLogin"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/selector_act_background"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        android:id="@+id/tvwTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="占位符"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
 
                     <RelativeLayout
-                        android:id="@+id/rltNotLoginAvatar"
+                        android:id="@+id/rltRightFun"
+                        android:layout_width="96dp"
+                        android:layout_height="48dp">
+
+                        <ImageButton
+                            android:id="@+id/tvwAction"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:background="@drawable/selector_act_background"
+                            android:gravity="center"
+                            android:visibility="invisible" />
+
+                        <LinearLayout
+                            android:id="@+id/lltAction"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_toRightOf="@+id/tvwAction"
+                            android:background="@drawable/selector_act_background"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="invisible">
+
+                            <ImageButton
+                                android:id="@+id/btnAction"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="2dp"
+                                android:background="@null"
+                                android:contentDescription="@null" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
+                                android:gravity="center"
+                                android:text="设置"
+                                android:textColor="@android:color/white"
+                                android:textSize="8sp"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rltLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rltLoginAvatar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp">
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@+id/btnNotLogin">
 
                         <ImageView
-                            android:id="@+id/ivNotLoginAvatar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
+                            android:id="@+id/ivLoginAvatar"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentLeft="true"
                             android:contentDescription="@string/app_name"
                             android:scaleType="fitXY"
                             android:src="@drawable/mine_avatar" />
 
                         <TextView
-                            android:id="@+id/tvWelcome"
+                            android:id="@+id/tvName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/ivNotLoginAvatar"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="5dp"
-                            android:text="Hi,欢迎你"
-                            android:textColor="@color/font_999999"
-                            android:textSize="13sp" />
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/ivLoginAvatar"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="登录/注册"
+                            android:textColor="@color/nor_white"
+                            android:textSize="15sp" />
 
+                        <ImageView
+                            android:id="@+id/ivRealed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/tvName"
+                            android:contentDescription="@string/app_name"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_realnamed" />
+
+                        <TextView
+                            android:id="@+id/tvRealNamed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/ivRealed"
+                            android:maxLines="1"
+                            android:text="已实名认证"
+                            android:textColor="#F08519"
+                            android:textSize="10sp"
+
+                            />
 
                     </RelativeLayout>
 
@@ -72,143 +173,200 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/login_btn"
+                        android:background="@drawable/apply_bg_login"
                         android:text="登录"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/rltLogined"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:id="@+id/ivLoginAvatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_avatar" />
-
+                    android:layout_height="90dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_toLeftOf="@+id/lltSign"
-                        android:layout_toRightOf="@+id/ivLoginAvatar"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/tvName"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:maxLines="1"
-                                android:text="无言的结局"
-                                android:textColor="@color/font_666666"
-                                android:textSize="16sp"
-
-                                />
-
-                            <ImageView
-                                android:id="@+id/ivRealed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="5dp"
-                                android:contentDescription="@string/app_name"
-
-                                android:scaleType="fitXY"
-                                android:src="@drawable/mine_realnamed" />
-
-                            <TextView
-                                android:id="@+id/tvRealNamed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:maxLines="1"
-                                android:text="已实名认证"
-                                android:textColor="#F08519"
-                                android:textSize="10sp"
-
-                                />
-                        </LinearLayout>
-
-                        <cn.innovativest.ath.widget.ScrollTextView
-                            android:id="@+id/tvwNotice"
-                            android:layout_width="213dp"
-                            android:layout_height="15dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/mine_message_bg"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:paddingLeft="5dp"
-                            android:paddingTop="2dp"
-                            android:paddingRight="5dp"
-                            android:paddingBottom="2dp"
-                            customAttr:clickEnable="true"
-                            customAttr:isHorizontal="true"
-                            customAttr:speed="2"
-                            customAttr:text="1.交易中心9月份开放，敬请期待！！  2.苹果app即将上线。"
-                            customAttr:textColor="@color/font_666666"
-                            customAttr:textSize="10dp"
-                            customAttr:times="600" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/lltSign"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btnSign"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/mine_sign"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="未签到"
-                            android:textColor="#F08519"
-                            android:textSize="6sp" />
 
                         <TextView
+                            android:id="@+id/tvATH"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
+                            android:layout_alignParentLeft="true"
                             android:maxLines="1"
-                            android:text="领取积分"
-                            android:textSize="10sp" />
+                            android:text="9.000"
+                            android:textColor="@color/nor_white"
+                            android:textSize="12sp"
+
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ivATH"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:contentDescription="@string/app_name"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/mine_avatar" />
+
+                            <TextView
+                                android:id="@+id/tvATHNotice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/ivATH"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="ATH"
+                                android:textColor="@color/nor_white"
+                                android:textSize="12sp"
+
+                                />
+                        </RelativeLayout>
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/nor_white" />
 
-                </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/tvHelp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:maxLines="1"
+                            android:text="9.000"
+                            android:textColor="@color/nor_white"
+                            android:textSize="12sp"
+
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ivHelp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:contentDescription="@string/app_name"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/mine_avatar" />
+
+                            <TextView
+                                android:id="@+id/tvHelpNotice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/ivHelp"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="助力值"
+                                android:textColor="@color/nor_white"
+                                android:textSize="12sp"
+
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/nor_white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:maxLines="1"
+                            android:text="9.000"
+                            android:textColor="@color/nor_white"
+                            android:textSize="12sp"
+
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ivScore"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:contentDescription="@string/app_name"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/mine_avatar" />
+
+                            <TextView
+                                android:id="@+id/tvwScoreNotice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/ivScore"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="积分"
+                                android:textColor="@color/nor_white"
+                                android:textSize="12sp"
+
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -217,611 +375,312 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/lltTop"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/rltAdPubManagement"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@android:color/white">
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
-                    <ImageView
-                        android:id="@+id/ivAdPubManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_pub_ad" />
-
-                    <TextView
-                        android:id="@+id/tvAdPubManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivAdPubManagement"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="发起交易"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightAdPubManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltBuyAndSale"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/start_trade_bg"
-                    android:visibility="gone">
-
-                    <LinearLayout
-                        android:id="@+id/lltBuy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/start_trade_bg_line"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvBuy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:text="我要买"
-                            android:textColor="@color/font_666666"
-                            android:textSize="14sp" />
+                    <RelativeLayout
+                        android:id="@+id/rltZCManagement"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
 
                         <ImageView
-                            android:id="@+id/ivArrow1"
+                            android:id="@+id/ivZCManagement"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="5dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/start_trade_arrow_right" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lltSale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/start_trade_bg_line"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                            android:src="@drawable/mine_zc" />
 
                         <TextView
-                            android:id="@+id/tvSale"
+                            android:id="@+id/tvZCManagement"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/ivZCManagement"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
                             android:maxLines="1"
-                            android:text="我要卖"
-                            android:textColor="@color/font_666666"
+                            android:text="众筹管理"
+                            android:textColor="#808080"
                             android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
+                    <RelativeLayout
+                        android:id="@+id/rltRealName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
 
                         <ImageView
-                            android:id="@+id/ivArrow2"
+                            android:id="@+id/ivRealName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="5dp"
+                            android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/start_trade_arrow_right" />
-                    </LinearLayout>
+                            android:src="@drawable/mine_realname" />
 
+                        <TextView
+                            android:id="@+id/tvRealName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivRealName"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:maxLines="1"
+                            android:text="实名认证"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
 
-                </RelativeLayout>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
 
-                <RelativeLayout
-                    android:id="@+id/rltOrderManagement"
+                    <RelativeLayout
+                        android:id="@+id/rltSafetyManagement"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ivSafetyManagement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_safe" />
+
+                        <TextView
+                            android:id="@+id/tvSafetyManagement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivSafetyManagement"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:maxLines="1"
+                            android:text="安全管理"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
+                    <RelativeLayout
+                        android:id="@+id/rltNotice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ivNotice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_notice" />
+
+                        <TextView
+                            android:id="@+id/tvNotice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivNotice"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:background="@android:color/transparent"
+                            android:maxLines="1"
+                            android:text="系统公告"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:visibility="visible" />
 
-                    <ImageView
-                        android:id="@+id/ivOrderManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_order" />
-
-                    <TextView
-                        android:id="@+id/tvOrderManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivOrderManagement"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="订单管理"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightOrderManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltPubManagement"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
-                    <ImageView
-                        android:id="@+id/ivPubManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_pub_management" />
+                    <RelativeLayout
+                        android:id="@+id/rltApp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/tvPubManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivPubManagement"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="发布管理"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
+                        <ImageView
+                            android:id="@+id/ivApp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_app" />
 
-                    <ImageView
-                        android:id="@+id/ivRightPubManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tvApp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivApp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:maxLines="1"
+                            android:text="生态圈应用"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
 
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
 
-                <RelativeLayout
-                    android:id="@+id/rltCoinManagement"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
+                    <RelativeLayout
+                        android:id="@+id/rltNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
 
-                    <ImageView
-                        android:id="@+id/ivCoinManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_coin" />
+                        <ImageView
+                            android:id="@+id/ivNote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_note" />
 
-                    <TextView
-                        android:id="@+id/tvCoinManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivCoinManagement"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="积分兑换管理"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvNote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivNote"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:maxLines="1"
+                            android:text="须知"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/ivRightCoinManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
 
+                    <RelativeLayout
+                        android:id="@+id/rltAboutUs"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
 
-                <RelativeLayout
-                    android:id="@+id/rltRealName"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
+                        <ImageView
+                            android:id="@+id/ivAboutUs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_about_us" />
 
-                    <ImageView
-                        android:id="@+id/ivRealName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_realname" />
+                        <TextView
+                            android:id="@+id/tvAboutUs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivAboutUs"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:maxLines="1"
+                            android:text="关于我们"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvRealName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivRealName"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="实名认证"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
+                    </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/ivRightRealName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
 
+                    <RelativeLayout
+                        android:id="@+id/rltCooperation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center">
 
-                <RelativeLayout
-                    android:id="@+id/rltSafetyManagement"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
+                        <ImageView
+                            android:id="@+id/ivCooperation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mine_cop" />
 
-                    <ImageView
-                        android:id="@+id/ivSafetyManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_safety_mangement" />
+                        <TextView
+                            android:id="@+id/tvCooperation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ivCooperation"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:background="@android:color/transparent"
+                            android:maxLines="1"
+                            android:text="商务合作"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvSafetyManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivSafetyManagement"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="安全管理"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightSafetyManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
 
 
-                <RelativeLayout
-                    android:id="@+id/rltPropertyManagement"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
-
-                    <ImageView
-                        android:id="@+id/ivPropertyManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_value" />
-
-                    <TextView
-                        android:id="@+id/tvropertyManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivPropertyManagement"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="资产管理"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightPropertyManagement"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:id="@+id/rltAccountSetting"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
-
-                    <ImageView
-                        android:id="@+id/ivAccountSetting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_account_setting" />
-
-                    <TextView
-                        android:id="@+id/tvAccountSetting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivAccountSetting"
-                        android:background="@android:color/transparent"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="账户设置"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightAccountSetting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltNotice"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/ivNotice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_notice" />
-
-                    <TextView
-                        android:id="@+id/tvNotice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivNotice"
-                        android:background="@android:color/transparent"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="系统公告"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightNotice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltApp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/ivApp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_app" />
-
-                    <TextView
-                        android:id="@+id/tvApp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivApp"
-                        android:background="@android:color/transparent"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="生态圈应用"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightApp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltAboutATH"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white">
-
-                    <ImageView
-                        android:id="@+id/ivAboutATH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_about_ath" />
-
-                    <TextView
-                        android:id="@+id/tvAboutATH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivAboutATH"
-                        android:background="@android:color/transparent"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="ATH生态圈须知"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightAboutATH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltAboutUs"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/ivAboutUs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_about_us" />
-
-                    <TextView
-                        android:id="@+id/tvAboutUs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivAboutUs"
-                        android:background="@android:color/transparent"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="关于我们"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightAboutUs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rltCooperation"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@android:color/white"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/ivCooperation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_co" />
-
-                    <TextView
-                        android:id="@+id/tvCooperation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/ivCooperation"
-                        android:background="@android:color/transparent"
-                        android:maxLines="1"
-                        android:paddingLeft="10dp"
-                        android:text="商务合作"
-                        android:textColor="#808080"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:id="@+id/ivRightCooperation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
-                </RelativeLayout>
             </LinearLayout>
 
         </RelativeLayout>

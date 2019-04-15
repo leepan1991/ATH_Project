@@ -1,9 +1,7 @@
 package cn.innovativest.ath.ui.frag;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,18 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.adapter.FundGallerAdapter;
 import cn.innovativest.ath.bean.FundGallery;
 import cn.innovativest.ath.ui.BaseFrag;
 

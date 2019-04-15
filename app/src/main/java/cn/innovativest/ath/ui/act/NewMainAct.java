@@ -18,14 +18,10 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.CommonResponse;
-import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.ui.BaseCompatAct;
-import cn.innovativest.ath.ui.frag.AppFrag;
 import cn.innovativest.ath.ui.frag.FundFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
-import cn.innovativest.ath.ui.frag.NewCoinFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
-import cn.innovativest.ath.ui.frag.TradeFrag;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import io.rong.imkit.RongIM;
@@ -45,8 +41,7 @@ public class NewMainAct extends BaseCompatAct {
             R.drawable.new_tab_coin_logo,
             R.drawable.new_tab_app_logo, R.drawable.new_tab_mine_logo};
     private String[] mTextviewArray;
-    private Class[] fragmentArray = {NewMainFrag.class,
-            TradeFrag.class, NewCoinFrag.class, FundFrag.class, MineFrag.class};
+    private Class[] fragmentArray = {NewMainFrag.class, FundFrag.class, MineFrag.class};
 
     private long mExitTime;
 
@@ -67,12 +62,10 @@ public class NewMainAct extends BaseCompatAct {
         } else {
             getCommonData();
         }
-        mTextviewArray = new String[5];
+        mTextviewArray = new String[3];
         mTextviewArray[0] = getString(R.string.tab_main);
-        mTextviewArray[1] = getString(R.string.tab_purchase);
-        mTextviewArray[2] = getString(R.string.tab_coin);
-        mTextviewArray[3] = getString(R.string.tab_app);
-        mTextviewArray[4] = getString(R.string.tab_mine);
+        mTextviewArray[1] = getString(R.string.tab_app);
+        mTextviewArray[2] = getString(R.string.tab_mine);
         initView();
     }
 

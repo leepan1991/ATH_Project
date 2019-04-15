@@ -72,7 +72,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/ivCoinManagement"
                     android:maxLines="1"
                     android:paddingLeft="10dp"
                     android:text="5号高级矿机（98元）"
