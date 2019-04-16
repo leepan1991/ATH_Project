@@ -20,7 +20,7 @@ public class ContentFragment extends BaseFrag {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.tv_content,container,false);
+        view = inflater.inflate(R.layout.tv_content, container, false);
         tvContent = (TextView) view.findViewById(R.id.tv_content);
         String string = getArguments().getString(KEY);
         tvContent.setText(string);
@@ -32,10 +32,10 @@ public class ContentFragment extends BaseFrag {
     /**
      * fragment静态传值
      */
-    public static ContentFragment newInstance(String str){
+    public static ContentFragment newInstance(String str) {
         ContentFragment fragment = new ContentFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(KEY,str);
+        bundle.putString(KEY, str);
         fragment.setArguments(bundle);
 
         return fragment;
