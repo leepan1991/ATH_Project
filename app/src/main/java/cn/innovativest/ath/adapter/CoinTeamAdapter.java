@@ -12,13 +12,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.bean.CoinActive;
-import cn.innovativest.ath.bean.CoinItem;
 import cn.innovativest.ath.bean.CoinTop;
-import cn.innovativest.ath.common.AppConfig;
-import cn.innovativest.ath.utils.CUtils;
 
 public class CoinTeamAdapter extends BaseAdapter {
     private Context context;

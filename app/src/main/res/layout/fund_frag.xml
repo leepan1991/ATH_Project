@@ -70,7 +70,9 @@
                     <RelativeLayout
                         android:id="@+id/rlt_fun"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center">
 
                         <!--<ImageView-->
                         <!--android:id="@+id/iv_fund"-->
@@ -105,7 +107,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tvFundComplete"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="20dp"
                                 android:text="未完成：100万"
                                 android:textColor="@color/nor_white"
                                 android:textSize="13sp" />
@@ -117,7 +119,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginLeft="30dp"
                             android:layout_toRightOf="@+id/rltNotLoginAvatar">
 
                             <TextView
@@ -134,7 +136,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tvFundAmount"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="20dp"
                                 android:text="公益基金：100万"
                                 android:textColor="@color/nor_white"
                                 android:textSize="13sp" />
@@ -186,13 +188,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:tabMode="scrollable"
+                    app:tabGravity="fill"
+                    app:tabMode="fixed"
                     app:tabTextColor="@color/font_666666" />
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewpager"
+                <cn.innovativest.ath.widget.XListView
+                    android:id="@+id/fund_listview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="#E6E6E6"
+                    android:dividerHeight="12dp"
+                    android:scrollbars="none"></cn.innovativest.ath.widget.XListView>
             </LinearLayout>
         </ScrollView>
     </cn.innovativest.ath.widget.VpSwipeRefreshLayout>

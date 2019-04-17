@@ -69,10 +69,10 @@ public class FundAdapter extends BaseAdapter {
         // 封装数据
         FundItem fundItem = (FundItem) getItem(position);
 
-        if (!CUtils.isEmpty(fundItem.getGetCrowdFundingText().getImgLink())) {
-            GlideApp.with(context).load(AppConfig.ATH_APP_URL + fundItem.getGetCrowdFundingText().getImgLink()).placeholder(R.drawable.mine_avatar).error(R.drawable.mine_avatar).optionalCircleCrop().into(holder.iv_avatar);
+        if (!CUtils.isEmpty(fundItem.getGetCrowdFundingText().getImgLink()) && fundItem.getGetCrowdFundingText().getImgLink().contains("|")) {
+            GlideApp.with(context).load(fundItem.getGetCrowdFundingText().getImgLink().substring(fundItem.getGetCrowdFundingText().getImgLink().indexOf("|"))).placeholder(R.drawable.mine_avatar).error(R.drawable.mine_avatar).into(holder.iv_avatar);
         } else {
-            GlideApp.with(context).load("").placeholder(R.drawable.mine_avatar).error(R.drawable.mine_avatar).optionalCircleCrop().into(holder.iv_avatar);
+            GlideApp.with(context).load(fundItem.getGetCrowdFundingText().getImgLink()).placeholder(R.drawable.mine_avatar).error(R.drawable.mine_avatar).into(holder.iv_avatar);
         }
 
         holder.tvName.setText(fundItem.getGetCrowdFundingText().getTitle());

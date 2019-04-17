@@ -3,13 +3,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="3dp"
-    android:paddingRight="3dp">
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="70dp"
-        android:layout_height="90dp"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:scaleType="fitXY"
@@ -17,14 +17,13 @@
 
     <TextView
         android:id="@+id/tvwName"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:ellipsize="end"
         android:gravity="center"
-        android:maxLength="10"
         android:maxLines="1"
         android:text="@string/app_name"
         android:textColor="#5F5D5D"

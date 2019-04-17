@@ -6,9 +6,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,14 +33,15 @@ import cn.innovativest.ath.response.Hot;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.widget.XListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 public class FundFrag extends BaseFrag {
 
     private View contentView;
+    @BindView(R.id.tablayout)
     private TabLayout mTabLayout;
-    private ViewPager mViewPager;
 
     @BindView(R.id.tvFundComplete)
     TextView tvFundComplete;
@@ -62,9 +65,11 @@ public class FundFrag extends BaseFrag {
     private View view1, view2, view3, view4, view5;//页卡视图
     private List<View> mViewList = new ArrayList<>();//页卡视图集合
     private List<CrowdFundingType> listTitles;
-    private List<Fragment> fragments;
-    private List<TextView> listTextViews;
+//    private List<Fragment> fragments;
+//    private List<TextView> listTextViews;
 
+    @BindView(R.id.fund_listview)
+    XListView fund_listview;
     private FundAdapter fundAdapter;
     private List<FundItem> lstFundItems;
     int pi;
@@ -94,12 +99,16 @@ public class FundFrag extends BaseFrag {
     }
 
     private void initView() {
-        mViewPager = (ViewPager) contentView.findViewById(R.id.viewpager);
-        mTabLayout = (TabLayout) contentView.findViewById(R.id.tablayout);
-//        grid = (GridView) contentView.findViewById(R.id.grid);
         lstFundItems = new ArrayList<>();
+        listTitles = new ArrayList<>();
         fundAdapter = new FundAdapter(getActivity(), lstFundItems);
+        fund_listview.setAdapter(fundAdapter);
+        fund_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            }
+        });
 //        initData();
     }
 
@@ -119,7 +128,11 @@ public class FundFrag extends BaseFrag {
             //实例化TextView控件
             TextView tv = (TextView) view.findViewById(R.id.tvwName);
             ImageView iv = (ImageView) view.findViewById(R.id.iv_logo);
-            GlideApp.with(getActivity()).load(AppConfig.ATH_APP_URL + lstFundGallerys.get(x).getGetCrowdFundingText().getImgLink()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).optionalCircleCrop().into(iv);
+            if (lstFundGallerys.get(x).getGetCrowdFundingText().getImgLink().contains("|")) {
+                GlideApp.with(getActivity()).load(lstFundGallerys.get(x).getGetCrowdFundingText().getImgLink().substring(lstFundGallerys.get(x).getGetCrowdFundingText().getImgLink().indexOf("|"))).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(iv);
+            } else {
+                GlideApp.with(getActivity()).load(lstFundGallerys.get(x).getGetCrowdFundingText().getImgLink()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(iv);
+            }
             //给TextView添加文字
             tv.setText(lstFundGallerys.get(x).getGetCrowdFundingText().getTitle());
             //把行布局放到linear里
@@ -130,43 +143,61 @@ public class FundFrag extends BaseFrag {
     private void initData(List<CrowdFundingType> crowdFundingTypes) {
 
 
-        listTitles = new ArrayList<>();
         listTitles.clear();
         listTitles.addAll(crowdFundingTypes);
-        fragments = new ArrayList<>();
+//        fragments = new ArrayList<>();
 
 
-        for (int i = 0; i < listTitles.size(); i++) {
-            ContentFragment fragment = ContentFragment.newInstance(listTitles.get(i).getTitle());
-            fragments.add(fragment);
-
-        }
+//        for (int i = 0; i < listTitles.size(); i++) {
+//            ContentFragment fragment = ContentFragment.newInstance(listTitles.get(i).getTitle());
+//            fragments.add(fragment);
+//
+//        }
         //mTabLayout.setTabMode(TabLayout.SCROLL_AXIS_HORIZONTAL);//设置tab模式，当前为系统默认模式
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.e("TAG", "tab position:" + tab.getPosition());
+                pi = 1;
+                getFundData(listTitles.get(tab.getPosition()).getId(), pi);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         for (int i = 0; i < listTitles.size(); i++) {
+            mTabLayout.removeAllTabs();
             mTabLayout.addTab(mTabLayout.newTab().setText(listTitles.get(i).getTitle()));//添加tab选项
         }
 
-        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return fragments.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return fragments.size();
-            }
-
-            //ViewPager与TabLayout绑定后，这里获取到PageTitle就是Tab的Text
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return listTitles.get(position).getTitle();
-            }
-        };
-        mViewPager.setAdapter(mAdapter);
-
-        mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
-        mTabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
+//        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
+//            @Override
+//            public Fragment getItem(int position) {
+//                return fragments.get(position);
+//            }
+//
+//            @Override
+//            public int getCount() {
+//                return fragments.size();
+//            }
+//
+//            //ViewPager与TabLayout绑定后，这里获取到PageTitle就是Tab的Text
+//            @Override
+//            public CharSequence getPageTitle(int position) {
+//                return listTitles.get(position).getTitle();
+//            }
+//        };
+//        mViewPager.setAdapter(mAdapter);
+//
+//        mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
+//        mTabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
     }
 
     private void initDataToView(List<FundItem> fundItems) {
