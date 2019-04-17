@@ -182,12 +182,13 @@
                     </HorizontalScrollView>
                 </LinearLayout>
 
-                <android.support.design.widget.TabLayout
+                <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tablayout"
                     style="@style/MyTablayoutstyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    app:tabMaxWidth="0dp"
                     app:tabGravity="fill"
                     app:tabMode="fixed"
                     app:tabTextColor="@color/font_666666" />

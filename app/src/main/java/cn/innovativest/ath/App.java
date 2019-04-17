@@ -3,7 +3,7 @@ package cn.innovativest.ath;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 import android.widget.Toast;
 
 import com.google.gson.Gson;

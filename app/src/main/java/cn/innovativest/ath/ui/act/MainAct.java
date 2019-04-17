@@ -1,7 +1,7 @@
 package cn.innovativest.ath.ui.act;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
+import androidx.fragment.app.FragmentTabHost;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;

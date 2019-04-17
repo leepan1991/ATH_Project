@@ -17,7 +17,7 @@
         android:layout_height="1dp"
         android:background="@android:color/white" />
 
-    <android.support.v4.app.FragmentTabHost
+    <androidx.fragment.app.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,6 +31,6 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="0" />
 
-    </android.support.v4.app.FragmentTabHost>
+    </androidx.fragment.app.FragmentTabHost>
 
 </LinearLayout>

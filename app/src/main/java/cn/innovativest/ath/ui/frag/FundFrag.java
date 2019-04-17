@@ -1,11 +1,6 @@
 package cn.innovativest.ath.ui.frag;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +10,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.FundAdapter;
-import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.CrowdFundingType;
 import cn.innovativest.ath.response.FundItem;
@@ -41,7 +38,7 @@ public class FundFrag extends BaseFrag {
 
     private View contentView;
     @BindView(R.id.tablayout)
-    private TabLayout mTabLayout;
+    TabLayout mTabLayout;
 
     @BindView(R.id.tvFundComplete)
     TextView tvFundComplete;
@@ -159,7 +156,7 @@ public class FundFrag extends BaseFrag {
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.e("TAG", "tab position:" + tab.getPosition());
                 pi = 1;
-                getFundData(listTitles.get(tab.getPosition()).getId(), pi);
+//                getFundData(listTitles.get(tab.getPosition()).getId(), pi);
             }
 
             @Override

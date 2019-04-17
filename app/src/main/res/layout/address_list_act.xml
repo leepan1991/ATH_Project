@@ -64,7 +64,7 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -75,7 +75,7 @@
                 android:id="@+id/address_listview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></cn.innovativest.ath.widget.SwipeListView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </LinearLayout>
