@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@drawable/fund_list_bg"
+    android:background="@android:color/white"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
@@ -14,35 +12,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp">
-
-        <RelativeLayout
-            android:id="@+id/rlt_avatar"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp">
-
-            <ImageView
-                android:id="@+id/iv_avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher" />
-
-        </RelativeLayout>
+        android:layout_marginRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
 
         <RelativeLayout
             android:id="@+id/rltNameContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:layout_toRightOf="@+id/rlt_avatar">
+            android:layout_marginLeft="12dp">
 
             <RelativeLayout
                 android:id="@+id/lltNameOne"
@@ -63,16 +44,15 @@
                     android:textColor="@color/font_333333"
                     android:textSize="13sp" />
 
-                <Button
-                    android:id="@+id/btnStartZc"
-                    android:layout_width="70dp"
-                    android:layout_height="35dp"
+                <TextView
+                    android:id="@+id/btnFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/apply_bg_startzc"
-                    android:text="100起投"
-                    android:textColor="@android:color/white"
+                    android:text="ATH"
+                    android:textColor="@color/font_333333"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -95,7 +75,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="目标金额"
+                    android:text="订单号："
                     android:textColor="@color/font_999999"
                     android:textSize="12sp" />
 
@@ -109,20 +89,9 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="￥20万"
+                    android:text="12233444545"
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tvStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:maxLines="1"
-                    android:text="进行中"
-                    android:textColor="@color/font_333333"
-                    android:textSize="13sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -143,7 +112,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="已筹金额"
+                    android:text="时间："
                     android:textColor="@color/font_999999"
                     android:textSize="12sp" />
 
@@ -157,18 +126,11 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="￥15.02万"
+                    android:text="2019-02-23"
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="12sp" />
 
-                <com.github.lzyzsd.circleprogress.CircleProgress
-                    android:id="@+id/circle_progress"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="50dp"
-                    custom:circle_progress="5"
-                    custom:circle_text_size="10dp" />
+
             </RelativeLayout>
 
         </RelativeLayout>

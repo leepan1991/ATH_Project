@@ -27,6 +27,8 @@ import cn.innovativest.ath.response.CoinDetailResponse;
 import cn.innovativest.ath.response.CoinResponse;
 import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.response.FriendListResponse;
+import cn.innovativest.ath.response.FundManResponse;
+import cn.innovativest.ath.response.FundPartResponse;
 import cn.innovativest.ath.response.FundResponse;
 import cn.innovativest.ath.response.GiftResponse;
 import cn.innovativest.ath.response.LoginResponse;
@@ -258,8 +260,8 @@ public interface AthService {
     Observable<BaseResponse> crowd_funding_add(@Body HashMap<String, String> map);
 
     @GET("self_crowd_funding_list")
-    Observable<FundResponse> self_crowd_funding_list(@Query("page") int page);
+    Observable<FundManResponse> self_crowd_funding_list(@Query("page") int page);
 
     @GET("self_crowd_funding_info")
-    Observable<FundResponse> self_crowd_funding_info(@Query("id") String id);
+    Observable<FundPartResponse> self_crowd_funding_info(@Query("page") int page);
 }

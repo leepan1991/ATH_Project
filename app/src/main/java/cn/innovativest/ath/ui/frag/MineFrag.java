@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,7 @@ import com.umeng.analytics.MobclickAgent;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
@@ -38,6 +38,7 @@ import cn.innovativest.ath.ui.act.AboutUsAct;
 import cn.innovativest.ath.ui.act.AccountSettingAct;
 import cn.innovativest.ath.ui.act.AppAct;
 import cn.innovativest.ath.ui.act.CooperationAct;
+import cn.innovativest.ath.ui.act.FundManAct;
 import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.ui.act.NoticeListAct;
 import cn.innovativest.ath.ui.act.RealCentificationAct;
@@ -400,7 +401,11 @@ public class MineFrag extends BaseFrag {
                 startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
                 break;
             case R.id.rltZCManagement:
-                //
+                if (App.get().user != null) {
+                    startActivityForResult(new Intent(getActivity(), FundManAct.class), 101);
+                } else {
+                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
+                }
                 break;
             case R.id.rltRealName:
                 if (App.get().user != null) {

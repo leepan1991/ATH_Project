@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6E6E6"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar_menu" />
+
+    <RelativeLayout
+        android:id="@+id/rltCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/rgTrade"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/btnManPro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/message_f_bt_bg_slct"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="我发布的"
+                android:textColor="@drawable/message_text_color_slct"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/font_999999" />
+
+            <RadioButton
+                android:id="@+id/btnManPic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/message_f_bt_bg_slct"
+                android:button="@null"
+                android:gravity="center"
+                android:text="我参加的"
+                android:textColor="@drawable/message_text_color_slct"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/trade_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/trade_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#E6E6E6"
+            android:dividerHeight="12dp"
+            android:scrollbars="none"></ListView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

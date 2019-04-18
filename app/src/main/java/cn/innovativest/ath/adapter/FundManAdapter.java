@@ -17,35 +17,35 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.response.FundItem;
+import cn.innovativest.ath.bean.FundManItem;
 import cn.innovativest.ath.utils.CUtils;
 
-public class FundAdapter extends BaseAdapter {
+public class FundManAdapter extends BaseAdapter {
     private Context context;
-    private List<FundItem> lstFundItems;
+    private List<FundManItem> lstFunManItems;
 
-    public FundAdapter(Context context, List<FundItem> lstFundItems) {
+    public FundManAdapter(Context context, List<FundManItem> lstFunManItems) {
         this.context = context;
-        this.lstFundItems = lstFundItems;
+        this.lstFunManItems = lstFunManItems;
     }
 
-    public void onRefresh(List<FundItem> lstFundItems) {
-        this.lstFundItems = lstFundItems;
+    public void onRefresh(List<FundManItem> lstFunManItems) {
+        this.lstFunManItems = lstFunManItems;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return lstFundItems.size();
+        return lstFunManItems.size();
     }
 
     public void setCount(int count) {
-        this.lstFundItems.size();
+        this.lstFunManItems.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lstFundItems.get(position);
+        return lstFunManItems.get(position);
     }
 
     @Override
@@ -66,21 +66,22 @@ public class FundAdapter extends BaseAdapter {
         }
 
         // 封装数据
-        FundItem fundItem = (FundItem) getItem(position);
+        FundManItem fundManItem = (FundManItem) getItem(position);
 
-        if (!CUtils.isEmpty(fundItem.getGetCrowdFundingText().getImgLink()) && fundItem.getGetCrowdFundingText().getImgLink().contains("|")) {
-            GlideApp.with(context).load(fundItem.getGetCrowdFundingText().getImgLink().substring(fundItem.getGetCrowdFundingText().getImgLink().indexOf("|"))).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
+        if (!CUtils.isEmpty(fundManItem.get_crowd_funding_text.getImgLink()) && fundManItem.get_crowd_funding_text.getImgLink().contains("|")) {
+            GlideApp.with(context).load(fundManItem.get_crowd_funding_text.getImgLink().substring(fundManItem.get_crowd_funding_text.getImgLink().indexOf("|"))).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
         } else {
-            GlideApp.with(context).load(fundItem.getGetCrowdFundingText().getImgLink()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
+            GlideApp.with(context).load(fundManItem.get_crowd_funding_text.getImgLink()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
         }
 
-        holder.tvName.setText(fundItem.getGetCrowdFundingText().getTitle());
+        holder.tvName.setText(fundManItem.get_crowd_funding_text.getTitle());
 
-        holder.tvAmount.setText(fundItem.getTargetRmb() + "万");
-        holder.tvStatus.setText(fundItem.getStatus());
-        holder.tvCompleted.setText(fundItem.getReachRmb() + "万");
+        holder.btnStartZc.setText("200起投");
+        holder.tvAmount.setText(fundManItem.target_rmb);
+        holder.tvStatus.setText(fundManItem.status);
+        holder.tvCompleted.setText(fundManItem.reach_rmb);
 
-        holder.circle_progress.setProgress(fundItem.getBaiFenBi());
+        holder.circle_progress.setProgress(fundManItem.bai_fen_bi);
 
         return convertView;
     }
