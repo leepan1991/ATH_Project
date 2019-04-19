@@ -1,11 +1,13 @@
 package cn.innovativest.ath.ui.frag;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ import cn.innovativest.ath.response.FundItem;
 import cn.innovativest.ath.response.FundResponse;
 import cn.innovativest.ath.response.Hot;
 import cn.innovativest.ath.ui.BaseFrag;
+import cn.innovativest.ath.ui.act.AddFundAct;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.widget.XListView;
@@ -51,6 +54,9 @@ public class FundFrag extends BaseFrag {
 
     @BindView(R.id.tvFundNum)
     TextView tvFundNum;
+
+    @BindView(R.id.tvwAction)
+    ImageButton tvwAction;
 
     LinearLayout linear;
     //    private GridView grid;
@@ -96,6 +102,12 @@ public class FundFrag extends BaseFrag {
     }
 
     private void initView() {
+        tvwAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AddFundAct.class));
+            }
+        });
         lstFundItems = new ArrayList<>();
         listTitles = new ArrayList<>();
         fundAdapter = new FundAdapter(getActivity(), lstFundItems);

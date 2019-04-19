@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nor_white">
+
+    <include
+        android:id="@+id/view_header"
+        layout="@layout/view_actionbar_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_header"
+        android:layout_marginTop="-48dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:maxLines="1"
+                android:text="众筹商品"
+                android:textColor="@color/font_666666"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etName"
+                style="@style/mLoginEt"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/tvName"
+                android:background="@null"
+                android:hint="请输入众筹商品名"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/font_333333"
+                android:textColorHint="@color/font_999999"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="众筹目标"
+                android:textColor="@color/font_666666"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etGoal"
+                style="@style/mLoginEt"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/tvName"
+                android:background="@null"
+                android:hint="请输入众筹商品所需资金"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/font_333333"
+                android:textColorHint="@color/font_999999"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="众筹金额（可以输入多个，以#分割表示）"
+                android:textColor="@color/font_666666"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etAmount"
+                style="@style/mLoginEt"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/tvName"
+                android:background="@null"
+                android:hint="请输入众筹最低限额（实例：120#200#220）"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/font_333333"
+                android:textColorHint="@color/font_999999"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="结束日期"
+                android:textColor="@color/font_666666"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvEndDate"
+                style="@style/mLoginEt"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/tvName"
+                android:background="@null"
+                android:hint="请选择众筹商品结束时间"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/font_333333"
+                android:textColorHint="@color/font_999999"
+                android:textSize="14sp" />
+
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="详细内容"
+                android:textColor="@color/font_666666"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etContent"
+                style="@style/mLoginEt"
+                android:layout_height="200dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tvId"
+                android:background="@null"
+                android:gravity="left|top"
+                android:hint="请输入众筹商品的详细介绍"
+                android:inputType="text"
+                android:maxLines="8"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/font_333333"
+                android:textColorHint="@color/font_999999"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ivFundImg1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_fund_img1" />
+
+                <TextView
+                    android:id="@+id/tvImgTx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/ivFundImg1"
+                    android:maxLines="1"
+                    android:text="介绍资料"
+                    android:textColor="@color/font_666666"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/ivFundImgQuestion"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tvImgTx"
+                    android:src="@drawable/ic_fund_question" />
+
+                <Button
+                    android:id="@+id/btnUploadImg1"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/apply_bg_startzc"
+                    android:text="上传"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="为该众筹项目的具体图片，以便用户更好地了解，加快众筹项目的完成"
+                android:textColor="@color/font_999999"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/lltAddImg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tvImgTx"
+                    android:src="@drawable/ic_fund_question" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ivFundImg2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_fund_img2" />
+
+                <TextView
+                    android:id="@+id/tvImgTx2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/ivFundImg2"
+                    android:maxLines="1"
+                    android:text="相关证件"
+                    android:textColor="@color/font_666666"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btnUploadImg2"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/apply_bg_startzc"
+                    android:text="上传"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="为众筹相关证件文件（如身份证、资历证书、企业营业执照等）"
+                android:textColor="@color/font_999999"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/lltAddImg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_fund_question" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ivFundVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_fund_video" />
+
+                <TextView
+                    android:id="@+id/tvVideoTx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/ivFundVideo"
+                    android:maxLines="1"
+                    android:text="相关视频"
+                    android:textColor="@color/font_666666"
+                    android:textSize="15sp" />
+
+
+                <Button
+                    android:id="@+id/btnUploadVideo"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/apply_bg_startzc"
+                    android:text="上传"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="为该众筹项目的相关视频，可以更加详细的展示给用户，让用户更方便快捷地进行了解"
+                android:textColor="@color/font_999999"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/lltAddVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_fund_addVideo" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/lltBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/nor_white"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnPub"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_light"
+            android:text="立即发布"
+            android:textColor="@color/nor_white"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</RelativeLayout>
