@@ -31,6 +31,7 @@ import cn.innovativest.ath.response.FundResponse;
 import cn.innovativest.ath.response.Hot;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.AddFundAct;
+import cn.innovativest.ath.ui.act.FundDetailAct;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.widget.XListView;
@@ -144,6 +145,12 @@ public class FundFrag extends BaseFrag {
             }
             //给TextView添加文字
             tv.setText(lstFundGallerys.get(x).getGetCrowdFundingText().getTitle());
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getActivity(),FundDetailAct.class));
+                }
+            });
             //把行布局放到linear里
             linear.addView(view);
         }

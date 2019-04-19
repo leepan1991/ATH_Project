@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/view_header"
-        android:layout_marginTop="-48dp"
+        android:layout_marginBottom="62dp"
         android:fillViewport="true"
         android:scrollbars="none">
 
@@ -134,7 +134,6 @@
                 android:layout_toRightOf="@id/tvName"
                 android:background="@null"
                 android:hint="请选择众筹商品结束时间"
-                android:inputType="text"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:textColor="@color/font_333333"
@@ -142,9 +141,9 @@
                 android:textSize="14sp" />
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -232,7 +231,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
-                android:maxLines="1"
                 android:text="为该众筹项目的具体图片，以便用户更好地了解，加快众筹项目的完成"
                 android:textColor="@color/font_999999"
                 android:textSize="15sp" />
@@ -255,7 +253,7 @@
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/tvImgTx"
-                    android:src="@drawable/ic_fund_question" />
+                    android:src="@drawable/ic_fund_addimg" />
 
             </LinearLayout>
 
@@ -308,7 +306,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
-                android:maxLines="1"
                 android:text="为众筹相关证件文件（如身份证、资历证书、企业营业执照等）"
                 android:textColor="@color/font_999999"
                 android:textSize="15sp" />
@@ -330,7 +327,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_question" />
+                    android:src="@drawable/ic_fund_addimg" />
 
             </LinearLayout>
 
@@ -384,7 +381,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
-                android:maxLines="1"
                 android:text="为该众筹项目的相关视频，可以更加详细的展示给用户，让用户更方便快捷地进行了解"
                 android:textColor="@color/font_999999"
                 android:textSize="15sp" />
@@ -406,7 +402,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_addVideo" />
+                    android:src="@drawable/ic_fund_addvideo" />
 
             </LinearLayout>
 
