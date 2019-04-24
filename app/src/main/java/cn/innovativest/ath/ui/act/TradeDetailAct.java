@@ -45,9 +45,6 @@ import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.ViewImgDialog;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.Conversation;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -322,7 +319,6 @@ public class TradeDetailAct extends BaseAct {
                 if (rongLoginResponse != null && rongLoginResponse.code == 200) {
                     if (!CUtils.isEmpty(rongLoginResponse.token)) {
                         PrefsManager.get().save("rongToken", rongLoginResponse.token);
-                        connect(rongLoginResponse.token);
                     } else {
                         LogUtils.e("rongLoginResponse.token is null");
                     }
@@ -339,56 +335,12 @@ public class TradeDetailAct extends BaseAct {
         });
     }
 
-    /**
-     * <p>连接服务器，在整个应用程序全局，只需要调用一次，需在 {@link #( Context )} 之后调用。</p>
-     * <p>如果调用此接口遇到连接失败，SDK 会自动启动重连机制进行最多10次重连，分别是1, 2, 4, 8, 16, 32, 64, 128, 256, 512秒后。
-     * 在这之后如果仍没有连接成功，还会在当检测到设备网络状态变化时再次进行重连。</p>
-     *
-     * @param token 从服务端获取的用户身份令牌（Token）。
-     * @return RongIM  客户端核心类的实例。
-     */
-    private void connect(String token) {
 
-        if (getApplicationInfo().packageName.equals(App.get().getCurProcessName(getApplicationContext()))) {
-
-            RongIM.connect(token, new RongIMClient.ConnectCallback() {
-
-                /**
-                 * Token 错误。可以从下面两点检查 1.  Token 是否过期，如果过期您需要向 App Server 重新请求一个新的 Token
-                 *                  2.  token 对应的 appKey 和工程里设置的 appKey 是否一致
-                 */
-                @Override
-                public void onTokenIncorrect() {
-                    requestUserInfo();
-                }
-
-                /**
-                 * 连接融云成功
-                 * @param userid 当前 token 对应的用户 id
-                 */
-                @Override
-                public void onSuccess(String userid) {
-                    LogUtils.d("--onSuccess" + userid);
-//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                    finish();
-                }
-
-                /**
-                 * 连接融云失败
-                 * @param errorCode 错误码，可到官网 查看错误码对应的注释
-                 */
-                @Override
-                public void onError(RongIMClient.ErrorCode errorCode) {
-
-                }
-            });
-        }
-    }
 
     private void initView() {
         btnBack.setImageResource(R.drawable.login_arrow_left);
         tvwTitle.setText("订单详情");
-        btnAction.setVisibility(View.VISIBLE);
+        btnAction.setVisibility(View.GONE);
         btnAction.setImageResource(R.drawable.order_buy_have_message);
         mDialog = new CustomDialog(mCtx);
         viewImgDialog = new ViewImgDialog(mCtx);
@@ -835,25 +787,22 @@ public class TradeDetailAct extends BaseAct {
                 break;
             case R.id.btnContact:
                 if (tradeOrderDetail != null && tradeOrderDetail.orderDetailHead != null && !CUtils.isEmpty(tradeOrderDetail.orderDetailHead.other_party_id)) {
-//                    RongIM.getInstance().startConversation(this, Conversation.ConversationType.PRIVATE, tradeOrderDetail.orderDetailHead.other_party_id, tradeOrderDetail.orderDetailHead.name);
-                    RongIM.getInstance().startPrivateChat(this, tradeOrderDetail.orderDetailHead.other_party_id, tradeOrderDetail.orderDetailHead.name);
+//                    RongIM.getInstance().startPrivateChat(this, tradeOrderDetail.orderDetailHead.other_party_id, tradeOrderDetail.orderDetailHead.name);
                 } else {
                     App.toast(TradeDetailAct.this, "数据错误，请稍候再试");
                 }
                 break;
             case R.id.btnWaitContact:
                 if (tradeOrderDetail != null && tradeOrderDetail.orderDetailHead != null && !CUtils.isEmpty(tradeOrderDetail.orderDetailHead.other_party_id)) {
-//                    RongIM.getInstance().startConversation(this, Conversation.ConversationType.PRIVATE, tradeOrderDetail.orderDetailHead.other_party_id, tradeOrderDetail.orderDetailHead.name);
-                    RongIM.getInstance().startPrivateChat(this, tradeOrderDetail.orderDetailHead.other_party_id, tradeOrderDetail.orderDetailHead.name);
                 } else {
                     App.toast(TradeDetailAct.this, "数据错误，请稍候再试");
                 }
                 break;
-            case R.id.btnAction:
-                Map<String, Boolean> mp = new HashMap<String, Boolean>();
-                mp.put(Conversation.ConversationType.PRIVATE.getName(), false);
-                RongIM.getInstance().startConversationList(this, mp);
-                break;
+//            case R.id.btnAction:
+//                Map<String, Boolean> mp = new HashMap<String, Boolean>();
+//                mp.put(Conversation.ConversationType.PRIVATE.getName(), false);
+//                RongIM.getInstance().startConversationList(this, mp);
+//                break;
             case R.id.tvPayNumber:
                 if (!CUtils.isEmpty(copyContent)) {
                     copy(copyContent);

@@ -1,7 +1,6 @@
 package cn.innovativest.ath.ui.frag;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +14,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
 import com.google.gson.Gson;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
@@ -48,12 +49,10 @@ import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.Conversation;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 /**
  * Created by leepan on 20/03/2018.
@@ -160,7 +159,7 @@ public class MineFrag extends BaseFrag {
         btnBack.setVisibility(View.INVISIBLE);
         btnAction.setImageResource(R.drawable.mine_setting);
         btnAction.setVisibility(View.VISIBLE);
-        tvwAction.setVisibility(View.VISIBLE);
+        tvwAction.setVisibility(View.GONE);
         tvwAction.setImageResource(R.drawable.order_buy_have_message);
         tvwAction.setOnClickListener(this);
         lltAction.setOnClickListener(this);
@@ -273,7 +272,7 @@ public class MineFrag extends BaseFrag {
 
     private void initDataToView(UserInfo userInfo) {
         tvName.setText(userInfo.name);
-        GlideApp.with(this).load(AppConfig.ATH_APP_URL + userInfo.head_img_link).placeholder(R.drawable.mine_avatar).error(R.drawable.mine_avatar).optionalCircleCrop().into(ivLoginAvatar);
+        GlideApp.with(getActivity()).load(AppConfig.ATH_APP_URL + userInfo.head_img_link).placeholder(R.drawable.mine_avatar).error(R.drawable.mine_avatar).optionalCircleCrop().into(ivLoginAvatar);
         if (userInfo.state == 1) {
             ivRealed.setVisibility(View.VISIBLE);
             tvRealNamed.setVisibility(View.VISIBLE);
@@ -455,15 +454,15 @@ public class MineFrag extends BaseFrag {
 //            case R.id.btnSign:
 //                sign();
 //                break;
-            case R.id.tvwAction:
-                if (App.get().user != null) {
-                    Map<String, Boolean> mp = new HashMap<String, Boolean>();
-                    mp.put(Conversation.ConversationType.PRIVATE.getName(), false);
-                    RongIM.getInstance().startConversationList(getActivity(), mp);
-                } else {
-                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
-                }
-                break;
+//            case R.id.tvwAction:
+//                if (App.get().user != null) {
+//                    Map<String, Boolean> mp = new HashMap<String, Boolean>();
+//                    mp.put(Conversation.ConversationType.PRIVATE.getName(), false);
+//                    RongIM.getInstance().startConversationList(getActivity(), mp);
+//                } else {
+//                    startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
+//                }
+//                break;
 
         }
 

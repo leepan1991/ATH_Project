@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rgb_238_238_239"
@@ -125,7 +126,7 @@
                             android:layout_alignParentLeft="true"
                             android:contentDescription="@string/app_name"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_avatar" />
+                            app:srcCompat="@drawable/mine_avatar" />
 
                         <TextView
                             android:id="@+id/tvName"
@@ -149,7 +150,7 @@
                             android:layout_toRightOf="@+id/tvName"
                             android:contentDescription="@string/app_name"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_realnamed" />
+                            app:srcCompat="@drawable/mine_realnamed" />
 
                         <TextView
                             android:id="@+id/tvRealNamed"
@@ -222,7 +223,7 @@
                                 android:layout_centerVertical="true"
                                 android:contentDescription="@string/app_name"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/mine_ath" />
+                                app:srcCompat="@drawable/mine_ath" />
 
                             <TextView
                                 android:id="@+id/tvATHNotice"
@@ -284,7 +285,7 @@
                                 android:layout_centerVertical="true"
                                 android:contentDescription="@string/app_name"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/mine_ath_help" />
+                                app:srcCompat="@drawable/mine_ath_help" />
 
                             <TextView
                                 android:id="@+id/tvHelpNotice"
@@ -346,7 +347,7 @@
                                 android:layout_centerVertical="true"
                                 android:contentDescription="@string/app_name"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/mine_score" />
+                                app:srcCompat="@drawable/mine_score" />
 
                             <TextView
                                 android:id="@+id/tvwScoreNotice"
@@ -402,7 +403,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_zc" />
+                            app:srcCompat="@drawable/mine_zc" />
 
                         <TextView
                             android:id="@+id/tvZCManagement"
@@ -437,7 +438,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_realname" />
+                            app:srcCompat="@drawable/mine_realname" />
 
                         <TextView
                             android:id="@+id/tvRealName"
@@ -472,7 +473,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_safe" />
+                            app:srcCompat="@drawable/mine_safe" />
 
                         <TextView
                             android:id="@+id/tvSafetyManagement"
@@ -508,7 +509,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_notice" />
+                            app:srcCompat="@drawable/mine_notice" />
 
                         <TextView
                             android:id="@+id/tvNotice"
@@ -556,7 +557,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_app" />
+                            app:srcCompat="@drawable/mine_app" />
 
                         <TextView
                             android:id="@+id/tvApp"
@@ -591,7 +592,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_note" />
+                            app:srcCompat="@drawable/mine_note" />
 
                         <TextView
                             android:id="@+id/tvNote"
@@ -626,7 +627,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_about_us" />
+                            app:srcCompat="@drawable/mine_about_us" />
 
                         <TextView
                             android:id="@+id/tvAboutUs"
@@ -662,7 +663,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitXY"
-                            android:src="@drawable/mine_cop" />
+                            app:srcCompat="@drawable/mine_cop" />
 
                         <TextView
                             android:id="@+id/tvCooperation"

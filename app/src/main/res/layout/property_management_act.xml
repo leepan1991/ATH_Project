@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/nor_white"
@@ -44,7 +45,7 @@
                         android:layout_marginLeft="20dp"
                         android:contentDescription="@string/app_name"
                         android:scaleType="fitXY"
-                        android:src="@drawable/mine_avatar" />
+                        app:srcCompat="@drawable/mine_avatar" />
 
 
                     <LinearLayout
@@ -85,7 +86,7 @@
                                 android:layout_marginLeft="5dp"
                                 android:contentDescription="@string/app_name"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/ic_property_realed" />
+                                app:srcCompat="@drawable/ic_property_realed" />
 
                             <TextView
                                 android:id="@+id/tvRealNamed"
@@ -169,7 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_property_help" />
+                        app:srcCompat="@drawable/ic_property_help" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -210,7 +211,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_property_score" />
+                        app:srcCompat="@drawable/ic_property_score" />
 
                     <TextView
                         android:layout_width="wrap_content"

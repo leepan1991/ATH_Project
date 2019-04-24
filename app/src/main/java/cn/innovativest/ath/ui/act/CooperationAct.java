@@ -1,18 +1,12 @@
 package cn.innovativest.ath.ui.act;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.net.http.SslError;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -22,9 +16,7 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.BaseResponse;
-import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.ui.BaseAct;
-import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;

@@ -51,7 +51,7 @@
                                 android:layout_height="15dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="15dp"
-                                android:src="@drawable/new_main_notify" />
+                                customAttr:srcCompat="@drawable/new_main_notify" />
 
                             <cn.innovativest.ath.widget.ScrollTextView
                                 android:id="@+id/tvwNotifyValue"
@@ -91,7 +91,7 @@
                                 android:layout_height="15dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="15dp"
-                                android:src="@drawable/new_main_baozhang" />
+                                customAttr:srcCompat="@drawable/new_main_baozhang" />
 
                             <TextView
                                 android:id="@+id/tvwCollectValue"
@@ -119,7 +119,7 @@
                                 android:layout_height="15dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="15dp"
-                                android:src="@drawable/new_main_zhulizhi" />
+                                customAttr:srcCompat="@drawable/new_main_zhulizhi" />
 
                             <TextView
                                 android:id="@+id/tvwHelpValue"
@@ -147,7 +147,7 @@
                                 android:layout_height="15dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="15dp"
-                                android:src="@drawable/new_main_jifen" />
+                                customAttr:srcCompat="@drawable/new_main_jifen" />
 
                             <TextView
                                 android:id="@+id/tvwCoinValue"
@@ -173,7 +173,7 @@
                         android:layout_marginTop="50dp"
                         android:layout_marginRight="20dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/main_logo"
+                        customAttr:srcCompat="@drawable/main_logo"
                         android:visibility="visible" />
 
                 </RelativeLayout>
@@ -400,21 +400,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/new_main_kaungji0"
-                        android:src="@drawable/new_main_kuangji" />
+                        customAttr:srcCompat="@drawable/new_main_kuangji" />
 
                     <ImageButton
                         android:id="@+id/btnLockedTwo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/new_main_kaungji0"
-                        android:src="@drawable/new_main_kuangji" />
+                        customAttr:srcCompat="@drawable/new_main_kuangji" />
 
                     <ImageButton
                         android:id="@+id/btnLockedThree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/new_main_kaungji0"
-                        android:src="@drawable/new_main_kuangji" />
+                        customAttr:srcCompat="@drawable/new_main_kuangji" />
 
                 </LinearLayout>
 
@@ -435,7 +435,7 @@
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/new_main_caifujiasu" />
+                        customAttr:srcCompat="@drawable/new_main_caifujiasu" />
 
                     <ImageView
                         android:id="@+id/ivYqoqing"
@@ -445,7 +445,7 @@
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/new_main_yaoqinghaoyou" />
+                        customAttr:srcCompat="@drawable/new_main_yaoqinghaoyou" />
 
                     <ImageView
                         android:id="@+id/ivMiji"
@@ -455,7 +455,7 @@
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/new_main_athmiji" />
+                        customAttr:srcCompat="@drawable/new_main_athmiji" />
 
                 </LinearLayout>
 

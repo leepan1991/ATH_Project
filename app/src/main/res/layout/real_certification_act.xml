@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FEFEFE"
@@ -69,7 +70,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="27dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
+                        app:srcCompat="@drawable/mine_right_arrow" />
                 </RelativeLayout>
 
                 <View
@@ -116,7 +117,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="27dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
+                        app:srcCompat="@drawable/mine_right_arrow" />
                 </RelativeLayout>
 
                 <View

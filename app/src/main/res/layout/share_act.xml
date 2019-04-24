@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -81,7 +82,7 @@
                         android:layout_height="77dp"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        app:srcCompat="@mipmap/ic_launcher" />
 
                     <ImageView
                         android:id="@+id/ivImgCheck1"
@@ -91,7 +92,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_share_check" />
+                        app:srcCompat="@drawable/ic_share_check" />
 
                 </RelativeLayout>
 
@@ -107,7 +108,7 @@
                         android:layout_height="77dp"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        app:srcCompat="@mipmap/ic_launcher" />
 
                     <ImageView
                         android:id="@+id/ivImgCheck2"
@@ -117,7 +118,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_share_check" />
+                        app:srcCompat="@drawable/ic_share_check" />
 
                 </RelativeLayout>
 
@@ -133,7 +134,7 @@
                         android:layout_height="77dp"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        app:srcCompat="@mipmap/ic_launcher" />
 
                     <ImageView
                         android:id="@+id/ivImgCheck3"
@@ -143,7 +144,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_share_check" />
+                        app:srcCompat="@drawable/ic_share_check" />
 
                 </RelativeLayout>
 
@@ -159,7 +160,7 @@
                         android:layout_height="77dp"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_share_add" />
+                        app:srcCompat="@drawable/ic_share_add" />
 
                     <ImageView
                         android:id="@+id/ivImgCheck4"
@@ -169,7 +170,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_share_check"
+                        app:srcCompat="@drawable/ic_share_check"
                         android:visibility="invisible" />
 
                 </RelativeLayout>

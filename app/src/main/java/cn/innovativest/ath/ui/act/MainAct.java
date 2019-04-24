@@ -19,7 +19,6 @@ import cn.innovativest.ath.ui.frag.CoinFrag;
 import cn.innovativest.ath.ui.frag.MainFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
 import cn.innovativest.ath.ui.frag.TradeFrag;
-import io.rong.imkit.RongIM;
 
 
 public class MainAct extends BaseAct {
@@ -121,8 +120,6 @@ public class MainAct extends BaseAct {
                     } else {
                         // 否则退出程序
 //                        App.get().user = null;
-                        if (RongIM.getInstance() != null)
-                            RongIM.getInstance().disconnect();
                         android.os.Process.killProcess(android.os.Process.myPid());
                         MainAct.this.finish();
                     }

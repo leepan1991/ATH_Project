@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -189,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_img1" />
+                    app:srcCompat="@drawable/ic_fund_img1" />
 
                 <TextView
                     android:id="@+id/tvImgTx"
@@ -211,7 +212,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tvImgTx"
-                    android:src="@drawable/ic_fund_question" />
+                    app:srcCompat="@drawable/ic_fund_question" />
 
                 <Button
                     android:id="@+id/btnUploadImg1"
@@ -253,7 +254,7 @@
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/tvImgTx"
-                    android:src="@drawable/ic_fund_addimg" />
+                    app:srcCompat="@drawable/ic_fund_addimg" />
 
             </LinearLayout>
 
@@ -273,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_img2" />
+                    app:srcCompat="@drawable/ic_fund_img2" />
 
                 <TextView
                     android:id="@+id/tvImgTx2"
@@ -327,7 +328,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_addimg" />
+                    app:srcCompat="@drawable/ic_fund_addimg" />
 
             </LinearLayout>
 
@@ -347,7 +348,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_video" />
+                    app:srcCompat="@drawable/ic_fund_video" />
 
                 <TextView
                     android:id="@+id/tvVideoTx"
@@ -402,7 +403,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_addvideo" />
+                    app:srcCompat="@drawable/ic_fund_addvideo" />
 
             </LinearLayout>
 

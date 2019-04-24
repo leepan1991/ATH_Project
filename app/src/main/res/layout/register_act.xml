@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_bg"
@@ -31,7 +32,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
-                android:src="@drawable/register_logo" />
+                app:srcCompat="@drawable/register_logo" />
 
             <LinearLayout
                 android:id="@+id/lltNotice"
@@ -74,7 +75,7 @@
                         android:layout_centerVertical="true"
                         android:paddingLeft="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/register_phone" />
+                        app:srcCompat="@drawable/register_phone" />
 
                     <EditText
                         android:id="@+id/etPhoneNumber"
@@ -107,7 +108,7 @@
                         android:layout_centerVertical="true"
                         android:paddingLeft="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/register_pass" />
+                        app:srcCompat="@drawable/register_pass" />
 
                     <EditText
                         android:id="@+id/etPassword"
@@ -139,7 +140,7 @@
                         android:layout_centerVertical="true"
                         android:paddingLeft="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/register_confirm_pass" />
+                        app:srcCompat="@drawable/register_confirm_pass" />
 
                     <EditText
                         android:id="@+id/etPassAgain"
@@ -210,7 +211,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/register_recommend_code" />
+                        app:srcCompat="@drawable/register_recommend_code" />
 
                     <EditText
                         android:id="@+id/etRecommendCode"

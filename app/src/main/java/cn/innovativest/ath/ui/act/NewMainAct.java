@@ -1,9 +1,7 @@
 package cn.innovativest.ath.ui.act;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.fragment.app.FragmentTabHost;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentTabHost;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -24,7 +25,6 @@ import cn.innovativest.ath.ui.frag.MineFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
-import io.rong.imkit.RongIM;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -191,8 +191,6 @@ public class NewMainAct extends BaseCompatAct {
                     } else {
                         // 否则退出程序
 //                        App.get().user = null;
-                        if (RongIM.getInstance() != null)
-                            RongIM.getInstance().disconnect();
                         android.os.Process.killProcess(android.os.Process.myPid());
                         NewMainAct.this.finish();
                     }

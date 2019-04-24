@@ -21,11 +21,6 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Process;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.core.app.NavUtils;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -33,6 +28,13 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NavUtils;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -63,7 +65,7 @@ public class AppUtils {
             intent.setFlags(flags);
         }
         if (requestCode != null) {
-            ((Activity) context).startActivityForResult(intent, requestCode);
+            ((AppCompatActivity) context).startActivityForResult(intent, requestCode);
         } else {
             context.startActivity(intent);
         }
@@ -405,7 +407,7 @@ public class AppUtils {
      * @param activity
      * @return
      */
-    public static int getStatusHeight(Activity activity) {
+    public static int getStatusHeight(AppCompatActivity activity) {
         int statusHeight = 0;
         Rect localRect = new Rect();
         activity.getWindow().getDecorView()
@@ -465,7 +467,7 @@ public class AppUtils {
      * @param act
      * @param
      */
-    public static void setStatusPadding(Activity act, int layId) {
+    public static void setStatusPadding(AppCompatActivity act, int layId) {
         if (VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
             act.getWindow().addFlags(
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

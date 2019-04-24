@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/nor_white"
@@ -35,7 +36,7 @@
                     android:layout_centerHorizontal="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/order_buy_complete" />
+                    app:srcCompat="@drawable/order_buy_complete" />
 
                 <TextView
                     android:id="@+id/tvWelcome"
@@ -97,7 +98,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="20dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/mine_right_arrow" />
+                        app:srcCompat="@drawable/mine_right_arrow" />
                 </RelativeLayout>
 
                 <View

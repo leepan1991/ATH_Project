@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_marginLeft="15dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/mine_avatar" />
+                app:srcCompat="@drawable/mine_avatar" />
 
 
             <LinearLayout
@@ -67,7 +68,7 @@
                         android:layout_marginLeft="5dp"
                         android:contentDescription="@string/app_name"
                         android:scaleType="fitXY"
-                        android:src="@drawable/mine_realnamed" />
+                        app:srcCompat="@drawable/mine_realnamed" />
 
                 </LinearLayout>
 
@@ -334,7 +335,7 @@
                 android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/order_buy_bank" />
+                app:srcCompat="@drawable/order_buy_bank" />
 
 
             <LinearLayout
@@ -404,7 +405,7 @@
                 android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/order_buy_wait_alipay" />
+                app:srcCompat="@drawable/order_buy_wait_alipay" />
 
 
             <LinearLayout
@@ -465,7 +466,7 @@
                 android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/order_buy_wait_wechat" />
+                app:srcCompat="@drawable/order_buy_wait_wechat" />
 
 
             <LinearLayout

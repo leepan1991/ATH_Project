@@ -2,7 +2,6 @@ package cn.innovativest.ath.widget;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +17,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.alipay.sdk.app.PayTask;
 
 import java.util.ArrayList;
@@ -32,7 +34,6 @@ import cn.innovativest.ath.bean.SpeedMine;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.SpeedMineResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
-import cn.innovativest.ath.ui.act.RechargeAct;
 import cn.innovativest.ath.utils.AESUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;

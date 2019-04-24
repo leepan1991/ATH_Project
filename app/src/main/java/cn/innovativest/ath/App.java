@@ -27,7 +27,6 @@ import cn.innovativest.ath.core.RongService;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
-import io.rong.imkit.RongIM;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import rx.Scheduler;
@@ -68,10 +67,6 @@ public class App extends MobApplication {
     }
 
     private void initPush() {
-
-        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext()))) {
-            RongIM.init(this);
-        }
 
         //注册友盟
         UMConfigure.init(getApplicationContext(), "5b6bb8f08f4a9d25e70000be", "Channel", UMConfigure.DEVICE_TYPE_PHONE, "6fb60a87b9b54205dc1f49bce93ec9e2");

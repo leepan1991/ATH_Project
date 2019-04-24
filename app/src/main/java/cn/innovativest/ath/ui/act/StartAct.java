@@ -1,7 +1,6 @@
 package cn.innovativest.ath.ui.act;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,12 +10,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.FileProvider;
 
 import com.google.gson.Gson;
 import com.umeng.analytics.MobclickAgent;
@@ -52,12 +53,10 @@ import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.MD5Utils;
 import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.utils.SDUtils;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
+public class StartAct extends BaseAct{
 
     private final int REQUEST_READ_PHONE_STATE = 100;
     private long lastTimeMillis;
@@ -99,7 +98,7 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
                 // 删除过期缓存
                 SDUtils.deleteExpiredCacheFile();
                 lastTimeMillis = System.currentTimeMillis();
-                RongIM.setUserInfoProvider(StartAct.this, true);
+//                RongIM.setUserInfoProvider(StartAct.this, true);
                 getVersion();
                 qidong();
             }
@@ -131,7 +130,7 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
         AppUtils.startActivity(mCtx, SplashAct.class);
 //            AppUtils.startActivity(StartAct.this, MainAct.class);
 //        }
-        AppUtils.finish(mCtx);
+        finish();
 
     }
 
@@ -179,8 +178,8 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
                         LogUtils.e(AESUtils.decryptData(userInfoResponse.data));
                         GetUserInfo getUserInfo = new Gson().fromJson(AESUtils.decryptData(userInfoResponse.data), GetUserInfo.class);
                         if (getUserInfo != null) {
-                            io.rong.imlib.model.UserInfo userInfo = new io.rong.imlib.model.UserInfo(getUserInfo.id + "", getUserInfo.name, Uri.parse(AppConfig.ATH_APP_URL + getUserInfo.head_img_link));
-                            RongIM.getInstance().refreshUserInfoCache(userInfo);
+//                            io.rong.imlib.model.UserInfo userInfo = new io.rong.imlib.model.UserInfo(getUserInfo.id + "", getUserInfo.name, Uri.parse(AppConfig.ATH_APP_URL + getUserInfo.head_img_link));
+//                            RongIM.getInstance().refreshUserInfoCache(userInfo);
                         } else {
                             LogUtils.e("userInfo is null");
                         }
@@ -347,7 +346,7 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
                 if (rongLoginResponse != null && rongLoginResponse.code == 200) {
                     if (!CUtils.isEmpty(rongLoginResponse.token)) {
                         PrefsManager.get().save("rongToken", rongLoginResponse.token);
-                        connect(rongLoginResponse.token);
+//                        connect(rongLoginResponse.token);
                     } else {
                         LogUtils.e("rongLoginResponse.token is null");
                     }
@@ -365,50 +364,6 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
         });
     }
 
-
-    /**
-     * <p>连接服务器，在整个应用程序全局，只需要调用一次，需在 {@link #(Context)} 之后调用。</p>
-     * <p>如果调用此接口遇到连接失败，SDK 会自动启动重连机制进行最多10次重连，分别是1, 2, 4, 8, 16, 32, 64, 128, 256, 512秒后。
-     * 在这之后如果仍没有连接成功，还会在当检测到设备网络状态变化时再次进行重连。</p>
-     *
-     * @param token 从服务端获取的用户身份令牌（Token）。
-     * @return RongIM  客户端核心类的实例。
-     */
-    private void connect(String token) {
-
-        if (getApplicationInfo().packageName.equals(App.get().getCurProcessName(getApplicationContext()))) {
-
-            RongIM.connect(token, new RongIMClient.ConnectCallback() {
-
-                /**
-                 * Token 错误。可以从下面两点检查 1.  Token 是否过期，如果过期您需要向 App Server 重新请求一个新的 Token
-                 *                  2.  token 对应的 appKey 和工程里设置的 appKey 是否一致
-                 */
-                @Override
-                public void onTokenIncorrect() {
-                    requestUserInfo();
-                }
-
-                /**
-                 * 连接融云成功
-                 * @param userid 当前 token 对应的用户 id
-                 */
-                @Override
-                public void onSuccess(String userid) {
-                    LogUtils.d("--onSuccess" + userid);
-                }
-
-                /**
-                 * 连接融云失败
-                 * @param errorCode 错误码，可到官网 查看错误码对应的注释
-                 */
-                @Override
-                public void onError(RongIMClient.ErrorCode errorCode) {
-
-                }
-            });
-        }
-    }
 
 
     private void dealUpgrade(final boolean force, String title, String msg, final String url) {
@@ -603,11 +558,5 @@ public class StartAct extends BaseAct implements RongIM.UserInfoProvider {
     @Override
     public void onClick(View v) {
 
-    }
-
-    @Override
-    public io.rong.imlib.model.UserInfo getUserInfo(String s) {
-        requestUserInfoByUserId(s);
-        return null;
     }
 }

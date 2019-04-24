@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rc_input_gap_color"
     android:orientation="vertical">
 
     <cn.innovativest.ath.widget.VpSwipeRefreshLayout
@@ -61,7 +60,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:background="@drawable/selector_act_background"
                                 android:gravity="center"
-                                android:src="@drawable/ic_publish"
+                                app:srcCompat="@drawable/ic_publish"
                                 android:visibility="visible" />
 
                         </RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -109,7 +110,7 @@
                                     android:layout_centerVertical="true"
                                     android:contentDescription="@string/app_name"
                                     android:scaleType="fitXY"
-                                    android:src="@drawable/mine_ath" />
+                                    app:srcCompat="@drawable/mine_ath" />
 
                                 <TextView
                                     android:id="@+id/tvATHNotice"
@@ -171,7 +172,7 @@
                                     android:layout_centerVertical="true"
                                     android:contentDescription="@string/app_name"
                                     android:scaleType="fitXY"
-                                    android:src="@drawable/mine_ath_help" />
+                                    app:srcCompat="@drawable/mine_ath_help" />
 
                                 <TextView
                                     android:id="@+id/tvHelpNotice"
@@ -233,7 +234,7 @@
                                     android:layout_centerVertical="true"
                                     android:contentDescription="@string/app_name"
                                     android:scaleType="fitXY"
-                                    android:src="@drawable/mine_score" />
+                                    app:srcCompat="@drawable/mine_score" />
 
                                 <TextView
                                     android:id="@+id/tvwScoreNotice"
@@ -421,7 +422,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_fund_img2" />
+                    app:srcCompat="@drawable/ic_fund_img2" />
 
                 <TextView
                     android:id="@+id/tvImgTx2"
@@ -442,13 +443,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_img1" />
+                app:srcCompat="@drawable/ic_img1" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_img2" />
+                app:srcCompat="@drawable/ic_img2" />
         </LinearLayout>
 
     </ScrollView>

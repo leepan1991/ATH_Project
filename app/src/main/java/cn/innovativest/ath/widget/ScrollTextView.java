@@ -1,6 +1,5 @@
 package cn.innovativest.ath.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -12,9 +11,10 @@ import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +96,7 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
         getHolder().setFormat(PixelFormat.TRANSLUCENT);
 
         DisplayMetrics metric = new DisplayMetrics();
-        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(metric);
+        ((AppCompatActivity) context).getWindowManager().getDefaultDisplay().getMetrics(metric);
         density = metric.density;
 
         setFocusable(true);

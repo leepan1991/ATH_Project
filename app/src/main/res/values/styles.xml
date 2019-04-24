@@ -21,13 +21,13 @@
         <item name="android:paddingBottom">0dp</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:textColorHint">@color/rgb_150_150_153</item>
-        <item name="android:background">@drawable/common_et_bg_slct</item>
+        <item name="background">@drawable/common_et_bg_slct</item>
         <item name="android:textColor">@color/rgb_150_150_153</item>
     </style>
 
     <style name="mLoginEt" parent="mEt">
 
-        <item name="android:background">@drawable/common_et_login_bg_slct</item>
+        <item name="background">@drawable/common_et_login_bg_slct</item>
     </style>
 
     <style name="MyTablayoutstyle" parent="Base.Widget.Design.TabLayout">
@@ -46,7 +46,7 @@
         <item name="android:clickable">true</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@drawable/common_bt_text_color_slct</item>
-        <item name="android:background">@drawable/common_bt_bg_slct</item>
+        <item name="background">@drawable/common_bt_bg_slct</item>
     </style>
 
     <style name="mDialog" parent="Theme.AppCompat.Light.Dialog">
@@ -55,7 +55,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="mDialogSpeedValue" parent="mDialog">
@@ -68,7 +68,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:clickable">true</item>
-        <item name="android:background">@drawable/pic_bt_bg_slct</item>
+        <item name="background">@drawable/pic_bt_bg_slct</item>
     </style>
 
     <style name="AnimBottom" parent="@android:style/Animation">

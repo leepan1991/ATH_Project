@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="281dp"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_bg_shape"
@@ -39,7 +40,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/order_buy_alert" />
+            app:srcCompat="@drawable/order_buy_alert" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -128,7 +129,7 @@
             android:layout_toLeftOf="@+id/dgSDSD"
             android:paddingRight="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/order_buy_hor_line" />
+            app:srcCompat="@drawable/order_buy_hor_line" />
 
         <TextView
             android:id="@+id/dgSDSD"

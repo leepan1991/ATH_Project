@@ -2,7 +2,6 @@ package cn.innovativest.ath.ui.frag;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -13,8 +12,6 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.alipay.sdk.app.PayTask;
 import com.app.hubert.guide.NewbieGuide;
@@ -345,24 +346,24 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
             ivCollectingBg.setVisibility(View.VISIBLE);
             ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
-            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
 
             ivUnlockOneBg.setVisibility(View.VISIBLE);
             ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
-            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
 
             ivUnlockTwoBg.setVisibility(View.VISIBLE);
             ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
-            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
 
             btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji0);
-            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
 
             btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji0);
-            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
 
             btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji0);
-            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
 
 
 //            btnLockedOne.setBackgroundResource(R.drawable.main_null);
@@ -701,13 +702,13 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     btnCollecting.setText("解锁");
                     ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
                     ivCollectingBg.setVisibility(View.VISIBLE);
-                    Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
+                    Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
                 }
             } else {
                 btnCollecting.setText("解锁");
                 ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
                 ivCollectingBg.setVisibility(View.VISIBLE);
-                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
 //                btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
             }
             if (useList(arrStr, "2")) {
@@ -720,13 +721,13 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     btnUnlockOne.setText("解锁");
                     ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
                     ivUnlockOneBg.setVisibility(View.VISIBLE);
-                    Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
+                    Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
                 }
             } else {
                 btnUnlockOne.setText("解锁");
                 ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
                 ivUnlockOneBg.setVisibility(View.VISIBLE);
-                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
             }
             if (useList(arrStr, "3")) {
                 ivUnlockTwoBg.setVisibility(View.INVISIBLE);
@@ -738,82 +739,82 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                     btnUnlockTwo.setText("解锁");
                     ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
                     ivUnlockTwoBg.setVisibility(View.VISIBLE);
-                    Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
+                    Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
                 }
             } else {
                 btnUnlockTwo.setText("解锁");
                 ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
                 ivUnlockTwoBg.setVisibility(View.VISIBLE);
-                Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
             }
 
             if (useList(arrStr, "9")) {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji6);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "8")) {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji5);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "7")) {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji4);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "6")) {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji3);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "5")) {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji2);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else if (useList(arrStr, "4")) {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji1);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             } else {
                 btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji0);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
             }
 
             if (useList(arrStr, "15")) {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji6);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "14")) {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji5);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "13")) {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji4);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "12")) {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji3);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "11")) {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji2);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else if (useList(arrStr, "10")) {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji1);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             } else {
                 btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji0);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
             }
 
             if (useList(arrStr, "21")) {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji6);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "20")) {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji5);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "19")) {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji4);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "18")) {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji3);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "17")) {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji2);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else if (useList(arrStr, "16")) {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji1);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             } else {
                 btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji0);
-                Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+                Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
             }
 
 //            if (useList(arrStr, "4")) {
@@ -848,15 +849,15 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 
             ivCollectingBg.setVisibility(View.VISIBLE);
             ivCollecting.setBackgroundResource(R.drawable.new_main_jiesuo);
-            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivCollectingBg);
 
             ivUnlockOneBg.setVisibility(View.VISIBLE);
             ivUnlockOne.setBackgroundResource(R.drawable.new_main_jiesuo);
-            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockOneBg);
 
             ivUnlockTwoBg.setVisibility(View.VISIBLE);
             ivUnlockTwo.setBackgroundResource(R.drawable.new_main_jiesuo);
-            Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivUnlockTwoBg);
 
 //            btnCollecting.setBackgroundResource(R.drawable.main_locking_cell);
 //            btnUnlockOne.setBackgroundResource(R.drawable.main_locking_cell);
@@ -865,13 +866,13 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
 //            btnLockedTwo.setBackgroundResource(R.drawable.main_null);
 //            btnLockedThree.setBackgroundResource(R.drawable.main_null);
             btnLockedOne.setBackgroundResource(R.drawable.new_main_kaungji0);
-            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedOne);
 
             btnLockedTwo.setBackgroundResource(R.drawable.new_main_kaungji0);
-            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedTwo);
 
             btnLockedThree.setBackgroundResource(R.drawable.new_main_kaungji0);
-            Glide.with(this).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
+            Glide.with(getActivity()).asGif().load(R.drawable.new_main_kuangji).into(btnLockedThree);
         }
 
         if (App.get().user != null) {
@@ -973,7 +974,7 @@ public class NewMainFrag extends BaseFrag implements OnRefreshListener {
                         btnCollecting.setBackgroundResource(R.drawable.main_doing);
 
                         ivCollecting.setBackgroundResource(R.drawable.new_main_xiumian);
-//                        Glide.with(this).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
+//                        Glide.with(getActivity()).asGif().load(R.drawable.new_main_jiantou).into(ivCollecting);
                     }
                     if (pit.equals("2")) {
                         btnUnlockOne.setText("挖矿中");

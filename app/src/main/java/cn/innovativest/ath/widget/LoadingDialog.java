@@ -1,10 +1,11 @@
 package cn.innovativest.ath.widget;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import cn.innovativest.ath.R;
 

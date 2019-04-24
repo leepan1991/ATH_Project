@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="76dp"
     android:background="@drawable/coin_bg_line"
@@ -23,7 +24,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="15dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher" />
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/iv_top_icon"
@@ -34,7 +35,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/coin_top_replace" />
+            app:srcCompat="@drawable/coin_top_replace" />
     </RelativeLayout>
 
 
@@ -145,7 +146,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/trade_right_arrow" />
+                app:srcCompat="@drawable/trade_right_arrow" />
         </LinearLayout>
 
 

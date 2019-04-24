@@ -1,7 +1,6 @@
 package cn.innovativest.ath.ui.act;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +11,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.alipay.sdk.app.PayTask;
 import com.umeng.analytics.MobclickAgent;
