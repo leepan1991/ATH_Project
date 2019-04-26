@@ -91,9 +91,6 @@ public class MineFrag extends BaseFrag {
     @BindView(R.id.tvRealNamed)
     TextView tvRealNamed;
 
-//    @BindView(R.id.btnSign)
-//    Button btnSign;
-
     @BindView(R.id.tvATH)
     TextView tvATH;
 
@@ -286,6 +283,11 @@ public class MineFrag extends BaseFrag {
         } else if (userInfo.is_sign_in == 1) {
             btnNotLogin.setText("未签到");
         }
+
+        tvATH.setText(userInfo.mainPage.ath);
+        tvHelp.setText(userInfo.mainPage.help_value);
+        tvScore.setText(userInfo.mainPage.integral);
+
     }
 
 

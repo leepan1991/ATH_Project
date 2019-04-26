@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
@@ -230,6 +231,8 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
     private void initDataToView(List<FundManItem> releaseItems) {
         if (pi == 1) {
             lstTradeItems.clear();
+            lstFundParts.clear();
+            fundPartAdapter.notifyDataSetChanged();
         }
         lstTradeItems.addAll(releaseItems);
         fundManAdapter.notifyDataSetChanged();
@@ -237,7 +240,9 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
 
     private void initDataToFundView(List<FundPart> releaseItems) {
         if (pi == 1) {
+            lstTradeItems.clear();
             lstFundParts.clear();
+            fundManAdapter.notifyDataSetChanged();
         }
         lstFundParts.addAll(releaseItems);
         fundPartAdapter.notifyDataSetChanged();
@@ -281,7 +286,7 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
     private void getFundPartData(int page) {
 
         AthService service = App.get().getAthService();
-        service.self_crowd_funding_info(page).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<FundPartResponse>() {
+        service.join_crowd_funding_list(page).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<FundPartResponse>() {
             @Override
             public void call(FundPartResponse releaseResponse) {
                 if (releaseResponse != null) {
@@ -293,7 +298,6 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
                             lstFundParts.clear();
                         }
                         fundPartAdapter.notifyDataSetChanged();
-//                        App.toast(getActivity(), tradeResponse.message);
                     }
                 } else {
                     App.toast(FundManAct.this, "数据获取失败");
@@ -372,7 +376,7 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
         pi++;
         if (btnManPro.isChecked()) {
             if (releaseBean != null) {
-                if (pi <= releaseBean.getCurrent_page()) {
+                if (pi <= releaseBean.getTotal()) {
                     if (btnManPro.isChecked()) {
                         request("1", pi);
                     } else if (btnManPic.isChecked()) {
@@ -389,7 +393,7 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
             }
         } else if (btnManPic.isChecked()) {
             if (eFundPartItem != null) {
-                if (pi <= eFundPartItem.getCurrent_page()) {
+                if (pi <= eFundPartItem.getTotal()) {
                     if (btnManPro.isChecked()) {
                         request("1", pi);
                     } else if (btnManPic.isChecked()) {
@@ -411,8 +415,10 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
         pi = 1;
         if (i == btnManPro.getId()) { // 切换到我要买
+            initTop(true);
             request("1", pi);
         } else if (i == btnManPic.getId()) { // 切换到我要卖
+            initTop(false);
             request("2", pi);
         }
     }

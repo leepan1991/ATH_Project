@@ -25,6 +25,7 @@ import cn.innovativest.ath.response.BuyListResponse;
 import cn.innovativest.ath.response.BuySellResponse;
 import cn.innovativest.ath.response.CoinDetailResponse;
 import cn.innovativest.ath.response.CoinResponse;
+import cn.innovativest.ath.response.CommentResponse;
 import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.response.FriendListResponse;
 import cn.innovativest.ath.response.FundManResponse;
@@ -37,6 +38,7 @@ import cn.innovativest.ath.response.ManCoinResponse;
 import cn.innovativest.ath.response.MiningResponse;
 import cn.innovativest.ath.response.ModifyUserInfoResponse;
 import cn.innovativest.ath.response.NewCoinResponse;
+import cn.innovativest.ath.response.NewMainResponse;
 import cn.innovativest.ath.response.NoticeListResponse;
 import cn.innovativest.ath.response.OrderDetailResponse;
 import cn.innovativest.ath.response.OrderListResponse;
@@ -262,6 +264,18 @@ public interface AthService {
     @GET("self_crowd_funding_list")
     Observable<FundManResponse> self_crowd_funding_list(@Query("page") int page);
 
-    @GET("self_crowd_funding_info")
-    Observable<FundPartResponse> self_crowd_funding_info(@Query("page") int page);
+    @GET("join_crowd_funding_list")
+    Observable<FundPartResponse> join_crowd_funding_list(@Query("page") int page);
+
+    @GET("new_index")
+    Observable<NewMainResponse> new_index(@Query("page") int page);
+
+    @GET("getLyList")
+    Observable<CommentResponse> getLyList(@Query("id") String id, @Query("page") int page);
+
+    @POST("getLyAdd")
+    Observable<BaseResponse> getLyAdd(@Body HashMap<String, String> map);
+
+    @POST("crowd_funding_pay")
+    Observable<BaseResponse> crowd_funding_pay(@Body HashMap<String, String> map);
 }

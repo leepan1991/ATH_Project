@@ -58,7 +58,7 @@
 
                     <RelativeLayout
                         android:id="@+id/rltRightFun"
-                        android:layout_width="96dp"
+                        android:layout_width="48dp"
                         android:layout_height="48dp">
 
                         <ImageButton
@@ -68,7 +68,7 @@
                             android:layout_alignParentLeft="true"
                             android:background="@drawable/selector_act_background"
                             android:gravity="center"
-                            android:visibility="invisible" />
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:id="@+id/lltAction"
@@ -229,16 +229,15 @@
                                 android:id="@+id/tvATHNotice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
+                                android:layout_alignTop="@+id/ivATH"
                                 android:layout_marginLeft="5dp"
+                                android:layout_marginTop="2dp"
                                 android:layout_toRightOf="@+id/ivATH"
                                 android:gravity="center"
                                 android:maxLines="1"
                                 android:text="ATH"
                                 android:textColor="@color/nor_white"
-                                android:textSize="12sp"
-
-                                />
+                                android:textSize="12sp" />
                         </RelativeLayout>
 
                     </LinearLayout>

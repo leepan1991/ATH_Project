@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "cn.innovativest.ath"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 18
         versionName "1.1.18"
@@ -137,5 +137,8 @@ dependencies {
     implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0.1
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+
+    //完整版引入
+    implementation 'com.shuyu:GSYVideoPlayer:7.0.1'
 }
 

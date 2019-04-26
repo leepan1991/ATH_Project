@@ -23,6 +23,7 @@ import cn.innovativest.ath.ui.BaseCompatAct;
 import cn.innovativest.ath.ui.frag.FundFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
 import cn.innovativest.ath.ui.frag.NewMainFrag;
+import cn.innovativest.ath.ui.frag.NewMainIndexFrag;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import rx.android.schedulers.AndroidSchedulers;
@@ -41,7 +42,7 @@ public class NewMainAct extends BaseCompatAct {
             R.drawable.new_tab_coin_logo,
             R.drawable.new_tab_app_logo, R.drawable.new_tab_mine_logo};
     private String[] mTextviewArray;
-    private Class[] fragmentArray = {NewMainFrag.class, FundFrag.class, MineFrag.class};
+    private Class[] fragmentArray = {NewMainIndexFrag.class, FundFrag.class, MineFrag.class};
 
     private long mExitTime;
 

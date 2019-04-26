@@ -272,6 +272,10 @@
             android:name=".ui.act.FundDetailAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
+        <activity
+            android:name=".ui.act.HotDetailAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged|adjustResize" />
 
         <!--会话列表-->
 
