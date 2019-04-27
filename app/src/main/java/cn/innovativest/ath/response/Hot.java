@@ -10,15 +10,15 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Hot {
 
-    private int id;
+    private String id;
     @SerializedName("get_crowd_funding_text")
     private GetCrowdFundingText getCrowdFundingText;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

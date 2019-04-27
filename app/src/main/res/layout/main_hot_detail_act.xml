@@ -92,7 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        app:srcCompat="@drawable/ic_video_detail_write" />
+                        android:background="@drawable/ic_video_detail_write" />
 
                     <Button
                         android:id="@+id/btnPub"
@@ -122,4 +122,18 @@
         </ScrollView>
     </cn.innovativest.ath.widget.VpSwipeRefreshLayout>
 
+    <EditText
+        android:id="@+id/et_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lv_chat_msg"
+        android:background="@color/nor_white"
+        android:hint="请输入留言内容"
+        android:imeOptions="actionSend"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/font_333333"
+        android:textColorHint="@color/font_333333"
+        android:textCursorDrawable="@color/font_333333"
+        android:visibility="gone" />
 </LinearLayout>

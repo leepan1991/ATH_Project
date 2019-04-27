@@ -140,5 +140,7 @@ dependencies {
 
     //完整版引入
     implementation 'com.shuyu:GSYVideoPlayer:7.0.1'
+
+    implementation 'com.zhihu.android:matisse:0.5.2-beta4'
 }
 

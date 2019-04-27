@@ -12,12 +12,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.android.material.tabs.TabLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
@@ -38,7 +43,7 @@ import cn.innovativest.ath.widget.XListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-public class FundFrag extends BaseFrag {
+public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreListener {
 
     private View contentView;
     @BindView(R.id.tablayout)
@@ -145,10 +150,12 @@ public class FundFrag extends BaseFrag {
             }
             //给TextView添加文字
             tv.setText(lstFundGallerys.get(x).getGetCrowdFundingText().getTitle());
+            view.setTag(lstFundGallerys.get(x));
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(getActivity(),FundDetailAct.class));
+                    Hot hot = (Hot) view.getTag();
+                    startActivity(new Intent(getActivity(), FundDetailAct.class).putExtra("id", hot.getId()));
                 }
             });
             //把行布局放到linear里
@@ -277,5 +284,33 @@ public class FundFrag extends BaseFrag {
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        refreshLayout.finishLoadMore();
+        pi++;
+        LogUtils.e("&&&&&&&&&& " + pi);
+//        if (eComment != null) {
+//            if (pi <= eComment.total) {
+//                request(id, pi);
+//            } else {
+//                refreshLayout.setNoMoreData(true);
+//                refreshLayout.setEnableLoadMore(false);
+//                App.toast(getActivity(), "没有更多内容了！");
+//                pi--;
+//            }
+//        } else {
+//            pi--;
+//        }
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        refreshLayout.finishRefresh();
+        refreshLayout.setNoMoreData(false);
+        refreshLayout.setEnableLoadMore(true);
+        pi = 1;
+        getFundData(1,pi);
     }
 }

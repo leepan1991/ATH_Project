@@ -487,4 +487,9 @@ public class AppUtils {
         return bd.toString();
     }
 
+    public static int differentDaysByMillisecond(long date1, long date2) {
+        int days = (int) ((date1 - date2) / (3600 * 24));
+        return days;
+    }
+
 }

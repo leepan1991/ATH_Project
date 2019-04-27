@@ -110,7 +110,7 @@
                                     android:layout_centerVertical="true"
                                     android:contentDescription="@string/app_name"
                                     android:scaleType="fitXY"
-                                    app:srcCompat="@drawable/mine_ath" />
+                                    app:srcCompat="@drawable/ic_support_persion" />
 
                                 <TextView
                                     android:id="@+id/tvATHNotice"
@@ -121,7 +121,7 @@
                                     android:layout_toRightOf="@+id/ivATH"
                                     android:gravity="center"
                                     android:maxLines="1"
-                                    android:text="ATH"
+                                    android:text="支持人数"
                                     android:textColor="@color/nor_white"
                                     android:textSize="12sp"
 
@@ -172,7 +172,7 @@
                                     android:layout_centerVertical="true"
                                     android:contentDescription="@string/app_name"
                                     android:scaleType="fitXY"
-                                    app:srcCompat="@drawable/mine_ath_help" />
+                                    app:srcCompat="@drawable/ic_zijin" />
 
                                 <TextView
                                     android:id="@+id/tvHelpNotice"
@@ -183,7 +183,7 @@
                                     android:layout_toRightOf="@+id/ivHelp"
                                     android:gravity="center"
                                     android:maxLines="1"
-                                    android:text="助力值"
+                                    android:text="已筹金额"
                                     android:textColor="@color/nor_white"
                                     android:textSize="12sp"
 
@@ -234,7 +234,7 @@
                                     android:layout_centerVertical="true"
                                     android:contentDescription="@string/app_name"
                                     android:scaleType="fitXY"
-                                    app:srcCompat="@drawable/mine_score" />
+                                    app:srcCompat="@drawable/ic_complete" />
 
                                 <TextView
                                     android:id="@+id/tvwScoreNotice"
@@ -245,7 +245,7 @@
                                     android:layout_toRightOf="@+id/ivScore"
                                     android:gravity="center"
                                     android:maxLines="1"
-                                    android:text="积分"
+                                    android:text="达成率"
                                     android:textColor="@color/nor_white"
                                     android:textSize="12sp"
 
@@ -295,10 +295,27 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/tvwDesc"
+                    android:id="@+id/tvwStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvwPubName"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/apply_bg_fund_status"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="众筹中"
+                    android:textColor="@color/font_333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvwDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvwStatus"
                     android:gravity="left"
                     android:text="dfddsfdasfdsafdsafdsafdsafdsass"
                     android:textColor="@color/font_333333"
@@ -439,6 +456,7 @@
             </RelativeLayout>
 
             <ImageView
+                android:id="@+id/ivImg1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -446,6 +464,7 @@
                 app:srcCompat="@drawable/ic_img1" />
 
             <ImageView
+                android:id="@+id/ivImg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

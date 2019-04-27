@@ -1,8 +1,14 @@
 package cn.innovativest.ath.ui.act;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +20,7 @@ import com.shuyu.gsyvideoplayer.model.GSYVideoModel;
 import com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,6 +31,7 @@ import cn.innovativest.ath.adapter.CommentAdapter;
 import cn.innovativest.ath.bean.Comment;
 import cn.innovativest.ath.bean.EComment;
 import cn.innovativest.ath.core.AthService;
+import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.CommentResponse;
 import cn.innovativest.ath.ui.BaseAct;
 import cn.innovativest.ath.utils.LogUtils;
@@ -53,6 +61,9 @@ public class HotDetailAct extends BaseAct implements OnRefreshListener, OnLoadMo
     @BindView(R.id.xlvCoin)
     XListView xlvCoin;
 
+    @BindView(R.id.et_msg)
+    EditText etMsg;
+
     private int pi = 1;
 
     private String id;
@@ -62,6 +73,8 @@ public class HotDetailAct extends BaseAct implements OnRefreshListener, OnLoadMo
     private String video;
 
     private EComment eComment;
+
+    private boolean bChatEnable = false;
 
     private CommentAdapter commentAdapter;
     private List<Comment> lstComments;
@@ -100,8 +113,42 @@ public class HotDetailAct extends BaseAct implements OnRefreshListener, OnLoadMo
         swipeRefresh.setOnRefreshListener(this);
         swipeRefresh.setOnLoadMoreListener(this);
 
+        etMsg.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND
+                        || actionId == EditorInfo.IME_ACTION_DONE
+                        || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode() && KeyEvent.ACTION_DOWN == event.getAction())) {
+                    //处理事件
+                    if (TextUtils.isEmpty(v.getText().toString())) {
+                        return false;
+                    }
+                    postMsg(id, v.getText().toString());
+                    v.setText("");
+                }
+                return false;
+            }
+        });
+
         pi = 1;
         request(id, pi);
+    }
+
+    private void changeChatStatus(boolean enable) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        bChatEnable = enable;
+        if (bChatEnable) {
+            etMsg.setVisibility(View.VISIBLE);
+            etMsg.requestFocus();
+            //打开软键盘
+            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        } else {
+            //关闭软键盘
+            imm.hideSoftInputFromWindow(etMsg.getWindowToken(), 0);
+            etMsg.clearFocus();
+            etMsg.setVisibility(View.GONE);
+        }
     }
 
     private void request(String id, int page) {
@@ -149,6 +196,50 @@ public class HotDetailAct extends BaseAct implements OnRefreshListener, OnLoadMo
 
     }
 
+    private void postMsg(String id, String text) {
+        if (TextUtils.isEmpty(text)) {
+            App.toast(HotDetailAct.this, "请输入评论内容");
+            return;
+        }
+
+        HashMap<String, String> map = new HashMap();
+        map.put("id", id);
+        map.put("text", text);
+
+        AthService service = App.get().getAthService();
+        service.getLyAdd(map).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<BaseResponse>() {
+            @Override
+            public void call(BaseResponse baseResponse) {
+                if (baseResponse != null) {
+                    if (baseResponse.status == 1) {
+                        App.toast(HotDetailAct.this, baseResponse.message);
+                    } else {
+                        App.toast(HotDetailAct.this, baseResponse.message);
+                    }
+                } else {
+                    App.toast(HotDetailAct.this, "留言失败");
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e(throwable.getMessage());
+                App.toast(HotDetailAct.this, "留言失败");
+            }
+        });
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (bChatEnable) {
+            changeChatStatus(false);
+            return;
+        }
+        super.onBackPressed();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -176,6 +267,7 @@ public class HotDetailAct extends BaseAct implements OnRefreshListener, OnLoadMo
                 break;
 
             case R.id.btnPub:
+                changeChatStatus(!bChatEnable);
                 break;
         }
     }
