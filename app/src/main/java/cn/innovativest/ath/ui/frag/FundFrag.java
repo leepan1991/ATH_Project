@@ -30,7 +30,9 @@ import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.FundAdapter;
 import cn.innovativest.ath.core.AthService;
+import cn.innovativest.ath.response.CrowdFundingList;
 import cn.innovativest.ath.response.CrowdFundingType;
+import cn.innovativest.ath.response.FundIdResponse;
 import cn.innovativest.ath.response.FundItem;
 import cn.innovativest.ath.response.FundResponse;
 import cn.innovativest.ath.response.Hot;
@@ -39,6 +41,7 @@ import cn.innovativest.ath.ui.act.AddFundAct;
 import cn.innovativest.ath.ui.act.FundDetailAct;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.widget.VpSwipeRefreshLayout;
 import cn.innovativest.ath.widget.XListView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -46,8 +49,11 @@ import rx.functions.Action1;
 public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreListener {
 
     private View contentView;
+    @BindView(R.id.swipeRefresh)
+    VpSwipeRefreshLayout swipeRefresh;
+
     @BindView(R.id.tablayout)
-    TabLayout mTabLayout;
+    TabLayout tablayout;
 
     @BindView(R.id.tvFundComplete)
     TextView tvFundComplete;
@@ -64,24 +70,21 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
     @BindView(R.id.tvwAction)
     ImageButton tvwAction;
 
+    @BindView(R.id.linear)
     LinearLayout linear;
-    //    private GridView grid;
-//    private FundGallerAdapter fundGallerAdapter;
     private List<Hot> lstFundGallerys;
 
-    private LayoutInflater mInflater;
-    private List<String> mTitleList = new ArrayList<>();//页卡标题集合
-    private View view1, view2, view3, view4, view5;//页卡视图
-    private List<View> mViewList = new ArrayList<>();//页卡视图集合
     private List<CrowdFundingType> listTitles;
-//    private List<Fragment> fragments;
-//    private List<TextView> listTextViews;
 
     @BindView(R.id.fund_listview)
     XListView fund_listview;
     private FundAdapter fundAdapter;
     private List<FundItem> lstFundItems;
     int pi;
+
+    private CrowdFundingList CrowdFundingList;
+
+    private int selectId = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,31 +119,31 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
         });
         lstFundItems = new ArrayList<>();
         listTitles = new ArrayList<>();
+        lstFundGallerys = new ArrayList<>();
         fundAdapter = new FundAdapter(getActivity(), lstFundItems);
         fund_listview.setAdapter(fundAdapter);
         fund_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                FundItem fundItem = lstFundItems.get(position);
+                startActivity(new Intent(getActivity(), FundDetailAct.class).putExtra("id", fundItem.getId() + ""));
             }
         });
-//        initData();
+        swipeRefresh.setVisibility(View.VISIBLE);
+        swipeRefresh.setOnRefreshListener(this);
+        swipeRefresh.setOnLoadMoreListener(this);
     }
 
     private void inintent(List<Hot> hots) {
 
-        lstFundGallerys = new ArrayList<>();
+        linear.removeAllViews();
         lstFundGallerys.clear();
         lstFundGallerys.addAll(hots);
 
-        linear = (LinearLayout) contentView.findViewById(R.id.linear);
         //开始添加数据
         for (int x = 0; x < lstFundGallerys.size(); x++) {
-            //寻找行布局，第一个参数为行布局ID，第二个参数为这个行布局需要放到那个容器上
             View view = LayoutInflater.from(getActivity()).inflate(R.layout.fund_item, linear, false);
-            //通过View寻找ID实例化控件
-//            ImageView img = (ImageView) view.findViewById(R.id.imageView);
-            //实例化TextView控件
+
             TextView tv = (TextView) view.findViewById(R.id.tvwName);
             ImageView iv = (ImageView) view.findViewById(R.id.iv_logo);
             if (lstFundGallerys.get(x).getGetCrowdFundingText().getImgLink().contains("|")) {
@@ -168,21 +171,21 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
 
         listTitles.clear();
         listTitles.addAll(crowdFundingTypes);
-//        fragments = new ArrayList<>();
-
-
-//        for (int i = 0; i < listTitles.size(); i++) {
-//            ContentFragment fragment = ContentFragment.newInstance(listTitles.get(i).getTitle());
-//            fragments.add(fragment);
-//
-//        }
         //mTabLayout.setTabMode(TabLayout.SCROLL_AXIS_HORIZONTAL);//设置tab模式，当前为系统默认模式
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.e("TAG", "tab position:" + tab.getPosition());
-                pi = 1;
-//                getFundData(listTitles.get(tab.getPosition()).getId(), pi);
+                if (selectId != tab.getPosition()) {
+                    lstFundItems.clear();
+                    selectId = tab.getPosition();
+                    pi = 1;
+                    if (listTitles.get(tab.getPosition()).getId() > 1) {
+                        getFundIdData(listTitles.get(tab.getPosition()).getId(), pi);
+                    } else {
+                        getFundData(listTitles.get(tab.getPosition()).getId(), pi);
+                    }
+                }
             }
 
             @Override
@@ -195,32 +198,10 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
 
             }
         });
+        tablayout.removeAllTabs();
         for (int i = 0; i < listTitles.size(); i++) {
-            mTabLayout.removeAllTabs();
-            mTabLayout.addTab(mTabLayout.newTab().setText(listTitles.get(i).getTitle()));//添加tab选项
+            tablayout.addTab(tablayout.newTab().setText(listTitles.get(i).getTitle()));//添加tab选项
         }
-
-//        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
-//            @Override
-//            public Fragment getItem(int position) {
-//                return fragments.get(position);
-//            }
-//
-//            @Override
-//            public int getCount() {
-//                return fragments.size();
-//            }
-//
-//            //ViewPager与TabLayout绑定后，这里获取到PageTitle就是Tab的Text
-//            @Override
-//            public CharSequence getPageTitle(int position) {
-//                return listTitles.get(position).getTitle();
-//            }
-//        };
-//        mViewPager.setAdapter(mAdapter);
-//
-//        mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
-//        mTabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
     }
 
     private void initDataToView(List<FundItem> fundItems) {
@@ -255,6 +236,7 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
                     }
 
                     if (fundResponse.getData() != null && fundResponse.getData().getCrowdFundingList().getData().size() > 0) {
+                        CrowdFundingList = fundResponse.getData().getCrowdFundingList();
                         initDataToView(fundResponse.getData().getCrowdFundingList().getData());
                     } else {
                         if (pi == 1) {
@@ -262,6 +244,43 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
                         }
                         fundAdapter.notifyDataSetChanged();
 //                        App.toast(getActivity(), tradeResponse.message);
+                    }
+                } else {
+                    App.toast(getActivity(), "数据获取失败");
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LoadingUtils.getInstance().dialogDismiss();
+                LogUtils.e(throwable.getMessage());
+                App.toast(getActivity(), "数据获取失败");
+                if (pi > 1) {
+                    pi--;
+                }
+            }
+        });
+
+    }
+
+    private void getFundIdData(int id, int page) {
+
+        LoadingUtils.getInstance().dialogDismiss();
+        LoadingUtils.getInstance().dialogShow(getActivity(), "请求中。。。", false);
+        AthService service = App.get().getAthService();
+        service.crowd_funding_list_id(page, id + "").observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<FundIdResponse>() {
+            @Override
+            public void call(FundIdResponse fundIdResponse) {
+                LoadingUtils.getInstance().dialogDismiss();
+                if (fundIdResponse != null) {
+                    if (fundIdResponse.eFundDataId != null && fundIdResponse.eFundDataId.getCrowdFundingList().getData().size() > 0) {
+                        CrowdFundingList = fundIdResponse.eFundDataId.getCrowdFundingList();
+                        initDataToView(fundIdResponse.eFundDataId.getCrowdFundingList().getData());
+                    } else {
+                        if (pi == 1) {
+                            lstFundItems.clear();
+                        }
+                        fundAdapter.notifyDataSetChanged();
                     }
                 } else {
                     App.toast(getActivity(), "数据获取失败");
@@ -291,18 +310,22 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
         refreshLayout.finishLoadMore();
         pi++;
         LogUtils.e("&&&&&&&&&& " + pi);
-//        if (eComment != null) {
-//            if (pi <= eComment.total) {
-//                request(id, pi);
-//            } else {
-//                refreshLayout.setNoMoreData(true);
-//                refreshLayout.setEnableLoadMore(false);
-//                App.toast(getActivity(), "没有更多内容了！");
-//                pi--;
-//            }
-//        } else {
-//            pi--;
-//        }
+        if (CrowdFundingList != null) {
+            if (pi <= CrowdFundingList.getTotal()) {
+                if (listTitles.get(tablayout.getSelectedTabPosition()).getId() > 1) {
+                    getFundIdData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+                } else {
+                    getFundData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+                }
+            } else {
+                refreshLayout.setNoMoreData(true);
+                refreshLayout.setEnableLoadMore(false);
+                App.toast(getActivity(), "没有更多内容了！");
+                pi--;
+            }
+        } else {
+            pi--;
+        }
     }
 
     @Override
@@ -311,6 +334,10 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
         refreshLayout.setNoMoreData(false);
         refreshLayout.setEnableLoadMore(true);
         pi = 1;
-        getFundData(1,pi);
+        if (listTitles.get(tablayout.getSelectedTabPosition()).getId() > 1) {
+            getFundIdData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+        } else {
+            getFundData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+        }
     }
 }

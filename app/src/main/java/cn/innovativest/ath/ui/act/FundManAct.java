@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -19,8 +21,6 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -124,7 +124,13 @@ public class FundManAct extends BaseAct implements RadioGroup.OnCheckedChangeLis
         trade_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                if (btnManPro.isChecked()) { // 切换到我要买
+                    FundManItem fundManItem = lstTradeItems.get(i);
+                    startActivity(new Intent(FundManAct.this, FundDetailAct.class).putExtra("id", fundManItem.id));
+                } else if (btnManPic.isChecked()) { // 切换到我要卖
+                    FundPart fundManItem = lstFundParts.get(i);
+                    startActivity(new Intent(FundManAct.this, FundDetailAct.class).putExtra("id", fundManItem.list_id));
+                }
             }
         });
 

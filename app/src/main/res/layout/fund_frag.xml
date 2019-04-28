@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     android:orientation="vertical">
 
     <cn.innovativest.ath.widget.VpSwipeRefreshLayout
@@ -50,8 +51,7 @@
                         <RelativeLayout
                             android:id="@+id/rltRightFun"
                             android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginRight="20dp">
+                            android:layout_height="48dp">
 
                             <ImageButton
                                 android:id="@+id/tvwAction"
@@ -60,8 +60,8 @@
                                 android:layout_alignParentLeft="true"
                                 android:background="@drawable/selector_act_background"
                                 android:gravity="center"
-                                app:srcCompat="@drawable/ic_publish"
-                                android:visibility="visible" />
+                                android:visibility="visible"
+                                app:srcCompat="@drawable/ic_publish" />
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -187,7 +187,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:tabMaxWidth="0dp"
                     app:tabGravity="fill"
                     app:tabMode="fixed"
                     app:tabTextColor="@color/font_666666" />
@@ -196,6 +195,7 @@
                     android:id="@+id/fund_listview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:cacheColorHint="@android:color/transparent"
                     android:divider="#E6E6E6"
                     android:dividerHeight="12dp"

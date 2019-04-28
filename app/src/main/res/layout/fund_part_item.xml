@@ -44,17 +44,6 @@
                     android:textColor="@color/font_333333"
                     android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/btnFrom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"
-                    android:text="ATH"
-                    android:textColor="@color/font_333333"
-                    android:textSize="15sp" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -75,7 +64,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="订单号："
+                    android:text="订单编号："
                     android:textColor="@color/font_999999"
                     android:textSize="12sp" />
 
@@ -90,15 +79,93 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="12233444545"
-                    android:textColor="@android:color/holo_red_light"
+                    android:textColor="@color/font_999999"
                     android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lltName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lltNameTwo"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCompletedDesc1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="支付方式："
+                    android:textColor="@color/font_999999"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tvCompletedDesc1"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="ATH"
+                    android:textColor="@color/font_999999"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lltName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lltName1"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCompletedDesc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="众筹金额："
+                    android:textColor="@color/font_999999"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvJine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tvCompletedDesc2"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="223"
+                    android:textColor="@color/font_999999"
+                    android:textSize="12sp" />
+
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/lltNameThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lltNameTwo"
+                android:layout_below="@+id/lltName2"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -112,7 +179,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="时间："
+                    android:text="下单时间："
                     android:textColor="@color/font_999999"
                     android:textSize="12sp" />
 
@@ -127,7 +194,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="2019-02-23"
-                    android:textColor="@android:color/holo_red_light"
+                    android:textColor="@color/font_999999"
                     android:textSize="12sp" />
 
 

@@ -276,6 +276,10 @@
             android:name=".ui.act.HotDetailAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
+        <activity
+            android:name=".ui.act.CommentAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged|adjustResize" />
 
         <!--会话列表-->
 

@@ -65,9 +65,12 @@ public class FundPartAdapter extends BaseAdapter {
 
 
         holder.tvName.setText(fundManItem.get_crowd_funding_text.getTitle());
-
-        holder.btnFrom.setText(fundManItem.ali_number);
         holder.tvAmount.setText(fundManItem.order_number);
+
+        holder.tvMethod.setText(fundManItem.ali_number);
+
+        holder.tvJine.setText(fundManItem.rmb);
+
         holder.tvCompleted.setText(AppUtils.formatTimeToFormat("yyyy-MM-dd hh:MM:ss", fundManItem.ctime));
 
         return convertView;
@@ -78,11 +81,14 @@ public class FundPartAdapter extends BaseAdapter {
         @BindView(R.id.tvName)
         TextView tvName;
 
-        @BindView(R.id.btnFrom)
-        TextView btnFrom;
-
         @BindView(R.id.tvAmount)
         TextView tvAmount;
+
+        @BindView(R.id.tvMethod)
+        TextView tvMethod;
+
+        @BindView(R.id.tvJine)
+        TextView tvJine;
 
         @BindView(R.id.tvCompleted)
         TextView tvCompleted;
