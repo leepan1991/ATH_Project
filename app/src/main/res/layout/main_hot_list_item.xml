@@ -160,7 +160,7 @@
                     android:layout_centerVertical="true"
                     android:maxLines="1"
                     android:text="进行中"
-                    android:textColor="@color/font_333333"
+                    android:textColor="@android:color/holo_red_light"
                     android:textSize="13sp" />
             </RelativeLayout>
 

@@ -77,13 +77,13 @@ public class MainHotAdapter extends BaseAdapter {
 
         holder.tvName.setText(newMainHot.newMainGetFundingText.title);
 
-        holder.btnStartZc.setText("200起投");
+        holder.btnStartZc.setText(newMainHot.newMainGetFundingText.rmb + "起投");
         holder.tvAmount.setText(newMainHot.target_rmb);
-        holder.tvStatus.setText(!TextUtils.isEmpty(newMainHot.status) ? newMainHot.status : "进行中");
+        holder.tvStatus.setText(newMainHot.persons + "人参与");
         holder.tvCompleted.setText(newMainHot.reach_rmb);
 
-        holder.circle_progress.setProgress(20);
-        holder.tvWatch.setText(newMainHot.persons);
+        holder.circle_progress.setProgress(newMainHot.bai_fen_bi);
+        holder.tvWatch.setText(newMainHot.newMainGetFundingText.view_num);
 
         return convertView;
     }

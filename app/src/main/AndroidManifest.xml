@@ -275,6 +275,7 @@
         <activity
             android:name=".ui.act.HotDetailAct"
             android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateUnchanged|adjustResize" />
         <activity
             android:name=".ui.act.CommentAct"
