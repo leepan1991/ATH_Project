@@ -7,5 +7,5 @@ import cn.innovativest.ath.bean.UploadBean;
 public class UploadResponse extends BaseResponse {
 
     @SerializedName("data")
-    UploadBean uploadBean;
+    public UploadBean uploadBean;
 }

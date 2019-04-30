@@ -39,8 +39,10 @@ import cn.innovativest.ath.response.Hot;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.AddFundAct;
 import cn.innovativest.ath.ui.act.FundDetailAct;
+import cn.innovativest.ath.ui.act.LoginAct;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.VpSwipeRefreshLayout;
 import cn.innovativest.ath.widget.XListView;
 import rx.android.schedulers.AndroidSchedulers;
@@ -86,6 +88,8 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
 
     private int selectId = 0;
 
+    private CustomDialog customDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,8 +103,6 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
                     false);
             ButterKnife.bind(this, contentView);
             initView();
-            pi = 1;
-            getFundData(1, pi);
         }
 
         ViewGroup parent = (ViewGroup) contentView.getParent();
@@ -112,6 +114,7 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
     }
 
     private void initView() {
+        customDialog = new CustomDialog(mCtx);
         tvwAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +136,26 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
         swipeRefresh.setVisibility(View.VISIBLE);
         swipeRefresh.setOnRefreshListener(this);
         swipeRefresh.setOnLoadMoreListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (App.get().user == null) {
+            customDialog.setMRightBt("去登录").setMsg("登录后查看众筹").setIsCancelable(true)
+                    .setChooseListener(new CustomDialog.ChooseListener() {
+
+                        @Override
+                        public void onChoose(int which) {
+                            if (which == WHICH_RIGHT) {
+                                startActivityForResult(new Intent(getActivity(), LoginAct.class), 100);
+                            }
+                        }
+                    }).show();
+        } else {
+            pi = 1;
+            getFundData(1, pi);
+        }
     }
 
     private void inintent(List<Hot> hots) {

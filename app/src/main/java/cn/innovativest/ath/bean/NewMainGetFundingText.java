@@ -5,5 +5,6 @@ public class NewMainGetFundingText {
     public String video;
     public String rmb;
     public String view_num;
+    public String video_img;
 
 }

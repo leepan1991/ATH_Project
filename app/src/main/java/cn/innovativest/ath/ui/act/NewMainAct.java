@@ -22,7 +22,6 @@ import cn.innovativest.ath.response.CommonResponse;
 import cn.innovativest.ath.ui.BaseCompatAct;
 import cn.innovativest.ath.ui.frag.FundFrag;
 import cn.innovativest.ath.ui.frag.MineFrag;
-import cn.innovativest.ath.ui.frag.NewMainFrag;
 import cn.innovativest.ath.ui.frag.NewMainIndexFrag;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
@@ -48,7 +47,7 @@ public class NewMainAct extends BaseCompatAct {
 
 //    private int tag = 0;
 
-//    public static int tag = 7;
+//    public static int tag = 0;
 
     public FragmentTabHost getmTabHost() {
         return mTabHost;

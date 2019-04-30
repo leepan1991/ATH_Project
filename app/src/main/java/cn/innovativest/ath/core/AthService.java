@@ -283,5 +283,5 @@ public interface AthService {
     Observable<BaseResponse> getLyAdd(@Body HashMap<String, String> map);
 
     @POST("crowd_funding_pay")
-    Observable<BaseResponse> crowd_funding_pay(@Body HashMap<String, String> map);
+    Observable<UserInfoResponse> crowd_funding_pay(@Body HashMap<String, String> map);
 }

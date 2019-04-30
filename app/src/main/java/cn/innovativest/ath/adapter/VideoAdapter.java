@@ -1,6 +1,9 @@
 package cn.innovativest.ath.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +65,9 @@ public class VideoAdapter extends BaseAdapter {
         // 封装数据
         VideoItem path = (VideoItem) getItem(position);
 
-        GlideApp.with(context).load(path).placeholder(R.drawable.ic_fund_addvideo).error(R.drawable.ic_fund_addvideo).into(holder.ivImg);
+        Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(path.path, MediaStore.Video.Thumbnails.MICRO_KIND);
+
+        GlideApp.with(context).load(bitmap).placeholder(R.drawable.ic_fund_addvideo).error(R.drawable.ic_fund_addvideo).into(holder.ivImg);
 
         if (path.isVideo) {
             holder.ivIcon.setVisibility(View.VISIBLE);

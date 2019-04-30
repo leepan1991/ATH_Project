@@ -19,7 +19,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.Gson;
-import com.mob.tools.mscript.commands.New;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -33,28 +32,22 @@ import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
-import cn.innovativest.ath.adapter.CoinAdapter;
 import cn.innovativest.ath.adapter.MainHotAdapter;
-import cn.innovativest.ath.bean.CoinBanner;
-import cn.innovativest.ath.bean.CoinItem;
-import cn.innovativest.ath.bean.ECoinItem;
 import cn.innovativest.ath.bean.ENewMain;
 import cn.innovativest.ath.bean.Nav;
 import cn.innovativest.ath.bean.NewMainHot;
 import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.common.AppConfig;
 import cn.innovativest.ath.core.AthService;
-import cn.innovativest.ath.response.CoinResponse;
 import cn.innovativest.ath.response.NewMainResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.AppAct;
-import cn.innovativest.ath.ui.act.CoinDetailAct;
 import cn.innovativest.ath.ui.act.CooperationAct;
 import cn.innovativest.ath.ui.act.FriendHelpAct;
-import cn.innovativest.ath.ui.act.FundDetailAct;
 import cn.innovativest.ath.ui.act.HotDetailAct;
 import cn.innovativest.ath.ui.act.LoginAct;
+import cn.innovativest.ath.ui.act.NewMainAct;
 import cn.innovativest.ath.ui.act.SpeedValueAct;
 import cn.innovativest.ath.ui.act.StoryAct;
 import cn.innovativest.ath.utils.AESUtils;
@@ -62,7 +55,6 @@ import cn.innovativest.ath.utils.AppUtils;
 import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LogUtils;
 import cn.innovativest.ath.utils.PrefsManager;
-import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.ViewPagerScroller;
 import cn.innovativest.ath.widget.VpSwipeRefreshLayout;
 import cn.innovativest.ath.widget.XListView;
@@ -108,6 +100,9 @@ public class NewMainIndexFrag extends BaseFrag implements OnRefreshListener, OnL
 
     @BindView(R.id.xlvCoin)
     XListView xlvCoin;
+
+    @BindView(R.id.tvImgTx3)
+    TextView tvImgTx3;
 
     private MainHotAdapter mainHotAdapter;
     private List<NewMainHot> lstNewMainHots;
@@ -202,6 +197,7 @@ public class NewMainIndexFrag extends BaseFrag implements OnRefreshListener, OnL
         lltApp.setOnClickListener(this);
         lltNews.setOnClickListener(this);
         lltCop.setOnClickListener(this);
+        tvImgTx3.setOnClickListener(this);
 
     }
 
@@ -424,6 +420,9 @@ public class NewMainIndexFrag extends BaseFrag implements OnRefreshListener, OnL
             case R.id.lltCop:
                 startActivity(new Intent(getActivity(), CooperationAct.class));
                 break;
+            case R.id.tvImgTx3:
+                ((NewMainAct) getActivity()).getmTabHost().setCurrentTab(1);
+                break;
         }
     }
 
@@ -431,7 +430,7 @@ public class NewMainIndexFrag extends BaseFrag implements OnRefreshListener, OnL
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, final int i, final long l) {
         final NewMainHot newMainHot = lstNewMainHots.get(i);
-        startActivity(new Intent(getActivity(), HotDetailAct.class).putExtra("id", newMainHot.id + "").putExtra("name", newMainHot.newMainGetFundingText.title).putExtra("video", newMainHot.newMainGetFundingText.video));
+        startActivity(new Intent(getActivity(), HotDetailAct.class).putExtra("id", newMainHot.id + "").putExtra("name", newMainHot.newMainGetFundingText.title).putExtra("video", newMainHot.newMainGetFundingText.video).putExtra("video_img", newMainHot.newMainGetFundingText.video_img));
     }
 
     @Override

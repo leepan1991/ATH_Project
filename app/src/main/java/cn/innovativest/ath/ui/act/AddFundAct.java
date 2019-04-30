@@ -1,11 +1,13 @@
 package cn.innovativest.ath.ui.act;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,15 +16,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
-import com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.alipay.sdk.app.PayTask;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 import com.yanzhenjie.permission.Rationale;
@@ -31,20 +32,20 @@ import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.PicassoEngine;
 import com.zhihu.matisse.filter.Filter;
-import com.zhihu.matisse.internal.entity.CaptureStrategy;
-import com.zhihu.matisse.listener.OnCheckedListener;
-import com.zhihu.matisse.listener.OnSelectedListener;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
-import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.ImgAdapter;
 import cn.innovativest.ath.adapter.VideoAdapter;
@@ -53,17 +54,19 @@ import cn.innovativest.ath.bean.VideoItem;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.BaseResponse;
 import cn.innovativest.ath.response.UploadResponse;
+import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseAct;
+import cn.innovativest.ath.utils.AESUtils;
+import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.GifSizeFilter;
-import cn.innovativest.ath.utils.Glide4Engine;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
-import cn.innovativest.ath.utils.SDUtils;
+import cn.innovativest.ath.utils.PayResult;
+import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.XGridView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
@@ -177,6 +180,8 @@ public class AddFundAct extends BaseAct {
     UploadBean uploadBean;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,6 +194,8 @@ public class AddFundAct extends BaseAct {
     }
 
     private void initView() {
+
+        uploadBean = new UploadBean();
         btnBack.setImageResource(R.drawable.login_arrow_left);
         tvwTitle.setText("添加众筹");
         btnBack.setOnClickListener(this);
@@ -275,8 +282,7 @@ public class AddFundAct extends BaseAct {
 //        ivAddImg3.setOnClickListener(this);
     }
 
-    private void request(String video_link, String aptitude_img_link,
-                         String img_link) {
+    private void request() {
         String title = etName.getText().toString();
         String text = etContent.getText().toString();
         String rmb = etAmount.getText().toString();
@@ -307,17 +313,74 @@ public class AddFundAct extends BaseAct {
             return;
         }
 
-        if (lstPath1.size() == 1) {
-            App.toast(this, "请上传众筹图片");
-            return;
+        if (!TextUtils.isEmpty(uploadBean.img1)) {
+            img_link = uploadBean.img1;
         }
+
+        if (!TextUtils.isEmpty(uploadBean.img2)) {
+            img_link = img_link + "|" + uploadBean.img2;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img3)) {
+            img_link = img_link + "|" + uploadBean.img3;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img4)) {
+            img_link = img_link + "|" + uploadBean.img4;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img5)) {
+            img_link = img_link + "|" + uploadBean.img5;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img6)) {
+            aptitude_img_link = uploadBean.img6;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img7)) {
+            aptitude_img_link = aptitude_img_link + "|" + uploadBean.img7;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img8)) {
+            aptitude_img_link = aptitude_img_link + "|" + uploadBean.img8;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img9)) {
+            aptitude_img_link = aptitude_img_link + "|" + uploadBean.img9;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.img10)) {
+            aptitude_img_link = aptitude_img_link + "|" + uploadBean.img10;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.video1)) {
+            video_link = uploadBean.video1;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.video2)) {
+            video_link = video_link + "|" + uploadBean.video2;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.video3)) {
+            video_link = video_link + "|" + uploadBean.video3;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.video4)) {
+            video_link = video_link + "|" + uploadBean.video4;
+        }
+
+        if (!TextUtils.isEmpty(uploadBean.video5)) {
+            video_link = video_link + "|" + uploadBean.video5;
+        }
+
+
         if (TextUtils.isEmpty(img_link)) {
             App.toast(this, "请上传众筹图片");
             return;
         }
 
         postPub(title, text, video_link, aptitude_img_link,
-                img_link, tvEndDate.getText().toString(), rmb, target_rmb, "");
+                img_link, tvEndDate.getText().toString(), rmb, target_rmb);
     }
 
     private void addImg(List<String> lstPath, boolean isFirst) {
@@ -342,6 +405,37 @@ public class AddFundAct extends BaseAct {
                 LoadingUtils.getInstance().dialogDismiss();
                 if (uploadResponse != null) {
                     if (uploadResponse.status == 1) {
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img1)) {
+                            uploadBean.img1 = uploadResponse.uploadBean.img1;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img2)) {
+                            uploadBean.img2 = uploadResponse.uploadBean.img2;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img3)) {
+                            uploadBean.img3 = uploadResponse.uploadBean.img3;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img4)) {
+                            uploadBean.img4 = uploadResponse.uploadBean.img4;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img5)) {
+                            uploadBean.img5 = uploadResponse.uploadBean.img5;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img6)) {
+                            uploadBean.img6 = uploadResponse.uploadBean.img6;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img7)) {
+                            uploadBean.img7 = uploadResponse.uploadBean.img7;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img8)) {
+                            uploadBean.img8 = uploadResponse.uploadBean.img8;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img9)) {
+                            uploadBean.img9 = uploadResponse.uploadBean.img9;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.img10)) {
+                            uploadBean.img10 = uploadResponse.uploadBean.img10;
+                        }
+
                         App.toast(AddFundAct.this, uploadResponse.message);
 
                     } else {
@@ -377,6 +471,21 @@ public class AddFundAct extends BaseAct {
                 if (uploadResponse != null) {
                     if (uploadResponse.status == 1) {
                         App.toast(AddFundAct.this, uploadResponse.message);
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.video1)) {
+                            uploadBean.video1 = uploadResponse.uploadBean.video1;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.video2)) {
+                            uploadBean.video2 = uploadResponse.uploadBean.video2;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.video3)) {
+                            uploadBean.video3 = uploadResponse.uploadBean.video3;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.video4)) {
+                            uploadBean.video4 = uploadResponse.uploadBean.video4;
+                        }
+                        if (!TextUtils.isEmpty(uploadResponse.uploadBean.video5)) {
+                            uploadBean.video5 = uploadResponse.uploadBean.video5;
+                        }
                     } else {
                         App.toast(AddFundAct.this, uploadResponse.message);
                     }
@@ -393,9 +502,23 @@ public class AddFundAct extends BaseAct {
         });
     }
 
+    public static String dateToStamp(String s) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long ts = date.getTime() / 1000;
+        res = String.valueOf(ts);
+        return res;
+    }
+
 
     private void postPub(String title, String text, String video_link, String aptitude_img_link,
-                         String img_link, String stop_time, String rmb, String target_rmb, String id) {
+                         String img_link, String stop_time, String rmb, String target_rmb) {
 
         HashMap<String, String> map = new HashMap<>();
         map.put("title", title);
@@ -403,10 +526,9 @@ public class AddFundAct extends BaseAct {
         map.put("video_link", video_link);
         map.put("aptitude_img_link", aptitude_img_link);
         map.put("img_link", img_link);
-        map.put("stop_time", stop_time);
+        map.put("stop_time", dateToStamp(stop_time));
         map.put("rmb", rmb);
         map.put("target_rmb", target_rmb);
-        map.put("id", id);//修改时使用
         AthService service = App.get().getAthService();
         service.crowd_funding_add(map).observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<BaseResponse>() {
             @Override
@@ -414,6 +536,7 @@ public class AddFundAct extends BaseAct {
                 if (baseResponse != null) {
                     if (baseResponse.status == 1) {
                         App.toast(AddFundAct.this, baseResponse.message);
+                        finish();
                     } else {
                         App.toast(AddFundAct.this, baseResponse.message);
                     }
@@ -476,7 +599,7 @@ public class AddFundAct extends BaseAct {
                 addVideo(lstPath3);
                 break;
             case R.id.btnPub:
-                request(video_link, aptitude_img_link, img_link);
+                request();
                 break;
 //            case R.id.ivImg1:
 //                break;
@@ -577,6 +700,8 @@ public class AddFundAct extends BaseAct {
     }
 
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -636,7 +761,7 @@ public class AddFundAct extends BaseAct {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                tvEndDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                tvEndDate.setText(year + "-" + (monthOfYear < 10 ? "0" + (monthOfYear + 1) : (monthOfYear + 1)) + "-" + (dayOfMonth < 10 ? "0" + dayOfMonth : dayOfMonth));
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

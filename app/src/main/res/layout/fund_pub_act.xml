@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -75,7 +74,7 @@
                 android:layout_toRightOf="@id/tvName"
                 android:background="@null"
                 android:hint="请输入众筹商品所需资金"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:textColor="@color/font_333333"
@@ -104,7 +103,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/tvName"
                 android:background="@null"
-                android:hint="请输入众筹最低限额（实例：120#200#220）"
+                android:hint="请输入众筹最低限额（实例：120|200|220）"
                 android:inputType="text"
                 android:maxLength="20"
                 android:maxLines="1"
@@ -389,51 +388,51 @@
                     android:stretchMode="spacingWidth"></cn.innovativest.ath.widget.XGridView>
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivImg6"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:background="@drawable/ic_fund_addimg"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/ivImg6"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivImg7"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:background="@drawable/ic_fund_addimg"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/ivImg7"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivImg8"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:background="@drawable/ic_fund_addimg"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/ivImg8"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivImg9"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:background="@drawable/ic_fund_addimg"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/ivImg9"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivImg10"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:background="@drawable/ic_fund_addimg"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/ivImg10"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivAddImg2"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:background="@drawable/ic_fund_addimg"-->
-                    <!--android:visibility="visible" />-->
+                <!--android:id="@+id/ivAddImg2"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="visible" />-->
 
             </LinearLayout>
 
@@ -518,47 +517,47 @@
                     android:stretchMode="spacingWidth"></cn.innovativest.ath.widget.XGridView>
 
                 <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
-                    <!--android:id="@+id/detail_player1"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/detail_player1"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
-                    <!--android:id="@+id/detail_player2"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/detail_player2"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
-                    <!--android:id="@+id/detail_player3"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/detail_player3"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
-                    <!--android:id="@+id/detail_player4"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/detail_player4"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
-                    <!--android:id="@+id/detail_player5"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/detail_player5"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:visibility="gone" />-->
 
                 <!--<ImageView-->
-                    <!--android:id="@+id/ivAddImg3"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:background="@drawable/ic_fund_addvideo"-->
-                    <!--android:visibility="visible" />-->
+                <!--android:id="@+id/ivAddImg3"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addvideo"-->
+                <!--android:visibility="visible" />-->
 
             </LinearLayout>
 

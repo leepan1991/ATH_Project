@@ -1,7 +1,6 @@
 package cn.innovativest.ath.adapter;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,10 +68,10 @@ public class MainHotAdapter extends BaseAdapter {
         // 封装数据
         NewMainHot newMainHot = (NewMainHot) getItem(position);
 
-        if (!CUtils.isEmpty(newMainHot.newMainGetFundingText.video) && newMainHot.newMainGetFundingText.video.contains("|")) {
-            GlideApp.with(context).load(newMainHot.newMainGetFundingText.video.substring(newMainHot.newMainGetFundingText.video.indexOf("|"))).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
+        if (!CUtils.isEmpty(newMainHot.newMainGetFundingText.video_img) && newMainHot.newMainGetFundingText.video_img.contains("|")) {
+            GlideApp.with(context).load(newMainHot.newMainGetFundingText.video_img.substring(newMainHot.newMainGetFundingText.video_img.indexOf("|"))).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
         } else {
-            GlideApp.with(context).load(newMainHot.newMainGetFundingText.video).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
+            GlideApp.with(context).load(newMainHot.newMainGetFundingText.video_img).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.iv_avatar);
         }
 
         holder.tvName.setText(newMainHot.newMainGetFundingText.title);

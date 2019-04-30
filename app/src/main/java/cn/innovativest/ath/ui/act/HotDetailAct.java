@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +18,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shuyu.gsyvideoplayer.GSYBaseActivityDetail;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
-import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
-import com.shuyu.gsyvideoplayer.listener.GSYVideoProgressListener;
 import com.shuyu.gsyvideoplayer.listener.LockClickListener;
 import com.shuyu.gsyvideoplayer.model.GSYVideoModel;
-import com.shuyu.gsyvideoplayer.utils.Debuger;
-import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer;
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
 
@@ -33,6 +30,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.innovativest.ath.App;
+import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.CommentAdapter;
 import cn.innovativest.ath.bean.Comment;
@@ -75,6 +73,8 @@ public class HotDetailAct extends GSYBaseActivityDetail<ListGSYVideoPlayer> impl
 
     private String video;
 
+    private String video_img;
+
     private EComment eComment;
 
     private CommentAdapter commentAdapter;
@@ -93,6 +93,7 @@ public class HotDetailAct extends GSYBaseActivityDetail<ListGSYVideoPlayer> impl
         id = getIntent().getStringExtra("id");
         name = getIntent().getStringExtra("name");
         video = getIntent().getStringExtra("video");
+        video_img = getIntent().getStringExtra("video_img");
         initVideo();
         initView();
     }
@@ -105,7 +106,13 @@ public class HotDetailAct extends GSYBaseActivityDetail<ListGSYVideoPlayer> impl
 
         List<GSYVideoModel> urls = new ArrayList<>();
         urls.add(new GSYVideoModel(video, name));
+
         detail_player.setUp(urls, true, 0);
+        //增加封面
+        ImageView imageView = new ImageView(this);
+        GlideApp.with(this).load(video_img).into(imageView);
+
+        detail_player.setThumbImageView(imageView);
 
         detail_player.setIsTouchWiget(true);
         //关闭自动旋转
