@@ -1,5 +1,6 @@
 package cn.innovativest.ath.ui.frag;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -29,6 +31,7 @@ import cn.innovativest.ath.App;
 import cn.innovativest.ath.GlideApp;
 import cn.innovativest.ath.R;
 import cn.innovativest.ath.adapter.FundAdapter;
+import cn.innovativest.ath.bean.UserInfo;
 import cn.innovativest.ath.core.AthService;
 import cn.innovativest.ath.response.CrowdFundingList;
 import cn.innovativest.ath.response.CrowdFundingType;
@@ -36,12 +39,16 @@ import cn.innovativest.ath.response.FundIdResponse;
 import cn.innovativest.ath.response.FundItem;
 import cn.innovativest.ath.response.FundResponse;
 import cn.innovativest.ath.response.Hot;
+import cn.innovativest.ath.response.UserInfoResponse;
 import cn.innovativest.ath.ui.BaseFrag;
 import cn.innovativest.ath.ui.act.AddFundAct;
 import cn.innovativest.ath.ui.act.FundDetailAct;
 import cn.innovativest.ath.ui.act.LoginAct;
+import cn.innovativest.ath.utils.AESUtils;
+import cn.innovativest.ath.utils.CUtils;
 import cn.innovativest.ath.utils.LoadingUtils;
 import cn.innovativest.ath.utils.LogUtils;
+import cn.innovativest.ath.utils.PrefsManager;
 import cn.innovativest.ath.widget.CustomDialog;
 import cn.innovativest.ath.widget.VpSwipeRefreshLayout;
 import cn.innovativest.ath.widget.XListView;
@@ -155,6 +162,51 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
         } else {
             pi = 1;
             getFundData(1, pi);
+        }
+    }
+
+    private void requestUserInfo() {
+
+        AthService service = App.get().getAthService();
+        service.userInfo().observeOn(AndroidSchedulers.mainThread()).subscribeOn(App.get().defaultSubscribeScheduler()).subscribe(new Action1<UserInfoResponse>() {
+            @Override
+            public void call(UserInfoResponse userInfoResponse) {
+                if (userInfoResponse.status == 1) {
+                    if (!CUtils.isEmpty(userInfoResponse.data)) {
+                        LogUtils.e(AESUtils.decryptData(userInfoResponse.data));
+                        UserInfo userInfo = new Gson().fromJson(AESUtils.decryptData(userInfoResponse.data), UserInfo.class);
+                        if (userInfo != null) {
+                            PrefsManager.get().save("userinfo", userInfoResponse.data);
+                        } else {
+                            LogUtils.e("userInfo is null");
+                        }
+                    } else {
+                        LogUtils.e("userInfoResponse.data is null");
+                    }
+
+                } else {
+                    LogUtils.e(userInfoResponse.message);
+                }
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                LogUtils.e("获取用户信息失败");
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 100:
+                if (resultCode == Activity.RESULT_OK) {
+                    requestUserInfo();
+                    pi = 1;
+                    getFundData(1, pi);
+                }
+                break;
         }
     }
 
