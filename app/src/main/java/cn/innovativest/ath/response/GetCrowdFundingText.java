@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetCrowdFundingText {
 
     private String title;
+    private String rmb;
     @SerializedName("img_link")
     private String imgLink;
     public void setTitle(String title) {
@@ -25,4 +26,11 @@ public class GetCrowdFundingText {
          return imgLink;
      }
 
+    public String getRmb() {
+        return rmb;
+    }
+
+    public void setRmb(String rmb) {
+        this.rmb = rmb;
+    }
 }

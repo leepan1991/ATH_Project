@@ -76,9 +76,11 @@ public class FundAdapter extends BaseAdapter {
 
         holder.tvName.setText(fundItem.getGetCrowdFundingText().getTitle());
 
-        holder.tvAmount.setText(fundItem.getTargetRmb() + "万");
+        holder.tvAmount.setText(fundItem.getTargetRmb());
         holder.tvStatus.setText(fundItem.getStatus());
-        holder.tvCompleted.setText(fundItem.getReachRmb() + "万");
+        holder.tvCompleted.setText(fundItem.getReachRmb());
+        String rmb = fundItem.getGetCrowdFundingText().getRmb();
+        holder.btnStartZc.setText(rmb.contains("|") ? rmb.substring(0, rmb.indexOf("|")) + "起投" : rmb + "起投");
 
         holder.circle_progress.setProgress(fundItem.getBaiFenBi());
 
