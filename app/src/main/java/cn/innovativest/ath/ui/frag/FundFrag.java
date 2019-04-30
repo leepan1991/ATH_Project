@@ -99,7 +99,8 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
                     false);
             ButterKnife.bind(this, contentView);
             initView();
-            getFundData(1, 1);
+            pi = 1;
+            getFundData(1, pi);
         }
 
         ViewGroup parent = (ViewGroup) contentView.getParent();
@@ -334,10 +335,15 @@ public class FundFrag extends BaseFrag implements OnRefreshListener, OnLoadMoreL
         refreshLayout.setNoMoreData(false);
         refreshLayout.setEnableLoadMore(true);
         pi = 1;
-        if (listTitles.get(tablayout.getSelectedTabPosition()).getId() > 1) {
-            getFundIdData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+        if (lstFundItems.size() == 0) {
+            getFundData(1, pi);
         } else {
-            getFundData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+            if (listTitles.get(tablayout.getSelectedTabPosition()).getId() > 1) {
+                getFundIdData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+            } else {
+                getFundData(listTitles.get(tablayout.getSelectedTabPosition()).getId(), pi);
+            }
         }
+
     }
 }

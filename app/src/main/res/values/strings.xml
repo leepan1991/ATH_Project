@@ -12,4 +12,6 @@
     <string name="regist_code_get_ing">获取中</string>
     <string name="regist_code_get_retry">重新获取</string>
     <string name="regist_code_wait">重新获取%1$s</string>
+
+    <string name="error_gif">x or y bound size should be at least %1$dpx and file size should be no more than %2$sM</string>
 </resources>

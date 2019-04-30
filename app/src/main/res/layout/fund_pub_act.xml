@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_fund_img1" />
+                    android:background="@drawable/ic_fund_img1" />
 
                 <TextView
                     android:id="@+id/tvImgTx"
@@ -212,7 +212,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tvImgTx"
-                    app:srcCompat="@drawable/ic_fund_question" />
+                    android:background="@drawable/ic_fund_question" />
 
                 <Button
                     android:id="@+id/btnUploadImg1"
@@ -249,12 +249,64 @@
                 android:orientation="horizontal"
                 android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/tvImgTx"
-                    app:srcCompat="@drawable/ic_fund_addimg" />
+                <cn.innovativest.ath.widget.XGridView
+                    android:id="@+id/appGird"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:columnWidth="80dp"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="4"
+                    android:scrollbars="none"
+                    android:stretchMode="spacingWidth"></cn.innovativest.ath.widget.XGridView>
+
+                <!--<ImageView-->
+                <!--android:id="@+id/ivImg1"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/ivImg2"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/ivImg3"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/ivImg4"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/ivImg5"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/ivAddImg1"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:background="@drawable/ic_fund_addimg"-->
+                <!--android:visibility="visible" />-->
 
             </LinearLayout>
 
@@ -274,7 +326,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_fund_img2" />
+                    android:background="@drawable/ic_fund_img2" />
 
                 <TextView
                     android:id="@+id/tvImgTx2"
@@ -324,11 +376,64 @@
                 android:orientation="horizontal"
                 android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_fund_addimg" />
+                <cn.innovativest.ath.widget.XGridView
+                    android:id="@+id/appGird1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:columnWidth="80dp"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="4"
+                    android:scrollbars="none"
+                    android:stretchMode="spacingWidth"></cn.innovativest.ath.widget.XGridView>
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivImg6"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:background="@drawable/ic_fund_addimg"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivImg7"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:background="@drawable/ic_fund_addimg"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivImg8"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:background="@drawable/ic_fund_addimg"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivImg9"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:background="@drawable/ic_fund_addimg"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivImg10"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:background="@drawable/ic_fund_addimg"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivAddImg2"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:background="@drawable/ic_fund_addimg"-->
+                    <!--android:visibility="visible" />-->
 
             </LinearLayout>
 
@@ -348,7 +453,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_fund_video" />
+                    android:background="@drawable/ic_fund_video" />
 
                 <TextView
                     android:id="@+id/tvVideoTx"
@@ -396,14 +501,64 @@
                 android:id="@+id/lltAddVideo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_fund_addvideo" />
+                <cn.innovativest.ath.widget.XGridView
+                    android:id="@+id/appGird2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:columnWidth="80dp"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="4"
+                    android:scrollbars="none"
+                    android:stretchMode="spacingWidth"></cn.innovativest.ath.widget.XGridView>
+
+                <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
+                    <!--android:id="@+id/detail_player1"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
+                    <!--android:id="@+id/detail_player2"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
+                    <!--android:id="@+id/detail_player3"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
+                    <!--android:id="@+id/detail_player4"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<com.shuyu.gsyvideoplayer.video.ListGSYVideoPlayer-->
+                    <!--android:id="@+id/detail_player5"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivAddImg3"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:background="@drawable/ic_fund_addvideo"-->
+                    <!--android:visibility="visible" />-->
 
             </LinearLayout>
 

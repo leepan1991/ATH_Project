@@ -54,6 +54,7 @@ import cn.innovativest.ath.response.SpeedResponse;
 import cn.innovativest.ath.response.StartImgResponse;
 import cn.innovativest.ath.response.TradeResponse;
 import cn.innovativest.ath.response.UpgradeResponse;
+import cn.innovativest.ath.response.UploadResponse;
 import cn.innovativest.ath.response.UserInfoResponse;
 import okhttp3.MultipartBody;
 import retrofit2.http.Body;
@@ -261,7 +262,7 @@ public interface AthService {
     Observable<FundDetailResponse> crowd_funding_details(@Query("id") String id);
 
     @POST("uploads")
-    Observable<RechargeResponse> uploads(@Body HashMap<String, String> map);
+    Observable<UploadResponse> uploads(@Body MultipartBody body);
 
     @POST("crowd_funding_add")
     Observable<BaseResponse> crowd_funding_add(@Body HashMap<String, String> map);
