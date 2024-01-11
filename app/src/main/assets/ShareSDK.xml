@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DevInfor>
 
-    <Wechat AppId="wx49c994967ea046c1" AppSecret="e1058538f46d3018621e53ee59459da4"
+    <Wechat AppId="xxx" AppSecret="xxxx"
         BypassApproval="false" Enable="true" Id="1" MiniprogramType="2"
         Path="pages/index/index?id=mob" SortId="1" UserName="gh_b0c6a9ca668a"
         WithShareTicket="true" />
 
-    <WechatMoments AppId="wx49c994967ea046c1" AppSecret="e1058538f46d3018621e53ee59459da4"
+    <WechatMoments AppId="xxx" AppSecret="xxx"
         BypassApproval="false" Enable="true" Id="2" SortId="2" />
 
 
-    <QQ AppId="101514931" AppKey="819572fce6ad8e28d3aae25cf6561c20" BypassApproval="false"
+    <QQ AppId="xxx" AppKey="xxx" BypassApproval="false"
         Enable="true" Id="3" ShareByAppClient="true" SortId="3" />
 
-    <QZone AppId="101514931" AppKey="819572fce6ad8e28d3aae25cf6561c20" BypassApproval="false"
+    <QZone AppId="xxx" AppKey="xxx" BypassApproval="false"
         Enable="true" Id="4" SortId="4" />
 
     <!-- 
